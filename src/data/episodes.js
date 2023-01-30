@@ -1,12 +1,13 @@
 import * as srtparsejs from "srtparsejs";
-import fs from 'fs'
+import fs from 'fs';
+import path from 'path';
 
 import { extractFromXml } from '@extractus/feed-extractor'
 
 const episodeExtra = {
   'Buzzsprout-12076221': {
     slug: 'a-fundamentally-new-react-my-journey-with-react-server-components',
-    transcript: srtparsejs.parse(fs.readFileSync('./src/data/Buzzsprout-12076221.srt').toString())
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'Buzzsprout-12076221.srt')).toString())
   },
   'Buzzsprout-12033274': {
     slug: 'learning-react-on-only-3-hours-per-week-while-working-full-time'
