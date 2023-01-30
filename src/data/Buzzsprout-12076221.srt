@@ -1,0 +1,296 @@
+1
+00:00:02,790 --> 00:00:51,090
+Thomas Hintz: Welcome to the React show brought to you from occupied Lenape territory by me, your host, Thomas, and some funny code, Episode 73. Hooks in functional components changed react in a significant way compared to class based components. But I think react server components are going to alter react in an even more fundamental way. Hooks allowed us to basically just do what we were already doing, but in a different fashion. React server components, though, completely changed the way in which we'll create and even think about React apps. In this episode, we start learning what react server components really are, and take a journey attempting to use them in the real world.
+
+2
+00:00:53,010 --> 00:01:34,170
+Thank you for joining us, I've been following the development of React server components sort of like in the background for the last year or so. And even in the episode where we covered React 18 And talked about React server components, I did start to get excited. But even then, you still couldn't really get a good feel for what they would be like to use in practice as the only things really released until that point, were more like proofs of concepts, you know, from the React team, and from NextJS and stuff. So I was just thinking these seem like they have a lot of potential, but who really knows until we see a more finalized version?
+
+3
+00:01:34,710 --> 00:01:53,910
+Well, with NextJS 13, I think we do get to see a much more finalized version. Technically, React server components are still in beta. But it's almost certain the final version will be very similar to what has been released in NextJS 13. So we can finally take them for a spin.
+
+4
+00:01:53,940 --> 00:02:11,130
+And I'll be honest, I have been and I've been pretty blown away. It's not that it's really anything new in terms of like programming or web development. But it's completely new for React. And in my experience, so far, just, it's just completely game changing.
+
+5
+00:02:11,700 --> 00:02:43,650
+And yeah, for some extra fun, after recording this main episode, I'm going to do a short after show, recording, that just covers some more of my thoughts about the future of react. And you know what that might be with React server components, just in a more casual fashion, some cool tricks we can bring in from other systems that will be sort of like steroids for React server components, along with some interesting tidbits I picked up from my research, like how the React team actually looked into making react more like Svelte.
+
+6
+00:02:44,160 --> 00:02:54,960
+So yeah, if you're interested in just sort of joining along for that more casual follow up, the after show will be available exclusively on our Patreon. So definitely check that out. If you're interested.
+
+7
+00:02:55,560 --> 00:03:06,720
+Before we actually get into what react server components are, I thought it would be more digestible, if I like sort of walked you through some of my experiments with React server components.
+
+8
+00:03:07,680 --> 00:04:12,240
+First, I wanted to build a real sort of like a real world app using React server components and NextJS 13. And everything to get, like a good feel for what they were like and how to use them and stuff. So my goal was to just build the simple weather app, you know, where it lists some days, and each day shows like a summary of the temperature range or something, and then you can maybe click on a day, and it'll like, bring up more details, you know, things like that. Basically, I just wanted something that, you know, depended on some sort of external API. So I could see how data fetching and data integration worked. But also had, you know, some client side state, some things I wanted to have real interactivity with that, you know, needed to happen quickly to feel responsive. So I can just sort of get a feel for, you know, the sort of boundary between client and server and what it means to have some, maybe, client component versus, say, a server component. So yeah, it's pretty loose goal. But yeah, that was the goal, create this weather app.
+
+9
+00:04:12,240 --> 00:04:47,550
+So the first task, of course, was getting NextJS 13, with this new beta React server components support up and running. So in NextJS, they often call this app like just a-p-p support, because this new system lives inside the App folder instead of the Pages folder. So previously, with NextJS, you put your pages in the Pages folder, now you basically put your pages in the App folder. And once you do that, you can take advantage of all these new features.
+
+10
+00:04:47,850 --> 00:05:21,030
+So yeah, I got an NextJS, and I passed a flag to it, telling it to use the new beta app support and I got that up and running and didn't have any issues. You know, so this included a server component and some client components in sort of like a, you know, demo app that includes with it, and I got that up and running and no issues there. So that was that was really cool. Just worked. And yeah, it was fun to see this, you know, in practice and then actually going. So of course, next I had to like, actually do something with this, right.
+
+11
+00:05:21,690 --> 00:05:45,870
+So I just created a basic server component, like I read through the docs and learn how to create a server component how to create a client component. By default, all the components are actually server components, which is different. But you can put a little tag basically at the top of your file to indicate it should be a client component. And so I created a server component that rendered a both the client component and a server component.
+
+12
+00:05:46,140 --> 00:06:10,410
+And it just worked. I had no issues, it was really cool. It was really exciting to see it was like, Oh, this works. You know, I didn't really take advantage of any special features that I knew of at this point. But hey, it's working. So that's great. And now that I had something working, it was like, Okay, let's just sort of do some investigation, like, what is Next doing, like, what is different than before? Right?
+
+13
+00:06:10,830 --> 00:06:47,610
+So I started investigating, and it was pretty clear that, you know, Next is still providing server side rendering, which is different than react server components. It can still be used with React server components, but Next has done server side rendering for quite some time. And that's been supported on React for a while. And that seems to just work. Like before it does server side rendering, it returns HTML, and that gets hydrated by react. So that seems the same. But then, and this is maybe also, in a sense, not new: Next has done some of this as well before.
+
+14
+00:06:48,030 --> 00:07:12,900
+But I had link to another page, and it seemed to prefetch, this linked page, but that's where things started to get more interesting. So I, you know, brought up the network inspector, right? And I was like, okay, cool. It's like prefetching, you know, this other page. But then when I was looking at what it was actually prefetching, I was like, Whoa, this is totally different. This is super interesting.
+
+15
+00:07:13,410 --> 00:08:00,000
+So the result, you know, what the next server was returning to the client, it basically, it was data. It wasn't HTML, it was just data. But it looked to me, like the output from rendering a React tree, like, like the actual tree structure itself. And it was really, it's actually really funny. So if you are familiar with my book at all, where we like, create our own react, I create sort of my own data structure to represent the tree that the React rendering algorithm can parse to do its thing, right? This data that the server is sending to the client looks basically identical to that. I mean, there's only minor differences. So that was really fun to see. Yeah, it's basically the same thing.
+
+16
+00:08:00,000 --> 00:08:18,660
+It's like, Yeah, this is the data that represents a React tree of components, I guess. So it's not surprising, it would look just similar the same, but it was really fun to see. So yeah, this is it. We're starting to get into "this is different, this is cool, this is unique, this is, this is fun!" At least it was fun for me. Anyway.
+
+17
+00:08:18,660 --> 00:09:16,920
+So I'm like going through this investigating things, I noticed a couple other things. One is it seemed like, like some of these requests, were being streamed in, potentially, like just looking at the HTTP requests and the browser and stuff. I was like, Oh, it seems like React is doing some sort of, or Next or something is doing some sort-of streaming, which I hadn't seen in this fashion before. That's cool. And a really cool thing is, it seemed like React was doing some sort of automatic code splitting based on component like, it looks like, oh, it's not even sending the code it needs for a component, unless the user actually is going to load the page with that component on it. Like, I don't know exactly what it's doing yet, or how it's working but I was like, hey, that seems really cool. I definitely want to look into that further, you know, so I had some, you know, fun inspecting what was going on?
+
+18
+00:09:16,920 --> 00:09:26,520
+And I think I came up with a lot of questions like, you know, what is it doing? But it was really exciting. And, yeah, so I think we'll definitely learn more about that.
+
+19
+00:09:27,030 --> 00:09:50,970
+But the next thing that I wanted to mess around with was, like data and data fetching. So to me, based on the research I had done, this seemed like potentially one of the biggest places where things changed or could change, or we could do things differently, you know, so I wanted to fetch data within a server component and just sort of get a feel for how that worked. Right?
+
+20
+00:09:51,270 --> 00:10:32,400
+So I follow the NextJS docs to use a basic await fetch call to get some weather data from an API inside my react server component, and it just worked and it was awesome! So much better than having to use React query or doing it manually via useEffect, which React Query is almost certainly doing internally, right? It was just so beautiful and so simple. Like, it was just like, oh, 'await' the results of my API call and render them out in my component, I don't need to do anything special, you know, I don't need to follow these useEffect rules or something like that, you know. So yeah, this is super exciting.
+
+21
+00:10:32,930 --> 00:11:13,160
+When this worked, and I could sort of play with it and see how it worked. I was like, this has the potential to just fundamentally change how I write React apps. So anyways, this is the journey so far I created. It's not really the Weather app completely yet. But it fetches some weather data. And it just sort of renders it in a list to the screen to the browser's DOM, you know, and it's cool and all, but now it's like, Hey, I got an idea how this kind of works. But what actually are, you know, react server components, I wanted to get more of the theory, you know, so yeah, we'll talk about that.
+
+22
+00:11:13,160 --> 00:11:46,730
+Next, like I mentioned earlier, I guess, we've been able to render a tree of React components on the server for quite some time, you know, we've called it server side rendering, this worked by providing the tree of components with some default state and props, and just rendering basically the same as on the client, except for we just take the HTML output, and, you know, throw it to the browser. And that output, you know, gets hydrated by react, you know, where it just like, adds event and listeners and stuff to the DOM elements, right?
+
+23
+00:11:47,210 --> 00:12:53,750
+ Well, for React server components, we actually basically do the same thing, except instead of only being able to send the HTML output to the client, we instead send some JSON output that contains the data for the tree of React components. Essentially, if you're familiar with the term virtual DOM, we're essentially sending the virtual DOM from the server to the client. And then on the client side, React has enough information to merge this, like virtual DOM that it got from the server with whatever the state of the virtual DOM is on the client. So really, we used to have two trees, essentially a React component data, the output from rendering your components is incorporated into the DOM elements on the screen, right? But also, whenever you do a rerender, you generate like a new tree. And React is taking that, you know, those two trees, and essentially merging them together to figure out what needs to get updated on the screen. Right, so you had two trees.
+
+24
+00:12:54,200 --> 00:13:17,840
+But now we have three trees, the server tree, the client tree, and the browser DOM tree. So all we actually need to do is merge these three trees together. And this is what React does for us. This is basically the new feature they added for React server components is the ability to merge these three trees together.
+
+25
+00:13:18,470 --> 00:13:29,360
+Of course, it's not completely that simple. There are some distinctions between, essentially the client tree and the server tree or client components and server components.
+
+26
+00:13:29,000 --> 00:13:50,180
+On the client side, nothing really changes at all, we still have access to all the same hooks and all the same features. Basically, it's completely backwards compatible. When it comes to client components, which are the components we always used to write, they're now called Client components. Basically, nothing changes there.
+
+27
+00:13:50,450 --> 00:14:24,740
+However, server components, like they look the same, you still write a function that returns JSX, or whatever, it looks basically the same, and works basically the same, but there are some limitations. So on server components, you can't use anything that has to do with client side state or, of course, browser specific API's. So this means you can't use useState or useEffect or useContext or anything like that in your server components.
+
+28
+00:14:25,430 --> 00:15:01,160
+So this actually means that probably a lot of your components can be either a client component or a server component. And in some cases, you can probably use them as client components in some parts of your app. But in other parts, use them as server components, like the code in a lot of cases is fine to run in both environments, so as long as you're not using client side specific stuff, like useState or you know window or other browser specific API's, you can you is it in both places.
+
+29
+00:15:01,400 --> 00:15:13,280
+Now, of course, there are some things that you can do in a server component, which is really just code running on node. JS, that you can't do on a client component, which we're going to get into as well.
+
+30
+00:15:13,660 --> 00:15:40,930
+But what is really, really cool about all of this is that the server and client trees can be merged together without affecting client side state. So while you can't access or modify client side state from within a server component, you can fetch data in Server components, which will get merged with the client components without causing a reload or any loss of client side state. 
+
+31
+00:15:41,350 --> 00:16:08,710
+To me, this last point is really the key to server components. They allow you to fetch, load and process data in a much more natural and efficient way on the server, while still having a highly responsive client with all the same client interactivity you would want in an app. Ultimately, with web apps, we always have to deal with clients and servers and having the power to choose where our React code runs, is incredibly powerful.
+
+32
+00:16:09,040 --> 00:16:25,630
+Choice, and power is what makes react so good, in my opinion. And this just extends and doubles down on this. So amazing, super exciting, in my opinion. And we're definitely going to get more into some of the details around this. 
+
+33
+00:16:25,630 --> 00:17:01,060
+But what I also found really interesting to me is that the fundamentals of how React really like works haven't changed. Like the way react renders stays the same, like it renders in two different environments now, but the algorithm is the same. There are some restrictions on some features, depending on the environment, like server or client, but the fundamental algorithm react to uses internally remains the same. So yeah, if you're interested in the nitty gritty details of the algorithm, I did write a short book on the topic, which covers it in depth.
+
+34
+00:17:01,330 --> 00:17:16,720
+But it was just really cool to be like, wow, they designed this thing that works in both of these environments without really having to change anything about the fundamental way React works. I don't know, to me, that's really cool. And indicates like good design.
+
+35
+00:17:17,470 --> 00:17:40,390
+Anyways, so back to my journey, trying to build this app. So this like weather app, or whatever. So I got some basic stuff working. But now I really wanted to try to get a more full fledged app developed and try to really exercise the full capabilities, like kind of figure out the limitations and how to do things in this new world, right?
+
+36
+00:17:40,840 --> 00:17:58,030
+So the next experiment was adding some client side interactivity. And it's kind of not related to a weather app anyway. But I was like, hey, let's add a button with a counter, you know, where you click, every time you click the button, the counter on your screen goes up by one, right, just some text on the screen. 
+
+37
+00:17:58,240 --> 00:18:38,980
+Just super basic, but you know, it's client side state, I was going to maintain all this data on the client, and I wanted to be like, okay, when I send new data, you know, from the weather API back to the client, or whatever, does this erase this client side state? Does it impact it in any way? Like, what is the effect here, you know, so that meant I had a server component that was rendering both another server component and a client component. And it all just worked seamlessly. Like, to be completely honest, if you didn't know any better, you couldn't even really tell that I was using some new server component technology. It just worked. It didn't lose it state, everything was great.
+
+38
+00:18:39,050 --> 00:18:59,120
+So next, I thought I wanted to, like make sure that whatever day I clicked on in this, you know, list of days for the weather forecast, I wanted it to be highlighted, and like open up in another pane or something, some extra details about the weather for that day, you know, and this is where things started to get really interesting.
+
+39
+00:18:59,570 --> 00:19:34,250
+So to do this, I needed to have an onclick handler, when I click on this day, which I think was a div or whatever, and then an onclick handler to fetch more information about that day and display it and highlight that day in the list of days, you know, but event handlers can only be specified within client components. But the component that I created to render the list of days was a server component. And it's like, if you try to add an event handler to it, React is just like, nope, what are you doing? You don't--you're out to lunch, you know, like, this doesn't make any sense.
+
+40
+00:19:34,700 --> 00:20:03,830
+So somehow, I need to figure out a way to pass data to that server component to like, tell it which day was selected, like I need to create, I guess, a client component for each day in that list that had the onClick handler. And then when you click on it, I needed to somehow tell the server, which day was clicked, so that server component could render some CSS or something to show that day was highlighted like to show I clicked on that day, right?
+
+41
+00:20:04,310 --> 00:20:40,040
+Of course, I could have done all of this as client components, you know, the way we used to do it in React. But that's no fun. That's not the point of this, right? I wanted to have this as a server component and just see how it worked. But you can't use the useState hook within the server component. You can't use the useContext hook, right? So I thought, if I made a context higher up in my tree, right, so this is not new in React, we create contexts that allow us to share data throughout our tree without having to pass that data down through the tree, right?
+
+42
+00:20:40,400 --> 00:21:02,270
+So I was like, Okay, I could create a context higher up in the tree, in a client component, that client component could render my server component that renders the list of days. And that would, again, render some client components. And I could use this to share data between all my components, right. But again, this turned out to not really work.
+
+43
+00:21:02,330 --> 00:21:39,110
+So server components, they just can't access the data that's stored in a context, only client components can. So basically, I realized that I could pass state and props like normal between client components, and even from a server component to a client component. But it didn't seem like there was any way to pass props, or a function from a server component to a client component. So basically, I was stuck. I was like, I don't know how to make this work. Like how do I tell the server which day is selected?
+
+44
+00:21:39,620 --> 00:22:01,430
+So I took a timeout to study what the React team did in their demo for React server components that they created in like 2020, the end of 2020. So at first, like, I was looking through their code, and I was like, Oh, they are using a context. So I must be able to use a context to do this. Like it looked like they were using it to pass data between client and server components.
+
+45
+00:22:01,690 --> 00:22:34,630
+But eventually, I figured out that the context was really basically just acting as a client-side cache, the real way they were passing data from client components to server components was via query parameters. Ah, I had figured it out! It was so exciting! So basically, you just can't directly pass props or state from a client component to a server component. So you have to pass data in some way that a server can read it.
+
+46
+00:22:35,290 --> 00:22:52,120
+There's multiple ways you could do this, you know, whether that's just a regular API call that you make to your server that stores the data in a session or wherever, right? Or, in this case, via the URL, which a server can obviously, you know, access from any request that comes in.
+
+47
+00:22:52,120 --> 00:23:30,640
+So basically, the way it works is you're like, hey, render the server component. And on the server, I can be like, Oh, okay, I will do that, but what URL did you ask for the server component on, and you can use that to like, set the query parameters on that URL and pass data from the client component to the server component. It worked, and it worked really well. And the cool thing was, I could directly pass data via props, from a server component to a client component. And the NextJS like, API allows directly accessing the data in query parameters. 
+
+48
+00:23:31,060 --> 00:23:55,150
+I know this probably sounds confusing, trying to explain it in a podcast. But the bottom line is, once I realized that and took advantage of the existing, you know, NextJS API's, it all just worked seamlessly, I could pass data from the client to my server components, and back from my server components to my client components, all pretty much seamlessly.
+
+49
+00:23:55,990 --> 00:24:19,480
+The way I did this was I used the NextJS link components. And I used those to set the query parameters in the client components. So the client component, you know, would render and set up each of those link components with different query parameter values. And so when you clicked on those links, the server would get the unique data from the query parameter and be able to use it.
+
+50
+00:24:19,660 --> 00:25:02,050
+So now I could pass the data from the client to the server and back to the client, again, all quite seamlessly. Like I know, I know, this is not groundbreaking, we've been able to pass data from the server to the client back and forth, again for the ages. So you know, like, that's how you do things on the web, right? But the way in which you can pass them and render the data and the output of these components in like sort of interleave your server and client components and just sort of write components and think in terms of components. I don't know it was just mind blowing. It's totally different than the way we've ever done things in the React World, and just really cool in my opinion.
+
+51
+00:25:02,630 --> 00:25:19,490
+So with this basic prototype setup, I could really start experimenting. I also like I don't know, wanted to add a form, I've always just sort of been obsessed with trying to find a better way to do forms in React. And so I was like, Hey, maybe, this will let me do it.
+
+52
+00:25:19,490 --> 00:25:38,540
+Right, so, again, it's not really related to a weather app, per se, but I was like, I could add a form that lets you select a day using an input element, you know, and then it would show that day, I don't know why you'd really--I guess you could want this on a weather app, whatever, I wanted to add a form and just see how it works.
+
+53
+00:25:38,540 --> 00:26:26,450
+Right, so I passed some data from the higher level server component down into the form components, this turned out to be really awesome, because I figured out that you could update data, within the form, via server components without clearing the state of the form. So you could have some client components in your form for some of your inputs, you know, so it's like some custom made highly interactive form inputs, right? Then you can mix that with some server components that fetch data in real time or update in real time or update as the user is filling out the form even. And it doesn't, you know, erase the state of the form from the browser's perspective, and also from React's perspective.
+
+54
+00:26:26,750 --> 00:26:45,200
+So I don't, I need to do some more research in this area to figure out, you know, what the full implications of this are, but to me, this seemed like a potentially a huge breakthrough in the way we could do forms and React. So yep, super exciting it was really fun! I really enjoyed messing around with this! 
+
+55
+00:26:45,830 --> 00:27:01,040
+So when I was reading through the Next documentation, for React server components, they also mentioned that you can use Suspense boundaries and transitions to create loading states. So I messed around with that, too. And it worked really well.
+
+56
+00:27:01,000 --> 00:27:41,110
+So you can fetch data in your server component, right. But you can use suspense to return a loading state. And so on the client side, it will show this loading state until the data returns on the server side, but you don't need to, like do any special coding, you just await your data and, you know, render a Suspense element in your output. And I'll just work seamlessly. It was like, I finally understand suspense boundaries. Like I mean, I always understood them before, but they were really clunky, to be honest, on the client side to coordinate and make work. And it works really seamlessly with server components: really awesome!
+
+57
+00:27:41,710 --> 00:28:00,700
+Another fun thing I realized is that in a React server component, you can, you know, have an 'if' statement, or some sort of branching. And, you know, maybe depending on if the users logged in or not, or some other condition, you can return one component or a different component, right?
+
+58
+00:28:01,060 --> 00:28:31,600
+Well, before all of the code needed to render both components would get sent to your browser, whether the user ever actually needed all of the components or not, it always got sent to the browser. Well, I started messing around with it. I was like, Oh, this is really cool: if I've branching code in my output, React only actually sends the code needed for client side components, if they are actually getting used. So that was really fun to mess around with as well.
+
+59
+00:28:32,110 --> 00:29:04,510
+All right, so I have a really ugly but functioning weather app at this point that has a mix of server components and client components. And it's really cool, and really fun and quirky, and not that useful in the real world yet, cuz I didn't polish anything but hey, it was a fun experiment, right? But I thought, alright, so we've got that working, I think it's a good time to sort of regroup on what we've learned and also just talk about and expand upon some of the new capabilities that NextJS 13 and React server components brings.
+
+60
+00:29:05,020 --> 00:29:26,410
+So like I said, before, server components, I think, fundamentally change how we're going to fetch data in React. The NextJS documentation even recommends only fetching data in Server components. This could mean that days of useEffect for data fetching and even things like React Query are maybe over.
+
+61
+00:29:26,590 --> 00:29:43,060
+We might not actually need React Query or SWT, or anything like that ever again. And that remains to be seen. Maybe there are still use cases for it. But in scenes like that, you know, we're going in a different direction now.
+
+62
+00:29:43,660 --> 00:30:01,330
+So the React team, to sort of, kick off the whole React server components project, they created an RFC "request for comment" about their ideas, and I thought it covered a lot of the benefits of React server components really well.
+
+63
+00:30:01,330 --> 00:30:38,470
+So I'm going to go over what they present in the RFC. So server components, they run only on the server, and have zero impact on bundle size. Their code is never downloaded to clients, which reduces bundle size, improves startup time, like, for example, let's say you wanted to render a date to the screen in a nice, pretty format that your users like to look at, not whatever, you know, milliseconds since 1970, or whatever format your data is stored on in your API or in your database or whatever.
+
+64
+00:30:38,470 --> 00:31:29,350
+Right. So normally, we would include a date library, like, you know, there's many of them, we've included on the client side and use that to tell it what format to convert the date to for the user, right? Well, that sucks, because now the user has to download that date library. With React server components, you can still use that exact same date library to format your dates. But you never need to send the code for the date library to the clients. It's awesome. Server components can also access server side data sources directly, such as databases, file systems, micro services, you don't need to do anything special, you can just access files, the contents of files, create database connections, all within your React server components!
+
+65
+00:31:29,830 --> 00:32:15,760
+Another cool feature is server components seamlessly integrate with client components. So I talked about this before. So server components can load data on the server and pass it as props to client components, allowing the client to handle rendering the interactive parts of a page. And server components can dynamically choose which client components to render, so I was talking about this at the end: essentially, they allow clients to download just the minimal amount of code necessary to render a page. Server components preserve client state when reloaded. This means that client state focus and even ongoing animations aren't disrupted or reset when a server component tree is refreshed. Amazing. Mind blown.
+
+66
+00:32:17,070 --> 00:32:37,860
+Yeah, also, server components are rendered progressively and incrementally stream rendered units of the UI to the client, kind of a cumbersome way of basically saying, as React renders your component tree, it can start streaming the results to the client before it finishes rendering all of your components. 
+
+67
+00:32:38,370 --> 00:33:03,210
+And combined with Suspense, this allows developers to craft intentional loading states and quickly show important content while waiting for the remainder of a page to load. And yeah, I could see in practice, when I was trying this out, it works way better than the way we used to have to do it in React, really cool! And, you know, something a lot of people have tried to replicate in lots of different ways.
+
+68
+00:33:03,780 --> 00:33:29,790
+We can now share code between the server and the client as React components, allowing a single component to be used to render, say, a static version of some content on the server on one route, and an editable version of that content on the client and say, a different route. And I think there will ultimately be even more benefits realized by React server components than just those we listed above. And you know, time will tell.
+
+69
+00:33:30,110 --> 00:34:25,100
+But this isn't like necessarily for free, there are some downsides. For one, it's just more complicated, the React ecosystem is absolutely going to be more complicated. Learning React is going to be harder than it was before when we only had client side components. But at the same time, I think the payoff is definitely worth it unless you only ever planned on making purely client side apps that never need API or data integration. But if you're not in that super rare case, I think if you're just writing normal apps, where you are going to need API and data integration, all this, you're gonna have to learn how servers and clients work anyways, you're gonna need a server, you're you know, so I don't think it makes it so that overall, you really need to learn more, but learning React, this is probably going to make it so you got to learn more before you really can say I've learned React, you know, and there are definitely some other things that still need to be worked out.
+
+70
+00:34:25,100 --> 00:34:44,870
+So what I discovered when I was, you know, trying to build this weather app is that a lot of component libraries, you know, like Chakra UI, Material UI, and also CSS and JS libraries, they don't really work with server components right now, or at least don't work effectively. 
+
+71
+00:34:45,080 --> 00:35:24,080
+You can like technically with some extra work, get them to work on your client components, but I found they basically just don't have an effect on your server components which made them really kind of a pain and kind of useless to use. And I'm sure there's going to be other growing pains, but I'm sure we're going to figure it out, you know, whether it's using different techniques or these libraries, maybe they just need to be updated, whatever. But at this point in time, there's definitely issues with a lot of existing React libraries. It's definitely not production ready right now.
+
+72
+00:35:24,000 --> 00:35:49,530
+But I had a blast trying it out, if you couldn't tell. So I'm curious though, what do you think? Are you wanting to try it out now? Is there anything I didn't mention that you want to experiment with? Do you want me to experiment with? Or does this just make you angry, you want to go back to a world where everything is client side and seemed simpler? Either way, like always, we'd love to hear from you.
+
+73
+00:35:49,590 --> 00:36:04,800
+And, you know, if you're curious about some of my more off the cuff, remarks and thoughts about React server components and some of my other ideas on really cool things we could do with them, definitely check out the After Show on our Patreon.
+
+74
+00:36:05,250 --> 00:36:18,780
+And like always, we hope you have a great rest of your day. Thank you so much for joining us. This episode was produced by Thomas and edited by Dougie, The Podcast Editor.
+

@@ -1,0 +1,5 @@
+* TODOs
+** TODO contact us email sending
+** TODO book stripe integration
+** TODO PDF download not working
+** TODO favicon
