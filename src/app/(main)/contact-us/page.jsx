@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { redirect } from 'next/navigation';
 import nodemailer from 'nodemailer';
 import sanitizeHtml from 'sanitize-html';
