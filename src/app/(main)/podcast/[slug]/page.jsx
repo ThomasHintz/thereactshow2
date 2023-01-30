@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 /* import chaptersStatic from './chapters.json' assert { type: 'json' }; */
 
 import Head from 'next/head'
