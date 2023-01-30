@@ -157,9 +157,8 @@ export default async function Page({ params }) {
       <JustifiedSectionReversed title="Book Sample" bg="gray-800">
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <a
-            href="/files/foundations-high-performance-react-sample-export.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            download
+            href="/files/foundations-high-performance-react-sample.pdf"
             className="rounded-md bg-white px-3.5 py-1.5 text-base font-semibold leading-7 text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Download PDF
