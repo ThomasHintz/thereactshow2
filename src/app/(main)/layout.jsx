@@ -1,7 +1,6 @@
 import { Fragment, useId } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
 import NavBar from '@/components/NavBar'
 import posterImage from '@/images/poster.png'

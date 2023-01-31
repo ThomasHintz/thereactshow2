@@ -27,7 +27,7 @@ export default function Player({ episode, startTime, endTime, children }) {
         src: episode.audio.src,
         type: episode.audio.type,
       },
-      link: `/${episode.id}`,
+      link: `/${episode.slug}`,
     }),
     [episode]
   )

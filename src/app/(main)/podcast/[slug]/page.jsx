@@ -54,10 +54,6 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Head>
-        <title>{`${episode.title} - Their Side`}</title>
-        <meta name="description" content={episode.description} />
-      </Head>
       <article className="py-16 lg:py-36">
         <Container>
           <header className="flex flex-col">

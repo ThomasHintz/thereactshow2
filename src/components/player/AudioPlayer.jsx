@@ -47,7 +47,7 @@ export function AudioPlayer() {
       </div>
       <div className="mb-[env(safe-area-inset-bottom)] flex flex-1 flex-col gap-3 overflow-hidden p-1">
         <Link
-          href={player.meta.link}
+          href={`/podcast${player.meta.link}`}
           className="truncate text-center text-sm font-bold leading-6 md:text-left"
           title={player.meta.title}
         >
