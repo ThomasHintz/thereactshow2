@@ -5,6 +5,10 @@ import path from 'path';
 import { extractFromXml } from '@extractus/feed-extractor'
 
 const episodeExtra = {
+  'Buzzsprout-12142504': {
+    slug: 'from-a-career-in-logic-gates-to-react-with-evan-walter',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '074-mixed.srt')).toString())
+  },
   'Buzzsprout-12076221': {
     slug: 'a-fundamentally-new-react-my-journey-with-react-server-components',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'Buzzsprout-12076221.srt')).toString())

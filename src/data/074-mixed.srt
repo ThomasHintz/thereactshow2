@@ -1,0 +1,636 @@
+1
+00:00:01,950 --> 00:00:14,520
+Thomas Hintz: Welcome to the React show. Brought to you from occupied Miwok territory by me your host, Thomas, and a cortada, Episode 74.
+
+2
+00:00:15,630 --> 00:00:41,430
+What is it like to transition to web development and React from a different career? How can you practically take the leap and make that change? Is react even a good place to start? What about starting as a contractor versus full time? Our guest today, Evan Walther joins us after having made this journey. Come with us as we discuss these questions and more.
+
+3
+00:00:42,720 --> 00:00:59,280
+Thank you for joining us. I just got back from a trip out in the Midwest and east coast. And even a little vacation in New York City. It was really nice to visit family take a break, do some exploring. But I'm super excited to get back into the React World.
+
+4
+00:00:59,280 --> 00:01:39,270
+I've been waiting for this interview. Yeah, super excited can't wait. And today, we have a great conversation with Evan Walters. But we'll also have a special after show available on the Patreon where Evan and I let loose a little bit. You know, we talk about Rust, programming languages in general, and the nomadic remote software life. And now, with five years of electrical engineering experience, and then two more years building full stack web applications with React, creator of evanwalter.dev. Welcome to the React show Evan Walter, it's great to have you!
+
+5
+00:01:39,300 --> 00:01:40,800
+Evan Walter: Hey Thomas, thanks for having me.
+
+6
+00:01:41,130 --> 00:02:08,280
+Thomas Hintz: I'm so excited. You know, we've been chatting a little bit, you know, ahead of time, and it's been really fun, just learning about your previous experience. And the I don't know, to me kind of amazing transition that you've made from, you know, kind of a different career into, you know, software development. And so I was just curious, like, before you were doing React, could you talk briefly about sort of your experience in the sort of electrical engineering field?
+
+7
+00:02:08,659 --> 00:02:46,380
+Evan Walter: Sure, yeah. So I got my degree. And shortly after that started with a defense subcontractor in the Northern Virginia area, we were doing some like digital type stuff, embedded stuff, and also like radar type work. So I was at that job for about a year. And then during college, and afterwards, I kind of wanted to explore like, what is my real like passion, because like, I enjoyed it, but I didn't really know if I loved it. So I kind of went and worked at a shipyard, which is less technical, I'd say. And it was sort of that time that I started to really on the side, like go explore different career paths and such.
+
+8
+00:02:46,530 --> 00:03:05,550
+Thomas Hintz: That's fascinating. So I'm curious, when you were, you know, either at the shipyard or in the other positions, did you really do much programming? Or was this like, you know, super low level circuit boards and logic gates? And, you know, like, sort of, you know, what was your involvement with programming, I guess?
+
+9
+00:03:05,550 --> 00:03:48,030
+Evan Walter: Yeah. So at that, that first job with the defense subcontractor, there's definitely programming or if you consider it programming, it was actually like VHDL, which is like hardware description. So it's basically you're working with firmware. And it's kind of a similar skill set, but it's a little different. Because it's, it's not like, I think you call it like sequential it was it was like parallel. But after that, at the shipyard it was, I really don't even think like the technical skills I learned in college were needed at the shipyard it was like maybe, maybe a little bit, but it was mostly just kind of learning that business and kind of having a little bit of technical sort of work that was really specific to that business and the way they ran stuff.
+
+10
+00:03:48,030 --> 00:03:55,830
+Thomas Hintz: Yeah. So VHDL. Is that like ladder logic? Is that the type of thing it is? Or is that different?
+
+11
+00:03:56,160 --> 00:04:46,820
+Evan Walter: Not really, I actually did work later at a company that did those sorts of PLCs and ladder logic. But VHDL it's kind of like, I guess a way to describe it is you have like a circuit board that just has a bunch of gates, like on and off switches, you could say. And you can program them like very custom to run very fast to do a lot of processing. But you're, you're kind of programming you're using like hex and things like that just to program like those gates. So you're not necessarily writing C unless you write you can write, like one of the other guys that this company wrote. Or he had a program or a library that you could basically write C programs on top of these FPGAs. So I guess you can do that. But it's more designed just to like, yeah, customize like each switch to then implement some sort of functionality. That's very specific.
+
+12
+00:04:47,110 --> 00:05:19,630
+Thomas Hintz: Yeah. Oh, that actually sounds really fascinating to me. That's something I've always wanted to learn more about. So like having you be like, oh, yeah, I got that under my belt, no problem, you know. So I'm curious, is like, oh, maybe we'll get into it later, but before we do that, I'm just, you know, thinking, at some point you, you must have decided, like, you wanted to maybe transition. Did you, like try out programming first? Or were you just like, No, I want, I'm gonna go into this, I'm gonna do it and you figure out how it works?
+
+13
+00:05:19,810 --> 00:06:00,010
+Evan Walter: Yeah, I definitely tried it out. So in college, we had a little bit of, you know, like, we had a Python class early on, it was called Introduction to Computer Science. And it was more like an intro to Python class. And then later on after learning, you know, kind of later in my, my senior year or something like that, we had a C class. And so after, like, kind of understanding a little bit more about like computer architecture and hardware, C really made sense. And it kind of clicked for me. So, whereas when I learned Python, early on, it was a little bit like, it's so high level, it was a little bit like abstract for me to kind of understand, you know, just the whole notion of it. And so basically, I remembered that I enjoyed C.
+
+14
+00:06:00,010 --> 00:06:16,720
+And so as I was exploring and stuff, I basically went back and started just building little projects, you know, and like, I knew there was a lot of open source tooling, and resources and things. So I was able to sort of just ease my way into it to the point where I just kept enjoying it kept liking it and just kept being more and more serious about it.
+
+15
+00:06:16,000 --> 00:06:38,920
+Thomas Hintz: Oh, that's awesome! I'm curious, like, was there a point where you decided to, like, actually make a transition where you were like, "Alright, I'm quitting my job, I'm gonna look for a new one", or were you sort of like, "I'm gonna get a programming job first"? And, you know, like, how did that go? Is that kind of a scary process? Or?
+
+16
+00:06:38,000 --> 00:07:26,150
+Evan Walter: I'd say it was, there was definitely a point where I was ready to make the transition, but the timing of it was sort of gradual. So I'd say you could think of it like, you know, at first, when I started messing around with Python, and C, I didn't really know. But several months into that, I started to focus more on the web development side and go down the path of like, you know, JavaScript and React. And as I did that, for several months, I started to, in a structured way, I kind of did some, like personal learning and did some, like Udemy classes. And you know, I had this structure, it was like, every day, like an hour before work, or like, during my lunch break, things like that, I would at least spend about an hour a day, like just learning and building stuff. And I did that for several months.
+
+17
+00:07:26,150 --> 00:07:42,500
+And like, I had the intention to like, move in that direction, and like, get a software engineering job or a full stack engineering job. Like during that time, I also sort of it caught my attention, the idea that you could, you know, run your own business or something. And so that was like another path.
+
+18
+00:07:42,480 --> 00:08:08,700
+I was debating, like, do I want to be a freelancer? Or do I want to be a full stack, you know, work for a company right away. So I mean, I could talk more about that. But by and large, the company that I was working at, they were going through some transition and some growth. And so it became like a pretty natural time for me to just suddenly jump straight into and I, then I had decided I want to just try the freelancing thing. So kind of just leave that job and jump straight into freelancing. So
+
+19
+00:08:09,120 --> 00:08:22,860
+Thomas Hintz: Wow. So you went from essentially sort of like being an employee, maybe full time as an electrical engineer, and then you just jumped into freelance web development is what I'm hearing?
+
+20
+00:08:23,309 --> 00:08:35,460
+Evan Walter: Pretty much. Yeah, I mean, there's definitely more to the story than that. But by and large, I was on the path of electrical engineering, and I was working for a company doing that, and then immediately moved into freelance web development. So
+
+21
+00:08:35,960 --> 00:09:04,910
+Thomas Hintz: That sounds like a pretty big jump, and you know, I, maybe not as much for me, and maybe you're laughing, you're like, uh that didn't feel that bad. But I have so many people that talk to me, and they're like, Oh, I would love to do that. But, you know, like, it just sounds so scary to like, leave whatever, you know, they're in, you know, like, you don't know what's going to happen. What if nobody hires you? You know? Yeah, were those kind of thoughts running through your brain during this process? Or were you just like, Nah, it'll be fine?
+
+22
+00:09:05,570 --> 00:09:40,850
+Evan Walter: So for me, I think part of it was, this wasn't the first time I had like, made a big transition. So as I was sort of on this path, anyway, I had moved from Virginia to California. And when I did that, I had saved up some money and like, wasn't really sure what was gonna happen. Initially, I had, I was on a long term leave of absence with my engineering job in Virginia. So I knew I could always come back. But I really didn't want to come back long term. Like I wanted to find something out here in California and kind of live out here, at least for a time.
+
+23
+00:09:41,210 --> 00:09:57,530
+And then it was maybe a year or two after that. So you know, eventually I did work at this job in California, doing the electrical work, and then moved into freelance web development. So it was kind of like it wasn't like my first time just like doing something like risky like that, I guess you could say.
+
+24
+00:09:57,570 --> 00:10:16,039
+Thomas Hintz: Yeah, so it sounds to me like you sort of had a backup plan where you were like, Oh, I could go back and keep doing what I was doing, like your long term leave of absence or something that's just sort of take the pressure off, at least because then you're like, Oh, if that doesn't work out, I do have something even if you didn't really want it.
+
+25
+00:10:16,240 --> 00:10:26,650
+Evan Walter: Yeah, initially. So for long term leave of absence thing was actually before the web development stuff. So in this case, I didn't really have that type of fallback. I just had kind of the money I had.
+
+26
+00:10:26,000 --> 00:11:09,110
+And I guess, like, part of it for me was this idea that like, so I had actually applied for a software like a junior software engineering job, at the same time that I applied for this new electrical job in California. And I didn't get an offer from them, but it kind of caught my attention I was like, Okay, this is something I might be interested in. So I had been exploring the software engineering path for a while. But that particular job, the way it relates is, it's closer to electrical engineering, and that they're using C, and they're doing some stuff that is using some sort of like, I'm trying to remember this specific, but I think it was like some sort of like signal processing related stuff that we learned in electrical engineering. 
+
+27
+00:11:09,110 --> 00:11:31,970
+So it would have been like, my skill set wasn't too far off. So to me, like being a freelance web developer, while it's definitely different, it's still kind of like, okay, my technical skills, I feel like have helped me, at least in my way of thinking and have some sort of foundation in web development. So I didn't really feel like I was making such a radical shift. I felt like it was more like a fork from electrical engineering, if that makes sense.
+
+28
+00:11:31,000 --> 00:11:55,300
+Thomas Hintz: Oh, yeah, totally makes sense. So that really leads me into the next sort of stage here. Why did you, you know, pick web development. I mean, it sounds like you already had a fascination with, you know, C, and some of those low level stuff. That's the complete opposite, as you know, by now from, from React and web stuff. So how did that happen?
+
+29
+00:11:55,540 --> 00:12:17,050
+Evan Walter: Yeah. So I had mentioned that I traveled, like, I actually drove from Virginia, out here to California. And that trip was sort of the new kind of exploratory thing. And I really loved that trip, like, I had a great time. And so part of that kind of got me thinking, like, what if I like have a remote job, you know, so I got really interested in like, remote work.
+
+30
+00:12:17,420 --> 00:12:37,610
+And, you know, doing some like, looking online and things, I saw that you could work remotely as an electrical engineer, probably as an embedded systems person, which I knew about embedded systems. And it's cool. And it's, it's, it's amazing, but it's difficult. So it's like, I thought, okay, if I want to go down that path, I'm sure I could build the skills into it.
+
+31
+00:12:37,610 --> 00:12:58,340
+But I also saw that the remote landscape, in other words, just the amount of remote work, there wasn't software engineering, compared to embedded systems just seem to be so much more. So, you know, I kind of, I want, I was curious about that. So basically, from that, and I was like, okay, so between embedded systems and software engineering, I think I'm gonna try more the software engineering path.
+
+32
+00:12:58,000 --> 00:13:40,900
+And then to narrow it down further, it was like, so I could kind of go into more like the lower level ish stuff like desktop applications with like Java or C++, or what have you, or the highest level would be like, kind of web development with like JavaScript, and things like that. So from what I was seeing online, the different YouTubers and people I was following, there was this notion that like, Okay, if you get into web development, you could probably have a better shot with less of the technical background. In other words, the computer science background, and like, I had an electrical engineering degree, but I definitely didn't feel like I learned, you know, nearly as much software engineering related stuff as a computer science major would have learned.
+
+33
+00:13:40,900 --> 00:13:56,200
+So I kind of thought, Well, okay, maybe I'll try web development and see if I like it. And if I want to go deeper, I can always like use that as a gateway to then go deeper into the, you know, someone with a computer science background would want to do so.
+
+34
+00:13:56,730 --> 00:14:19,860
+Thomas Hintz: So, essentially, you were feeling like, it sounds like to me two things. One, the web development side potentially had more opportunity for what you were looking for. But then secondarily, you felt concerned that other, you know, sort of software fields might require more of like a computer science background, is that correct?
+
+35
+00:14:20,279 --> 00:14:28,710
+Evan Walter: Yeah. And I guess to put it more concisely, it's like, I thought web development had more like had a lower barrier to entry, then a software engineering job.
+
+36
+00:14:29,200 --> 00:14:42,130
+Thomas Hintz: Yeah. It's very interesting to hear that I've never, I've never really considered them as being different, to be honest. Like, to me, they're all software engineering, you know, and I don't know if you would agree with that at this point.
+
+37
+00:14:42,000 --> 00:15:17,820
+Now that you've been doing it for a while, and maybe it depends on what you call software engineering, right. I call software engineering more as a focus on the engineering side. So taking a problem and finding the best solution to it given the constraints, you know, the, how much budget do we have? How much time? Do we have that kind of thing? So it's sort of the engineering point like, Okay, if we have unlimited resources, we're going to build something completely different than if you give me three days to do it. Right. You know. And so I think that's, you know, what I call software engineering. 
+
+38
+00:15:17,840 --> 00:15:49,790
+And what it seems like is, you know, what you do in most programming jobs is sort of glue some libraries together, include some stuff, right? But from your perspective, outside of this, you know, field, it was like, you were looking at it as, oh, yeah, web development sounds like it, maybe I'm wrong, correct me if I'm wrong, but sort of like just something where I can like, kind of throw up a web page, and it doesn't really require me to, you know, learn, like the data structures that a desktop application needs to function,aaa does that sound right?
+
+39
+00:15:49,000 --> 00:16:22,900
+Evan Walter: I mean, I think it was more like, if you're going to write desktop applications, you probably want to know Java, and then maybe other languages, like just a bunch of tooling, and a bunch of concepts that you would learn in a computer science degree, or some offshoot of that. Whereas as a web developer, you can do it all with like, mainly JavaScript, and then the other web technologies, like, you know, HTML, CSS, and then all the other web technologies, but like, it's primarily you can just learn one like language, if you're just talking about languages like JavaScript, so it was more like that.
+
+40
+00:16:22,930 --> 00:17:10,750
+I mean, I knew there was some complexity in it, you know, with the electrical engineering background, I think it gave me a really a good appreciation for how important it is to like, really understand how things work under the hood. And like, you know, have those foundations for problem solving, and not just making it work in like a superficial way, and then calling it done. So like, I had all that as a value system, but I just kind of thought, Okay, well, at least like I can just learn JavaScript, and a lot of software engineers, you know, coming out of university with a computer science degree, they might do web development, but you don't have to have that degree to do web development, like people are hired out of boot camps or just with like, their, their work experience doing web development, if you could show that you have skills, then you could get hired, and you could have the skills required for the job, I guess.
+
+41
+00:17:11,140 --> 00:17:44,830
+Thomas Hintz: So maybe it was more like you might have heard people coming out of university learned Java or something. And, and got that type of position, or you know, because it just it sounds really fascinating to me, because like knowing this landscape, you know, JavaScript in web development is a much like, there's a lot more to learn, like, you can write, I've written desktop applications in Java. In fact, that's actually, I learned that in like high school, I think that was like my AP computer science course, or whatever.
+
+42
+00:17:45,680 --> 00:18:28,340
+And like, those were way easier throughout development, if I'm being completely honest. So I just find it really fascinating this sort of perspective that you had. And I think it's important to talk about because I've seen this come up over and over again, where people view web development as being a lower barrier to entry. And I have wondered if it comes from, you know, sort of when I learned web development, and I know, I talked with you about this before, you know, before we recorded and like I learned web over 20 years ago at this point, and it was like, my cousin was like, oh, yeah, you just do like a AOL search for HTML tutorial, you know?
+
+43
+00:18:28,510 --> 00:18:50,950
+And I was like, Well, how do you like write the code? Oh, it's this program that comes with Windows actually, it's called notepad. And he like, pulled up like this startup he was working on and like it had, like, HTML for like, their entire website, just in notepad! And I was like I could do that. So it's like it's really, really low barrier to entry.
+
+44
+00:18:51,220 --> 00:19:28,420
+But now when I think about it, I'm like, Well, if you want to learn React, it's like, JavaScript, CSS, HTML, JSX. Like, there's like so many things you have to learn. And then people are like, Oh, no, you can't use Notepad, you got to use like, Visual Studio or whatever, you know, VSCode, right? So it's really fascinating to me that, you know, so many people, not just you, coming from the outside see this sort of web sphere as being the easier barrier to entry. And I don't really have a question for you, in this other than Did that surprise you to learn that? Or, you know, are you more at this point, like, oh, yeah, that makes sense?
+
+45
+00:19:28,680 --> 00:20:02,910
+Evan Walter: Yeah, I think when we were talking before hearing you say that, like, you know, that the barrier to entry to, I guess other types of software engineering compared to web development is actually lower that, you know, it's kind of the opposite of like, what I understood to be true, or what I heard from these, you know, the opinions is not true, but just like the opinions from these different YouTubers and people and stuff. And so, it is interesting to sort of reflect and think how would it go differently? Or how would it have been different if I had learned Java or C++ and just tried to get a job like that? You know, I don't know. So yeah, it's definitely It's definitely a surprise, it's definitely interesting to think about.
+
+46
+00:20:03,140 --> 00:20:35,810
+Thomas Hintz: Yeah, and I think another thing you had mentioned too, is like the whole, like computer science background computer science degree. And, you know, speaking, as someone who doesn't technically have a computer science degree, but I took all of the computer science courses before dropping out. I, I can tell you and you know, also talking to other people, 99 plus percent of programming jobs from any level, whether embedded through web, it has nothing to do with an actual computer science degree, like we learn data structures and algorithms.
+
+47
+00:20:35,810 --> 00:20:46,490
+And it can certainly help in some cases, and it certainly helps, you know, and maybe in a job interview, but like actual on the job, it's just not relevant.
+
+48
+00:20:46,520 --> 00:21:15,740
+And the really interesting thing that I think I found over the years is that most of the programmers I've worked with, do not have a computer science degree, in fact, did not even go to school for anything related to computer science, they started, like, I have a friend who I think he was working at, like a sort of sewage waste processing plant, you know, and they needed somebody to like, run some numbers or whatever. And he started writing scripts to do it.
+
+49
+00:21:15,740 --> 00:21:56,660
+And that's a very common, almost the most common way I think, I've heard of people actually getting into software is maybe even more kind of like, what you did is just they started out slow, just started messing around with it, and eventually you end up in it. But I don't know, if it's like, maybe I will just come out and blame, you know, Google, and a lot of companies that have tried to copy them, they've sort of created this, I think, sort of fallacy that you need all this, like background and heavy computer science knowledge to do a programming job. It's just not true. That's just not the way it works. But yeah, so I don't know if you have any more thoughts on that?
+
+50
+00:21:57,770 --> 00:22:14,450
+Evan Walter: Yeah, I mean, that's definitely you know, it's definitely a common, like conversation. And I don't know how long it's been this conversation has been around about, like, you know, coding interviews are broken, or whatever, you know, but definitely, I've seen it pretty much the whole time that I've been in the space over the last like, three or so years.
+
+51
+00:22:15,410 --> 00:22:38,180
+You know, I think it's interesting, because, yeah, I mean, I see, I see what like how, like, what you're saying, like, you're not really using, like, you know, you're not going to do like a binary search tree or whatever, like at work, you know, like ever, probably, but like, you know, it seems important to these companies that you can just do these, like leet code problems and interviews, at least not all the companies, some of them are, you know, changing it.
+
+52
+00:22:38,180 --> 00:23:23,990
+And but, yeah, I guess, like, I could see, only one possible benefit is that like, someone who has the ability to learn this stuff, and learn these algorithms and data structures, is probably intelligent, and probably has a strong work ethic, and they could probably, you know, learn whatever they need on the job. But I feel like those efforts would be better focused on something more specific to actually the ability to learn the data structures and algorithms. So anyway, that's the one maybe positive spin I could put on it. So
+
+53
+00:23:24,320 --> 00:24:07,250
+Thomas Hintz: Actually, I will come in here and be maybe a bit spicy, but I actually think you hit the nail on the head, I've actually been in the position for quite a long time now of like hiring people at companies and stuff. And if somebody can do data structures and algorithms really well, it's zero indication on how well they can actually do the job. In fact, I'm not gonna go so far as saying, I would like penalize somebody in the interview process if they're good at it. But to me, it's just not a signal at all, because I've worked with so many people that were hired based on that, who, like you said, had absolutely no idea how to actually build a real program.
+
+54
+00:24:07,310 --> 00:24:50,750
+And so, you know, if I'm talking to somebody like you, who's like, oh, yeah, I'd like I've just built these programs. I just sort of taught myself, you know, that is indicating to me a skill of, yeah, they're able to problem solve, and like, get the job done and figure it out. That is way more valuable to I think nearly every company, then. Yeah, I know, the running time order of a binary search tree. Like, it just isn't relevant. Like you said, it's just isn't. And so to me, I think it's actually the opposite of the sort of view a lot of us have, that people that are good at that are going to be good at a software job. I don't think so at all. I think it's just not true.
+
+55
+00:24:50,000 --> 00:25:25,130
+Evan Walter: Yeah, I mean, I guess that makes sense. You know, I haven't been on the other end. I haven't hired anyone yet. So I guess I'm not that surprised to hear that, you know, So it, it is interesting, you know, because I guess, like you said, Google and like MANG, or FANG companies sort of kind of set the precedent with this. And I don't know, I'm curious in like, 10 years, what will it look like? You know, will the tech interview still? Will this conversation still be popular? Will it still be like, oh, people are saying it's broken? Or will they? Will it change? And will there be like, a completely different type of Yeah, interviews?
+
+56
+00:25:25,330 --> 00:25:59,140
+Thomas Hintz: Yeah, I think, you know, we've been talking about this for over a decade now, you know, and I think the real reason why this exists is more because those companies need to sort of present an image of being elite. And this is their way to do it. To them, it's okay, if they filter out 10,000, you know, bad programmers, or 10,000 programmers, and maybe 9000 of them are really good. You know, like, they just want to give this appearance that, yeah, we're getting the best people.
+
+57
+00:25:59,530 --> 00:26:20,320
+But again, I can tell you from experience or working with people from these companies, it is a completely ineffectual. I would say basically the same thing. So if somebody's like, has Google on the resume or whatever, it is not an indicator to me that they're any better than anyone else. It's just this image they have to present.
+
+58
+00:26:20,350 --> 00:26:49,240
+And so I don't know why it would change because they need something, unless they come up with something to replace that to make themselves seem elite. But to seem elite, it's just like colleges, you know, if you want to get into an elite college, it's basically the same thing. Like, we got to make it seem like we're special, even though maybe 90% of the people that apply would be just as good. But they can't take 90% of the people that apply. So they have to come up with reasons to make it seem like they're more elite than they really are. That's my opinion.
+
+59
+00:26:50,670 --> 00:27:09,480
+Evan Walter: That's a good analogy. I think like when you bring in like sort of the college analogy, like I think you could understand, okay, you know, because colleges don't just look for a certain type of, I don't know, ability to do something, they're looking for a specific culture sometimes and like, ability to perform in a certain academic context and stuff. So anyway,
+
+60
+00:27:09,690 --> 00:27:34,440
+Thomas Hintz: Yeah, absolutely. So I'm curious now that we're, you know, more into your web development and React, is there anything that like, especially when you're learning React, that you really struggled with? Or something related to React really, like, this is just weird, or, you know, kept having issues with it? I don't know if it's hooks, or, you know, something weird like that? I don't know, does anything come to mind to you?
+
+61
+00:27:34,680 --> 00:27:54,480
+Evan Walter: Yeah, it's funny. So when I, when you first started asking the question, I just, I was thinking about, okay, you know, you're learning. You're learning this, it's a library, but it's kind of in the space of other like frameworks, like JavaScript, you know, single page application framework. So it's kind of like, its its own sort of way of thinking and language. And there's a lot of tooling built under the hood.
+
+62
+00:27:54,750 --> 00:28:17,790
+So I think it was, like, I think when I first learned React, my tendency was like, what I was considering was, like, I should learn how to actually write this library, like, I should make my own React. And I think that is really helpful. I actually kind of shifted and more focused on okay, how can I use React and as I'm using it really understand, like vanilla JavaScript really well, and then kind of see those come together.
+
+63
+00:28:18,110 --> 00:28:41,720
+So it's probably a pretty good way of thinking to like, write the library, but I kind of, I think I've heard before someone say like, Okay, someone who makes the car versus someone who drives the car. So like, I guess it's good to have like, sort of both, but like, you need to know how to drive it. If you know how to make it you may not know how to drive it. So I wanted to just for fun, just say like, oh useEffect. But yeah, whatever.
+
+64
+00:28:42,740 --> 00:28:52,490
+Thomas Hintz: Why would you say that? Have you ever had issues with useEffect? Have you ever found bugs with people that write useEffect code?
+
+65
+00:28:52,970 --> 00:29:12,200
+Evan Walter: No, it's actually part of, you know, I listened to this podcast. So that's part of what got me interested on like, coming on, but like, you know, hearing you talk about useEffect and stuff. It really, it's been helpful to like, kind of hear that and get some more like understanding on it. And I know it's a little more mainstream now for people to talk about that. But yeah, so you know, it's
+
+66
+00:29:12,690 --> 00:29:20,190
+Thomas Hintz: Did you struggle with with useEffect when you were first like trying to use it? Is that what you're saying? Or were you like, no, I got it.
+
+67
+00:29:20,760 --> 00:29:55,200
+Evan Walter: So I thought I got it, but like, I haven't had to do like a ton of complex stuff with it. I mean, so pretty much I wanted to just say that just like for entertainment because like I know it's like an easy like it's an easy like entertaining React thing to bring up so I don't have like a lot of like a really interesting personal story where like, oh, useEffect really all this headache, but like, I know, yeah, I know. It's the thing where like, I've definitely seen you know, when people are like fetching when you fetch from an API like onMount or whatever people are using it as like instead of a lifecycle method componentDidMount and then you realize okay, well it's it's a little bit different.
+
+68
+00:29:55,200 --> 00:30:17,460
+You don't want to one compare the class base with like the hooks way of thinking and some things like that, I think it definitely served me when I'm like building stuff because I feel like okay, I'm actually using this in a way that I know that down the road, as my application grows or whatnot, I'm not going to see like unintended behavior, or I'm going to understand why things are behaving the way they are. So it's more been like that for me, if that makes sense.
+
+69
+00:30:17,630 --> 00:30:46,310
+Thomas Hintz: Yeah, I mean, I think that actually indicates a positive to me, especially when I heard you say, Oh, I haven't really done anything too complicated with it, that probably means you're doing it right. In my opinion. I think what I see a lot is people that are trying to do too complicated of stuff with it. And I think it makes sense because it feels like the right way to do things.
+
+70
+00:30:46,000 --> 00:31:06,520
+You know, a common example I've talked about a lot is you'll have a component that needs to fetch some data from an API, right? and displays it, right? That's pretty common, you know, we do that all the time, right, in React, it's like, okay, fetch some data and display it. So naturally, people put that in useEffect to fetch that data, right.
+
+71
+00:31:06,940 --> 00:31:23,560
+And that's where you start getting into lots of issues, like, you need to make sure you have the, you're returning a cleanup function, you need to make sure you're doing the dependency array correctly, or just not using it, like I always tell people to do.
+
+72
+00:31:24,640 --> 00:31:44,860
+Whereas, you know, the right way to fetch data is probably to fetch it, you know, on the action that leads to the data being needed. So maybe it's in a completely different component, when you hit the submit button, you know, you need to fetch this data, you should be fetching it, then. And then you actually eliminate a lot of these issues that people create by using useEffect. 
+
+73
+00:31:45,130 --> 00:31:56,830
+But it's one of those things where it just feels natural to do it that way. You know, I don't know if that speaks to your experience at all. Or if you were just like, you know, naturally putting everything in the right place. But.
+
+74
+00:31:57,640 --> 00:32:52,060
+Evan Walter: No, I think it's just like the, you know, the level of complexity of applications that I've been building or working on, just haven't, I guess, gotten that deep with it. I did remember, as you were talking like, for like, at my current job, like I was rebuilding, we have this like quiz application within our web app that I was rebuilding with, like NextJS and React. And I was trying to use, like, useEffects, you know, the side effects thing. And I was expecting, like, okay, when this property, like changes, then the useEffects should automatically fire off. And like, that wasn't happening like that. I thought I understood the side effect thing, but it wasn't happening. And so I think that was something I ran into. And it's been a while now, since I've, like, looked at that app. But I ended up refactoring, like, my whole application, once I had like a better handle on more than just useEffect. But and it's better now. But like, yeah, that was something really weird, you know?
+
+75
+00:32:52,000 --> 00:33:28,120
+Thomas Hintz: Oh, that's classic. I think I think everyone that's done React has done that and gone through that. Yeah. That's a tricky one. Probably not something that everyone that's done react, though, has gone through. But you have is, you actually also have been doing or have done contract and freelance work, right? So that's another big one, where a lot of people ask me a lot of questions about that, you know, like, it seems, I think, to a lot of people a lot more easier and straightforward to just go get some employee position, right? 
+
+76
+00:33:28,690 --> 00:33:48,430
+I'm curious, like, how the sort of transition was for you going from being an employee to trying to do contract work? Like did you have experience doing freelance work in like, the electrical engineering field or in some other field before? Or did you just watch a lot of YouTube videos and jump in?
+
+77
+00:33:48,810 --> 00:34:31,590
+Evan Walter: Well, I watched YouTube, but it was more than that it was so I didn't have experience as a freelancer before. But I guess the way that happened was, so there is a particular video that I had watched in this kind of YouTuber that I would follow who advise like, he was one of the people and there was others who would advise, like if you're going to start with web development, or software engineering, go towards the path of React, this like same guy ended up kind of opening like a class like sort of kind of a bootcamp to learn freelance web development from the beginning, like with no experience, and he like joined with the Shopify guy, and they did like a Shopify development focused thing.
+
+78
+00:34:31,860 --> 00:34:59,790
+And they had a little bit of React in there. But at the time, like, this was a guy that I had followed on YouTube for like, over a year. And, you know, he seemed like he knew what he was talking about. And so I ended up joining the that program and sort of went down that path like doing like Shopify development, freelance stuff, and so I kind of took like a, like the React thing took a backseat for like a good part of that year, but like later on in that year, I did get to have like a React like a full stack engineering contract.
+
+79
+00:35:00,060 --> 00:35:13,620
+That lasted several months. So that was really cool. And that's when I was starting to transition back to wanting to, you know, focus more on React and less on doing this like Shopify developer thing. And then shortly after that, where I wanted to, like have a full time job.
+
+80
+00:35:13,860 --> 00:35:44,340
+So I think having that community and that sort of clap, that boot camp really helped, because it was like some sort of guidance and some sort of like, okay, if you do these things, like, look on Upwork, there's so much Shopify work, like, and for me, it ended up you know, I ended up meeting people locally, who were already running, like, one person in particular, who ran like a small Shopify agency, and then other connections and things like that. I was able to, you know, get enough work to keep me going. So that was, that was pretty cool experience, you know,
+
+81
+00:35:46,040 --> 00:36:05,780
+Evan Walter: You mean, the YouTuber or? Yeah, yeah. Okay. Yeah, I'll say it was Aaron Jack, and Yan Frey. So they started this thing called Free Mode developers. So I think it's a great program, especially if you want to go that route of Shopify development or learn web development.
+
+82
+00:36:06,110 --> 00:36:19,670
+You know, I'm not endorsed by them or anything. But yeah, I think by and large, you know, they have a lot of good stuff to say, and a lot of great resources. And, you know, I just want to clarify, this wasn't my only source of learning and stuff. Like there was a bunch of other online stuff.
+
+83
+00:36:19,910 --> 00:36:43,190
+But, you know, hearing like, especially Aaron's story and things, and I could kind of, there was more to it as well, like, he's kind of into like the traveling a little bit of the digital nomad type thing. And not that I wanted to do that fully. But it was just interesting for me. And so it's like, okay, it's not like I would necessarily ascribe to every single thing, the way they do things, but it was like, there's a lot I can learn from them.
+
+84
+00:36:43,190 --> 00:37:02,030
+And I like, I thought, okay, you know, let's try this out. And I haven't really been super current with like, I'm still part of it, because I think at least back then, and it might still be like, a lifelong sort of thing you're part of they say. So things might have shifted, but from what I can tell, it's probably on a very similar path, you know?
+
+85
+00:37:02,000 --> 00:37:23,990
+Thomas Hintz: Yeah, that's cool. Yeah, thanks for sharing that. I'm curious. Like, you just sort of said, Oh, yeah, and then I just got some this contract work with Shopify like, I think most people, that's, that's like a big deal, you know, but you're just like, Yeah, whatever. Like, was it not a big deal? Was it difficult? Or, you know, how did that happen? I guess.
+
+86
+00:37:24,110 --> 00:37:39,320
+Evan Walter: Yeah. So going through this boot camp thing, I felt like I had learned what I needed to, like, do the basics. And so I made some personal projects. And here in in Redding, I stumbled across this co working space.
+
+87
+00:37:39,650 --> 00:38:07,430
+And one of the workers not like the co workers, but one of the employees at the company that basically runs this co working space on the side, she owned a Shopify agency. And so that was like, a happy sort of, like, something I just that just worked out, you know, and, and it was, you know, I was at the point where I could, you know, I could afford to, like, take the work and like, just tell her like, hey, if I'll give it my best shot, and if I don't deliver what you need, like, you don't have to pay me, you know, it was like, low stakes.
+
+88
+00:38:07,430 --> 00:38:17,570
+For me. It wasn't like, oh, no, like I need to eat. It was like, I had, you know, a good safety net. And I had sort of planned for this. And anyway, so it worked out. And it was like it was good.
+
+89
+00:38:17,570 --> 00:38:43,190
+And then another guy who was a co worker, it ended up his brother was running kind of trying to open an e commerce store. And so I got to work with him for a while. And then he worked that same guy, not the brother, but he worked for like a blockchain company doing the full stack engineering stuff. And so sort of through him, and then I guess, their, their colleague, that the owner, like, I talked with them, and they, you know, gave me a shot at this, this contract.
+
+90
+00:38:43,190 --> 00:39:05,630
+And by then that was like, several months. You know, it was like a good part of the year, about six months, eventually, when that was seen through and then by then, I was starting to like, Okay, I think so basically, part of it for me was I had learned some of the skills that I needed, but like, I felt like I really, I really wanted to learn more, I wanted to go deeper, I didn't want to just teach myself like as a freelancer this whole time.
+
+91
+00:39:05,900 --> 00:39:36,890
+And people were giving me advice. Like if you're going to do a shift, like it's probably good to, like, be an employee for a while before you start your own business. So like, I'm glad I tried it out because I feel like some of the skills that I learned as a freelancer even, not just the technical skills, but like the business skills and the communication skills and just a certain way of thinking like, kind of an entrepreneurial mindset and things like that really served me well for getting a full time job. And I feel like that journey like the the skills that I built, I think helped me get the job that I have now.
+
+92
+00:39:36,980 --> 00:39:54,320
+But yeah, I am glad that I'm an employee now because I see what they mean. Like it's like you can really, when you're working with a team and stuff, you can learn skills that you can still learn as a freelancer, but it's just different and it's not always as that's fluid, I guess, depending on the context of it, so, especially starting out.
+
+93
+00:39:55,040 --> 00:40:19,880
+Thomas Hintz: Yeah, yeah, that makes sense. To me. It sounds like I don't know if that, this was intentional, but you sort of covered the two main things that I see as being sort of the entry into that field, which is networking, and building, you know, the co working space that sounded like whether it was intentional or not ended up being sort of networking into these things.
+
+94
+00:40:19,000 --> 00:40:51,220
+But also, the big thing is, I've so many people that don't do that second step. So they focus too much on just trying to learn, they'll be like, oh, I need to learn this, I need to learn that and I'll be like, I can pretty much guarantee you, if you just start building something, you will learn what you need to learn. And you'll be able to demonstrate your abilities to people. And there's a lot of people out there that, you know, maybe they're not somebody like Google who's trying to, you know, get the get the best of the best, so called or whatever.
+
+95
+00:40:51,300 --> 00:41:23,400
+But they're like, oh, look, he made something, I want something like that. Or they can clearly just do things, you know, and I can just give them a task, and they'll figure it out, obviously. And so I think when you you basically demonstrated that, you know, and to me, that's really the the two keys, in my experience to getting into sort of contracting and freelance, I don't know, Was that intentional? On Your Side? Were you like going into this? Like, Alright, I gotta get my networking and gotta build things? Or is it just sort of like your natural instinct to go in those directions?
+
+96
+00:41:24,140 --> 00:41:53,360
+Evan Walter: Yeah, I think to a point, yeah, I was more focused on the networking and the building, but like, I don't know, if I would have like, delineated it like that. So, you know, specifically in my mind, but I think, okay, so like, before I started that bootcamp, it was kind of, like, I needed some structure or some direction. I felt like I could teach myself but I felt like, I felt like I had some trust for like, the Free Mode thing. And I'm really glad I did it.
+
+97
+00:41:53,000 --> 00:42:08,000
+And I think during, like, some of the resources and the, you know, kind of the path they would put you on in that thing is to focus on those things, like the networking, and kind of building the business side of things. And yeah, like marketing yourself a little bit.
+
+98
+00:42:08,030 --> 00:42:28,670
+And then also like having the skills to show for. So I don't know, all that kind of put together, I think I was just kind of on this journey that was a little even beyond the web development, but it was like to find some sort of meaning or something that like I really connected with that I love to do, and like doing this as like a freelancer. And like doing like my own business was really interesting to me.
+
+99
+00:42:28,670 --> 00:42:44,360
+And so yeah, these are principles that I think you know, okay, networking, all that. It was important to me. But it was kinda it was more broad than just Okay, let's just networking check, you know, build something check. So I don't know, but I don't think that's what you meant. But like, maybe that's a little more. Yeah.
+
+100
+00:42:44,000 --> 00:42:59,930
+Thomas Hintz: Yeah. I may have been, you know, sort of condensing this down for for people. But yeah, exactly. Yeah. I'm curious when you first started, like your first gig. Do you mind saying how much you charged?
+
+101
+00:42:59,960 --> 00:43:00,530
+No, I can.
+
+102
+00:43:00,890 --> 00:43:16,850
+I think it's might sound like, a maybe strange question, but I think it helps people to be like, this is a real data point, you know, and, you know, maybe give some other people some confidence. But if you're not okay, sharing it, that's that's fine, too.
+
+103
+00:43:16,880 --> 00:43:41,060
+No, it's fine. Yeah, it was. So I actually I trusted her enough. Okay. Okay. So we had some mutual friends. And I didn't know her super well. But I trusted her enough to kind of ask, like, what is your rate that you would normally charge for someone at my role? Like, usually, you would maybe put your your rate or whatever. But in her case, I just I asked her, and she said, 30 an hour. So I was like, okay, that's, that's fine. Like, I'm happy to do that, you know?
+
+104
+00:43:41,540 --> 00:44:15,950
+Yeah, no, that makes sense. It's actually it's so funny to, to, maybe not funny, but it's really encouraging, to hear you say all these things, because that's another thing that I think people worry about a lot more than they need to, and your approach is actually a really effective one. Because you might be surprised, like, I've had people offer me way more than I was. You know, and you're like, oh, yeah, definitely sure. You know, and if you don't like it, you can always be like, well, I'll, I'll do it for this higher rate.
+
+105
+00:44:15,950 --> 00:44:35,000
+And you know, they can either say yes or no, but when you lead with what do you think, you know, sort of lets them anchor it. And you know, you can go from there. But yeah, that makes a lot of sense. I'm curious, did you end up like ever raising your rates with them or with with people, you know, later on down the field down the line?
+
+106
+00:44:35,480 --> 00:44:53,090
+Evan Walter: Yeah. So with her, as I was thinking back, it might have been like, 25 an hour for the first one. And then she was like, once, once you're, I don't know, have more experience on our code base or whatever, then it's usually 30 And then if you're like a more senior person, then it'll be like this much or whatever. 
+
+107
+00:44:53,330 --> 00:45:08,810
+Because she had another guy that works with her who's like more, more experienced. So I think are for a little gig was like 25 an hour. And then I think our second one was like 30 an hour. And then I had a few more gigs with her that was like, I think it was 30 an hour.
+
+108
+00:45:09,140 --> 00:45:33,800
+And then I don't remember what the blockchain company what they paid me exactly. But it was not that much higher than them like they were a startup, they're small. And then by that point, I was ready to be done being like a freelancer at least full time, like maybe on the side. And on the side, actually, I did have another client that the work from her wasn't super, like consistent. 
+
+109
+00:45:33,830 --> 00:46:01,070
+But when she did have worked for me, she was willing to pay higher. So I was doing more like project based with her and less like hourly focused. So when I divided it out, the hourly rate came to be between 50 and 100. Hourly, you know, but like I said, it wasn't as as consistent with her. So it was cool. But it wasn't like, by then I was already focused on getting a full time job, and of course, wanted to have a higher rate than 30 an hour for my full time job. So
+
+110
+00:46:01,370 --> 00:46:07,010
+Thomas Hintz: Yeah, that makes sense. Have you thought about going, you know, eventually back into freelance?
+
+111
+00:46:07,370 --> 00:46:30,020
+Evan Walter: Yeah, definitely. I revisit this question, you know, regularly, in my mind, it just, you know, I think about it. And currently, I really like the path I'm on as a full time employee, but I'm still really, you know, I feel connected to this, like kind of entrepreneurial space, and like indie hackers and things like that, where you're kind of seeing people build their own thing.
+
+112
+00:46:30,440 --> 00:46:45,050
+And like Peter Thiel, and like, those types of people, but I'm still kind of figuring myself out in terms of like, like, I know, like, for instance, Peter Thiel, from what I understand, he's really about building and the tooling and the means by which he does it, it's like less of a concern.
+
+113
+00:46:45,440 --> 00:47:01,700
+Whereas for me, I've kind of taken this whole react thing, it's more like, Okay, so that's like, the tool that I want to focus on, like that skill. And then you can build a lot with it. But you could also build the same thing with other tools, if you want to, you don't like, it's not like, you know, I'm not like super agnostic to the skills.
+
+114
+00:47:01,700 --> 00:47:32,420
+So basically, this is a long winded way, way for me to say like, I'm looking to really build my like React skills, and sort of in that space with like, NextJS, and Typescript and Graph QL. And like, I really want to gain some mastery with those tools. And then kind of let that propel me to like, you know, I'm really inspired by like Adam Wakeman, the creator of T like and I think he was like a web developer, or maybe a front end focus web developer for years, and started to build a tool that basically became Tailwind for himself.
+
+115
+00:47:32,870 --> 00:48:01,820
+And I think it would be really cool to like, do something like that, like, as I'm like, getting experience like building something in this space that I enjoy that. Also, as a product, instead of trying to start from zero, just have like a sort of random business idea, and then just build it with whatever tools happen to work, you know, so maybe I'll change one day and do that. But like, right now, I kind of this is like, I'm focused a little more long term with that sort of skill based approach. That's just where I'm at right now. Who knows when it'll change?
+
+116
+00:48:02,530 --> 00:48:21,280
+Thomas Hintz: Yeah, yeah. No, that makes a lot of sense. I've definitely shared this before for you know, longtime listeners. I'm not sure if, if you've heard this, but I actually got my first React freelance work, before I knew React.
+
+117
+00:48:21,580 --> 00:48:30,310
+Evan Walter: I think I've heard something, some mention of that, that you've I don't know if I heard the original mention, but I, I've heard you talk about this thing. So anyway,
+
+118
+00:48:30,430 --> 00:49:00,160
+Thomas Hintz: yeah. So I, yeah, I taught myself on the job. I was like, you know, it's not, I wouldn't say comparable to what you did. Because at this, you know, at the point that I was doing it, it was like, Oh, I've learned many things. And I was like, I'm sure I can pick it up, you know, but I think the point is more going back to the sort of building things and that, you know, I was able to show people Oh, yeah, look, I can make stuff, you know.
+
+119
+00:49:00,220 --> 00:49:27,280
+And also being honest with them, like, Yeah, I haven't really done React, but I'm sure I can do it for you. And it's, I think, sort of blows people's mind to think about maybe being honest, when you get into this type of thing. Like a lot of people, you know, sort of want to make themselves seem like they're better than they are when they go into freelance, consulting, you know, but I think it always backfires.
+
+120
+00:49:27,280 --> 00:49:50,350
+Eventually, like people might not know initially when they hire you, but they're gonna find out, you know, and then you're gonna be out of the job. So, you might be surprised, you know, if you're somebody listening, and you're like, Oh, I'm not really ready for this. You can always just tell people Yeah, I, I've done this from what you have done what you do know, and be like, Yeah, I'll be learning this as I do this for you.
+
+121
+00:49:50,380 --> 00:50:16,240
+And, you know, you still got to, you know, be able to convince them like you can, you know, do the task or whatever, but like, it's maybe not as hard to get into as you might think. And, and, I think your story has been really demonstrating that too, like you focused a lot on making things and people saw that it seems like you know, so I wanted to talk more about the sort of soft skills with the contracting and stuff.
+
+122
+00:50:16,000 --> 00:50:45,610
+And I think this is another big one that people asked me about, you know, how do you, how do you handle clients? You know, how do you deal with, I don't know, have you run into situations where, you know, a client wants something that you don't think makes sense? Or the timeline doesn't make sense? Or it's like, oh, I, you know, many reasons, right? How do you, how did you develop those skills like to handle that? Or didn't you or you just sort of, like, handle it as they come up? You know?
+
+123
+00:50:46,090 --> 00:51:07,300
+Evan Walter: Yeah, I mean, I guess for me, it's, it's kind of a, I wanted to say work in progress. That sounds like so, like, bad, I it's more like a continual like, journey for me. Like, I feel like I'm always learning that, you know, I feel like someone who comes from like, you know, choosing to study electrical engineering in college and staying in this mostly technical focused thing.
+
+124
+00:51:07,000 --> 00:51:39,190
+It's like, the people skills are sometimes like, you know, I want to think that I have good people skills, but I find sometimes I'm like, oh, maybe I'm, maybe I'm not as good as I thought or just learning. So I don't know, like, with my freelance stuff, I didn't have a ton of like, you know, it wasn't like these big projects where I'm having to make these like, massive, like, decisions about, like, which direction we're going, it was more like, kind of one off stuff, for the most part. And then there was a little bit of like, well, yeah, it was it was mostly just kind of that and then a different context between like the Shopify in the React stuff.
+
+125
+00:51:39,460 --> 00:52:01,570
+So I think for me, the soft skills were more about the ones that I focused on building were just like landing the client in the first place, and then having like, a good ongoing relationship with them, I didn't really have to, like, you know, I didn't have like a client, a project where I was like, seeing through like, a huge, you know, sort of building launching something that was like a long over a long period of time.
+
+126
+00:52:02,850 --> 00:52:13,530
+Thomas Hintz: So more like starting with work that fit with your level. I think that makes a lot of sense. Right? Like, sure. Is that kind of what you're saying is like, yeah, I wasn't maybe,
+
+127
+00:52:13,000 --> 00:52:52,240
+Evan Walter: I mean, yeah, I tried to get a client that wanted a big migration, and they, they ended up not going with me. So just like, maybe that was a good thing. Like, maybe I wouldn't have handled it very well, it would have been my first time doing it. Like, I believed I could have done it at the time. And I even now, but like, I don't know what to say, I think, for me, it's just in general, it's whether you're talking about like, having clients as a contractor, or freelancer, or whether you're talking about being an employee, or just trying to make friends. And, you know, like, I think there's a lot of like, just understanding, like, how to connect with people how to, like, respect people how to, like be the type of person that's interesting to like, spend time with like, and all that kind of translates.
+
+128
+00:52:52,270 --> 00:53:32,440
+And then also just reading, like, I'm finding at my current job, like, we're a small team, and so like, learning how to like, kind of read like the pulse of like, okay, are we really having a lot of busy stuff? Like is our marketing team and my boss is, are they like, super busy right now? Or do they have like, the space in the room to think about sort of small optimizations and improvements, it's like, and learning that, like, at my current role, I find those soft skills to be like, really important, and something that I think looking back, I'm like, Man, I, I kind of wish I had learned this sooner. But it's like, at the same time, you can't really fault yourself for that, because everyone has their own timeline that they're going to learn stuff and their life experiences and things. So anyway.
+
+129
+00:53:32,870 --> 00:54:03,290
+Thomas Hintz: Yeah, that makes sense. And I agree to in the, to the extent where it sounded like you're sort of saying, a lot of these skills are actually applicable to everything you do. And I, I totally agree. I think a lot of people that haven't experienced are the contracting side, they think it's skills that are different, but I completely agree that, you know, it's more about having good relationships with people. And that's true in everything. Yeah. Totally.
+
+130
+00:54:03,320 --> 00:54:05,030
+So yeah, I think you said that really?
+
+131
+00:54:05,030 --> 00:54:29,870
+Well. I'm curious, your opinion on, you know, other people sort of following a similar path to you, like, do you if somebody comes up to you and says, Hey, I want to get into, you know, programming, or, Hey, I want to get into, you know, running my own business. Do you tell them? Yeah, start with web development, start with React, start with contracting or like, what do you say to them?
+
+132
+00:54:29,000 --> 00:54:57,890
+Evan Walter: Well, I know like from the beginning, like I have my bias because I enjoy web development and React and the technical stuff, but sometimes actually, I do like have people kind of come to me usually more casually, just asking me, but sometimes we sit down for coffee, and they'll ask and I'll usually kind of ask them questions that more kind of highlight what do they like to do? What are their skills and then thinking about the market in the fields like where they can actually be profitable with that stuff?
+
+133
+00:54:57,930 --> 00:55:14,880
+And like, you know, do they want to sit in front of a computer like, are they comfortable sitting in front of a computer? Or do they hate that? Or do they have certain technical abilities that like, let's say, like working with their hands, but somehow they feel like they hate computers? But actually they secretly don't they've just had a bad experience?
+
+134
+00:55:14,880 --> 00:55:31,260
+I don't know, like, so if questions like that, and then, you know, I think it's more important for people to do what they're interested in doing. I don't think there's necessarily any rules. I do say often that like, I think software engineering and coding, I think it's a lot of people who don't have experience with it.
+
+135
+00:55:31,740 --> 00:55:49,020
+You know, people say, like, Oh, that's not for me, that's too hard. I think it's kind of like, it's people are intimidated by it more than it warrants. Like, I like to say this, like, every day, you're doing logic, you're thinking, Am I hungry, if I'm hungry, eat a sandwich. Otherwise, if I'm thirsty, drink some water.
+
+136
+00:55:49,050 --> 00:56:06,990
+It's like, that's like a small program, you know, these these logic statements that like, and if you just take that, and you kind of put that on steroids, that's kind of you write a program, or sometimes it's not even that complicated. But then again, it's not for everyone. Some people really still hate, would hate programming, probably. So I don't know if that answers your question.
+
+137
+00:56:06,000 --> 00:56:27,120
+Thomas Hintz: I think that was the best answer I've ever gotten for that, that it makes all the sense in the world, because you're totally right. I think people are intimidated. And, like the way you explain that, like, Hey, you're kind of programming all the time, you don't need to be intimidated. That's beautiful. And I totally agree.
+
+138
+00:56:27,420 --> 00:56:54,540
+I do want to push a little bit more on the sort of like contracting side, like, if people are telling you sort of the answers to your questions about what they're interested in and stuff like, do you steer them towards starting out as freelance? Do you steer them, you know, towards being an employee? And I'm sure this depends on how they answer things. But what are you looking for, in, you know, directing someone one way or the other based on your experience?
+
+139
+00:56:54,720 --> 00:57:18,540
+Evan Walter: Yeah, I'm trying to think of specific people, usually, the people who've come to me kind of, they're a little more opinionated about what they want in terms of either the field or whether they're wanting to be more of a contractor or an employee. But if I were to start from scratch with someone like a blank slate, and I didn't know anything about them, it's tough to say what my bias would be, because I've enjoyed so many different things about both.
+
+140
+00:57:18,840 --> 00:57:56,280
+And for me, it just came down to what do I want. So I'll put it this way, when I was interested in doing freelance web development from the beginning, like without being an employee, as a web developer, at first, it felt like a lot of people were telling me that it would be more wise to just be an employee first, I don't think I would give that same advice. I see where they're coming from. And I see why that could be a very wise idea. But if it's in someone's heart to be a freelancer, if they want to be a contractor and do their own business, I think you can totally do it. Like, I don't think you need to hit pause on that and be an employee first.
+
+141
+00:57:56,580 --> 00:58:18,450
+I think you can, and there's benefit to it. But if I were to do it again, I don't think I would change that part. You know, I think, like I said, some of the skills that I built as a contractor have served me really well as an employee, you know, at the end of the day, your boss is kind of like your client, and your client is kind of like your boss. It's like, it's again, it's like the universe thing. You're working with people, you know.
+
+142
+00:58:18,630 --> 00:58:31,440
+Thomas Hintz: Yeah, absolutely. I'm curious now about the React side and the web development side, if you're talking to people do you recommend, that's what they start with? If if they're wanting to get into software?
+
+143
+00:58:31,780 --> 00:58:54,250
+Evan Walter: Okay, if they're wanting to get into software, I'm actually I kind of take it broader. I was talking to someone recently who he's interested in doing data science, so he kind of wants to do like, the Python kind of data science thing. And like, part of his reason for that is because he likes working with Excel, he enjoys that, whereas like a lot of people think Excel is boring, I guess, or working with a bunch of data is boring.
+
+144
+00:58:54,250 --> 00:59:29,440
+And so I actually I had that opinion myself for a while I was like, or that question about data science. But I think it's more, it doesn't have to be translating directly to data science just because you like, you know, working with Excel. So what you've shared earlier in this podcast about, you know, doing Java versus doing web development, that's like kind of a new sort of, like way to think so I haven't really thought of like, what I would honestly, definitely be more open to I would tell someone like, hey, there's a lot of like remote work in web development. It's kind of a new cool thing. It's always changing.
+
+145
+00:59:29,440 --> 00:59:49,900
+But you can also learn like Java or C++ and do something that's not in the web development space. I don't have a clue about freelance work in those fields, like in those disciplines. So I'm sure it's out there. It's just not I haven't been in that space. So I don't really know how to advise someone from a freelance perspective. So I don't know if that's, yeah,
+
+146
+00:59:50,230 --> 00:59:55,990
+Thomas Hintz: Well, at least I'm not hearing you'd be like, run away from React. It's the worst thing ever.
+
+147
+00:59:56,410 --> 01:00:14,620
+Evan Walter: Oh, no, no, no, no, no, I love react. You know, I mean, I haven't I, I wouldn't still be using it. Yeah. So I, I like React over the other single page application tooling and stuff. You know, I think it's closer to like JavaScript, you know, whereas Vue and Angular from what I understand are a little more abstracted to kind of their own way of thinking.
+
+148
+01:00:14,620 --> 01:00:37,540
+So, and it's, it's very popular, and it's only increasing in popularity. So of course, I would put a plug for React in that sense. I just, I think it's practical, but I also enjoy working with it. So if you're talking like that, yeah, I don't really know. There's so many options, you know, but like, if you're going to if you're going to have someone who wants to be a web developer, and it's like, what space you're going to get into, I'm going to tell them, you know, what I did is the best way, that's the only way to do it.
+
+149
+01:00:37,540 --> 01:00:53,290
+No, just kidding. But yeah, I do have a bias. And I like I like the tools that I work with, you know, I like NextJS and React. And I think TypeScript's pretty cool. I guess I'm sure you'd have things to say about whatever programming language, right? If it's not Lisp, right? I just get it.
+
+150
+01:00:53,500 --> 01:00:57,910
+Thomas Hintz: Are you, are you saying I just prefer Lisp over everything else? Is that what you're saying?
+
+151
+01:00:58,290 --> 01:00:58,890
+Evan Walter: You told me.
+
+152
+01:01:01,470 --> 01:01:03,240
+Thomas Hintz: Maybe we'll have to chat about it more!
+
+153
+01:01:03,870 --> 01:01:24,780
+It's been great having you on the show, Evan, this has been really fun. I, before we wrap up, you know, I was wondering, do you currently have any future plans you want or goals you wanted to discuss? Or, you know, are you currently open? You know, for, you know, contract or full time work? Or, you know, if you had any closing thoughts?
+
+154
+01:01:24,900 --> 01:01:41,640
+Evan Walter: Yeah, sure. I mean, I currently work full time, open to something new open to like, a contract work, particularly if it's full time. I'm open to like side stuff, if it's right, but I'm more like focused on like something like, full time, and so definitely open to that.
+
+155
+01:01:41,700 --> 01:01:58,800
+Thomas Hintz: So if you're looking for somebody who, you know, clearly has a lot of experience relating to people and building things. And, you know, it might only be a side project, but if you pay hundreds of dollars an hour, you know, you might have the right person. Am I hearing this? Right?
+
+156
+01:01:59,790 --> 01:02:11,790
+Evan Walter: Yeah, sure. Totally. Whatever. So and I just want to say, too, I'm not only open to just contract work, you know, so I'm kinda open to like a new full time thing. But
+
+157
+01:02:12,480 --> 01:02:39,810
+Thomas Hintz: yeah, yeah. Awesome. Well, yeah, thank you, again, for being on the show. It's been a lot of fun. And yeah, it's been a good one. And like, always, if you have, you know, questions, either for me, you know, you can you can find me on Twitter or on the website, or wherever, you know, I'm always happy to hear from you. And likewise, if you have questions for Evan, are, is there a good place that people can find you?
+
+158
+01:02:40,170 --> 01:02:44,250
+Evan Walter: Sure. Yeah. I have like a personal website at evanwalter.dev, and that'll link to all the other platforms like LinkedIn, Twitter, all that stuff. SO and GitHub.
+
+159
+01:02:44,250 --> 01:03:06,210
+Thomas Hintz: Awesome. Well, yeah. So yeah, so if you want to learn more about Evan, definitely check out evanwalter.dev. Thank you once again for joining us! This episode was produced by Thomas and edited by Dougie, The Podcast Editor.
+
