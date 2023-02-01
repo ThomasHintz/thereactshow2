@@ -5,9 +5,12 @@ import path from 'path';
 import { extractFromXml } from '@extractus/feed-extractor'
 
 const episodeExtra = {
-  'Buzzsprout-12157221': {
-    slug: 'flying-in-a-private-jet-my-first-programming-job',
+  'Buzzsprout-12158608': {
+    slug: 'how-using-typescript-actually-makes-your-program-worse',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '076-mixed.srt')).toString())
+  },
+  'Buzzsprout-12157221': {
+    slug: 'flying-in-a-private-jet-my-first-programming-job'
   },
   'Buzzsprout-12142504': {
     slug: 'from-a-career-in-logic-gates-to-react-with-evan-walter',
