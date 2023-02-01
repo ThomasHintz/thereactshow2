@@ -1,0 +1,256 @@
+1
+00:00:01,560 --> 00:00:04,710
+Thomas Hintz: Welcome to the React show.
+
+2
+00:00:05,430 --> 00:00:15,870
+Brought to you from occupied Serrano territory by me your host Thomas, in a beautiful high desert morning, Episode 76.
+
+3
+00:00:17,040 --> 00:00:44,820
+You probably use TypeScript because you think it makes your programs better. But I bet it actually makes them worse. A good program is a well designed. And we're always programming on some kind of time or money budget, right? So if we spend extra time on typing with pipe script, where do we steal the budget from to do it? Do we steal it from design.
+
+4
+00:00:45,000 --> 00:01:31,800
+A few days ago, I rode my bicycle packed with all my camping and podcast gear out to Joshua Tree National Park from the LA area. It was quite an adventure, including 75 mile per hour wind gusts, downed trees, and even attempting to hoist my bicycle up a dry waterfall to avoid having to ride on this really sketchy, dangerous highway through this canyon. But an adventure is exactly what makes this kind of thing worth doing, right? Yeah, I've just been having an awesome time since then camping out in Joshua Tree with the canyon runs while writing podcast episodes and programming.
+
+5
+00:01:32,340 --> 00:01:47,640
+I know, I know. I can't complain, right? Anyways, if you want to hear more about my bicycling adventures and camping in the wilderness, I'll chat about it on the After Show. Check out the show notes for details.
+
+6
+00:01:48,890 --> 00:02:37,340
+And while I was riding my bike, the truth is I kept thinking about TypeScript. So I get asked all the time, what my opinion is on it. And awesome guests we recently had on the show, Evan Walter asked me about it too. Well, I decided it was finally time to speak my truth on it in detail. It seems like a lot of people are surprised when I tell them. I don't really use TypeScript. And I feel like I always have to defend myself. So you know what? Here goes? I don't know if this is defending myself, or? I don't know. I'm just going to explain why I don't use TypeScript very often, or at least why don't hype it.
+
+7
+00:02:37,400 --> 00:02:46,400
+And one of the downsides of recording out in Joshua trees. Apparently there's mosquitoes so you know if you hear me swatting at things.
+
+8
+00:02:50,720 --> 00:03:31,370
+But yeah, so it's sort of always assumed, I think, at this point in sort of the more serious JavaScript web app React community, that you use TypeScript, if you're, you know, any good at what you're doing, you're gonna use TypeScript. Right? Well, I am certainly serious. And many people have told me, I'm not bad at programming. So all right: Typescript's time has come, it's time for me to cut it back down to a place that deserves in your toolbox, but not the first implement you reach for.
+
+9
+00:03:33,260 --> 00:04:09,650
+But before we can get into the why, though, we have to talk about programming in general, and what makes programs good. The only reason I've ever heard of people using TypeScript is because they think it makes their programs better in some way, usually catching, you know, type related bugs earlier, but sometimes for other reasons. The bottom line is TypeScript seems to exist, because people think it makes their programs better, or at least I don't know, makes them a better programmer or something.
+
+10
+00:04:10,620 --> 00:04:52,800
+So first, I think we have to analyze what makes programs good. And what makes us as programmers, good programmers, a quick summary of just programming languages in general is that they literally exist to allow us as programmers to create abstractions, like we could write our programs directly in machine language, right? Or at least in general purpose, you know, machine language that gets translated to different architectures, if we're writing in a higher level language purely, you know, for the sake of cross compilation or something, right. But we don't do that. Right.
+
+11
+00:04:53,160 --> 00:05:40,770
+Especially as web developers we are far far removed from writing machine code directly. There are many layers of abstractions between us and the hardware. abstractions. Exactly. abstractions are what makes programming programming, at least in my opinion, and programming languages, you know, have a reason. It's like what gives programming languages a reason to exist at all. Abstractions are what allows us to write programs much more quickly and effectively than we could otherwise. So to me, it all comes down to abstractions, programming is abstractions.
+
+12
+00:05:41,610 --> 00:06:09,810
+Like if you, I'm sure, if you've ever programmed with me, say something you're gonna hear for certain quite often, whether it's in code reviews, or discussing the design of something, or whatever it happens to be programming is abstractions. And that's what I care about. And I think for good reason, which we'll get into. But not all abstractions are created equal, right.
+
+13
+00:06:10,080 --> 00:07:16,290
+So I once worked on a web application, it was about 10 years ago. Now, that was written in JavaScript on the front end, and Java on the back end. And I think, you know, JavaScript at the time, I'm sure we use jQuery. And I think at one point, we even upgraded to like Backbone or something, you know, really, you know, groundbreaking. I know, the back end code, though, was incredibly verbose. It was so verbose. In fact that I just got sick of writing it, it felt like my day was basically filled with creating or like trying to get my editor to create or refactor endless getters and setters and interface classes. You know, like, Java has certainly gotten, you know, I think, less verbose, since then, but at the time, we were using, you know, pretty much like, quote, cutting edge Java, it was so bad, in fact that I basically stopped writing Java code. And it's not because I just worked on the front end, although I did do a lot of that, because I didn't want to work on the back end.
+
+14
+00:07:17,160 --> 00:08:02,610
+But I actually wrote my own Lisp to Java, like code generator. So my lisp code was a tiny fraction of the Java code that it output. But you know, the output did exactly the same thing. So my lisp program was tiny, did the same thing as like, tons of lines of Java code would do, but I didn't have to write near as much. It was fantastic. I was so happy it made working that job so much better. Obviously, this isn't groundbreaking, many programming languages that exists, you know, they exist to compile down to other languages, and many times, you know, they exist purely to sort of create and allow us to use higher levels of abstraction.
+
+15
+00:08:03,360 --> 00:08:39,090
+Somebody's like, oh, yeah, C is great, because it runs on a bunch of stuff. But, you know, I want to also be able to use anonymous functions, and I don't want to wait for C 29, you know, 2029, or whatever it happens to be, you know, and so they write something that compiles down to C, but allows you to write in higher level abstractions, it's great. Definitely the route a lot of programming languages have gone. So it's not groundbreaking, as all I'm really saying is, like I did so um, it was cool. I thought it was awesome. But it wasn't groundbreaking.
+
+16
+00:08:40,230 --> 00:09:16,140
+But it gets back to my sort of main point. And that is that programming languages are all about abstractions. But you also need the right abstractions, and your programming language. And this is critical. It needs to enable you to use the best and most effective abstractions. The Java code that we wrote, was a horrible, horrible mess. It was incredibly difficult to work with. And it was riddled with endless bugs. I've worked on many Java projects, and I am convinced they all end up this way.
+
+17
+00:09:16,590 --> 00:09:43,290
+Now, I don't actually necessarily directly blame Java, although you could argue it's probably what I should do. But I think the real problem is that Java just makes it difficult to create some abstractions that would make your code better that would make us you don't have to write as much code to accomplish just as much.
+
+18
+00:09:44,410 --> 00:09:59,080
+That would not leak things, you know, that type of stuff. But in the Java world, at least when I worked in it and I haven't worked in it as much recently, but when I did, the community even sort of discouraged creating new abstractions.
+
+19
+00:09:59,260 --> 00:10:46,030
+So when I worked at this company, I originally attempted to create some better abstractions directly in Java using what they call the reflections API. So it's like something the Java language, you know, provides, essentially. And it was cool, the end result was you could write much less code to accomplish the same thing, right? Abstractions! Great, awesome, you know, but it was wildly unpopular, where I worked. And in general, basically, the attitude was that if you reached for reflections, then you were doing something wrong. Like, it just that's not what you should be doing. You got to use Java the way Java was meant to be used the way it was, you know, designed blah, blah, blah, right?
+
+20
+00:10:46,780 --> 00:11:54,160
+Well, this is actually an attitude I still see in React and, you know, web application, like the TypeScript community as well. You know, it's not near as extreme, I think there's definitely a lot more openness, you know, around this, but I think it's very similar attitude, the attitude is that programming languages should actually place restrictions on us as programmers, so we don't make obvious mistakes. This is sort of Java 101. In my opinion, the theory that good programs are, you know, programs that any programmer can just jump into and start writing code in and, you know, not have to worry about introducing a type error or whatever. But, you know, if good programs are really about good abstractions, what does that have to do with programmers, you know, being able to quickly jump in and start writing code doesn't have anything to do with that, in fact, it's the opposite. And this actually is, I think, tied into a much larger point, a lot of people will be like, 
+
+21
+00:11:54,160 --> 00:12:59,230
+Well, why do we use Java? Then? Why do we use some of these other languages? You know, without going too far off on a tangent, I think a lot of it is actually based more on sort of capitalism and our ties into that. So a lot of the programming that we do is via, are for companies, right? And companies do want programmers that are interchangeable, they want us to be cogs in a machine, right? Like, they want to like, like, a programming manager, you know, that company, you know, their biggest dream, right would be if they could just grab any programmer off the street, plug them in, and they just start cranking out code. And, you know, that's their biggest dream, right. And so I think, really, things like Java are kind of their attempt at that, like, Oh, we're not going to let you do most things. But the advantage of that is, it should be easier for us to pluck a programmer off the street and just have them start writing Java code. 
+
+22
+00:12:59,570 --> 00:13:38,270
+Like if, if you compare that to some of the lisp projects that I've worked on, it's the complete opposite, like, it might take you months to learn the lisp project well enough to write any useful code. Whereas, yeah, it's kind of true in a Java project, you can pluck someone off the street, and they can start writing code. But the big difference is, the quality of those projects is light years apart, the Java projects, you know, 100 million lines of code, and just full of bugs. And every line you write leads to more bugs, the lisp, one yeah it took you longer, you, you can't just use any old programmer, you got to have a programmer that actually knows what they're doing, maybe.
+
+23
+00:13:39,260 --> 00:14:16,070
+But the end result is you're going to pay a lot less for it, and the quality is going to be a lot higher, you're not going to have to rewrite it every five years. You know, obviously, if you do things right, and well, we'll get into that more. But basically, I think that's the I went on a little side tangent, but my theory on why a lot of this exists. And even I think there's ties into TypeScript, you know, a bit as well. TypeScript sort of enforces you, it places restrictions on you. Like if you actually use it, you're, you know, not just sort of optional using it, right. 
+
+24
+00:14:16,000 --> 00:18:50,110
+But anyways, so sort of going back to the main topic, think about this way. React is an abstraction built on JavaScript and HTML, right? So it's an abstraction that you had to learn before you could effectively work on a React project. So we'd be better off without react, then, if we just wrote everything in plain JavaScript without react, then as a programmer, you don't need to learn the abstraction of JavaScript and React, you only need to learn JavaScript. That's better, right? Like just, you know, you can just sort of plug us in a little bit easier, right? Or I think another example would be like, What about functional programming? Would we be better off if we restricted ourselves to programming imperatively? What about I don't know, state machines? You know, they take time to learn. So maybe we shouldn't use them either?
+
+25
+00:15:07,450 --> 00:15:45,370
+My point is that the right abstraction is what really matters. Like, obviously, my answer to those questions is no, it's definitely worth learning those and having those in your toolbox. Right. You know, this is what we call design, finding the right abstraction, using the right abstraction, implementing it correctly. A good programmer, you know, is one that can design good programs, a good program is a well designed one. It uses the right abstractions in the right places in the right ways. That's, that's what we want in a program, you know?
+
+26
+00:15:45,000 --> 00:16:45,600
+And yes, this might mean you have to learn a new abstraction to begin working with a program. But it's all about abstractions. Anyways. So that seems like the natural conclusion, right? Good programs are well designed programs. If you've done any, like significant amount of programming on projects with other people, you will certainly have come across those areas of code, where like, you change something, and it just breaks stuff somewhere else. It's like, the bugs just start crawling out of the woodwork the moment you touch anything, it's definitely the most frustrating experience any programmer could ever have. And guess what? This comes from TypeScript programs just as easily as plain JavaScript or Java programs. That happens when the program was badly designed, or more likely, not designed, at all.
+
+27
+00:16:45,630 --> 00:17:04,050
+I mean, let's let's be honest, that's that's the world we live in. Right? Most of these programs weren't really designed, you know? So the program, yeah, it might compile without type errors. But it doesn't matter. The program still sucks, you know, it wasn't designed or designed well.
+
+28
+00:17:04,300 --> 00:18:00,070
+Now, if you do research into what actually causes bugs in programs, it's kind of hard to necessarily pin things down specifically to design. But when I looked at this body of research, and I've looked at a number of times at this point, I think that's a effectively what it's communicating. As, you know, a lot of the studies will look at more specific things, but when you break it down and sort of look at it, you know, on like, sort of a meta analysis, I think, what it shows is that the biggest source of bugs are really related to design, you know, programmers jump into a code base, and they don't understand what some piece of code does, they think it does one thing, and so they try to use it that way. But it actually does something else. Or they're like, oh, I don't know how to make it do what I want to do. I'm just gonna sort of force it, you know, we've all been there.
+
+29
+00:18:00,070 --> 00:18:21,610
+It's like, your boss was like, Okay, this has to be done in a week. And you're like, well, this code is just not set up for this. Like, it's not made for this. Well, it's gotta be done in a week. All right, well, here goes. And you know, you start piling that on top of each other. Anyways, you can write it in TypeScript, it might compile fine without type errors, but it really doesn't matter. Your program still sucks.
+
+30
+00:18:23,920 --> 00:18:50,110
+So anyways, yeah, there's a lot of research into this, my conclusion, and I think other people would, you know, some other people at least would agree, comes down to design is really the source of the biggest, most fundamental bugs in the program. And, yes, there have been studies that have shown that using a static type checker does improve the quality, overall quality of your program, I'm not gonna deny that it's undeniable.
+
+31
+00:18:51,350 --> 00:19:19,910
+But here's the thing. This is with all other things being equal. So if all other things are equal, then yes, static type checking, undeniably improves the overall quality of a program. But there is one very key element to that statement. It's where I said, all other things being equal. To explore what that means we need to take a look at another aspect of programming: the budget.
+
+32
+00:19:20,450 --> 00:20:27,440
+It doesn't matter whether you are programming for yourself or someone else or a company, there is always an explicit or at least an implicit budget. It might be as simple as I work on this in my spare time to extremely detailed budget documents. Either way, there is a budget. And the most important aspect to a good program like we've established is good design. You know, choosing the right abstractions. Good design, though, is costly. It takes time. A lot of time, especially upfront, you know, it always pays off in my opinion in the long run but it's very costly up front. You know, and when we look at a well designed program, a well designed program is one that is easy to extend and maintain in the future. And this means that it is overall cheaper, you know, it costs less overall over the length of the project. But it might have a very steep upfront cost, that initial design cost.
+
+33
+00:20:28,230 --> 00:21:50,730
+So we actually, if you're more, if you're curious about, like, some of my thoughts, more in depth on design, and my experiences, you know, with, well design projects and how to get there, we definitely have some past episodes on that. So I'm not going to go into it in like a ton of detail here. But sort of the summary is that the best approach I have found revolves around prototyping to some extent. So to create the right abstractions, you have to understand the problem space well, and the most cost effective way I found to do this is to create prototypes. It's not the only way you can learn how to create the best abstractions other ways, but the most cost effective way I found, but regardless, you know, even if you don't create prototypes, I can basically guarantee you that your first attempt at a program will just not be the best design fit, you're going to learn things, you know, while you're writing it, right, you'll learn, like better designs, as you program and after you finish, the first version, you'll you'll have better ideas to this is always how it works like talking with your buddies at work like oh, yeah, well, now that I see how we're actually doing this, or what they actually wanted, we should have done it this way. Right? Like that happens. That's how it works. Or even if it's your own project, you know, that's, that's the nature of things.
+
+34
+00:21:51,770 --> 00:22:56,300
+So if you have a limited budget, where does the time to design actually come from? How much of your time or money have you dedicated to getting the abstractions, right? If you're putting your time into things like static type definitions, is that taking away time from creating good design, you will probably be throwing away that first few versions if you're really trying to create good design. So again, what's the point and spending some of your precious time on type definitions, if you're just gonna throw, you know, this code away, or most of it away, or it's going to evolve, right? This really gets to my main point, we have a limited budget. And the best, the best thing we can do with this budget, is to create the right abstractions, you know, while also obviously getting the program to meet all of its feature requirements and be well tested.
+
+35
+00:22:56,600 --> 00:23:24,440
+But like, given the baseline: we have a functioning program that solves the users needs with a good user experience, blah, blah, blah, like the best thing we can do is give it good design, choose the right abstractions. And so the reality is, I don't actually have a problem, per se, with TypeScript. In fact, I'm really glad it exists, you might be surprised to hear that at this point. But static typing is actually really useful.
+
+36
+00:23:24,680 --> 00:24:23,840
+You know, once I've nailed down the right design, and implemented all the right features, I often go back and add some type definitions, especially to things like API boundaries, catching bugs, or more bugs, you know, upfront is certainly something that I want, you know, so I'm glad TypeScript exists. But I never want to do it at the cost of good design. And this is really the problem that I've identified. What I see in practice with TypeScript is that people often use it right up front. And often, in my opinion, in place of actually doing design, the thinking seems to be, oh, if I'm using TypeScript and carefully specking out every interface, then my program will just be high quality or higher quality, you know, but this really, in my experience, my opinion, couldn't be further from the truth.
+
+37
+00:24:23,870 --> 00:24:53,660
+And one sense, yes, you will have less type related bugs. Yay, great. I mean, that's good, right? But overall, type related bugs are kind of a minor aspect of a good program. Like I said earlier, you have to, you can have the most like perfectly typed TypeScript program that uses all the wrong abstractions, and is a nightmare to work with. I've been there. It's often how things go.
+
+38
+00:24:54,230 --> 00:25:33,050
+And to put a finer point on it, what even is static type checking anyways? So TypeScript uses what is called static type checking. This means that types can be checked for issues at compile time. This doesn't mean that JavaScript is untyped, you'll often hear this to people be like, "oh, gotta use, you know, TypeScript, it has types," JavaScript has types. TypeScript doesn't add types to JavaScript. All it does is make it so you can catch those type checking violations earlier in the process, right?
+
+39
+00:25:33,900 --> 00:26:15,750
+So JavaScript has type checking. It's called dynamic type checking. This means that JavaScript does have types, but those types are checked at runtime. So what TypeScript gives you is just one little step beyond that, you know, type checking at compile time, again, like going back to this whole budget, you know, discussion? The question is, how much pay off does static type checking give us relative to other things like design, and a new one I never really talked about yet: testing. And this gets to my second reason for not caring that much about TypeScript: testing.
+
+40
+00:26:16,860 --> 00:26:53,400
+So I put a lot of effort into writing high quality tests, these tests cover all of the most critical and even less critical paths, if possible. And if there are type errors, I generally we'll still catch them before deploying, because my tests will trigger JavaScript's runtime dynamic type checking. So I guess the the other side of this is, I do see a lot of projects that use TypeScript but don't have good tests. And I again, feel like this is a misplaced use of time.
+
+41
+00:26:53,550 --> 00:27:26,430
+To me, the quality of the program follows, generally this hierarchy: the top of the hierarchy, is good design, good abstractions, right? Once you get that right, the next thing on the rung of this ladder is good tests. Are the tests Good? Do they cover things? Well, you know, that kind of thing. Once you have those to what I call sort of foundational pillars figured out, then you can move on to things that maybe a more minor impact, like static type checking. 
+
+42
+00:27:27,990 --> 00:28:18,210
+TypeScript is overhyped, and it leads to worse programs for exactly those reasons. Instead of putting time into design and testing, people put their time into static type checking. I have seen this over and over and over again, on projects. They are obsessed with TypeScript and getting all their types, right. And I'm like, why are you putting your time into this? Like, look at this code? This isn't a good design, did you even think about this design? And the answer is always no, I didn't. So I'm like, I don't know. It just just feels wrong. Or I'll be like, hey, this actually happens more than the other one even. So, um, I see you added this new feature, could you add a test for it? Oh, I don't have any more time this has to get deployed now.
+
+43
+00:28:19,860 --> 00:28:56,670
+And you're like, Okay, well, I would have much rather have had good tests than have your type checking implemented. So yeah, I think TypeScript is overhyped, I think it has its place. And I do use it. But I often see people using it in place of good design and good testing. So well, for most production applications. Like I said, I do employ high quality tests, and even some static type definitions. I have also experimented with only focusing on good design, like I spent most of my budget on it.
+
+44
+00:28:57,540 --> 00:29:13,980
+So I wrote a production application. It was, you know, by myself that is in used by real users. And I wrote essentially no tests, and I have no static type checking. So this was in primarily in Lisp, React, JavaScript.
+
+45
+00:29:14,850 --> 00:30:24,960
+I spent probably half of the development time on prototyping and design. I went through so many iterations. I don't know I rewrote probably the bulk of the program at least four times, if not more, I kind of didn't keep track, right. But the truth is the end result, what I have now is one of my favorite programs to work on, buy in by far, one of the programs with the fewest bugs. And the best part is the type of bugs that do exist if there are bugs. They don't usually actually break anything for the user. And working with this program is just an absolute joy. Like I love it. I just I I'm like, oh, yeah, I get to work with this. Like, it's just, it makes me so happy. Like, I'm not dreading it you though this program is many years old at this point gone through many iterations, many feature changes, you know, the whole nine yards, I still love working on it. And every time I add a new feature or change how something works, it's then easy to do, and no bugs are jumping out of the woodwork.
+
+46
+00:30:25,260 --> 00:30:58,230
+And it's really the experiment that cemented my viewpoint on static type checking. It's not like I have had this like sort of opinion for a while that I kind of felt like it was sort of overhyped. But this program really cemented this viewpoint in my mind. And I like I proved, at least to myself, that by far, by far, the most important use of my time is design. I don't have type bugs in that program I was talking about because of good design. 
+
+47
+00:30:58,650 --> 00:31:41,820
+This is another thing I feel like people don't realize it's in good design, I don't need to, like the programmer doesn't need to mentally keep track of a whole bunch of different types, like, oh, can this be null or undefined or whatever, you know, well designed program, those things are, you know, natural and obvious. So you just don't have to worry about it. And this is the thing that I've noticed in my, you know, react and JavaScript programs, too. I don't usually have type issues, because I always make sure to create good type design. I'm like, you know, even I call like, sort of a mini design pattern, right?
+
+48
+00:31:41,970 --> 00:32:04,890
+Oh, before I rant about, you know, my many good design patterns, thought I'd hang out with this little stink bug crawling up the cable for the microphone. Hey, buddy. I think it really just wants to hear more about TypeScript. Is that what it is? I don't know, I'm guessing, hasn't really said much.
+
+49
+00:32:04,890 --> 00:33:28,950
+But anyways, I like to have this approach where, you know, like, if you look at my code, you'll notice that I rarely ever let the type of something change, you'll see that even in like error cases, or before something is initialized, I usually set the variable to the same type, it will be throughout the life of the program. So many people focus on type definitions, without just being like, oh, yeah, if I never changed the type of something and the type is obvious by its use, or naming or API, then I just really don't benefit that much from static type checking. It was actually kind of funny when I was writing this, I was like, You know what I've run into so many times now, when I've gotten other people's like updates on a program, and I go to, like, build it. And I'm like, yo, it's failing the type check, whatever. And, oh, sure enough, there's some bug or whatever, right? And I'm like, That's so it seemed weird to me for a while, I was like, why don't I ever get this? And obviously, it's, you know, maybe I wasn't doing TypeScript, so I wasn't getting the it catching it at compile time. But it wasn't happening, like in production at runtime, either. Like, I'm like, what is up with this? You know, why is this happen?
+
+50
+00:33:28,990 --> 00:34:10,540
+And I really think a lot of it's because of this design pattern. When I, when I design my programs, I also designed the typing. And it's it's not me looking at it and trying to make it past the type checking. It's me looking at it and being like, Okay, what is the most intuitive to a human for this type to be? And sometimes, I have something that does change type, but in an intuitive way, you know, where I'm like, oh, yeah, we'd make sense that this would be a different type in this case, and the programmer, whoever is using this should, you know, understand that. And so, I don't know, it just hasn't really been as much of a problem for me.
+
+51
+00:34:10,000 --> 00:35:06,340
+So, you know, maybe as another takeaway from this as something you could try is, you know, just focusing more on the lifecycle of your types in general, not just, you know, the type definitions, but like, what should this be typed? Should it change, and sometimes I'll even create another variable that represents essentially the same thing, but covers a different type, because I'm like, okay, I can see how in the future somebody else is going to come into this program. And they're going to think it's this type because of how it's being used here, which will introduce a subtle bug, they might not realize, you know, and yes, again, you could have TypeScript and, you know, type this all out, but then what's going to happen, they're gonna go implement it and Oh crap, my program fails to compile, I messed up this type, I gotta go refactor my work, you know.
+
+52
+00:35:06,850 --> 00:35:30,490
+Whereas if you're just designing good types up front, the programmer comes in and goes, Oh, okay, obviously, in this case, I need to use this one, and then they just use it in their code just works. And you move on with your day, you don't have to mess around with a failed build, because of my types or whatever, you know. Um, and, yeah, so, again, I do have some value for it.
+
+53
+00:35:30,490 --> 00:36:01,900
+And I think, place I often use, it will be like API boundaries and stuff. Like, that's great if it's typed. You know, but even then, I find that if you design your API as well, it's not as important. Again, I think this really becomes more important when things aren't designed once again. But this also brings me to my final point, and this is specifically about TypeScript itself.
+
+54
+00:36:02,350 --> 00:36:38,260
+So in my opinion, TypeScript isn't, it's just not a very good language. It's incredibly verbose as far as static type system go--type systems go. So referring back to the whole budget thing, I use static type checking in Lisp and Haskell and other things way more than I do in JavaScript. And that's because TypeScript takes a lot more time for the same results. So there's this algorithm called the Hindley Milner type inference system, right?
+
+55
+00:36:39,760 --> 00:37:21,250
+That we've had for a long time, decades. And some of these systems I mentioned earlier, use it. And it's really awesome, because basically, the way it works is it will analyze your program, figure out all the different possible types, you know, based on the way you've used things, and it'll let you know, if you've done something that doesn't make sense, you know, it'll give you compile time type errors. And it'll let you know, where you can define types to give it more information to provide more of an analysis at compile time, to the point where it can cover your entire program just like TypeScript would. 
+
+56
+00:37:21,700 --> 00:38:11,980
+But it requires way, way less work. And this is really what kind of kills TypeScript. For me. I'm just like, why, like, I imagine, it's probably related to being a superset of JavaScript itself, or something I don't know, I don't really know the details, all I know, is that it takes a lot more work to properly specify types in the TypeScript program, then in other languages, so I, you know, ultimately, I would love if what we really had was sort of an extension or a superset of JavaScript, that worked more like I've seen in other languages that use inference to figure out types for the most part and don't really make you do so much extra work.
+
+57
+00:38:12,010 --> 00:39:14,020
+So basically, to sum it up, TypeScript is, in my opinion, very costly for the benefits it provides. So sure, in some cases, I reach for it as a tool, but it's very far down in my toolbox. Like I do a lot of things before I pull out type typing, or static type checking, I should be very clear. Yeah, so it's just really far down. And I think, if you're someone that's really into TypeScript, and even if you're not actually what I would recommend doing is just maybe try an experiment, maybe start a new project or as you're starting a new project or something. Try to actively allocate more time to design and less to typing and things like it sort of, there's a lot of things in that sort of TypeScript range.
+
+58
+00:39:14,050 --> 00:39:49,270
+I think some types of documentation. Documentation is fantastic. I document apparently more than most people, but, you know, going through and documenting every tiny little thing in your document script or whatever. It is also, kind of not that useful. Like there's useful dock Anyways, my point is more like there's a lot of little things that I feel like we do as programmers that take a lot of time that don't produce a lot of benefit, whereas design and abstractions, yes, they take a lot of time, but they produce a huge amount of benefit.
+
+59
+00:39:49,300 --> 00:40:46,690
+So my, you know, sort of suggestion would be if you get a chance, just just try to go to the extreme. Just be like alright, I'm still going to make a functional program, I still going to implement the features, I'm still going to do it in the same amount of time. But I'm going to put way more effort into the design in the abstractions, I might rewrite it, I might do whatever I have to do, I'm going to try not to write TypeScript definitions or, you know, just I'm going to try not to focus on all the little stuff, I'm going to try to focus on good design. And just as an experiment to see how it works for you. I mean, maybe you're different. Maybe it's just me, that works this way. I don't know. But I suspect this is how it works in general. And, you know, it might be interesting to see that experiment for yourself. And now ultimately, I think me talking about it is not near as useful as any sort of experiment like that.
+
+60
+00:40:46,690 --> 00:41:01,150
+So, you know, if you get that opportunity, it doesn't even have to be a big project. But definitely something that you intend to keep going for a long time. Like, I think that's where you can really start to see the benefits.
+
+61
+00:41:02,590 --> 00:42:03,430
+And like, okay, for example, I, it could be a really simple program, like I remember, in college, I don't know, I think I was using some like really stripped down version of a Linux desktop environment, or whatever the reason, right? I wanted to have a nice graphical interface to do some very common things that I'm sure you guys are all gonna laugh at me that my system couldn't do. But like a volume control, and, you know, other sort of little UI tweaks that my stripped down desktop environment didn't have, and I don't know, I think partially, I was just like, I wonder how it works. I want to implement it myself. So I just wrote this small, like, I don't know, they're probably like 100 line programs, like little GUI programs that, you know, I can hit a key on my keyboard node, pop up a UI and show me some information, right, can be something like that, something that, you know, you would probably keep around, if it provides some use for you, you know, maybe it pops up and shows you the temperature on your CPU or whatever.
+
+62
+00:42:03,670 --> 00:42:42,130
+You know, you can learn a little bit about, you know, how that works along the way, but then also just heavily focused on design, even on a tiny program like that, and just see how it works for you. See how it works long term. All right. So yeah, that is TypeScript. That's why I don't usually mention it on the show. It's just not that important to me. I would love I so I know, this is this is a thing that you know, is bound to draw some strong emotions within the community.
+
+63
+00:42:43,740 --> 00:43:15,090
+But I'm curious to hear what you all think if you actually listen through this, do you agree with me? Or do you think I'm missing some points when it comes to TypeScript? Like, or maybe I'm just different than you like, do you find it actually provides a lot more value than I find it provides me you know, anyways, I would love to hear from you. Definitely send us a message, the React show.com We'd love to, you know, I'd love to learn more, you know, so yeah, like always, thank you so much for joining us. 
+
+64
+00:43:15,120 --> 00:43:43,020
+I'm starting to get a little bit chilly here sitting between some some rocks and my makeshift recording studio. So I'm gonna get going and get recording this after show for you all. But hope you have a great rest of your day. Hope you enjoyed this little chat about TypeScript. Love to hear what you think. Hope you have a good one. Take care. See you later. Bye!
+
