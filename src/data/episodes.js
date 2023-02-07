@@ -4,6 +4,8 @@ import path from 'path';
 
 import { extractFromXml } from '@extractus/feed-extractor'
 
+export const PAGE_SIZE = 15;
+
 const episodeExtra = {
   'Buzzsprout-12158608': {
     slug: 'how-using-typescript-actually-makes-your-program-worse',

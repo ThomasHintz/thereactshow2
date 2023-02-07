@@ -30,7 +30,9 @@
         "react-dom": "18.2.0",
         "react-stately": "^3.17.0",
         "sanitize-html": "^2.8.1",
-        "srtparsejs": "^1.0.8"
+        "sqlite3": "^5.1.4",
+        "srtparsejs": "^1.0.8",
+        "stripe": "^11.8.0"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",

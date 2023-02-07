@@ -1,8 +1,10 @@
 export const dynamic = 'force-dynamic'
 
-/* import chaptersStatic from './chapters.json' assert { type: 'json' }; */
+import { setTimeout } from 'timers/promises';
 
-import Head from 'next/head'
+import { Suspense } from "react";
+
+import chaptersStatic from './chapters.json' assert { type: 'json' };
 
 import { Container } from '@/components/Container'
 import { FormattedDate } from '@/components/FormattedDate'
@@ -25,9 +27,41 @@ function humanTime(time) {
   return stepOne.length > 0 ? stepOne[0] : '';
 }
 
-export default async function Page({ params }) {
-  const episode = await getEpisode({ episodeSlug: params.slug })
+function Transcript({ children }) {
+  return (
+    <>
+      <hr className="my-12 border-gray-200" />
+      <h2 className="mt-2 text-3xl font-bold text-slate-900" id="transcript">Transcript</h2>
+      <div className="space-y-4">
+        {children}
+      </div>
+    </>
+  );
+};
+
+function Skeleton({ width, height, className, color }) {
+  const w = width ? '' : 'w-full';
+  const c = color ? color : 'bg-slate-200';
+  return (
+    <span className={`animate-pulse ${c} ${w} ${className}`} style={{ width, height }} />
+  );
+};
+
+function TranscriptNoPlayer({ episode }) {
+  return (
+    <Transcript>
+      {episode.transcript.map(({ id, text }) => (
+        <p key={id}>
+          <Skeleton className="inline-flex" width="91px" height="18px" /> {text}
+        </p>
+      ))}
+    </Transcript>
+  )
+}
+
+async function TranscriptWithPlayer({ episode }) {
   const chaptersRes = episode?.chapters && await fetch(episode.chapters, { cache: 'no-store' });
+  /* await setTimeout(5000); */
   /* const { chapters } = chaptersStatic */
   const { chapters } = chaptersRes ? await chaptersRes.json() : { chapters: null }
   let chapterOffsets = [[0, 0]]
@@ -41,6 +75,23 @@ export default async function Page({ params }) {
     }, { startTime: 0, title: '', acc: 0 })
   }
   chapterOffsets = chapterOffsets.reverse()
+  return (
+    <Transcript>
+      {episode.transcript.map(({ id, startTime, endTime, text }) => (
+        <p key={id}>
+          <Player
+            episode={episode}
+            startTime={parseTime(startTime) + chapterOffsets.find(([start]) => parseTime(startTime) > start)[1]}
+            endTime={parseTime(endTime) + chapterOffsets.find(([start]) => parseTime(startTime) > start)[1]} />
+          <strong><time>{humanTime(startTime)}</time></strong> {text}
+        </p>
+      ))}
+    </Transcript>
+  )
+};
+
+export default async function Page({ params }) {
+  const episode = await getEpisode({ episodeSlug: params.slug })
   let date = new Date(episode.published)
 
   let audioPlayerData = {
@@ -78,23 +129,9 @@ export default async function Page({ params }) {
             className="prose prose-slate mt-14 [&>h2]:mt-12 [&>h2]:flex [&>h2]:items-center [&>h2]:font-mono [&>h2]:text-sm [&>h2]:font-medium [&>h2]:leading-7 [&>h2]:text-slate-900 [&>h2]:before:mr-3 [&>h2]:before:h-3 [&>h2]:before:w-1.5 [&>h2]:before:rounded-r-full [&>h2]:before:bg-cyan-200 [&>ul]:mt-6 [&>ul]:list-['\2013\20'] [&>ul]:pl-5 [&>h2:nth-of-type(3n+2)]:before:bg-indigo-200 [&>h2:nth-of-type(3n)]:before:bg-violet-200"
             dangerouslySetInnerHTML={{ __html: episode.content || 'CONTENT' }}
           />
-          {episode?.transcript && (
-             <>
-               <hr className="my-12 border-gray-200" />
-               <h2 className="mt-2 text-3xl font-bold text-slate-900" id="transcript">Transcript</h2>
-               <div className="space-y-4">
-                 {episode.transcript.map(({ id, startTime, endTime, text }) => (
-                   <p key={id}>
-                     <Player
-                       episode={episode}
-                       startTime={parseTime(startTime) + chapterOffsets.find(([start]) => parseTime(startTime) > start)[1]}
-                       endTime={parseTime(endTime) + chapterOffsets.find(([start]) => parseTime(startTime) > start)[1]} />
-                     <strong><time>{humanTime(startTime)}</time></strong> {text}
-                   </p>
-                 ))}
-               </div>
-             </>
-          )}
+          {episode?.transcript && <Suspense fallback={<TranscriptNoPlayer episode={episode} />}>
+            <TranscriptWithPlayer episode={episode} />
+          </Suspense>}
         </Container>
       </article>
     </>
