@@ -8,7 +8,8 @@ export const PAGE_SIZE = 15;
 
 const episodeExtra = {
   '12207725': {
-    slug: 'the-truth-about-react-server-components'
+    slug: 'the-truth-about-react-server-components',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '077-mixed.srt')).toString())
   },
   'Buzzsprout-12158608': {
     slug: 'how-using-typescript-actually-makes-your-program-worse',

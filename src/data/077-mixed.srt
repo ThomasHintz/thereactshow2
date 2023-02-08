@@ -1,0 +1,540 @@
+1
+00:00:01,470 --> 00:00:05,250
+Thomas Hintz: And welcome to the React show!
+
+2
+00:00:05,580 --> 00:00:15,270
+Brought to you from occupied Serrano territory by me, your host, Thomas, and a blustery morning, Episode 77.
+
+3
+00:00:17,820 --> 00:00:40,500
+And we're back into React server components. But don't worry, we won't be rehashing what we've already covered. I've just spent a lot more time with them, including a port to, from, from an old site to a new site that now uses React server components. And I'll discuss what issues you're likely run into with that.
+
+4
+00:00:41,460 --> 00:01:25,980
+Thank you for joining us! I'm actually getting over being sick. I think I finally had the cold that everyone has had, or something, but it knocked me out for a week or so. I'm starting to feel better. My voice is still pretty weak. So hopefully, I'm feeling well enough I can record this episode in one sitting. But yeah, we'll see. I'm not entirely sure. Since my throat is a bit sore, you know, and I haven't been talking much. I've been camping out at Joshua Tree National Park by myself, and just sort of recovering in my tent. And I don't know, I haven't had much to say to myself, so haven't-haven't worked my voice too much.
+
+5
+00:01:27,090 --> 00:01:31,620
+Either that, or I kept everything in my head for once. I dunno, I suppose that's possible!
+
+6
+00:01:33,930 --> 00:02:06,300
+But yeah, as I write this, and you know, the sun has risen on a new day, and I'm scraping the, you know, green out of an avocado and I am feeling quite a bit better. And a good thing too. Cuz, you know, I had to move campsites. And it's so-it's a funny thing. Most of the campsites in the park now have been changed to reservation only. But my experience so far is that only about 50% of the people that reserve a spot actually show up.
+
+7
+00:02:07,290 --> 00:02:35,640
+And funny, you know, obviously, that isn't the right word, right? As we're like, frustrated, you know, see on weekends, like now, when I was writing this, all of the sites, if you look online, they're booked, but then only half the people actually show up. So half the site's unused. And for people like me that like to do things on the fly, they're never sites that can be booked on the weekend at the last minute, they get booked up months in advance.
+
+8
+00:02:37,400 --> 00:03:21,440
+Super frustrating! I think the reason and don't worry, this ties into everything. But yeah, I think the reason they you know, give for switching from first-come first-served to reservations, or like a mix is that it prevents this thing where a group of people swarm campgrounds looking for sites, even when, you know, maybe like during peak season, all the sights are actually in use. So you just, you know, have people driving around, right? So reservations seemed like a potentially a great solution. And I'm sure the thinking is like, well, now all the sites will actually get used and will prevent people from driving around their pollution spewing vehicles clogging the roadways, looking for a campsite.
+
+9
+00:03:21,000 --> 00:03:42,390
+But now you can see in practice, it doesn't really work that well either. Now, the campgrounds are severely underutilized. And well, you know, if you listen to the show, right, you know, me, I'm always thinking about things in terms of design. And this seems like bad design.
+
+10
+00:03:43,290 --> 00:04:08,160
+Just like in programming, a lot of things that, you know, might initially seem like good design, when you first concoct them turned out to be bad design, eventually, based on things you'll learn later, like, maybe some unexpected user behavior, like, you know, people booking sites, and then not actually showing up, or when it comes to programming, you know, more likely it's unexpected or hurried programmer behavior, right?
+
+11
+00:04:09,390 --> 00:04:16,980
+Or, you know, or their boss told them to get it done, you know, so anyways, this is why I'm so big on prototyping.
+
+12
+00:04:18,750 --> 00:04:33,150
+You know, and I think the National Park Service probably should have a prototyped this, you know, ahead of time, or at least done it better. You know, I just feel like it's essentially impossible to predict all the variables, you know, how humans will behave.
+
+13
+00:04:34,530 --> 00:04:51,870
+It's much better to just quickly try things out and iterate based on the results. I think it doesn't, you know, that type of thing doesn't fit so neatly in the box for budgeting and project management stuff up front, but it really it just works better in practice, in my experience, at least.
+
+14
+00:04:52,050 --> 00:05:35,700
+Anyways, speaking of prototyping, I've been hitting react server components pretty hard and I've been prototyping a new website for this show for thereactshow.com based on NextJS 13 server components. So today I wanted to talk more about that experience. And also, unlike in some of the other episodes on this topic before, discuss more in depth, some of the complications and potential downsides of React utilizing server components, I have a much better understanding of them now. And you know, what the potential landscape might look like. So it seems like the right time.
+
+15
+00:05:37,010 --> 00:05:43,340
+First up, though, you know, I just want to talk about the design goals of the new website, you know, me.
+
+16
+00:05:44,660 --> 00:05:53,870
+That's where we got to start, right? And first, I want to talk about the old website and some of the, you know, issues we had there and stuff, I'd like to design better than the new one.
+
+17
+00:05:54,830 --> 00:06:06,890
+So the old website was actually hosted on Squarespace, we threw it up real quickly didn't have time to like code things, you know. And it's been there ever since.
+
+18
+00:06:08,360 --> 00:06:26,660
+It wasn't great for a lot of reasons. One of the biggest ones being it had a lot of duplicate work for me. So we host the feed for the actual episodes on a service called Buzzsprout, which handles like syndicating the episodes and everything.
+
+19
+00:06:27,960 --> 00:06:45,960
+But there's no connection between that and Squarespace. So I had to like manually copy and paste data and it wasn't structured, it was hard to work with, easy to make mistakes, that type of thing. I think Squarespace is kind of expensive. Another reason why, you know, I'd like to get off of them.
+
+20
+00:06:47,340 --> 00:06:49,770
+It's also really difficult to customize.
+
+21
+00:06:50,980 --> 00:07:26,440
+And just like a lot of user experience issues like I wanted better playback integration, for listening to episodes on the website, you know, on Squarespace, kind of the best I could do is like embed episodes, and it wasn't great. But it also didn't-it has like a member section-but I wanted to, I really want to create like a much better sort of Premium Members section for the React show. Not something I've really talked a lot about yet, I've been sort of prototyping it on Patreon.
+
+22
+00:07:26,510 --> 00:08:05,030
+But yeah, the idea is I want to make it so that the show can be sustainable. And to do it in a way that provides value for the people that are sustaining the show. And so I have a lot of great ideas, but not easy to carry out on Squarespace. I've tried dabbling with Patreon, and I don't think it does a very good job for podcasts either. And for, you know, the things that I wanted to do with it, like, you know, maybe having premium feeds, and, you know, anyways, I don't really know what this is gonna look like, if you're interested, you know, I'd love to hear from you if there's anything you're looking for.
+
+23
+00:08:05,630 --> 00:08:33,020
+But I'd love to create, you know, a really awesome community around the show, and just provide a lot of value for anyone that's interested. I don't know what we're going to call it yet. I've been calling it kind of the after show so far. But you know, we could call "the reactors" or "the nuclei". I don't know, you know, a couple of some fun names, right? But yeah, anyways, that's sort of a side tangent. But I do want the new site to build, to support those type of features.
+
+24
+00:08:34,910 --> 00:09:03,470
+And, yeah, so I also wanted the new site to, you know, like I mentioned, have better like audio player integration. So you could, you know, listen to episodes more easily and in a better format, have better support for transcripts. I've also been working on that recently. If you go to thereactshow.com, you'll see we do have some transcripts for recent episodes, which I'm really excited to have and like to have better support for that.
+
+25
+00:09:05,540 --> 00:09:37,430
+And yeah, show notes, that kind of thing, just better, you know, overall integration with the podcast. So those are the overall design goals. Of course, for me, I want it to be fast and good user experience, that type of thing. And, you know, now that I'm recording this episode, I've actually deployed it so you can go check it out. Thereactshow.com currently is now running on React server components and NextJS 13 that I deployed to my own server.
+
+26
+00:09:38,500 --> 00:09:56,650
+Yeah, let me know what you think! It's still very much a prototype. It's not great code doesn't have great test coverage, but I'm still trying stuff out we'll get there. I'll include a you know, a link also to the source code, which is really bad, but you know, if you're curious, you can definitely check that out.
+
+27
+00:09:57,310 --> 00:10:21,250
+So yeah, the next step will be the process of actually creating this site and what I went through and that experience. So the first premise, I guess, is I didn't have much time to do this. I just don't I don't have the budget to spend weeks on it. So I wanted to try to get done as quick as I could.
+
+28
+00:10:21,250 --> 00:10:30,370
+And so I actually started with a tailwind podcast template, so they have some templates up now.
+
+29
+00:10:30,000 --> 00:10:37,830
+And they had a podcast one and I checked it out, and it seemed cool enough. Like, you know, definitely looked good. Save me time.
+
+30
+00:10:38,880 --> 00:10:42,240
+So yeah, I, you know, got that template.
+
+31
+00:10:43,260 --> 00:11:03,030
+And also, I wanted to experience porting, you know, something to react server components. And this template was not made for React server components. It's made for traditional react. And so I could get that experience. So it seemed good. And I'll talk a little bit also about why tailwind.
+
+32
+00:11:04,530 --> 00:11:48,150
+So I haven't use tailwind extensively. I've used it a little bit, but I wanted to get a better experience with it. Because it's so popular, I'd like to have experienced with things. You know, I will be honest, I'm not super excited about it. I-I don't know if I think it's a whole lot better than you know, some of the other things I was using. But part of the problem with the other things I was using, which were the more common component libraries like chakra UI, material UI, that kind of thing is they're based on CSS in JS libraries, which just don't work with server components yet. And they might not ever, at least in their current form.
+
+33
+00:11:49,170 --> 00:12:20,250
+And tailwind is nice, because the classes are specified upfront. And so you can send the content and the classes to the browser all, you know, in the same request. And so essentially, you can get content and styles all up front, instead of having like just sending the content and then later styling it, you know, getting that white page with all that text, you can just get a nice styled page up front. I was like that's a better user experience. I liked that. I want that.
+
+34
+00:12:21,260 --> 00:13:05,030
+So yeah, that's why I decided to go with tailwind. So in this process, step one, was just to get the podcast template working again, in its original form. So I created the NextJS 13 project using the experimental app support, which is for React server components, and then I put the template in here. So the site is running. My goal was to get it running in this, you know, experimental form of NextJS, in its original form, and the great news is: this worked flawlessly! I didn't have to do anything, just copied the code in and ran it.
+
+35
+00:13:06,260 --> 00:13:45,650
+And so that's cool, because it means that it's backwards compatible. And step two, then was to convert as much as possible to react server components. And the approach I took was just taking the old "pages" directory and renaming it to "app". So in NextJS, 13, react server components, stuff goes in the "app" directory, and "pages" is kind of like legacy. So I just renamed it from "pages" to "app" and ran the project. And I was like, alright, let's see what breaks, you know.
+
+36
+00:13:47,150 --> 00:14:16,040
+And it was cool. It seemed like you could incrementally do this as well. So at one point, I tested out having a mix of stuff and the pages in the app directory, and you could link between them. And they seem to work seamlessly together. So you didn't, you don't necessarily need to take this approach of just moving everything over, you could do it incrementally. And that's really cool. I think that's definitely a good, good way to do this. And it'll make it much easier to upgrade existing sites.
+
+37
+00:14:16,880 --> 00:14:41,300
+But anyways, back to my experiment where I just moved everything over. Yeah, a lot of things broke. But it was pretty easy to tell what broke which is important. Whenever you're doing this kind of thing. For the most part, it was just like these errors that are like, "Hey, you can't use context or you state or whatever hook inside a server component." So it was pretty straightforward, like okay, this isn't gonna work.
+
+38
+00:14:42,680 --> 00:14:57,170
+But then what I did is I was like, I just want to get it working again. So I went through and converted everything that was broken to a client component, just by adding the "use client" annotation to anything that was broken.
+
+39
+00:14:58,310 --> 00:15:12,830
+And it took a little bit of, ya know, a minor amount of refactoring and stuff, but for the most part, it was that simple. I just added "use client" to a bunch of stuff. And it got the site working again. It was great. It was like, okay, cool. So we're making progress.
+
+40
+00:15:15,840 --> 00:16:06,930
+You know, at this point, some things are running as react server components, most of its still client components, but that's fine. We're making progress. incremental progress. That's way I like to do things, you know, keep it running, keep it working, work your way through it, right. Of course, this is when, you know, we get into the hard part, the nitty gritty, you know, we have to actually sort of analyze the site -- and figure out, okay, if I did some refactoring, you know, what could I sort of make as the minimum amount of components that needed to be client components, so essentially convert as much as possible to react server components, you might not necessarily need to do this, in all cases, it depends on what you're trying to do. But for the sake sake of me experimenting, this is what I wanted to do. And, you know, let's see how much of this I can run as server components, right.
+
+41
+00:16:08,610 --> 00:16:35,640
+So I went through the source and identified the parts of the site that actually needed to be client side. For example, the template includes this really cool audio player that will just like play episodes in the background as you navigate through the site, not just like, while you're on one page, like you can navigate between pages, it'll keep playing your audio, this meant the audio player needed a context.
+
+42
+00:16:36,840 --> 00:16:47,430
+And contexts have to be client side, right, the context will keep track of what's playing in your position, and, you know, allow you to pause and, you know, play a new track or whatever, right.
+
+43
+00:16:48,600 --> 00:17:16,500
+So I extracted the, just the context, and the sort of functions around it into a new client component that only included the client side specific bits. There's also like some browser API stuff here that you have to interact with the Play Media and that kind of thing. This is all client side only, that's it doesn't exist on the server. So you know, it just doesn't make sense to do this any other way. Right.
+
+44
+00:17:16,800 --> 00:18:03,900
+So I extracted this into its own file. And that went well. And I also need to talk about a feature of NextJS, 13, I don't know if this is, if they introduced this before, they might have but in NextJS, 13, with server components, they have this thing called a layout file. So essentially, a layout file is like a normal page, you know, component, file, whatever. But it spans multiple pages. So you would use it for normally like navigation headers, footers, things that stay basically the same as you're navigating between the pages on your site, or at least a subset of pages on your site.
+
+45
+00:18:05,010 --> 00:18:21,240
+So I created this layout file, and I moved the and it had that layout file reference the context client component, this way, it would include this context on all the pages on my site.
+
+46
+00:18:22,890 --> 00:18:57,240
+And so the layout itself is a server component and it includes this client component, and it all just worked, it was actually pretty easy. And at this point, I could like run the site and have my contacts and have the player available on all the pages. So even though it was getting, you know, included on a server component page, you know, it's pretty easy to include on all the other pages. Yeah, so it's nothing groundbreaking, but hey, it worked. It's cool. And that's the approach I took.
+
+47
+00:18:58,500 --> 00:19:24,480
+So yeah, the site continued to work! And at this point, I isolated the context part of the audio player, and it's included on all the pages. So we're making good progress. Of course, I did mention that part of the context was interfacing with like, some browser API's for playback, but there's the entire like, sort of audio player itself, that also needs to be client side, because of using browser only API's.
+
+48
+00:19:25,860 --> 00:19:48,960
+And because it also uses events, like you click a button, and it starts playback and stuff like that, which can only be in client components. And honestly, so I converted it and the process was, you know, essentially similar, except I didn't need to put it in a layout file. I just put it in a normal, you know, component and included it on some of the pages.
+
+49
+00:19:48,000 --> 00:20:35,430
+So it was basically just identifying these things that needed to be client side specific, moving them into a new file that had the "use client" anotation, it does, I'll say, it did require a bit of work. Because a lot of times I found things that were client specific stuff were mixed with things that could be rendered server side. So if you're doing this yourself, you don't necessarily have to go this extreme approach of, you know, putting as much on, you know, to be rendered server side as possible, right. But that's what I wanted to do, right, try it out. So it did take some work to sort of separate these things and create new components.
+
+50
+00:20:35,430 --> 00:20:50,820
+And, but, you know, it wasn't too bad, I suppose it wasn't too difficult. But it would totally depend on how interwoven these things are in your project, I could see this being extremely time consuming.
+
+51
+00:20:51,890 --> 00:21:17,180
+But the bright side is, you know, you don't necessarily need to do it at once, it looks like you could, for a lot of things, do it incrementally. Again, if you design your project badly, and you know, you have a bunch of spaghetti code, it's not going to be easy, you're gonna have to like kind of do it all at once. It'll be a nightmare. But that's how working with that kind of code is. So you know, I don't think this is anything new.
+
+52
+00:21:17,240 --> 00:21:42,320
+Alright, so now there was one more thing I needed to convert. And to me kind of the most interesting thing, and that was the data fetching. So the way I wanted to set this up is to have the website, fetch the RSS feed, and some other data from some other places that I had it, whether it's on the server or wherever, anyways, it's got to fetch some data, right?
+
+53
+00:21:43,160 --> 00:22:11,480
+So I was still doing this client side using the normal way we fetch stuff client side, right. But I really wanted to see what this was like to do it server side. And in the documentation for all this, they basically, like really super encouraged you to do all your data fetching in Server components. So I'm like, I got to try this out. Is it really better? Is it good? Is it what is it for, you know, right, like, I have a lot of questions while I figure this out.
+
+54
+00:22:12,320 --> 00:22:26,660
+So I went through and did that. And it wasn't too difficult. It required a little bit more refactoring, again, to move some of the data fetching stuff and into new components, blah, blah, blah, I mean, you know, the drill components moving refactoring, right?
+
+55
+00:22:28,610 --> 00:22:54,740
+But the cool thing was, this actually allowed me to remove a lot of code, just in general. So before, there were hooks, you know, being used to fetch the data, you know, the normal pattern, like your component renders, and you have a useEffect that subscribes to data fetching, fetches data, whatever fetches the data, then you're going to have a rerender.
+
+56
+00:22:56,120 --> 00:23:47,660
+And the refactored version, didn't need any of this, the hooks were all gone, and all the loading states were gone. Because the refactored version for the React server components, you can just, if you don't have to have a useEffect, you don't have to have hooks just in the rendering of your component, you can just await and fetch the data, you know, using the Fetch API, it's so much simpler, oh, my goodness, I loved this part of it, it was like, Oh, this is really easy. Something that was sort of complicated before, is just super simple. Now, just a wait, fetch data, processed the data, display it, I love this, this is so much easier to work with!
+
+57
+00:23:48,560 --> 00:24:11,420
+We're gonna talk more about some, you know, complications around this later on. It's not all, you know, peaches and strawberries, or I don't know, whatever the saying happens to be. But like, I, I don't know, like, compared to the old code, this was just like, like, just better. Like, I don't know, any other way to say it's simpler, better, easier to work with.
+
+58
+00:24:12,800 --> 00:24:46,130
+And, you know, it doesn't necessarily mean there's less rendering. You know, that also depends on loading states, you might want to show that kind of thing. And it could actually be slower. You know, depending on how you were fetching your data. We're going to talk more about this later. But it could mean an extra servers involved, you know, since the data, you know, might not actually be stored on the server that's rendering the component and that kind of thing. So I'm definitely gonna talk more about this at the later stages of the show.
+
+59
+00:24:47,240 --> 00:24:53,750
+We're gonna get through the actual sort of process first here. But yeah, so that was really cool.
+
+60
+00:24:56,210 --> 00:25:22,160
+And, you know, now I had a site that was completely converted with, you know, only the stuff that needed to be client side inside client side only components and the rest, were just sort of annotated, which means by default, their server component, but you can use them client side too. As long as you're not, you know, using something that can only be done on the server. 
+
+61
+00:25:22,160 --> 00:25:40,940
+So the await/fetch thing I was talking about that can only be done in Server components. But a lot of the components, they don't do anything that's like client side, or server side specific. So you could use them in both, you know, places, you could use them as a client side component or a server side component.
+
+62
+00:25:42,680 --> 00:25:57,500
+But yeah, most of my components, it seems from looking at the output, you know, they are server components, they get rendered server side. Awesome. So at this point, I would say, yeah, the conversion was complete and working!
+
+63
+00:25:59,240 --> 00:26:31,730
+Of course, the next step was to actually like, deploy this and see how that went. And that also ended up being a bit of an adventure. So I originally tried to deploy it to Vercel. Vercel, the company that creates NextJS. And they provide a service where you can, they'll basically just handle all the deployment for you, give them your source code, and they do extra fancy stuff, like, you know, edge nodes, and whatever all for you automatically.
+
+64
+00:26:33,240 --> 00:27:11,370
+Well, it didn't really work well at all. So like it, it ran, and I could deploy it, I ran into numerous weird issues where pages weren't loading, or like not loading correctly, or partially loading, you know, like a load, like, had the layout stuff was there. And it would like, I don't know, it was really weird, like navigating between things. It just seemed really broken. I eventually found some of it was like known bugs and required upgrading to an alpha version of like, NextJS to fix it. And I tried that. It did fix some things.
+
+65
+00:27:12,420 --> 00:27:17,010
+But not everything. Like there were just weird things, and I just didn't trust it.
+
+66
+00:27:17,000 --> 00:27:34,430
+And what seemed weird to me is that if I built the site and ran it locally, like a production build, I didn't run into the same issues. So I thought the problem was actually with how Vercel was deploying it, not necessarily NextJS itself.
+
+67
+00:27:35,510 --> 00:27:42,620
+So then I deployed it on my own server. And sure enough, it all just worked.
+
+68
+00:27:43,670 --> 00:28:12,740
+So yeah, definitely right now for Vercel, not ready for React server components. And at least I don't know, using their default setup. I'm sure it's still a work in progress. But yeah, that does not work. But yeah, running it yourself seems usable. And you know, like I said, you're welcome to check it out. Let me know if you find any issues. Maybe there's stuff I've missed, but like, yeah, just doing a normal production build seemed to work.
+
+69
+00:28:12,800 --> 00:29:08,780
+Alright, so I did notice some issues, though, that. So everything did work, technically. But along the way, I added my own feature that adds paging. So on the main page, you would go to, you know, thereactshow.com. And, by default, it was loading all like, you know, 75 episodes, and it just seemed like it was loading a lot for the homepage, the initial page, people might be going to like you just, if you're on slow internet, that would take a while. And I was like, that's not really necessary. Like, we can show the most recent ones and have a link to the rest. And so I created a paging system, just a normal run-of-the-mill, paging system where you, you know, pass the page as a query parameter. So page equals one page equals to, you know, some buttons. Pretty standard stuff, right.
+
+70
+00:29:10,280 --> 00:29:35,990
+But it worked fine in development mode but I noticed, when I ran this in production mode, I started running into issues. So I ran into some issues. Like, I would get this error, like, oh, page switched from static to dynamic or whatever. And I'm like, Oh, that's weird. Why? I don't understand. And then, like, sometimes I wouldn't get errors, it would just not work.
+
+71
+00:29:35,990 --> 00:30:05,540
+Right. So it turns out, I'm using the NextJS API to pass in the query params like this is part of their page API, even in the new version, right. But it seems like Next is unable to detect using query params or what they call "search params" um, and so it next doesn't know that the page needs to be dynamic. 
+
+72
+00:30:05,570 --> 00:30:35,960
+So in NextJS, you can have static pages and dynamic pages. A static page, it just renders it at build time-ahead of time and just serves like static content, right? Dynamic is a page that, you know, gets a request, and then on the server it processes and you know, creates the page dynamically at runtime. And because I'm using this paging system, where it's like page one, page two, page three, all have different content that gets rendered, depending on what page you're on.
+
+73
+00:30:36,500 --> 00:31:02,780
+So in my head, I'm like NextJS, should be detecting this. And you know, it should know this is a dynamic page. Well, that doesn't work. It definitely doesn't know. And so yeah, sure enough, looking at the build output, it was like, oh, no, it's calling this a static page. It just doesn't know. I don't know if that's a bug. If they're planning on support it, I don't, I don't really know the situation. But that's what I ran into.
+
+74
+00:31:04,730 --> 00:31:16,370
+And I don't know playing around with it more, it just seems like NextJS currently is just assuming way too much stuff is a static page, nearly everything was a static page, even when I don't think it should have been.
+
+75
+00:31:18,080 --> 00:31:34,220
+And it you know, depending on how you fetch data in your server components, it's also supposed to, like, do some sort of, I don't know if it's, it's not maybe call it a dynamic page, but like, it will regenerate your static pages.
+
+76
+00:31:35,420 --> 00:32:20,570
+Anyways, the whole thing seems a bit buggy. And to fix this, I just had to add annotations to a number of my pages to mark them as dynamic pages. This sucks. This will absolutely bite you in production. I don't like this at all. This seems like terrible design, relying on annotations at the top of the file. It smells like bad design. To me, this isn't. I don't think this is really a "React" thing but more of a NextJS thing. But they definitely need to figure out a better way to do this. And like more correctly detect things. I don't know if this is planned, I have no idea. And maybe they know about this, I'm just using an alpha feature. And that's fine, whatever. I'm just noting it.
+
+77
+00:32:21,530 --> 00:32:40,490
+And yeah, the truth is, if I had written more tests upfront, I might have caught that. But good design, you know, that doesn't rely on tests, you should have tests to catch things. But that doesn't mean you have good design. If, in fact, if you need tests to catch things, that probably means you have bad design anyways.
+
+78
+00:32:42,680 --> 00:32:52,820
+Now I have a fully working and deployed website with React server components, I got all the those issues figured out everything works.
+
+79
+00:32:53,900 --> 00:33:08,480
+And yeah, so that was that was basically the whole process. And now, you know, we can get into the fun part, right? So I've got a lot more in depth experience with React server components, NextJS, 13.
+
+80
+00:33:08,000 --> 00:33:21,350
+And I just wanted to chat a bit with you all, as sort of a higher level, you know, my thoughts on it, discuss some of the potential negative implications as well. 
+
+81
+00:33:21,410 --> 00:33:34,730
+All right. So first up my overall feelings about React server components. You know, what do they buy us? What do they improve upon? Let's start there.
+
+82
+00:33:35,720 --> 00:33:40,010
+I think there are what I see as sort of three big improvements.
+
+83
+00:33:41,090 --> 00:33:59,090
+The first, and I didn't really talk about this. And in this process I went through just because for the most part, I didn't run into it. But a big improvement would be not having to ship so many dependencies to the client.
+
+84
+00:34:00,680 --> 00:34:15,350
+Another one would be streamed responses. So I'll talk more about that. And the thing that, you know, you definitely heard me talk about: which was data fetching. So these are potentially some big improvements you could potentially see.
+
+85
+00:34:16,490 --> 00:34:47,330
+So, the most obvious one is not having to ship all your dependencies to the client, this could, this is just a big win. I don't think there's going to be any real world site where this isn't a big win. And, you know, just the clearest win I think when you need to process some data on the server anyways. And the corresponding libraries that you would use to process that data no longer need to be sent to the client.
+
+86
+00:34:47,330 --> 00:35:06,560
+So a great example of this is let's say you have a date, and you might send date in some machine readable format to the client and previously use a library to convert that to, you know, something in the user's local time or whatever. And of course, you could do this on the server before.
+
+87
+00:35:07,680 --> 00:35:43,050
+But you know, that people are generally doing this on the client for multiple reasons, which I'm not going to go into. But you don't have to do that anymore. You don't have to send this library to the client anymore. You can, you know, convert this in your server component on the server. This is a huge one, you know, and there's a lot of other use cases like this, right. So like I said, it was always technically possible, but I think this just makes it way easier to do things like the right way. And, you know, process and convert your data on the server. All right.
+
+88
+00:35:44,160 --> 00:35:49,860
+So yeah, that's the first one, that's a pretty clear win, I don't think anybody's gonna argue too much about that. That's cool.
+
+89
+00:35:51,100 --> 00:36:00,160
+There, there, we're going to talk about there is a slight complication to it, which we will get to, but I want to talk about another one, which are streamed responses.
+
+90
+00:36:01,500 --> 00:36:35,580
+So with concurrent react, the server can stream components back to the client as they finish rendering, but before the entire tree gets rendered on the server. So I tried this out and experimented with it, in this project I was working on and it did seem like a big improvement, like you could see it was sending, you know, parts of like, basically sending components over to the client as they got rendered on the server.
+
+91
+00:36:36,650 --> 00:37:22,250
+And this includes, like, you know, from the data fetching side, you know, if something is waiting to fetch data, it can render something that doesn't depend on that data and send it to the client, and the client would already render it and start incorporating it into the page. So yeah, this is a huge, huge improvement over before, where the pattern was, you know, react would render everything, and, you know, it would have to do it all at once. And, you know, if you fetch data, it would have to rerender everything again, you know, in after fetches the data and the useEffect, or, you know, with your query caching, library, whatever. This is a clear improvement. In my mind, this is really cool. I don't think there's too much to argue against this. It's really nice.
+
+92
+00:37:23,810 --> 00:37:55,670
+But by far, the third thing is the biggest win, to me is potentially this new API for data fetching. Like, you remember how excited I was? It, it just was so much simpler, right? This allowed me to use that simple await/fetch, no need for complicated query caching libraries, like React query, or SWT or using useEffect, like, it just, you know, it was so much simpler and super clean, I loved it.
+
+93
+00:37:57,500 --> 00:38:14,090
+At least in terms, you know, purely in terms of programming style, and design, this is a massive improvement. And I'm quite certain programming in this style will yield much simpler code and fewer bugs, I really enjoyed it.
+
+94
+00:38:15,320 --> 00:38:43,730
+Of course, you know, some of you are probably like screaming, you know, at the radio, or wherever you listen to, you know, your your air pods, or, you know, wherever you're listening to this on your phone, that there's some downsides, and we're going to talk about them definitely comes with some caveats. But depending on your situation, this could be an absolutely massive win in terms of the design and quality of your codebase and just user experience in general.
+
+95
+00:38:43,790 --> 00:39:05,900
+Okay. And now for the fun part. Let's, let's have a real, you know, chat here about the implications and potential downsides of this, you know, this new server components approach. And I want to start by talking about that last way-the new paradigm for fetching data.
+
+96
+00:39:06,380 --> 00:39:23,390
+Well, it's clear from a code and design perspective, this could be an incredibly large improvement in my mind, and is one of the reasons before that, I've said that react server components are just a foundational change. I mean, this is the primary reason I think for it.
+
+97
+00:39:24,990 --> 00:39:57,390
+But there are a lot of complications to this one. For one, it assumes you are running a Node js server, even if you aren't running it as your main server, you need to run one to use server components. And so you might have to add a node js server to your pipeline. And if you have to add that to your pipeline, I mean, that adds complication. Likely another round trip for data to make between servers, you know, so that's not near as clear of a win right.
+
+98
+00:39:58,800 --> 00:40:23,280
+And at the same, same time NextJS is, you know, really, I'll be honest, at this point, pretty much dependent on you running a Node js server anyways. So from that perspective, not much has changed. But if you aren't using NextJS, and you want to use server components, you're gonna have to add in Node js, in some fashion, at least for now.
+
+99
+00:40:24,450 --> 00:41:06,810
+I could see a future in which this, you know, potentially is changed, if somehow other languages add support for running react on the server and like, rendering, you know, React components in another language or something. I don't, I don't really know if any of that's been done yet. I could see that changing this equation, you know, you've got like your Ruby on Rails server, you don't have to add in a Node js server, because somehow your Ruby on Rails server can render React components, you know, and use this this new API and everything. That'd be really cool. But I have no idea how likely that is at this point, you know.
+
+100
+00:41:08,160 --> 00:41:28,080
+And actually, this was a point made by Dan, who wrote into the show, and, you know, they were like, Yeah, I mean, this seems like it requires running Node JS, which isn't at the top of their list, and it's really not at the top of a lot of people's list, right. Like, it just isn't.
+
+101
+00:41:28,110 --> 00:41:51,750
+Another question that Dan had was, you know, is this even useful for applications that source data from multiple servers? Or what about servers with multiple clients not just react? So yeah, thanks so much, Dan, for writing in. I was wondering the same thing. So it was great to hear, you know, from from you, you know.
+
+102
+00:41:51,000 --> 00:42:16,500
+And so far, you know, to get to the answer, I think it seems to be that react, and certainly No-NodeJS-certainly NextJS is pushing towards having like a single or, you know, sort of multiple redundant Node JS servers that sort of act as what I call like the "data nexus" point.
+
+103
+00:42:17,070 --> 00:42:38,760
+So I think essentially, the idea is that you have a Node js server that fetches processes, renders, and generally coordinates all the data requests out to your other servers. So your React front end, only talks to your React back ends. And then those react back ends are the ones that talk to everything else.
+
+104
+00:42:39,810 --> 00:42:50,760
+So you can kind of think of it as having like, a back end dedicated to your front end. And the entire purpose of this back end is to sort of help out your front end.
+
+105
+00:42:50,000 --> 00:43:05,090
+And I do think there is some sense in this, a lot of the client processing that needs to be done is going to be specific to the client, in this case, react.
+
+106
+00:43:06,300 --> 00:43:10,410
+But it doesn't really actually need to be done on the client.
+
+107
+00:43:11,460 --> 00:43:43,590
+So the theory, you know, of, I think the React and NextJS teams, seems to be that ultimately, some of this processing for React front end is actually better off being done on a server. So you could really think of like both the front end and back end as react, like not really separating the two anymore between front end and back end, just like React is a front end, and it is a back end.
+
+108
+00:43:44,650 --> 00:44:16,210
+This is obviously a really big shift for the community. And, you know, I'm not even sure yet how I feel about it entirely, or what direction you know, things will go in. But it will mean a pretty major shift in the way that we write React code. This is definitely a case where I want to gain more experience on larger projects before knowing for sure how this, you know, works, you know, overall, like like how I feel about it.
+
+109
+00:44:18,210 --> 00:44:21,990
+And before we close out this part, we also have to talk about caching.
+
+110
+00:44:23,100 --> 00:44:42,720
+So a very large part of what makes this work reasonably is that react added a new cache method. This method is supposed to seamlessly cache fetch requests on the server. So if you have multiple components that all fetch the same thing, it should only do the actual fetch once.
+
+111
+00:44:42,000 --> 00:45:20,670
+So before you-something-you definitely needed to do is like, coordinate your fetches, you know, you didn't want to fetch the same data twice in the same data path, right? And I think a lot of people ended up just using like React Query and SWT and stuff partially, for this reason, you'd sort of offload that responsibility to that library and let it figure out, "Okay, I just requested this, I don't need to request it again," or whatever. So the React team has actually added this support into React itself. And NextJS takes advantage of this.
+
+112
+00:45:22,080 --> 00:45:48,360
+But NextJS also seems to have extended this cache method to also support some, what they call invalidation techniques that tie into its static generation system. So you can mark a fetch call with an invalidation time and after that time has elapsed, NextJS will regenerate any of the static pages that depended on that data.
+
+113
+00:45:49,500 --> 00:46:10,920
+And if a page request comes in, it will refetch the data, instead of you know, pulling it from cache, actually, I think technically, it will first reply with the data from cache, but then go fetch it and then regenerate it. Anyways. They-the point is more that they've extended what react created.
+
+114
+00:46:12,720 --> 00:46:23,880
+And, you know, this is where it gets interesting. So this essentially removes the need to add in React Query, or SWT or any sort of query caching, I think.
+
+115
+00:46:25,320 --> 00:46:35,070
+But caching is always hard. Like, it's really hard, deceptively hard. So I'm curious just to see how well this API works.
+
+116
+00:46:36,240 --> 00:46:47,400
+But at this point, I don't know enough, although if I'm gonna go off my experience using NextJS. And sort of some of the weird issues, I think I saw they might have been related to this. I don't know.
+
+117
+00:46:48,600 --> 00:47:16,680
+But yeah, if it works, well, this would be really nice. Because it'll be built into React. And it seems simple. And hopefully, they you know, get it all ironed out. And it's just beautiful. That'd be cool. Like, we don't need to add these massive client side libraries to handle this thing anymore. Yeah, I don't know. Time will tell right. And, you know, whoever hypes it on Twitter, probably, knowing the React community.
+
+118
+00:47:16,770 --> 00:47:34,680
+Something I haven't seen discussed yet on Twitter, though, Which, admittedly might just be because I'm not that into Twitter. But nonetheless, I haven't seen discussed just how much react server components are tied into NextJS.
+
+119
+00:47:37,200 --> 00:47:51,240
+This makes sense, on the one hand, because server components rely on having a specific routing mechanism in place and the internal support for like streaming responses back.
+
+120
+00:47:52,410 --> 00:48:07,650
+But on the other hand, I haven't seen much support for anything besides NextJS and NextJS is, at least official support. And NextJS is just not the solution for every problem that react might be a good fit for.
+
+121
+00:48:08,790 --> 00:48:25,620
+Now, the React team says they're working on some kind of more general purpose solution. But until we see what that is, we really only have NextJS as like the official support for server components.
+
+122
+00:48:27,340 --> 00:48:37,000
+And this is, in my mind, kind of blurring the lines a bit now between react and NextJS. Where does react end and NextJS begin?
+
+123
+00:48:37,990 --> 00:49:03,310
+I don't want to live in a world where my only option for using React is to use NextJS. But currently, for React server components, this is really where we are. You know, hopefully this changes quickly. But given the buggy nature of NextJS as current implementation, or at least, you know, getting it deployed to Vercel and everything. You know, I'm not necessarily expecting anything anytime soon.
+
+124
+00:49:05,290 --> 00:49:34,960
+Yeah. Another thing that is kind of obvious, but we should talk about it anyways, is how this could actually slow your app down. If you need a component, but that component is on the server. Previously, you downloaded all or much of your app to the client. So what the client needed was often already downloaded, right? And it felt fast it loaded right away once the data was there.
+
+125
+00:49:35,200 --> 00:50:04,690
+This is definitely not the case anymore. And it seemed to me when I was messing around with it. NextJS is trying pretty hard to prefetch things, I'm guessing to sort of make up for this potential downside. So like it would prefetch components before it actually needed them based on what you mouse over. I don't know what the algorithm is, but prefetching can be fine. But it's definitely not the answer all the time.
+
+126
+00:50:06,010 --> 00:50:14,380
+I expect we might see further developments in this area too, in terms of creating a more like detailed API for controlling prefetching.
+
+127
+00:50:15,400 --> 00:50:27,400
+But regardless, this is not necessarily a clear win up front, I think with some good API's for controlling when to fetch and render server components, it could be another win.
+
+128
+00:50:28,660 --> 00:50:41,500
+But for now, I think it could also lead to worse performance. So there is still I will admit a lot to learn, I think about React server components and sort of this new world they will usher us into.
+
+129
+00:50:42,580 --> 00:51:15,610
+But I've, you know, no doubt that the React community is very big on jumping on new things before they're ready. I don't know, for some reason, like remember hooks, you know? Well, yeah, server components definitely aren't ready yet. And they definitely aren't the answer to everything, but I'm looking forward to seeing how the React community jumps on them with a vengeance looking down upon anyone who Danes to only use client side components anymore.
+
+130
+00:51:16,720 --> 00:52:06,580
+You know, and if we're lucky, we'll even get a lot of super nice looking infographics and plenty of memes prodding us down the golden path of React server components. But you know, all joking aside, I am excited, I think the overall, you know, idea in my head is still that, you know, it does make sense for us to do some of this processing on the server, it makes sense to do some things on the client, and depending on your project and your situation, it might skew one way or the other, you know, but having the power and the flexibility to choose where your code gets executed is phenomenally powerful. And a really good thing, in my opinion.
+
+131
+00:52:07,480 --> 00:52:55,690
+I think there are ton of open questions. And, you know, probably the biggest open question is, you know, what the community is going to do with this, like, if I've seen anything from the React community, it's that they tend to, you know, sort of follow each other a bit like sheep, and, you know, whenever it gets hyped, that's where people go. And, you know, that's what we end up getting libraries for. And that ends up being what, you know, learning materials are created for. And so I think a really big question is, you know, where's the community going to go? You know, are people just gonna jump on this and, you know, force us to make everything as server components? You know, I hope, you know, it's more healthy than that. And, you know, I hope that's not where we ended up. I could see that happening.
+
+132
+00:52:56,620 --> 00:53:23,800
+But, yeah, so this has been, you know, a much more in depth look at React server components, I had a lot of fun, you know, sort of experimenting with them building this new site. And yeah, I'd love to hear what you think if you go check out thereactshow.com. You know, again, I'm still thinking of it as like a prototype, but it looks like we're gonna stick with it. And I'm really excited for some of the upcoming features that I can now add to it.
+
+133
+00:53:25,080 --> 00:53:54,960
+But yeah, I'd love to hear what you think, you know, if you check it out, do you notice anything interesting, if you're inspecting the page, you know, looking at the responses or anything like that? You know, definitely let me know. Definitely let me know, if you just like the site in general, um, you know, if you're a fan or if you hate it, I want to hear either way, you know? So yeah, definitely, you know, if you get a chance to check it out, that'd be cool. If not, that's fine. I'll continue to, you know, bring it to you in audio form, I'm sure.
+
+134
+00:53:56,340 --> 00:54:23,370
+But, yeah, this, this has been react server components. I'll probably take a bit of a break from talking about that for now. I got some other great ideas coming up. So yeah, stay tuned. But yeah, definitely continue to follow this. And, you know, make sure that our community stays up to date, on what they really are and how they really work. And you know what they're really like. 
+
+135
+00:54:23,370 --> 00:54:34,710
+Thank you so much for joining us once again. I hope you have a fantastic rest of your day. Thank you and goodbye. See ya!
+
