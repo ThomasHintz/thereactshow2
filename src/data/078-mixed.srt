@@ -1,0 +1,352 @@
+1
+00:00:00,120 --> 00:00:04,500
+Thomas Hintz: Welcome to the React show!
+
+2
+00:00:04,510 --> 00:00:16,180
+Brought to you from occupied the Ɂívil̃uwenetem territory by me, your host, Thomas, and beautiful afternoon episode 78.
+
+3
+00:00:18,190 --> 00:00:43,000
+So, in this episode, we're going to take a look at a SaaS application that I created about, I think 13 years ago now it was the first SaaS, you know, web application that I created and actually made revenue from. So I just thought I'd tell that story. It's, it's quite the journey.
+
+4
+00:00:43,030 --> 00:01:10,030
+I wrote most of it in Lisp and Scheme. But I also went down some weird side paths, creating my own sort of database management system. And, you know, lots of other fun things along the way. So yeah, we'll talk about that about, you know, how much money I was making and why I ended up deciding to shut it down, even though it was growing. And, you know, yeah.
+
+5
+00:01:15,520 --> 00:01:29,830
+Thank you for joining us! So I'm still getting over being sick with the cold. Hopefully, you know, everything goes okay. And my voice holds out. But yeah, that's the situation.
+
+6
+00:01:30,820 --> 00:02:11,110
+And I had a listener recently, right in asking me about a recent. Well, I think I'd mentioned in an episode that I built this SaaS application, sort of, after I was in college, I actually dropped out of college to work on it. I could have could have included that in the intro, too. But yeah, so thanks, Dan, for writing in and, you know, asking about that I'd actually been thinking about making an episode out of it. So yeah, here goes.
+
+7
+00:02:11,830 --> 00:02:54,940
+That's the-that's the backstory. But the actual backstory of this SaaS application. So I think it began, I'm trying to remember, I think it was in my junior year of college. So I was studying computer science at Michigan Technological University up in the Keweenaw Peninsula, the Upper Peninsula of Michigan. And I was, you know, nearing the end of like, taking all my computer science courses, I had a lot of like, other non computer science courses to complete before graduating.
+
+8
+00:02:55,930 --> 00:03:29,140
+But yeah, so at the time, I was religious, and I grown up religious. And so I went to church, and they had a program there called Awana. Basically, it's for kids. They're like, memorize Bible verses. And, yeah, I was, you know, it's not something I am into anymore. And, you know, I'll talk more about that, you know, later on here. But at the time, I was into it.
+
+9
+00:03:29,000 --> 00:04:08,900
+And so I helped out with that program, at the church. And yeah, so it was, it wasn't really all that complicated, every, you know, like, in this case, every Wednesday, a bunch of kids would come to the church, and they had to do a lot of like bookkeeping, for the kids, you know, like checking them into the program, you know, writing down who is allowed to pick them up in, you know, having a parent sign them out at the end, they also tracked, like, their progress throughout this program, and how many points they had and their attendance and just a bunch of random bookkeeping stuff.
+
+10
+00:04:08,930 --> 00:05:02,780
+And so I got involved-just started volunteering, and it's one of those obvious situations where they use the spreadsheet and, you know, like, it worked, but it seemed really cumbersome to me, and especially someone who-I wasn't like, new to programming per se, like I'd even at this point, already been working a programming job. I don't-I don't technically know what title I had, or what it was considered at the time, but for a few years, for a company, you know, on top of doing all my own programming, and for a long time before that, and I'd released other programs as open source and, you know, had users and, you know, open source libraries and so I wasn't like new to programming but I was still like, you know, really excited for the potential possibilities of programming, right?
+
+11
+00:05:04,550 --> 00:05:39,110
+So it was like, everything I saw was like, "Oh, I can do that better," you know, I can, I saw these spreadsheets, right? And I was like, Yeah, I can, I can make something that's a lot better than that, you know, and like, I saw the person, you know, doing it, we'd have to, like, copy and paste a bunch of stuff, and, you know, run this, they sort of ran some equations on the spreadsheet. And then they had to, like, match up records with, you know, parent's names and print all this, you know, sort of make this copy paste something into Word. And, you know, you know, how it goes right?
+
+12
+00:05:39,000 --> 00:06:11,220
+In these situations, lots of manual labor and work and there were, you know, errors or, you know, come in and, and then, so later I was asking this person, like, oh, how do you like, actually get like the kids like points and attendance? How are you putting this in this other spreadsheet? And they're like, oh, yeah, you know, it takes me like six hours every week. And, you know, another one of those spreadsheets, situations where they're copying data back and forth, blah, blah, blah. And so of course, I'm like, "Oh, I can do better."
+
+13
+00:06:12,510 --> 00:06:55,080
+So I just started writing a replacement for the spreadsheets and stuff. It, I don't, I don't know if I really started with grander ambitions at this point, although I had always been looking for some sort of, you know, company, or, you know, I wanted to make a web application and sell it, I wasn't really why was doing this, originally, I really just wanted to make this for this person to save them time, and to just improve accuracy. And I thought it'd be fun, right? So, you know, the classic, the classic journey, right? So I started building it. 
+
+14
+00:06:55,110 --> 00:07:45,810
+And I built the first version in Lisp and chicken scheme, which is, you know, just a version of scheme, which is the dialect of Lisp. And it was really basic, I don't, I don't, I don't think I've even put this in source control right away. So I can't even like the initial commit is pretty, you know, far along compared to this. But if I remember, right, it was super simple. Like, I think I had a web interface, I started with a web interface. I don't think there was any JavaScript, it was all just like forms that would get submitted. And maybe the most interesting part was, I just started with using files, essentially as the database.
+
+15
+00:07:46,590 --> 00:08:01,260
+So if you're not familiar with Lisp-one-like basically, the reason why, you know, I like it so much, and why most people like so much as the code and the data are basically the same thing.
+
+16
+00:08:01,650 --> 00:08:47,790
+So I would, you know, say it'd be most similar to if JSON was JavaScript, like you could-if you could serialize all of your code as data and use your, you know, data and code and like, mix them together as one thing and serialize it. And, you know, that would be you know, what Lisp is, in a sense, I mean, it's a lot more than that. But in the case I'm talking about here with, you know, storing data, I took advantage of this property of Lisp, where you can just take some Lisp code slash data, and call the Write method, and just write it to a file. And then when your program starts up, you can just read it from a file. 
+
+17
+00:08:47,790 --> 00:09:17,100
+So it'd be like JSON, except it's a lot more powerful, because it can do way more than JSON, right? But it's also super simple. Just read and write just one call. And you can, you know, so like, basically, you could take a data structure that you have in memory, and just say write, and it writes your data structure to memory, and it's in plain text, you could just edit it in a text editor, but then you can also read it back into memory in your program, just like, you know, your program never stopped running, right?
+
+18
+00:09:17,780 --> 00:09:41,810
+So yeah, the way this started was super simple. My Data Store was, I think, I started with just one file, and just wrote the contents of my program to it, essentially. And then when the program, if I ever restarted the web server, it would read that file up again. And I'd be right where I left off. It worked fine for for a prototype.
+
+19
+00:09:41,810 --> 00:09:59,420
+In fact, I think it was a great solution. That was I didn't have to spend any time setting up a database or anything, like I just wrote, like I was writing in a program that didn't need a database, just that stored everything in memory, right. And so it was super fast to iterate on. It.
+
+20
+00:09:59,960 --> 00:10:31,490
+Um, and so every week, I would come in and show this person like, hey, look what I did like it does this now and this now and they would be like, Oh, wow, that's really cool. Can you like make it do this to that would actually, we might be able to actually use this, you know. And so I think this went on for a few months. And I just made it for me in this person, basically, I would add whatever features we felt that needed, and I could do and iterated on it extremely quickly.
+
+21
+00:10:33,190 --> 00:11:04,300
+So, yeah, I think, I think I at this point, I hadn't really, you know, it still wasn't technically launched or anything. But pretty early on, we started actually using it, I think the first thing we used it for was to keep track of the kids, and the parent or guardian that was allowed to pick them up and then automatically creating a PDF that could be printed out that the parent or guardian could sign when they picked up the kids, right.
+
+22
+00:11:04,960 --> 00:11:32,230
+And so I would sit there with my little ASUS EEE, laptop that I got on-I got it on Woot!, back in the day, I think I got it for like 150 or $175. It was-It came with Linux; on it was amazing! It was tiny, but it was my sole computer for like five years, I did all my work at this little tiny thing, right?
+
+23
+00:11:32,650 --> 00:12:09,340
+And I would sit there at the church and the kids would come in. And, you know, I would look them up on this system and check a box that they were in attendance. And then you know, when it came time for the kids to leave, I just click a button and it would pop up a PDF that had just the kids that were there that day, and who was allowed to pick them up. And the next one was, you know, aligned to have a parent or guardian sign it right, super simple. And that's how it started. That was all the features that had that's, that was really it, it was just this thing, you know, they'll let you check your kids out, essentially. 
+
+24
+00:12:10,780 --> 00:12:37,330
+But of course, I kept working on it kept iterating on it, I kept adding more features. And this is when I really was like starting to get the idea of like, you know, this is like, so I added some other features that we did start using right. And this one, I started to get the idea of maybe it's useful to other Awana programs and other churches and you know, other systems like this, right?
+
+25
+00:12:38,350 --> 00:13:07,660
+So I kept adding features, you know, like keeping track of attendance, and they had these different like point scoring systems. And, you know, I added a bunch of features like this, and we actually start were using on that this church, in fact, I completely replaced all of the spreadsheets and everything that they were doing manually with this program that was tailor made for this church and what they were doing, you know, but at this point, I was like, you know, this actually could be useful.
+
+26
+00:13:07,690 --> 00:13:40,150
+And, and I found, like some forums online, and I started, you know, just sort of looking around. And, you know, there were some existing programs that did this, but they looked like they were written in like the 90s. And they weren't web enabled. They were all like desktop applications that you just ran on one computer. And I didn't, I thought that a lot of limitations. And, of course, I was like, "Yeah, I can I can do this better, right?" Like, I can do better than this, or I could do better than these.
+
+27
+00:13:40,150 --> 00:14:08,380
+And so I was like, there's definitely a demand for it. And like, I could see people were using these programs. And so I was like, Alright, I'm gonna, I'm gonna really do this. And so I did more research on like, how other churches do it and other programs do it and how it compares to this one. And so I started making my program more generic, you know, but then this is where we get into some really funny stuff.
+
+28
+00:14:08,920 --> 00:15:08,770
+All right. So you remember this sort of file based database that I created? Well, it had a pretty major flaw to start with, and that was like, I sort of just would randomly write to it and update it, but it wasn't very, you know, if my program lost, you know, power, you know, if the program crashed or something, I could lose a lot of data, because I wasn't like necessarily writing to it all the time. And the other thing I ran into was, you know, my server was multi threaded, and multiple people could be, you know, operating on this thing at the same time. And so I couldn't necessarily just be like, "Oh, I'm going to add a write statement, you know, after anytime and modify it." Because something else might be modifying it at the same time.
+
+29
+00:15:08,770 --> 00:15:32,290
+And you know how it goes like, this was definitely not a great long term solution. There were many, many issues around, you know, competing writes and reads. And, you know, it's like, okay, I could set up a mutex, and, you know, all this stuff, but I was like, Okay, fine. I don't know, I will, like, double down on this, but make it better, right?
+
+30
+00:15:32,320 --> 00:16:28,000
+So I sort of split this one file up into many files in many folders, you know, so like, my database was essentially split across all these files and folders, like, say you had a kid, maybe there, I would have a folder with their name, you know, as the directory name, I think I had actual IDs, not names, but like, essentially could think of like, that was, you know, the kid's folder. And then inside of that was a file for each record. The key, it was basically a key value store, like a hierarchy, hierarchical key value store, with directories, and then the file name was like, the key and the value was the value. And I still read and write it you using these lists, you know, primitives for reading and writing. Just like I was before, just I did a much more granular level, right.
+
+31
+00:16:29,350 --> 00:16:53,770
+And, you know, this did kind of work, it worked much better than the other system. I had a lock on each file and stuff. So like, I wasn't overwriting, one while I was, you know, operating on it or whatever. But I remember, I quickly ran into other issues.
+
+32
+00:16:54,340 --> 00:17:39,190
+So like, I'm this like, main page, you know, I had like, some report, or I forget what, but like, I needed to list like, a person's name and the, you know, a bunch of other records associated with that. And I would do that for the whole club. Well, if you had 200 kids in your club, which wasn't that unusual, or at least 200 registered ones, you know, they might not show up every night. But yeah, 200 registered and all these records, just loading this one page, this one request would open 1000s of files. You know, Linux is great at opening files, but not that great. So it quickly became another bottleneck, right.
+
+33
+00:17:40,800 --> 00:18:14,910
+And it was sad, because I was so proud of this really beautiful, simple system I created. But there were also other issues, like I didn't think at the time fully understand how like, writes and caching and stuff worked in the Linux kernel. And so I could lose data sometimes or even worse, overwrite data. Honestly, it wasn't a great database. I think in hindsight, I probably could have made it okay, you know, but that's, of course, not the direction I went.
+
+34
+00:18:15,720 --> 00:19:01,200
+All right. So what direction did I go? Did I go, "Oh, yeah, this would be perfect for a relational database, let me get my SQL out?" or, you know, be really hip and get Postgres out, you know. No, I didn't do that. I was too cool for school, you know. Alright, so before, I'll get I'll get into this. The reason why I'm laughing about being too cool for school, is, this is probably about the time when I quit school, so I was like, halfway through my second semester of my junior year, so I was, you know, nearly three quarters of the way done or something.
+
+35
+00:19:02,710 --> 00:19:47,470
+And I decided to drop out and just work on this program. I was like, this is I had all these grand visions for it. And, you know, to be honest, there's a lot a lot more to this story about dropping out and everything that you know, is more related to mental health. But I'm saving that story for another episode when we talk more about like mental health and programming. So I'm not going to get into that now. Just the situation was I ended up dropping out and I basically was like working on this full time, I would do 12 hour days, 16 hour days. I was like, I'm going to make this work. And so we can go back to now.
+
+36
+00:19:47,500 --> 00:20:25,300
+Well, I was too Too Cool For School and too cool for relational databases. But I was also too cool for like anything that existed and Well part of it was I didn't want to have to rewrite anything, so I was like, Okay, how can I take this essentially hierarchial key value store and plug it into a more robust database system. So I found this database system called Tokyo cabinet, which is essentially just a flat file, key value store very high performance.
+
+37
+00:20:27,280 --> 00:21:40,630
+I don't know, I found it and I was like, Oh, I could like make my keys hierarchial, and, you know, sort of apply my same data layer onto this system. So I kind of created my own internal, like, I wouldn't call it a translation layer, my, like, I translated the code. But like before, where I had like, a directory, and then inside, there are a bunch of records, I took the directory, and I concatenated it to the keys of those files. So you'd have like, you know, user slash, and then a user ID slash name. And that would be the key, right? And then the value would be their name, obviously. And it would still be something I could read and write using lists. It's like, I had been doing this full time. And part of that is brilliant innovation I had, I was like, oh, yeah, for any of these like directory levels, I'll create an index key as well. And so using this, I could easily look up, okay, give me a list of all the users.
+
+38
+00:21:42,130 --> 00:22:03,910
+And yeah, so I basically created my own layer on top of the key value store that replicated a lot of stuff that already existed in existing databases. But, you know, that's how life goes, right? You don't always do the best thing. In hindsight, this is probably not the best idea. But it was fun. And I was very proud of it.
+
+39
+00:22:05,860 --> 00:22:42,340
+So I created the system, and one of the major downsides was I discovered that, I think, I thought when I was implementing this, the database had its own, like, locking mechanism to make sure that you weren't like, overriding records. Turns out it didn't, or I didn't know how to use it. I'm pretty sure it just didn't. And I don't know how I got this wrong. But I was like, relying on it to lock things. And it wasn't. I like found out I was like overwriting records, it's so bad.
+
+40
+00:22:44,560 --> 00:23:20,380
+Yeah, so it was like, Okay, I had to create some sort of, oh, no, I Okay. That's what it was. So it did have a locking system. But my server was multi, I basically ran multiple instances of my server, on the same machine, one for each core--chicken scheme at the time, which was what I was using was green threads. So it could only ever use one core at a time. So I just ran one instance, for every core. So I could scale better, because I don't know. It did matter.
+
+41
+00:23:22,000 --> 00:23:54,490
+Yeah, so anyways, I, I'll fill in, I guess some other stuff happened in between, on the non technical side, I'll get back to that. But on the technical side, so I built this. And it turned out that the locking and everything was, you know, per instance. So I could have one instance of my web server overriding what the other one was doing. Like, they didn't talk to each other, it wasn't really like a database management system, it was just like one flat file with one in Memory program that did the locking, that's what it was.
+
+42
+00:23:55,720 --> 00:24:29,380
+So I went on a whole journey after that, but we're gonna we're gonna get back to the other part of the story now. So I worked really hard on this, doing everything, I did it all myself. And so at the same time, I was also teaching myself design. So I've always been big on like, user experience and creating good things for the user. But I didn't always know how to do it. I like design and has always been my you know, like, graphic design has always been my weak point, you know? 
+
+43
+00:24:30,200 --> 00:25:27,890
+And so I think I got some books and I like studied, like, Okay, how do I, you know, choose the right fonts and, you know, how do I use different visual cues to communicate information I learned about like information hierarchy and like, I taught myself all this because I wanted to make this thing really good, you know, and, like, looking back on screenshots of it. Now, it looks hilarious, like, the funny thing is, it doesn't look good at all. The time I think it definitely did fit with the styles that were going on then. But right now, looking at it is just like, wow, it looks so bad. But I do think I did get, like, a lot of the fundamentals, right, like, it was really easy to find the information, like, you know, follow the information hierarchy, I guess correctly, even though it looked kind of cheesy, if we're being completely honest.
+
+44
+00:25:28,760 --> 00:25:50,540
+Like, you know, like, the spacing is all weird, like, I didn't have consistent spacing and paddings. And the font choices, I don't think we're great. And anyways, I was learning, right. And it was so much better than anything I've done before. And I did it all myself, I had no budget, I had no money.
+
+45
+00:25:51,710 --> 00:26:24,830
+So yeah, that was the other part of this. I had I literally had no money, like I put all my money into college, like I didn't, nobody was helping me pay for college, I got some scholarships, but didn't pay for everything. So all the work I did, you know, $10 an hour programming or $13 Now, or painting houses or whatever it was, you know, or I worked in the cafeteria, you know, I put all that money towards just paying for tuition. And I still had to take out loans. 
+
+46
+00:26:26,060 --> 00:27:12,710
+And so it's it's really funny to think about, I guess, but at the time, my food budget was literally $30 a month. That was what I budgeted, I made a lot of bread and ate a lot of bread, and also had a lot of friends that made a lot of food and eat their food too. And, you know, worked in the cafeteria sometimes and get a free meal there, you know, I was really working on like nothing. And the truth is, I couldn't even afford to pay my rent. So I wasn't paying rent. I really literally had like, basically no money. And I was like, Alright, I need to launch this in like two months, so I can start getting money. 
+
+47
+00:27:16,160 --> 00:27:36,560
+Yeah, so that was that was what I was operating under. That's why I was working 12-16 hour days, because I literally had nothing I you know, I put every little bit that I had went towards, you know, buying a domain, paying like $10 a month for two virtual private servers or something on I don't know, Linode.
+
+48
+00:27:36,560 --> 00:28:35,090
+Right. And so, yeah, I was teaching myself how to do it all and doing it all. You know. And so anyways, I found, you know, I had mentioned this forum. And I actually, once I sort of got this thing ready. I built like a marketing site for it. And I built some plans for it based on the number of, you know, kids in the club, and I started to polish things up. And I just posted on this forum, like, Hey, I made this, you know, come check it out. And I actually had people sign up, and people were really excited and they started using it. That part, it just still blows my mind. Not because I don't think it wasn't worth it, but just like to go and do that and make it happen. You know, it wasn't easy, especially on no budget and just having everything riding on this line, like I dropped out of college, you know, this was it for me.
+
+49
+00:28:37,400 --> 00:29:06,860
+You know, I'm just laughing because in hindsight, I'm like, What was I thinking? I know what I was thinking, again, for another episode more more to do with mental health type things, then, you know, maybe making the best decision. But yeah, that's, that's where we were. I got this, it was working. And I got people to start using it and paying for it. And of course, when I got actual users, this is when the real fun began.
+
+50
+00:29:08,150 --> 00:29:36,230
+So just I don't know why but the way this program worked, most people used it in the US in the evenings on either Sunday night, or Wednesday nights. And so I would get like almost no load in between those times. But during those times, everyone would smash it and I had a lot of issues, chiefly this database system.
+
+51
+00:29:36,830 --> 00:30:02,450
+So like, I remember, you know, being at the church on a Wednesday night checking kids in, you know, using this program that I was so proud of and I'd actually sold to people and people were actually using it. And I would like I would try to like mark a kid as "present" and like wasn't working. And I checked the console and like my requests were timing out some times, and oh, man, it was a nightmare.
+
+52
+00:30:02,450 --> 00:30:26,480
+So I'm, like, SSH into the server trying to debug it, while I'm also trying to check kids in and getting emails from customers like, hey, it's kind of being weird what's going on. And this happened, you know, for two or three weeks, and I was just frantically trying to fix it turns out this was, you know, because of this database system, a number of issues.
+
+53
+00:30:29,420 --> 00:31:16,040
+So I, I took a really deep dive into the source code of this database, my source code, trying a bunch of different things, writing a bunch of tests, eventually figured out a number of issues, primarily around the way I was doing mutexes and locking, and a bunch of other stuff, I ended up creating my own database management system layer to coordinate on top of this, so I created a, like, instead of running, err, connecting to the database directly from each of my web servers, I ran the database as its own server. And then the web applications had clients that connected to it. And so that server could coordinate things.
+
+54
+00:31:16,430 --> 00:32:07,640
+Oh, guess what, you know, this is like, database management systems, one on one, this is how it's done. Right? But I, you know, I had to learn it the hard way, of course. So I ended up recreating all of this on my own in this new system endless. And I'm, I can even look at the source code now. And I actually, I'm impressed like, this definitely must have been, when I really started, when testing really started becoming a much bigger thing to me, because having this go down with, you know, it was just horrible. It was like the worst feeling ever. And it made it so I couldn't have a life I was like tied to my phone and my computer because like, anytime I got that message, like your site went down or something, it was like scrambled to try to get it back up. And it was just horrible.
+
+55
+00:32:07,640 --> 00:32:34,940
+And so actually see, I wrote lots of actually quite, I don't know, even impressive to me, you know, test today, where I was like setting up these really complicated multi threaded scenarios. And, you know, hitting this database management system and checking the results and I had, like performance tests. And anyways, I got it to work. And it actually worked quite well. Once I made it over all of these road bumps, you know?
+
+56
+00:32:37,130 --> 00:33:21,890
+Yeah, I had real paying users. And it was generally going pretty well. To be honest, I thought it'd be fun. So I'm looking through the source code. I thought it'd be fun to talk about some of it because I just recorded an episode on React server components. And what's kind of really fascinating to me, is I, I kind of forgot about this, but I was basically doing a lot of those similar things way back when I was working out this.
+
+57
+00:33:23,450 --> 00:34:12,620
+So like, nearly all of this project, I did it in Lisp. So it was a web application, which meant you had to have HTML and CSS in JavaScript. But I was able to do it all in Lisp. So I had, I think I used a library that allowed me to write, like this Lisp data structure that would get output to CSS. And it was sort of like, SASS, I think, if you've ever used anything like a CSS preprocessor, it was kind of like that, except a way more powerful, because you had the entire language of Lisp at your disposal. So that was really cool.
+
+58
+00:34:13,700 --> 00:34:45,140
+But the really probably most fascinating part is I used a Scheme to JavaScript compiler. So chicken scheme at the time, had this compiler that I think the actually the creator of chicken scheme created. So you could feed it Lisp code, and it would output JavaScript that would run and work. And what I did with it, I think is pretty cool.
+
+59
+00:34:45,000 --> 00:35:43,260
+So basically, I used it to dynamically generate JavaScript. So you know, you might load a page I would return in that page to the browser or that content to the browser, and along with that, I would return dynamically generated JavaScript, you know, based on the name of the club and or the user's information or whatever, embedded in this JavaScript, and I would attach it at, you know, to an event handler, like button click or whatever, right. And then, when that action happened, it would run this JavaScript code that I had written in Lisp. And it had the ability to call a server side function, anonymous function that would close over any in scope variables.
+
+60
+00:35:43,290 --> 00:36:32,490
+So basically, this meant in my, like, I don't know what you would call it in other languages, like your controller or whatever, I was able to dynamically hook from the JavaScript side into the server side. And so it would call a server side anonymous function that had closed over some values. And I could use that to process the data, and then return HTML or JavaScript as a result back to the browser. And the way this was all set up, it was pretty seamless, I didn't really have to write any of this glue code, it was just like it called the ajax method, passing in like a selector and an action like clicker something.
+
+61
+00:36:33,810 --> 00:37:16,980
+And then I could write both the server side code and the client side code that I wanted to get triggered in run in those situations. And it reminded me a lot of working with React server components, although I'll be honest, looking at this code, it's even better than react server components like this is, this is really powerful. Not like trying to toot my own horn or something. It's-I'm not the first one to come up with this. But I mean, it's a really powerful paradigm when you can sort of, you know, mix and match these environments like this. 
+
+62
+00:37:17,370 --> 00:37:40,080
+And I did this all over and it worked really well. You know, there are obviously big mistakes I made in this project, like, trying to create my own database management system that was de-definitely didn't save me any time, just created grief, right? You know, choosing Lisp but and choosing this type of environment absolutely was worth.
+
+63
+00:37:40,000 --> 00:38:33,010
+It wasn't completely smooth sailing: the big downside of this was the JavaScript that this Lisp to JavaScript compiler created. It wasn't like a transpiler. So you couldn't easily look at it. Like if you're trying to debug something, you couldn't look at your Lisp code and be like, oh, yeah, here's the corresponding JavaScript code, because of the way chicken scheme is written, that uses continuation passing style, and so that, like, massively transforms your code. So debugging on the JavaScript side was extremely hard. I think, you know, in this approach, that was definitely the most difficult part. But even then, the amount of time I saved overall was definitely more than, you know, that added.
+
+64
+00:38:34,270 --> 00:39:31,960
+So, yeah, it was pretty cool. And, you know, of course, looking through the code, I also would use what's called like, s expressions to output. Like the HTML, it's kind of like JSX. Except, of course, better. You know, more just because of the nature of Lisp, and its own internal data structures are just a little bit easier to work with than JSX is. But yeah, just looking through, you know, this, this code in this output, it was like, oh, define a page. Here's the path here are some arguments might take like, you know, a user ID or something. You can, and then it was like, I could add some JavaScript to that page. I could render this HTML, you know, all this stuff. I was talking about, oh, here's the CSS that I wrote in Lisp that gets output to this page.
+
+65
+00:39:34,120 --> 00:40:22,330
+Yeah, the entire project after let's say, I'm looking at it, you know, after running for, I think, a couple of years at least. The vast majority of the project was only two it was only about 2000 lines long so I had everything written in one file. You know me how much I hate having file as all over the place. It seems so pointless, but apparently-I found out some VS code limitation anyways, we're not going to go into that now I put it all in one file, and it worked great. It's only 2000 lines long. And oh, yeah, that was another really cool thing. So I had the ability to reload any part of this application on the fly. 
+
+66
+00:40:23,320 --> 00:40:52,480
+So like a deploy, it was so cool: all I had to do to deploy it was I would copy over the object files, like I would compile it on my system, copy them over. And then I would go to a URL that if I was logged in as the right user, it would let it would reload that part of the application with the new version. So I never had to like restart the server or anything, it would just pull in the new code.
+
+67
+00:40:52,840 --> 00:41:19,060
+And it also had this awesome interactive REPL development environment. So if there were ever issues with the server, or I was like, trying to debug something, I could just log into the server and run Lisp code. This isn't too groundbreaking, you know, if you've used Ruby on Rails, you can log in with rails to the running instance. There was like that, right. But it's really cool that it was super flexible.
+
+68
+00:41:21,010 --> 00:42:02,560
+Apparently, I could like pause the database and resume it. And oh, I think I did that for backups. Yeah. I had my own my own backup system in place. And yeah, it was. Looking through this, I did a lot in 2000 lines of code, you know, if this was Ruby on Rails, or I don't know what it would look like in React server components, because I haven't done that enough yet. But certainly Java or, you know, Python, it would be a lot more lines of code. Like I couldn't do it. Even me now. 10 years later, I couldn't do it in that few lines of code. And you know, have it be at that level of quality.
+
+69
+00:42:03,790 --> 00:42:47,080
+So I don't know, it's interesting to look at. So yeah, as far as like the project overall, I kept working on it, it kept growing. One of the challenges was this program, this Awana thing it basically only ran during the school year. So I would get some people dropping off at the end, and then not really anything over the summer. And so it was a monthly fee. And I think that made sense, because there was a lot of like, record keeping type bookkeeping stuff you'd use it for during the summer if you kept your subscription. But it didn't grow much, you know, for part of the year.
+
+70
+00:42:49,060 --> 00:43:22,330
+But yeah, I think at one point, I think I got up to maybe $600 a month in revenue, which, you know, doesn't sound like a lot, but when your food budget is $30 a month, and you can't afford to pay your rent, which is I think at the time only $225, including all utilities, wow. You know, that's enough. Unfortunately, it wasn't enough, because of all the student loan debts.
+
+71
+00:43:22,690 --> 00:43:49,330
+Six months after I dropped out of college, I had to start paying on that. And the monthly payments for them was basically as much as I was making from this. And so I couldn't, like it wasn't growing fast enough. And I did some things to try to raise money for it. And it was still growing. And in whatever, I ended up taking another job, you know, programming and keeping this going. 
+
+72
+00:43:50,920 --> 00:44:38,080
+But the end, sort of, you know, of this experience was, I did change my opinion about, you know, this Awana religious thing in general, you know, becoming more of the opinion that it might have actually been kind of harmful to kids to sort of indoctrinate them with these religious ideas, and just the nature of this program. Once I started thinking about it more, it made me feel uncomfortable. So I ended up shutting this down. More on those reasons. I was like, I'm just not comfortable with what this is enabling.
+
+73
+00:44:39,940 --> 00:45:10,450
+And, you know, in hindsight, maybe I could have like, transitioned to something more generic or whatever. There were. I think, again, this would tie more into mental health type things and why I didn't do that. But It really was quite successful, I think for the amount of time I put into it and what I got out of it. And, you know, I didn't talk as much about this.
+
+74
+00:45:10,450 --> 00:45:41,860
+But, of course, the most important thing to me in all of this was how much it actually helped people. I would get emails from people all the time, like, Oh, this is just saving me so much time. And, you know, people loved it. Like, once I worked out all those, like weird kinks I had from writing my own database management system and stuff like that. People really did like it. And it really did save them time. And I think it was a really good user experience.
+
+75
+00:45:41,860 --> 00:46:05,710
+Like I put a lot of work into that, like, I would pour over it, I would write on whiteboards, and, you know, scribble stuff, and like, you know, I cared a lot about the end user experience and making it good. And I think it paid off. And I think it was good. It's unfortunate that I think, you know, what ended up building it for wasn't something I ultimately believed in.
+
+76
+00:46:07,000 --> 00:49:58,600
+And, you know, I've had a lot of people since then telling me, like, we should have just kept doing it. Like, who cares, you know, like, these people are going to do their program anyways, you should have just made money off them. And, you know, I guess I could have done that. But it's not me. I want to do things that I believe in. And it didn't feel right to do something that seemed like maybe it was enabling something that I felt could be harmful, you know, and I think that's a big difference, too. If it was like, Oh, I just don't care about this anymore. That's different. But it was getting to the point where I was worried this was actively harmful to children. And so I, you know, that made me uncomfortable. I'm like, I don't know if I'm okay with that. Like, it basically, obviously, I ended up deciding I wasn't okay with it.
+
+77
+00:47:02,610 --> 00:47:55,440
+And so I let the users know, hey, I'm gonna shut this down. And I'm sorry, it sucks to have web services shut down, I said, I made the whole thing open source as like, if anyone else wants to run it, like, I don't want to, you know, screw over these organizations. If somebody else wants to take it over and take over that responsibility, I will make, I made it available for people to do. And I also, you know, had export options, so you could get nice spreadsheets of all the data and import them and some other program if you wanted to. Yeah, I, I did my best to make the ending good. As good as it could be. And I did actually have some people contact me about running it. I don't, I never heard if they ever did.
+
+78
+00:47:55,440 --> 00:48:38,760
+But yeah, I will try to remember to include a link to the source. If you have a look at it. It's definitely interesting. I'm definitely not going to say it's like, the best thing you know, I've ever created. You know, a lot of things in here, you don't code where I'm like, Yeah, wow, I wrote that. Okay. But they that's how it goes, you know, whatever, you look at your old code. But yeah, if you're curious, you know, I'll include a link and you can take a look for yourself. The main-main file is keep the records dot SCM, if you want to place the look.
+
+79
+00:48:38,760 --> 00:49:10,410
+But yeah, that was that was the journey of creating my own first SaaS application, dropping out of college, working on it pretty hardcore. And, you know, I don't think I did that great of marketing, but apparently, it was good enough. You know, in hindsight, you know, another one of those things, I feel like I could have done a lot better. You know, if I was really trying to make this work, I probably could have done, you know, better at that not, it's still tough for me, even today, I'm not the best marketer.
+
+80
+00:49:10,410 --> 00:49:31,380
+But, you know, this definitely taught me a lot about that. And I think when I think back on this project, in what it taught me, I think one of the biggest things that it taught me and something I always try to pass on to other people that want to start projects is sort of twofold.
+
+81
+00:49:31,380 --> 00:49:58,590
+One is to, you know, start making things. You know, so many people talk about making things but don't make things you got to start. And the second thing is when you start it's definitely easiest if you find a niche and find somebody that wants to use it right away. Like I think that was really the key to how this was as successful as it was.
+
+82
+00:50:00,000 --> 00:50:35,340
+It was because I directly made it for something that I kind of needed, but especially this person I was working with directly. And so I tell people this all the time, they'll be like, Oh, I've got this great, like, b2b, you know, app idea or whatever. And I'll be like, Well, have you talked to anyone that is already doing this? Because like, you know, if you're talking about that kind of thing, somebody's already doing it in a spreadsheet or using some other program or whatever. Right? Well, have you talked to them? Have you gone through the pain with them? Have you seen what it's like? You know, I think that's one of the best places to start.
+
+83
+00:50:35,340 --> 00:51:06,450
+If you find a niche, and you find people doing things in with spreadsheets, or manually or whatever, you know, cobbling together some programs, you know, if you find this real pain point, and you just work directly with this one customer to create it for them. It's one of the easiest ways, I think, to start because then you create something that people actually want at least one person. And in my experience, if one person wants it, more people want it.
+
+84
+00:51:06,450 --> 00:51:48,930
+So yeah, if I, if I ever tell if I'm ever talking to people, and they're asking me about my advice on these type of things, those are the things I really try to stress is just like, start building it, and find somebody to build it for right up front and get them to be super happy with it before you move on. It's not necess-You know, there's other ways to build apps, of course, you could raise a bunch of VC money and throw it into the wild and hope people sign up. But if you're looking at what I call more of like a bootstrap to, like, you know, create something that's immediately valuable and immediately usable, that you can immediately get revenue from. This is a much, in my opinion, easier and more straightforward way to do it.
+
+85
+00:51:48,930 --> 00:52:59,430
+And the other part is, it makes the marketing really cheap. Like I barely marketed this thing, you know, like posting on forums, like, a few times, I think that was essentially it. But it was a real thing that people really needed. And I think when I look back on those marketing messages, I can't find them now, but when I did before, you know, I think they were effective, because I knew the pain points. And so it was easy for me to write something that was like, hey, use my program, I saw that your pain points that I know you have, you know, and this is how I solved them. It was very easy it cheap to market, you know, as opposed to say, some big VC funded thing where you haven't found Product Market Fit yet. You don't even know what people you know, if people even want it. Like, that's a very expensive thing to market. This type of approach can be extremely cheap, you know, I think it even spread a fair amount via word of mouth, you know, like, people are just like, Yeah, this is great, and told their friends, you know, and that's the thing about building something that people actually want right up front, you get that as well.
+
+86
+00:52:59,430 --> 00:53:21,600
+So yeah, those are my thoughts on, you know, this experience, and I'm sure I have more but you know, we're already getting, you know, close to an hour into this. So I figured I'll give my voice a rest here. Yeah, leave you with that. I, I hope you found that somewhat entertaining.
+
+87
+00:53:21,600 --> 00:53:48,150
+And, you know, I'd be curious to hear from any of you. Like if you've had experiences like this, you know, SaaS apps you've launched or, or if you've built things, maybe not even sold them but just built things and had people use them. Or if you have questions about my experience, or you're looking for any feedback on your own project, I'd love to hear from you. You can find me at the React show.com
+
+88
+00:53:48,150 --> 00:53:54,060
+Thank you once again for joining us. I hope you have a great rest of your day. Bye
+
