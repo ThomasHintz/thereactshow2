@@ -1,0 +1,352 @@
+1
+00:00:04,440 --> 00:00:08,130
+Thomas Hintz: And welcome to the React show!
+
+2
+00:00:08,570 --> 00:00:19,580
+Brought to you from occupied Kumeyaay and Cahuila territory by me, your host Thomas, and a crisp, desert morning, Episode 79.
+
+3
+00:00:21,950 --> 00:00:51,200
+When you hit a wall with your software, what you've written doesn't seem possible anymore. Where do you go next? Do you head to Stack Overflow still, or just throw that app out and change careers? Let's join Jane again on her journey to learn React on three hours a week as she attempts to move forward after failing to quickly make the app of her dreams.
+
+4
+00:00:55,550 --> 00:01:29,600
+Thank you for joining us! Yeah. So once again, I am still on the on the road so to speak, riding my bike, made it down to Anza Borrego. Absolutely beautiful, desert in Southern California not-not too far really from from Mexico. It's in the rain shadow from the mountains from, you know, sort of San Diego. So yeah, desert not much rain, but absolutely beautiful.
+
+5
+00:01:30,800 --> 00:02:21,500
+The plants that do exist are really cool, amazing, wildflower blooms. Yeah, it was, uh, yeah. Anyway, it's really cool. I'm really, you know, super excited that I even you know, get this opportunity. And, yeah, it was a, it was a really cool bike ride over to here to like, you go through these like, they call it like the Badlands. But just this land that's been just completely sculpted by the rain, without having like vegetation to hold the land in or control really where the water flows. So it just looks really, really cool and really different. Yeah, so that was, that was a lot of fun.
+
+6
+00:02:21,000 --> 00:02:57,300
+And it made me think, you know, I got to the campground here. And they have this like, they call it hike or bike campsite. So it's really cheap, like $5 a night, just, you know, first come first serve you show up. And my favorite part about it is the people I realized, like the people that you get to meet at these, you know, it's sort of like a congregation and meeting spot for people traveling on these big adventures, you know?
+
+7
+00:02:59,130 --> 00:03:33,450
+And, yeah, so I got to meet someone at this place that actually hiked in and they've been hiking trails for like three years now. You know, all the big ones PCT Appalachia, you know, all that. But lots of these smaller ones like Anza Borrego, and I also met a biker up in Joshua Tree. And that was, that was really fun, because they they have, they have a coffee, they bring a coffee grinder with them just like I do.
+
+8
+00:03:33,450 --> 00:04:05,910
+So I love to wake up and hand grind me some, some fresh beans and, and make just some coffee. It's just like one of those comfort things on on the road, you know, and it was fun to meet them and hear their story. And, you know, they started up like Montana and you know, hearing about the temperature drop and like 30 degrees. And, you know, everyone's got so many stories. And, you know, my point is, is more. Just, that's really what I love about this more than anything else is you just get to meet so many unique people.
+
+9
+00:04:05,960 --> 00:05:13,130
+And it makes me think of software too. And, you know, I talk a lot about design, you know, design, I think when it comes to software and programs is the most important thing. But what I think I failed to mention, and what a lot of people don't mention is that it's because of the people. It's because of the people that's why design matters, the design of your software, and even the user experience design, you know, the graphic design for the user, it's about the people it's about, you know, how does another programmer interpret what you've written? How do they work with it? How do they maintain it? How do they extend it? You know, so it's, it's all about the people and you know, good-good design is about understanding how people think. It's about understanding how they're going to perceive what you've written, you know, intuitively how they're going to interact with it.
+
+10
+00:05:14,750 --> 00:05:59,960
+So yeah, I just, you know, this, this whole thing about the people and meeting the people really made me think, again more about software. And just like, it's so much about the people. And I feel like I don't talk about that enough on this show. So something I'm definitely keeping in mind, I want to talk about more as, you know, sort of the human aspect, we talk about, you know, react in all this technical detail, and it's important to understand the technologies we use, right. But at the same time, you know, it's only-we have to understand it within that context, the context of people. That's why any of this matters. 
+
+11
+00:06:00,260 --> 00:07:08,780
+So yeah, that's, that's my, my thoughts on the people. And you know, why I love traveling so much, and doing this kind of thing. But also, honestly, why I like software so much. I love design, I love designing software, because I like to make it good for other people. So other people can come into my codebase. And just be like, Wow, this is really amazing. Like, almost to the point where they don't even think about it, they just start using it, and it just works and they don't have issues. That's what that's what I'm really going for, you know, they can extend it, you know, somebody else says, Hey, can you add this feature? And they have their response, like, oh, yeah, no problem, you know, it's not that response of like this dread or whatever, you know, where you're like, Oh, I'm gonna have to, like refactor this, and try to figure this out and understand this. And, you know, I want to give it other people when they're working with my program, just that always that excited feeling of, you know, I can actually do this. Yeah, I'm so excited to do this. I can't wait. So yeah, all about design, but also all about people for me.
+
+12
+00:07:09,410 --> 00:07:26,240
+And speaking of people, it's time to join my friend Jane, again. I talked with Jane again. And yeah, so they have more story. So we'll join Jane and see what she has to say.
+
+13
+00:07:26,810 --> 00:08:07,520
+Hey, everyone, it's me, Jane. I might look like Thomas but it's actually Jane right now. My friend Thomas features, some of my learning journey a while ago, in their episode on learning react in three hours a week, and just wanted to say thank you all for, for listening to that journey. I'm not quite confident enough yet to do this, you know, come on the podcast and do an interview style. But Thomas offered to tell the continuation of that story. So here goes, I'm still at it learning react in three hours a week.
+
+14
+00:08:08,830 --> 00:08:34,930
+To give you a bit more background, though, on me, the full time job that I mentioned is that of being a mom and a housekeeper. So I'm actually educated as a computer engineer. And I've worked in a variety of fields and projects. So you may find allusions to different software, you know, languages and whatnot. Throughout the podcast.
+
+15
+00:08:34,960 --> 00:08:44,260
+It might sound a bit crazy, but it's been absolutely great to spend my Saturday mornings learning about React.
+
+16
+00:08:46,210 --> 00:08:59,680
+Yeah, you know, speaking as Thomas here: I mean I can't disagree, right. It's always fun day. Like that. But yeah, well, we'll go back and enjoy Jane, sorry, Jane for interrupting.
+
+17
+00:09:00,760 --> 00:09:40,510
+So while parenting has been, you know, full of all sorts of joys and challenges that I hadn't expected, there's just something about the quiet, controlled world of software that breathes life into me. Plus, this new hobby gives my kids and husband a bit of mommy free time together, which seems to be fun for them as well. They actually made waffles or "wabbles", as my two year old calls them and deliver them to the so cute and yummy, right? Who doesn't want that?
+
+18
+00:09:41,950 --> 00:10:00,100
+So anyhow, a quick like recap on where we left off on my story. I just kind of crashed my app in a blaze of fiery code while trying to use a vanilla JavaScript library with my new React app.
+
+19
+00:10:00,880 --> 00:11:01,120
+So yeah, just sort of filling in some of the details here. If you missed that last episode, what Jane was, Jane had done some web development before. And before when they did it, they're like, oh, you know, I can just find random JavaScript libraries on the internet and plop them into my program. And, you know, they should work, right. And so they wanted to I forget what it was like, like, sort of a mapping application. And they're like, oh, yeah, so they got this mapping application JavaScript library, and they tried to integrate it into the React application and had this pretty, you know, rude awakening, to find out that you can't just plop an old school JavaScript library into your React program. That requires a lot of extra work.
+
+20
+00:11:01,720 --> 00:11:42,040
+If you've ever tried, you have to, like create kind of like a bridge, and it just isn't something that somebody who's just learning react would, you know, be really able to do very well. So yeah, that's where that's where Jane left off. Extremely, you know, when I talk to Jane, very frustrated about this, like, Are you kidding me? Like, why can't I just do this, this should just work, you know, that type of thing. And, you know, you're kinda like buried in this, you know, learning experience. And there's a lot going on. And it can be frustrating, especially when you run into unexpected roadblocks like this. So yeah, well, we'll go join Jane again.
+
+21
+00:11:42,040 --> 00:12:17,260
+And Jane says, now what? I thought about, I thought about just getting the marshmallows out and roasting them over the burning mess. You know, maybe I could look for a new three hour a week hobby. And I could just kind of put this into the "tried that" box. But then I thought about all the other 1000s of people out there writing React code. And they do seem to be making apps that work. Maybe there's just some fundamental things that I'm just not getting about React?
+
+22
+00:12:17,560 --> 00:12:43,450
+Have you ever reached a point in your work where you felt like you were missing a pretty big piece of the project? Yeah, Thomas here, I wanted to come in again, and talk about this before we moved on, because I felt like it fits so well, with what I was talking about, in the intro about it being about people. But this is in a totally different way. But I've totally been there too.
+
+23
+00:12:44,440 --> 00:13:42,910
+So you're working on something and you're frustrated, you're like, oh, other people have done this, I should be able to do it too, right. And it's just this sort of motivation, that sometimes gets you over that hump. Like, it's just a fact that we are social creatures, we that's that's what we are. And even though this might sound kind of silly, to me, I think it's really important and not something that you necessarily let control you I think you can go too far, and just trying to do what other people want you to do. But it's definitely a useful thing, when you can keep it running in the back of your mind. Like, oh, yeah, other people have done this. There's no reason why I can't do this. Right. So yeah, well, that those are my my thoughts on that. I think that that was really interesting. Well, we'll go join Jane here again.
+
+24
+00:13:42,000 --> 00:14:14,850
+So so, you know, jumping back into this, how do we find that missing piece of the puzzle, that thing that it feels like we're just not getting? You know, Jane says with her kids, it's usually hiding under the couch. And as I thought back to when I, you know, worked in software, before the figurative couch seemed to rise before me. Stack Overflow, I found lots of puzzle pieces to weird problems.
+
+25
+00:14:14,000 --> 00:15:02,360
+They're like, what magical CSS do I need to cook up to get my page to look right? Or that I just need to use Internet Explorer to recreate that bug that my customer found? I thought about how to word my question. And as I did, you know, like, were the question to try it out and find the answer on Stack Overflow, right. And as I did, I realized that I didn't have so much a question about how react works, but rather an incorrect understanding of how it relates to JavaScript and what problems react was designed to fix. Stack Overflow probably wasn't the right solution this time.
+
+26
+00:15:03,200 --> 00:15:41,570
+So I decided to find another tutorial, I had already completed the, quote, incorrect react tutorial, it was now time to find the correct tutorial. So the incorrect tutorial was the default tutorial on like React js.org, or whatever the official react website is. It teaches you a lot of stuff that basically nobody does anymore in react like class based components, and then really do hooks or functional base components, basically the past of react.
+
+27
+00:15:42,530 --> 00:16:26,720
+And so Jane, not knowing this was the past had gone through and done that. And I was like, Ah, I mean, it's still good to know. But it's just not really the way things are done anymore. And I think the direction even the React team is taking things you're not going to be able to take advantage of a lot of new features if you program in this style. So yeah, that's how this got termed, you know, that got termed the incorrect react tutorial. So now Jane set off to find the beta react docs, which I've talked about on the show before. You know, Jane says if if anyone on the internet can can answer my questions about the fundamentals of React, the docs provided by react itself should be the one right.
+
+28
+00:16:28,760 --> 00:17:00,710
+Last time, I mentioned that I had found the React docs pretty easily and jumped right into them. However, the official front and center react Doc's are, as Thomas mentioned, a bit outdated. Finding the beta docs, though was not easy for Jane, they're included in a little hyperlink at the top of the React docs page. But Jane says, you know, after years, and I actually would jump in and agree with this.
+
+29
+00:17:00,890 --> 00:17:50,990
+After years of scanning software, blogs and Stack Overflow, I've developed this thing where my eyes automatically skipped over anything that like might be an advertisement. So think things like outlined in colorful boxes, larger different font sizes, and small hyperlinks at the top of the bottom of the page that are often requests for donations. This has created issues in software as well as in the real world. I'm always missing out on the listed specialists on restaurant menus. When I get Christmas letters with pictures, my eyes skim right past the pics of people and I finished reading wondering what picture they kept referring to. And when I go to a website to find a tutorial, the link looks just like a funding request. I don't even read the text. Have you ever ready to that?
+
+30
+00:17:51,470 --> 00:19:23,120
+I mean, I definitely have this I have this exact same problem. It's funny, Jane mentions restaurant menus, I do the exact same thing. Like they'll put it you know, this specials in so sort of like colorful box or something my eyes just I just don't see it anymore. And I don't want to harp on this too much. But like going back to the human aspect of everything about software, I think this just ties in so well, because it's this thing where we've, you know, trained humans to alter their behavior. And this has an influence on software. So you just never know, you know how the human aspect is gonna play into it.
+
+31
+00:18:33,690 --> 00:19:30,120
+Anyways, so how did Jane find the docs? So she said, she actually went back to Google and searched specifically for React beta docs, which brought her to the right page. Also, very interesting. I think from a human perspective, you know, I think, search, you know, I haven't used Google and really a long time, Duck Duck go, I guess, is what I've been on for quite a while now. But, you know, search engines in general. I feel like especially Google, but also somewhat DuckDuckGo haven't been as useful as they used to be probably because of content farms and all of this, you know, so another aspect of this human behavior that really changes how we we interact with software.
+
+32
+00:19:30,110 --> 00:20:03,530
+So anyways, Jane found the beta react docs and says that the format of the beta Docs is a bit different from other tutorials I've done in the past. First off, they're pretty long. It took me three weeks at three hours per day to get through the docs. That's a full workday. Yeah, I know. I went to school for five years to learn, you know, software to some degree, but somehow All day of work spent in a single tutorial seems a bit long.
+
+33
+00:20:04,430 --> 00:20:34,970
+And yes, I did say five years of school. Calc Two was a real killer sent me back a bit in the prereq, chain. I can totally identify with you there, Jane. I-I Also, that's funny. I also had struggles with Calc Two too. I don't know if it was just too boring for me or what. But I definitely had to take that one twice. I think that and one other class. But yeah, I get it.
+
+34
+00:20:35,920 --> 00:21:17,770
+So Jane says: secondly, there's not just one app or project that you're working to make throughout the tutorial, there's a bunch of little sandboxes with snippets in them. It feels more like a class on React rather than the typical learn the software language with one simple app approach. To add to the class, like feel, there's little quizzes. At the end of each page, the user can answer questions and code, some little exercises to review the topic. So yeah, I just wanted to jump in again, and talk about this next section.
+
+35
+00:21:17,770 --> 00:22:09,730
+So I did an episode, you know, called concise ish Beginner's Guide to learning react. And in it. If you listen to it, you might remember that I really liked this, I called out and said, I liked the sandbox approach to learning react, the more normal tutorial approach requires users know NPM, and get and command line interfaces and VS code and a bunch of other tools, new developers, you know that they have to pick their text editor like VS code, like I mentioned, and install it before they can even start to learn react. Which is why in the beginner's guide to learning react, I said these sandboxes are great, because you can start playing with React without having to understand how to set up this whole tool chain.
+
+36
+00:22:10,980 --> 00:22:39,000
+Well, Jane, you know, wanted to come in here and say that she actually after going through the sandboxes had a different opinion. She says, To be honest, she didn't really like the sandboxes, I found that I wasn't really learning, I was just kind of looking at the words, and my mind was running through the list of messages that I needed to respond to. And the pile of stuff that I needed to get done, you know, in my mind is just started wandering.
+
+37
+00:22:39,840 --> 00:23:21,360
+With the build an app approach, I have to read and write the code myself, which forces my mind to engage more, it was also really hard to see how all the different things that I was learning work together, there were so many different sandboxes. And as I flipped to the next page, sometimes all the code in the sandbox was completely changed. And I'd be working on a whole new project. On top of that, I didn't have a finished project that I could return to as a reference as I started to make my own app, you know, so after I'd finished going through all this, I didn't really have anything to look back on. I don't have one of those memories.
+
+38
+00:23:21,360 --> 00:23:37,110
+Some people have that just remember everything that gets put into it, I might have a vague recollection that I read about how to update my state and in a React app, but it takes me a few times before I can do it without referencing something.
+
+39
+00:23:38,850 --> 00:24:09,390
+In a finished project. Also, you know, Jane says just gives her a sense of accomplishment. Like I can look at it and say, Wow, I did a thing I made a thing. This is so exciting. And this becomes really valuable when you're full time engaged in a job like parenting that is never finished and doesn't provide timely assessments other than things like the meltdown that my child just had it the story, which left me feeling rather like I hadn't accomplished anything at all.
+
+40
+00:24:11,370 --> 00:25:08,460
+So yeah, I'll come in again here and say, I totally understand and I think, you know, if I was to revise that episode, I might make that more clear. I find the Sandbox is really nice for that situation where you don't know how to set up all this other stuff. But once you get going, and you get further along, a project based approach is absolutely better for all these reasons that Jane mentioned. And if you're not a complete beginner, it's definitely a better place to start. I still think the sandboxes are super, super, super important if you don't have programming experience because you get that instant feedback of like wow, I'm made it do a thing. And I think maybe Jane has passed that point and doesn't, you know, wasn't really reflecting on those feelings.
+
+41
+00:25:08,760 --> 00:26:17,640
+But I know for me when I'm learning something new, I don't necessarily even need a big project, just like when I was learning programming, just the fact that I made the computer do something was exciting enough in of itself. And so I would, I think these sandboxes are great for that type of thing. But I would also say, it would be really cool if the sandboxes and the tutorials and stuff, you know, if I was able to keep your code somehow for like this, this is almost like an idea, maybe I should-I should work on but like a sandbox that also keeps your history in a really like user friendly manner where you don't have to know get or anything. So you can sort of scroll through what you did, and learn from it that way. So you get some of the approaches, or some of the advantages of the more project based approach. Using the sandbox, I think that'd be really cool. Definitely. I know, I'm gonna think about that some more. But yeah, let's, let's join Jane again.
+
+42
+00:26:18,570 --> 00:26:59,130
+All that being said, when I went back to the docs, as I was writing, for this episode, I noticed they changed. Being beta docs that is not really unexpected, I suppose. They've updated the tic tac toe game tutorial from the official tutorial to be component based and included it right after the Quick Start page before you get into the meat of the beta Docs. So if you're starting now, you kind of choose your own adventure, either the tutorial Tic Tac Toe version, or the more class like tutorial with the sandboxes. Or I guess both.
+
+43
+00:26:59,450 --> 00:27:26,990
+So cool, is glad-it's good to see they're continuing to iterate and update the docs. As with the earlier tutorials that I walked through, I ran into a few questions. And luckily for Jade, she could just email them over to her friend Thomas, I don't. How does that work? I don't know. Anyone seen a Thomas around? If you're listening, and you have questions, I might not be able to answer everything. But definitely, you know, send me a message.
+
+44
+00:27:29,120 --> 00:28:13,730
+She says Thomas was quick to either respond or do a video call with her to walk through them. Yeah, so she says one of the first things that I ran into is the concept of default and named components. This is not maybe a React specific idea, but actually just a vanilla JavaScript concept and kind of a newer one. So this might be something less familiar to Jane, you know, if she learned older JavaScript, but export is used in JavaScript to export values from a module, every module can have two different types of export: named and default.
+
+45
+00:28:13,000 --> 00:28:38,980
+So turns out exporting a default component is it? Well, she says the default way to approach components, I've seen both. But she says the developer doing the exporting doesn't have to give the component a name. And the developer writing the import has the freedom to name the component, whatever they want. Only one default function is allowed in each file.
+
+46
+00:28:39,880 --> 00:29:13,540
+I will come in here and say you can actually rename named exports as well. But I don't think we've gotten there yet with Jane. So she says exporting a named component requires the developer to write the developer writing the export to give a specific name to a component. This allows the developer to include multiple components within the same file, it also forces the developer importing to use the same name. Like I mentioned, that's not actually true. It is the easiest way to work with things.
+
+47
+00:29:13,570 --> 00:30:07,870
+And Jane says that as she dug into this, she discovered that there are many very strong opinions about what is the right way to handle exports and imports. It brought back memories of the spaces versus tabs debates that always seem to post beneath the surface. I'm a software team. How should you handle whitespace at a file two spaces four spaces a tab? I guess she hasn't been in, in the React World long enough at this point to know that they've they've settled this you're used prettier and, you know, whatever is built into VS code and the defaults and just it handles it right. But yeah, absolutely. Right. It's, I think, this is actually a bigger deal than spaces versus tabs, you know, maybe I have strong opinions too, right? That would never happen, right?
+
+48
+00:30:08,890 --> 00:30:37,030
+So she says it seems like most react developers prefer to export a single default component from every file, this leads to the creation of many files. But if the whole team agrees on a file and folder structure, it doesn't get too out of hand. Many people like that with a default export and import, everything has its own place, and it's not mixing. I think that this stems from a larger trend in software that says that more modular means more maintainable. 
+
+49
+00:30:37,450 --> 00:30:58,600
+This can be seen everywhere, from micro services to the whole idea of agile development stories, sprints, that kind of thing, you know. And another one of the arguments for default, exporting all the things that I found to be a bit funny, was related to the popular text editor VSCode.
+
+50
+00:30:59,800 --> 00:31:25,240
+I haven't verified this, but Jane says apparently VSCode does not allow the user to open the same file into tabs within the same instance of VSCode with different cursor positions and such. So if you want to refer to a point lower in a file, while editing a spot higher in the file, you have to open up a new VSCode instance. Therefore, developers are just moving to smaller files.
+
+51
+00:31:26,080 --> 00:31:53,710
+It seems to be that if your tool is forcing you to change how you're writing software, you might want to find a new tool. There's so many text editors out there. Of course, I will jump in here. And I didn't know this about VSCode but it actually explains a lot I've, for the longest time, I've wondered why programmers do this. And I really think a lot of it comes down to VS code and maybe some other editors like it.
+
+52
+00:31:54,740 --> 00:32:43,790
+But someone that's been using emacs for a lot of years, emacs allows you to open the same file and multiple, like panes or windows and have, you know, multiple, you know, each one has its own cursor positions, its own state everything. And so the way that I prefer to develop is I have one big file, just one file with everything in it. And I will put like code comments that are searchable. So, you know, if I have a section for, you know, just components of a comment that's like slash slash components. And so anywhere in this, you know, this file will be opened in like, eight different panes and my window and emacs or four different panes or whatever.
+
+53
+00:32:43,910 --> 00:33:21,170
+So I can be in any of them. And I'm like, oh, I want the component section. Oh, that's CTRL S or Ctrl. R to, you know, search, and I just start typing components. It takes me right there, I hit Enter, I don't have to, you know, deal with another dialog that's like, Hey, you have 30,000 files named page dot JSX. And these are the three that contain the word components. And, you know, so I'm used to working in this very, like just one file. I don't need to ever look what file is this in, it's not a question! It's all in one file! And I could just use the normal search to find everything I want.
+
+54
+00:33:21,000 --> 00:34:26,190
+And I organize it and it works really well for me, but I find I found on projects this doesn't work well for most people. And now I'm learning a big part of this is actually due to limitations in the editor or the user interface. So I could go on and on about this, but it's very frustrating, I, I'm not totally opposed to some amount of files, like I do have some, sometimes I will divide things into files. But like I worked on a project where every single component had its own folder. And inside that folder was an index file. And there's another file for the component and another file for the styles and every single time you edit this index file to import and then re export everything I was like this is so completely pointless. Like what a waste of my time What a waste of you know, oh, I want to rename something I got to open this other file and rename it in here. I honestly don't see the point.
+
+55
+00:34:26,220 --> 00:34:58,350
+I'm sure there's other people out there with strong opinions if you have a good reason. I-I'm genuinely curious if you really think there is some advantage to a bunch of files. I want to hear about it like what am I missing? You know? Yeah, that's that's my my two cents on this. I guess I'm in Jane's boat as well. Like, why do we need this many files? Some Sure. But like, do I really need that many?
+
+56
+00:34:59,190 --> 00:35:24,660
+Yeah, we We'd love to hear your opinion, do you prefer, you know, one file? Do you prefer default component default named components with, you know, one component per file? Have you ever run into issues with your text editor trying to do anything else? Or do you just not notice it? Anyways, let's, let's head back and join Jane, as she continues on this journey with the React beta Docs. 
+
+57
+00:35:25,860 --> 00:35:42,480
+So, all right, Jane, what other questions cropped up during your walk through the beta tutorial, and Jane says, After wrapping my head around the idea of components the docs, lead me into the ideas of state and hooks.
+
+58
+00:35:43,980 --> 00:36:13,710
+So state is a pretty foundational aspect of computing, simply put, it's the value of a location in memory at a specific time. This memory location is represented in software as a variable. Depending on the value of the variable, the program may calculate something, display something execute specific sections of code, you know, branching. When the value inside one of the variables changes, the state of the program changes.
+
+59
+00:36:13,980 --> 00:36:45,300
+In JavaScript, developers will often use local variables to save or change state. This doesn't work in React. So this was this was new to Jane. If you've been working in React, you don't really think about this anymore. But it is a bit unusual the way you you know, use hooks or the class based components to maintain state. That's definitely not the way that we used to do things in JavaScript, and not necessarily the way you do things in most programs.
+
+60
+00:36:45,810 --> 00:37:09,780
+But this is because of how react renders. Every time that react renders, it renders the code, essentially, from scratch, it looks at the code that you wrote the initialization that you gave to that variable and says, Well, I guess that's the value of this variable. Even if you have a click event that changes the variable react will always see your local very variable as it's initialized value. 
+
+61
+00:37:10,530 --> 00:38:06,450
+So I think what Jane is basically saying here is that if you have a global variable, or if you change the state of a variable within a component, and by changing the state, I just mean modifying it directly. Then React like forgets its value, right. And this isn't, this is like definitely a React thing. If you use like svelte or other systems, they use a, well, I was gonna say, more intuitive behavior, where you can just modify variables, but svelte kind of pretends to do that, but then really underneath, you have to use a bunch of special syntax. And I think there's a lot of other issues with it. But in React yet, you can actually use MobX is a library that allows you to work in this more intuitive manner. But I, for various reasons, don't prefer that. So this is what Jane is actually talking about here.
+
+62
+00:38:06,000 --> 00:38:32,340
+Before, we're gonna get into some of the more deeper technical details, this is more coming from the world of functional reactive programming style. So React is, I would say, loosely based on this idea, it's, if you want to learn more about it, it's a really fascinating topic. And I think it would help, you know, understand some aspects of react better.
+
+63
+00:38:33,080 --> 00:39:04,580
+It's called functional reactive programming. And the overall idea is, instead of modifying state, you program in a more purely functional style, I think, react doesn't do this quite perfectly. But that's what they're getting at, you know, you can look at your function, and you can be like, your component function, right? And you can be like, okay, given these inputs, here's what my output is going to be. And that's super valuable.
+
+64
+00:39:04,580 --> 00:39:42,980
+That's why functional, you know, purely functional programming style in general, in my opinion, is so powerful, and that's one of the reasons I really like React. I think, the way it does state, I don't love it. I do find, you know, I was gonna say do find it better than the alternatives. I don't know about better. I think it might often lead to better code for a lot of people because it forces you to be more explicit about state changes, which is a good thing. But yeah, if you're curious, look up functional reactive programming.
+
+65
+00:39:42,980 --> 00:40:19,100
+This is kind of like the ideas Jane is talking about here. So Jane says changes to local variables will not trigger a render I mean, if you've done any react you know this by now, but this also means that it even if you change the text on a button programmatically using like the JavaScript API, so it won't not show up on screen, the programmer must trigger a render. And this is really Jane working through the way that React is different from more traditional programming. So I think this is really interesting.
+
+66
+00:40:19,100 --> 00:40:42,200
+And she says, This is where hooks come in. The name hook comes from the idea that a hook in React will let you hook into different react specific features. So she first talks about the use state hook, the React developers have made a specific hook to allow users to handle state correctly. This is the aptly named use state hook.
+
+67
+00:40:42,380 --> 00:41:21,380
+This hook provides two things a state variable to save the value of the variable between renders, and a function to update the variable and trigger render, potentially, the beta docs have a nice little sandbox illustration to demonstrate the attempt to update a local variable and how to do it properly with the use state hook. But below that there's this little tan box labeled pitfall in this box, the doc state that hooks can only be called at the top level of your components, kinda like an import, although not quite that high level.
+
+68
+00:41:21,650 --> 00:41:50,360
+This means that you can't update your state from within conditional logic. Why? The React developers decided to store the hooks within an array, they then identify each hook by its location in the array. Why? Is there no other way to uniquely identify the hooks? This seems really limited. Jane says let's jump over to Thomas and let-let them explain.
+
+69
+00:41:51,710 --> 00:42:40,820
+Yeah, so I've covered this pretty extensively in another episode, if I can remember, I'll link to that if you're curious. But I have a lot of thoughts on this. In fact, I even did an experiment where I essentially created my own hook state system that I-it allowed you to use hooks within conditionals. I honestly don't know why react did it this way. I think they could have probably like, like automatically done a much more intuitive implementation that would allow you to use hooks within conditionals, which I think would lead to a much more natural style of programming.
+
+70
+00:42:43,310 --> 00:43:28,580
+I don't know, I really should, you know, get get some of the React developers on the horn here and see if I can find out. You know, what, if I'm missing something if there's more here, but yeah, the-the downside is you are definitely limited on how you can use hooks. And to be honest, once you learn the style, it's not that big of a deal because you put your conditionals inside the hooks. But it's definitely a less intuitive way to program. And to me, that's not good design. That's not-That's not what I'm about, you know me, right. Like, let's have good design, let's have intuitive behavior. I think this is definitely unintuitive.
+
+71
+00:43:28,610 --> 00:44:02,210
+And I've had to work with a lot of engineers that get stuck or hung up on this, how do I do this without, you know, putting this into conditional type of thing. So it'd be really cool to, I don't know, maybe I gotta carry this experiment out further and see if I can develop a library that gives us this. I think what I discovered was it is doable, but you'd have to modify the internals of react a little bit. I wonder maybe I'll just do that, and release it and see what happens. I'm really curious, I think that'd be really cool.
+
+72
+00:44:03,530 --> 00:44:21,560
+Anyways, now that now that we're all confused about how hooks are stored and identified, let's let's switch gears to some of our favorite react features. I will start by saying one of my favorite features of react.
+
+73
+00:44:21,000 --> 00:45:33,090
+And if this wasn't true, I wouldn't use it. Is actually due to JSX. The fact that JSX can freely intermix with arbitrary javascript is the way it should be. It lets you write much higher quality code. So many other frameworks and libraries are template based. Like I remember this when I was you know, learning Svelte recently, I cannot stand that. I'm like, it just doesn't make any sense to me. Why are you limiting what I can do? And like it doesn't make sense, in some ways from a technical perspective, because it allows svelte to do what it does and compile everything ahead of time, which is not as easy to do in React mostly because of this feature. So I do understand from a technical reason, but, you know, if the performance is good enough, without that restriction, then don't put that restriction on me, I want to, I want to design my components to be as, you know, intuitive to users as possible.
+
+74
+00:45:33,090 --> 00:46:15,570
+So actually, one of my favorite features of React is just JSX. And the fact that I can mix JavaScript code into it, I absolutely love that. It's what makes react, actually usable as a library for me. But yeah, what are you? What's your favorite thing about React? We'd love to hear from you. And I love hearing from people on questions like this, because I learned so much that I never thought of, you know, people told me Oh, yeah, this is my favorite. And I'm like, wow, you're right. I never thought about that. But that is actually unique. And that's really good. And something we should, you know, investigate and learn more about, right.
+
+75
+00:46:16,350 --> 00:46:55,350
+So Jane is going to tell us about her favorite. She says, her favorite thing so far is one of the simple things that react does to just make writing code a bit more pleasant. As I dig deeper into React and gain a deeper understanding of how to do things, I may someday be found to elaborate on my love of React server components or rendering like Thomas does today. But she says that she simply appreciates one of the little gifts that react has given developers, I love how I can use the map and filter functions to display my HTML.
+
+76
+00:46:55,000 --> 00:47:37,780
+I swear. I purposefully didn't read what Jane said her favorite thing was about React. So I could give my opinion separately and not be colored by it. But apparently, the same thing is our favorite, because this is exactly what she's talking about. So she says she loves how she could use the map and filter functions to display HTML, I've memories of trying to manually update and filter tables, without doing a complete form resubmit, it was messy, at best, very difficult to follow for new developers and prone to bugs.
+
+77
+00:47:38,170 --> 00:48:10,840
+So she's talking about in other systems where, especially if you're updating the UI imperatively, the old style, you had to do what react does internally, which is keep track of which things on the screen actually need to be updated. So if you have a list of things, and only two of the things in the list, actually change, you don't want to go and replace everything on the screen with all the new content, you just want to update the two things that changed.
+
+78
+00:48:11,110 --> 00:48:31,780
+This is what react does internally for us. But that means that we can write code in a much more natural way using map and filter to just return our list. And we'd have to write all this glue code to be like, oh, what actually changed, you know? And so she's like, Yeah, I love this. This is great. And I totally agree.
+
+79
+00:48:31,960 --> 00:48:47,530
+So she says, with React, I can easily manipulate the UI and avoid refreshing and requering for data. Not only does this improve my life as a developer, but it allows my users to experience a much quicker and smoother webpage.
+
+80
+00:48:48,910 --> 00:49:13,870
+I can't say that I completely love using JSX. For everything. To my untrained eyes, it seems to just muddy things up. There's two different types of syntax on the same place and after remember, which things need to be capitalized and which don't, and how to appropriately add in CSS and all that. But perhaps that will fade in time and I'll become a sold-sold out supporter of JSX.
+
+81
+00:49:15,820 --> 00:50:00,790
+Yeah, so I want to I want to follow up with that and say, I agree again, in Yeah, if you use it more, a lot of those things will fade away, but at the same time JSX isn't perfect. Maybe this is gonna be annoying. But I, I still think the way that we've done things in Lisp for a long time using what's called SXML is certainly a step up from JSX. One of the things I hate about JSX is the fact that I have to write closing tags, if you use SXML or anything like that, you'll know there's literally no reason for that. It's just a waste.
+
+82
+00:50:01,840 --> 00:50:33,730
+And it makes you know, refactoring your JSX when you're like trying to take out, you know, maybe a div in the middle of all your output, a lot more of a pain. And it means you can get weird, you know, stuff doesn't line up anyways, I'm not gonna keep going on and on about it, like JSX is, it's better than a lot of stuff, you know, mustache, and all those, you know, other technologies we've had in web. So it's definitely better. I also agree, I don't love it.
+
+83
+00:50:35,650 --> 00:50:50,980
+But yeah, so Jane says, speaking of time, she's about done sharing her time for now. Thanks so much for continuing with me on my react learning journey. 
+
+84
+00:50:52,250 --> 00:51:48,530
+Yeah, so I want to thank Jane for taking the time to write up all this for me. And it's been, I love going through this process with people of learning something like React kind of from scratch, it helps me remember things that I've just gotten used to, you know, stuff like even JSX. It's like, oh, yeah, I love JSX. I love this feature of JSX. And I'm, like, forgetting all these annoying things that I when I first started using it, I didn't like and they stood out to me as bad. And then you get used to it, and you forget. And so it's always really fascinating to me to go through this process with someone and be like, oh, yeah, that's right, that that is an issue that is, you know, not as good as it could be. That is frustrating. That is unexpected. So I really enjoyed this. 
+
+85
+00:51:48,530 --> 00:52:26,990
+Thank you so much, Jane, for taking us on your journey. And I really hope that you're able to take all the stuff that you've learned from the React beta docs, and actually create this application that you've been wanting to create. I feel like maybe the most frustrating part about this, you know, place in the journey is that we haven't, you know, gotten to that. And I think we saw Jane sort of expressing some of this earlier on this like frustration about not actually ending up with a cool thing that she built that she could be like, Yeah, I did this, you know.
+
+86
+00:52:28,550 --> 00:52:39,920
+But I think we'll be able to catch up with Jane again in the future. And I'm really excited and hoping we get to see an awesome new application out of this.
+
+87
+00:52:41,090 --> 00:53:13,220
+And, as always, feel free to send me your thoughts and questions and check out the updated website, the React show.com. I'm going to keep working on it. I've made some improvements since the last episode, continuing the React server components journey and all that and it's been good. There's even transcripts of the new episodes, you can go back and reference the material more easily share them with others. I'd love to hear your feedback on that if that's something you're interested in.
+
+88
+00:53:14,300 --> 00:53:22,970
+But yeah, like always, thank you so much for joining us. And hope you have a good one. See ya. Bye!
+

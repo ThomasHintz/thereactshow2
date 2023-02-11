@@ -8,7 +8,8 @@ export const PAGE_SIZE = 15;
 
 const episodeExtra = {
   'Buzzsprout-12228273': {
-    slug: 'moving-past-failure-learning-react-on-three-hours-per-week-janes-story'
+    slug: 'moving-past-failure-learning-react-on-three-hours-per-week-janes-story',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '079-mixed.srt')).toString())
   },
   'Buzzsprout-12220716': {
     slug: 'dropping-out-of-college-to-sell-my-first-saas-app',
@@ -173,21 +174,21 @@ export async function getEpisodes() {
 
   let feed = await extractFromXml(feedString,
                                   {
-                             getExtraEntryFields: (feedEntry) => {
-                               const {
-                                 enclosure
-                               } = feedEntry
-                               return {
-                                 enclosure: {
-                                   url: enclosure['@_url'],
-                                   type: enclosure['@_type'],
-                                   length: enclosure['@_length']
-                                 },
-                                 content: feedEntry['content:encoded'],
-                                 chapters: feedEntry['podcast:chapters'] && feedEntry['podcast:chapters']['@_url']
-                               }
-                             }
-                           })
+                                    getExtraEntryFields: (feedEntry) => {
+                                      const {
+                                        enclosure
+                                      } = feedEntry
+                                      return {
+                                        enclosure: {
+                                          url: enclosure['@_url'],
+                                          type: enclosure['@_type'],
+                                          length: enclosure['@_length']
+                                        },
+                                        content: feedEntry['content:encoded'],
+                                        chapters: feedEntry['podcast:chapters'] && feedEntry['podcast:chapters']['@_url']
+                                      }
+                                    }
+                                  })
 
   return feed.entries.map(
     ({ id, title, description, enclosure , published, content, chapters }) => ({
