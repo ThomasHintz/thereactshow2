@@ -31,7 +31,7 @@ export default function Page() {
         <i>Shows the default rendering flow of React when state is changed on the root node.</i>
       </figcaption>
       <P>
-        So let's say you run into this point of unoptimization where your app is getting janky and you've discovered that React is re-rendering expensive components even when there is no reason to, what can you do about it?
+        So let&apos;s say you run into this point of unoptimization where your app is getting janky and you&apos;ve discovered that React is re-rendering expensive components even when there is no reason to, what can you do about it?
       </P>
       <H2>Solution</H2>
       <P>
@@ -52,7 +52,7 @@ export default React.memo(function ExpensiveToRender(props) {
         </code>
       </pre>
       <P>
-        Essentially this means that when React says "component: please render now" the component checks its cache to see if any props have changed and if they haven't changed it replies "here you go you can just use the result I calculated previously for these components". React takes that result and now the process of rendering down that part of the tree is completed without any extra work being done.
+        Essentially this means that when React says &quot;component: please render now&quot; the component checks its cache to see if any props have changed and if they haven&apos;t changed it replies &quot;here you go you can just use the result I calculated previously for these components&quot;. React takes that result and now the process of rendering down that part of the tree is completed without any extra work being done.
       </P>
       <Image
         src={renderTreeMemo}
@@ -63,19 +63,19 @@ export default React.memo(function ExpensiveToRender(props) {
       </figcaption>
       <H2>Details</H2>
       <P>
-        It's important to be aware of how these function though. They perform a shallow comparison of props. This works well in general but if any of your props are arrays, JS objects, or anonymous functions you can run in to cases where you expect your component to be re-rendered but it isn't. For example, if you pass an array to a component and then later add an item to that array you might expect your component to be re-rendered but it isn't. This is because React only did a shallow comparison on the array and saw that it was the same array. It doesn't scan the array contents. To get React to re-render your component when you change the contents of an array you need to instead return a new array. This is true for other non primitives, like objects. In general if you use <code>React.PureComponent</code> or <code>React.memo</code> you will be better off programming in a pure functional style.
+        It&apos;s important to be aware of how these function though. They perform a shallow comparison of props. This works well in general but if any of your props are arrays, JS objects, or anonymous functions you can run in to cases where you expect your component to be re-rendered but it isn&apos;t. For example, if you pass an array to a component and then later add an item to that array you might expect your component to be re-rendered but it isn&apos;t. This is because React only did a shallow comparison on the array and saw that it was the same array. It doesn&apos;t scan the array contents. To get React to re-render your component when you change the contents of an array you need to instead return a new array. This is true for other non primitives, like objects. In general if you use <code>React.PureComponent</code> or <code>React.memo</code> you will be better off programming in a pure functional style.
       </P>
       <P>
-        Another issue to be aware of when using <code>React.PureComponent</code> or <code>React.memo</code> is that sometimes your component will keep getting rendered even when you think that it shouldn't be; that none of the props have changed. This is similar to the previous case but in reverse. Instead of you not passing React a new object when you should have been, you pass a prop as a new object every time when you weren't planning to. This is most commonly seen when passing object literals or anonymous functions as props. An object literal gets instantiated into a new object every time it gets executed. So even if the contents of the object literal haven't changed it still creates a new object and React isn't checking to see if the contents have changed only whether it's a new object or not. So make sure to create these objects outside the render path.
+        Another issue to be aware of when using <code>React.PureComponent</code> or <code>React.memo</code> is that sometimes your component will keep getting rendered even when you think that it shouldn&apos;t be; that none of the props have changed. This is similar to the previous case but in reverse. Instead of you not passing React a new object when you should have been, you pass a prop as a new object every time when you weren&apos;t planning to. This is most commonly seen when passing object literals or anonymous functions as props. An object literal gets instantiated into a new object every time it gets executed. So even if the contents of the object literal haven&apos;t changed it still creates a new object and React isn&apos;t checking to see if the contents have changed only whether it&apos;s a new object or not. So make sure to create these objects outside the render path.
       </P>
       <P>
-        Why doesn't React just perform deep checks instead? Well this deep check can lead to bad performance which isn't what you want with a performance optimization!
+        Why doesn&apos;t React just perform deep checks instead? Well this deep check can lead to bad performance which isn&apos;t what you want with a performance optimization!
       </P>
       <P>
-        <code>React.PureComponent</code> isn't the only way to control when your class component renders: React also provides the lifecycle method <code>componentShouldUpdate</code>. With it you can explicitly tell React when to render the component. Generally though this method is discouraged and React recommends using <code>React.PureComponent</code>.
+        <code>React.PureComponent</code> isn&apos;t the only way to control when your class component renders: React also provides the lifecycle method <code>componentShouldUpdate</code>. With it you can explicitly tell React when to render the component. Generally though this method is discouraged and React recommends using <code>React.PureComponent</code>.
       </P>
       <P>
-        In summary, if you run in to performance bottlenecks with rendering then start by using <code>React.PureComponent</code> or <code>React.memo</code> and programming in a pure style. While there are cases where they aren't the solutions they are generally a good starting point. I've written more detailed articles about when to use both <code>React.PureComponent</code> and <code>React.memo</code>.
+        In summary, if you run in to performance bottlenecks with rendering then start by using <code>React.PureComponent</code> or <code>React.memo</code> and programming in a pure style. While there are cases where they aren&apos;t the solutions they are generally a good starting point. I&apos;ve written more detailed articles about when to use both <code>React.PureComponent</code> and <code>React.memo</code>.
       </P>
     </Article>
   );
