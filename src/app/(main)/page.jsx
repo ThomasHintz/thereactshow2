@@ -68,7 +68,7 @@ export default async function Home() {
       <Container>
         <Link
           href="/episodes"
-          className="flex items-center text-md font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
+          className="flex items-center text-lg mb-16 underline font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
         >
           View All Episodes
         </Link>
