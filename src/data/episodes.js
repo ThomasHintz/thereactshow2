@@ -190,8 +190,10 @@ export async function getEpisodes() {
                                     }
                                   })
 
+  const numEpisodes = feed.entries.length;
   return feed.entries.map(
-    ({ id, title, description, enclosure , published, content, chapters }) => ({
+    ({ id, title, description, enclosure , published, content, chapters }, i) => ({
+      num: numEpisodes - i,
       id,
       title,
       published,

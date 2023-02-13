@@ -112,7 +112,7 @@ export default async function Page({ params }) {
               <PlayButtonClient audioPlayerData={audioPlayerData} size="large" />
               <div className="flex flex-col">
                 <h1 className="mt-2 text-4xl font-bold text-slate-900">
-                  {episode.title}
+                  [{episode.num}] {episode.title}
                 </h1>
                 <FormattedDate
                   date={date}

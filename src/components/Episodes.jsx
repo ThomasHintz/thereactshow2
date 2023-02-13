@@ -21,7 +21,7 @@ function EpisodeEntry({ episode }) {
             id={`episode-${episode.id}-title`}
             className="mt-2 text-lg font-bold text-slate-900"
           >
-            <Link href={`/podcast/${episode?.slug}`}>{episode.title}</Link>
+            <Link href={`/podcast/${episode?.slug}`}>[{episode.num}] {episode.title}</Link>
           </h2>
           <FormattedDate
             date={date}
@@ -75,7 +75,7 @@ function EpisodeEntry({ episode }) {
 }
 
 export default async function Episodes({ limit }) {
-  const episodes = await getEpisodes()
+  const episodes = await getEpisodes();
 
   return (
     <>
