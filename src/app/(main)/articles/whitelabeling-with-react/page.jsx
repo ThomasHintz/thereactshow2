@@ -1,5 +1,9 @@
 import { Article, H2, P, A } from '@/components/Components';
 
+export const metadata = {
+  title: 'White-labeling with React'
+};
+
 export default function Page() {
   return (
     <Article

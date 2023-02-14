@@ -90,6 +90,14 @@ async function TranscriptWithPlayer({ episode }) {
   )
 };
 
+export async function generateMetadata({ params }) {
+  const episode = await getEpisode({ episodeSlug: params.slug });
+  return {
+    title: episode.title,
+    description: `Podcast episode: ${episode.description}`
+  };
+};
+
 export default async function Page({ params }) {
   const episode = await getEpisode({ episodeSlug: params.slug })
   let date = new Date(episode.published)

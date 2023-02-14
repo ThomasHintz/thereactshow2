@@ -1,5 +1,9 @@
 import JustifiedSection from '@/components/JustifiedSection'
 
+export const metadata = {
+  title: 'Download Foundations of High-Performance React'
+};
+
 export default async function Page({ params }) {
   return (
     <>

@@ -5,6 +5,10 @@ import { Article, H2, P, A } from '@/components/Components';
 import renderTreeFlow from '@/images/render-tree-flow.gif';
 import renderTreeMemo from '@/images/render-tree-memo.gif';
 
+export const metadata = {
+  title: 'How React Renders Component Trees and How To Make It Faster'
+};
+
 export default function Page() {
   return (
     <Article

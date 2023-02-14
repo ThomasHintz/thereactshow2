@@ -24,6 +24,11 @@ const chapters = [
   'Conclusion'
 ];
 
+export const metadata = {
+  title: 'Foundations of High-Performance React',
+  description: 'A book diving deep into the details of how React actually works.'
+};
+
 export default async function Page({ params }) {
   return (
     <>

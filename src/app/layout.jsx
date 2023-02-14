@@ -3,6 +3,13 @@ import './globals.css';
 import { AudioPlayer } from '@/components/player/AudioPlayer'
 import { AudioProvider } from '@/components/AudioProvider'
 
+export const metadata = {
+  title: {
+    default: 'The React Show - Weekly React Focused Podcast',
+    template: '%s | The React Show'
+  }
+};
+
 export default function RootLayout({children}) {
   return (
     <html lang="en">

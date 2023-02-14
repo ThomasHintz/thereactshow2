@@ -61,6 +61,10 @@ function Loading() {
   );
 }
 
+export const metadata = {
+  description: "Weekly podcast focused on React, programming, and software engineering."
+};
+
 export default async function Home() {
   return (
     <>

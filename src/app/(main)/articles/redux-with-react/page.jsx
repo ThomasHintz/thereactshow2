@@ -1,5 +1,9 @@
 import { Article, H2, P } from '@/components/Components';
 
+export const metadata = {
+  title: 'Should you use Redux with React?'
+};
+
 export default function Page() {
   return (
     <Article
