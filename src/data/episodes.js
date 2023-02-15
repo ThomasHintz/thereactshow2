@@ -7,6 +7,9 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-12260917': {
+    slug: 'my-secret-to-successfully-working-in-react-with-a-mental-illness-mental-illness-in-software-part-2'
+  },
   'Buzzsprout-12258802': {
     slug: 'boss-what-meds-are-you-on-mental-illness-in-the-software-industry-part-1',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '080-mixed.srt')).toString())
