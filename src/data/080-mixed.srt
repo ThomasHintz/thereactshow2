@@ -1,0 +1,468 @@
+1
+00:00:00,150 --> 00:00:07,710
+Thomas Hintz: Welcome to the React show!
+
+2
+00:00:08,500 --> 00:00:19,420
+Brought to you from occupied Kumeyaay and Cahuila territory, by me, your host Thomas, and a full night's rest, Episode 80.
+
+3
+00:00:24,100 --> 00:00:53,710
+When I was 22 years old, I was diagnosed with bipolar disorder. I had experienced many years of depression, hypomania. I didn't know it for a long time. The story doesn't begin or end there, however. In this episode, I'm going to attempt to tell my experience and talk about mental health in the software industry.
+
+4
+00:00:59,560 --> 00:01:44,620
+Thank you for joining us. I'm still out in the desert. Anza Borrego and the coyotes just got done the yipping and yellin'. It's always-I always enjoy that. I think last night, I don't know. I'm-I don't remember being awake a lot in the night. But I remember hearing them throughout the night it was-it was pretty fun. Even in, in Joshua Tree, there was one that did it like, right next to my tent I don't know how close it was, but like I could hear it like smacking it's like lips when it was like opening to, you know, you know, call like that. Never quite heard that before.
+
+5
+00:01:45,860 --> 00:03:10,670
+So, yeah, this episode, it's gonna be, I think, challenging. Something I've had, in my mind to talk about for quite a while. But it's not easy to talk about. For me. I think it's really important though. And I really, I think it's important to do it. And I really care about this topic a lot. As you'll probably pick up on, as, as I tell a bit more of my story. But I really care about it too. Because what I've learned through telling other people about even just some of this is that a lot of the issues I've experienced, you know, especially with depression, and the struggles with dealing with that, well, in the software, the work environment, trying to hold down a job. It's something that it seems like a lot of people identify with and have struggled with as well. So I it's really important to me to talk about, you know, not just keep this something we don't really discuss. 
+
+6
+00:03:10,760 --> 00:03:21,620
+And there's a lot, a lot to the story. I don't even know if we're gonna get through it all today. But we're gonna try at least to tell it well, at least that's my goal.
+
+7
+00:03:22,940 --> 00:04:08,060
+So like I said, in the intro, I was officially diagnosed with bipolar disorder, in I think it was 2011. And when I was 22, I went to originally, I talked to just my, you know, regular doctor, and they're like, Wow, this, you know, what you're describing sure sounds like bipolar disorder. But you know, you gotta talk to, you know, the experts, the psychologist, psychiatrist, I guess. So I got referred to them, and they're the one that made that diagnosis.
+
+8
+00:04:09,470 --> 00:04:43,400
+But it's definitely not about a label. And as I get into the later parts of the story, you'll certainly see that I think, and but I wanted to, you know, jump in at that this part of the story. And just mention it as kind of an anchor point. But before that, before we get into how that actually happened and what that meant and everything. I think the actual story begins a long time before that.
+
+9
+00:04:44,350 --> 00:05:06,700
+So I want to go back to middle school, actually. So in middle school, it's when I used to really start dreaming seriously about getting rich and-and you might think like, wait, what what kind of a jump is this, like, what is getting rich have to do with anything?
+
+10
+00:05:07,870 --> 00:05:50,140
+But it has a lot to do with it. Because it wasn't about getting rich to buy a Lambo, or even a free candy vending machine or whatever, you know, a kid at that age was dreaming of I was probably dreaming of LEGO sets or whatever. But in terms of getting rich, that was absolutely not what I was dreaming of. The the actual reason why is because I saw my dad, and other people working nine to five jobs that seemed to make them miserable. But they seem trapped in them.
+
+11
+00:05:51,190 --> 00:06:33,070
+So like, I would see my dad come home from work and just be miserable. Just always being miserable. And sort of, he wouldn't necessarily complain about work per se, because that was work was kind of, I think, a coping mechanism for him. So he wouldn't necessarily complain directly about work. But it was obvious that having to go into work every day, for 40 years until he could retire, just made him miserable. Like it was clear that he didn't want to do his job 40 hours a week, like he might have liked some aspects of it. But he definitely didn't want to do it all the time.
+
+12
+00:06:33,000 --> 00:07:32,070
+And he wasn't the only one. It just seemed to be kind of the way things went. And I was thinking about this, it sounds funny, you know, a middle schooler thinking about such things. But it was a really big deal to me. And the reason was, was because it it seemed like I wasn't going to have the capacity to do that. I, I saw that. And I was like, there's just no way I can't, I could never do a nine to five job like that for 40 years and retire. Like I even at that age at that young age. I was like, I don't see how I could possibly do that. And I thought, you know, maybe I like get older and become an a, quote, adult or something. And this would get easier. But I had this really strong intuition that just No, like, that just wasn't gonna work for me.
+
+13
+00:07:32,910 --> 00:08:19,110
+I already knew at that point, it just wasn't possible. I had already started developing this thing where I could work really hard for shorter periods of time, maybe a year or something, I guess it's not super short. But in the grand scheme of, you know, working 40 years straight or whatever. Yeah, I could work really hard and do a lot in that time. But then I just I couldn't I had to, you know, I don't know, maybe it was burnout. I don't know, I knew, though, that like just doing something consistently nine to five every day. It just felt impossible.
+
+14
+00:08:19,140 --> 00:09:04,470
+And so as a kid, I would, I would sit there and dream about getting rich, just so that I-not so I wouldn't have to work, I still wanted to work, I liked to do things. Even then even at that age. I was like, I loved making things. I like working. But I don't want to be trapped in a job. I think that was really it feeling, you know, having that, like worry that I would be trapped in a job. And so as a middle schooler, I dreamed about getting rich all the time. And I love to engineer and design and learn things. It seems really you know, more than, than other kids.
+
+15
+00:09:06,130 --> 00:09:56,890
+But I could see like these other kids, they had more capacity, you know, to consistently do their homework consistently do things I just didn't, I couldn't I didn't have that capacity. I didn't have it in me. I got lucky in grade school because I just was naturally. I mean I did study hard, but in bursts. I think I was also naturally probably more able than a lot of kids when it came to school so I didn't have to work as hard in general. And so a lot of other kids I know saw that. You know they were like jealous of me. Because like wow, look at Thomas he doesn't have to like study or you know, do a whole lot but still is able to ace things and whatever.
+
+16
+00:09:58,610 --> 00:11:01,880
+But the thing I was I was jealous of them. Because I was like, I know that I don't actually have the capacity to do what they're doing to achieve what they're achieving. And so, yeah, it was, I don't know, it sounds kind of strange to talk about, you know, as somebody-a kid that young, but that's how it was. Even for me back then, I dreamed of, I remember, like, I had this, this dream of coming up with a new source of energy, like inventing this new source of energy, and it would just provide me enough consistent income, that I wasn't tied into a job, I wasn't trapped in a job. And I had all sorts of dreams like that. And I dreamed like, Okay, here's how like, make it all sustainable and make it all work. And then I was like, oh, this would free me up to work on things I really care about. And I really want to do, and it seemed great.
+
+17
+00:11:01,930 --> 00:11:46,540
+And as I remember, as a kid at that age, it seemed so necessary. So required, that I basically assumed it would happen. I was like, I have to be rich. By the time I'm like, 25, because after that, like, I just, there's no way I can keep working a nine to five, there's no way I can do that. I hit that point. I didn't know what that point was. But I was like, I know, there's just no way. Like I already knew my body. I knew this wasn't gonna work. I gotta be rich. Before that, I got to invent something, create some app, start some company, it doesn't matter what I got to do it before then, or I'm, I'm just screwed, you know, I was like, I'm not gonna survive.
+
+18
+00:11:47,830 --> 00:12:36,550
+Okay, so where were these feelings really coming from in I think in high school, I can definitely start tracing this down to it. It was when I first started getting what I would call depressed. I don't honestly remember it too well. But I do remember just months where I just didn't have the energy to do anything. Even the stuff, I loved it, it's all very vague, because I think I didn't really realize it was even unusual to me, it just seemed normal. It seemed normal in the sense that I was like, everyone must go through this.
+
+19
+00:12:36,550 --> 00:13:29,290
+But at the same time, also thinking like, wow, it seems like other people. So I think what it was, was I thought at the time, everyone's just like me and goes through the same things I do. But they seem to be able to handle it better. And so I would go for these months of just just not having energy to do anything. And I would think, Oh, other kids must be doing this, too. They must be going through this too. But somehow, they're still doing their homework at the same rate and hanging out and doing whatever kids did, you know, at the same rate, whereas I definitely, it was like an ebb and a flow. So I would sometimes, but sometimes not. And I actually spent a lot of high school. I would, I'll talk more about this later.
+
+20
+00:13:29,320 --> 00:14:14,170
+But I also thought this was normal. For some reason, I would sort of partially run away a lot from like, during the day, or even sometimes a part of the night, I would just leave my parent's house and there was a stream nearby. And I spent so much time there, I would take our dog we had this yellow lab, golden retriever mix, and I love that dog so much. We did everything together. I cried on that dog so many times, you know, we would go down to the stream and I used to fish and just do my homework down there just hanging out down there. Did-spent a lot of time there. It was definitely an escape.
+
+21
+00:14:14,320 --> 00:15:35,620
+And what would happen what started happening was in about midway through high school, I started developing this pattern where I, I would do well in school, do my schoolwork, and then I just couldn't I just nothing would happen for weeks, maybe months at a time. I wouldn't do my homework. I wouldn't like I'd slept through all my classes. And then all of a sudden I'd be like, I have like a D in all my classes. And so I would I would study really hard and try to catch back up and I got I got really lucky thinking back about this, because I did a lot of programming, I started programming in middle school. And I would make all these programs like I made this AP flashcard program for learning stuff in my AP courses, and I'd share it with other students provide them the vocabulary list. And so my teachers, they would see this kind of stuff, and they loved it, and they gave me a bunch of extra credit. So I might have like a C in the class, but all the extra credit they gave me for making all these programs and stuff would always get me pretty much up to an A.
+
+22
+00:15:35,650 --> 00:16:47,170
+And so yeah, it was just this really weird pattern, I would stay up, I probably averaged only four hours asleep. And I would stay up, like the thing was, like sleep, it was hard to fall asleep a lot because I was so internally stressed. And so the the way I coped with it was just don't sleep until you're completely exhausted, I would get up at five every morning to do programming or reading, I used to read like a chapter book every day on top of programming, I would print off, go to school and, and print off programming books from the internet, you know, and the teacher wasn't looking at print off like 300 pages and throw them in a binder and go home and learn Perl the next day, you know, staying up till three in the morning, getting up at five, studying some more. And so I definitely had this pattern that I thought everyone must have. I don't know why I thought this. Oh, like in hindsight like, that doesn't makes sense. Like, I didn't see evidence for that. But that's what I did.
+
+23
+00:16:48,490 --> 00:17:19,150
+So, I studied on and off and my grades go up and down. I ended up getting fine grades, even though I don't know if it was completely deserved compared to the other students. But yeah, that was definitely the start of some of these patterns. But the next point college, I remember things a lot better. And it may have begun when they got more extreme.
+
+24
+00:17:19,930 --> 00:17:43,150
+So I went to College up in Michigan Technological University Keweenaw Peninsula, Upper Peninsula, Michigan, absolutely beautiful place. Super awesome. I had a great time there. But it was absolutely not without its struggles.
+
+25
+00:17:45,520 --> 00:18:36,580
+I remember one time, I literally didn't leave my room for I think it was three weeks, except to like go to the bathroom and get food. I like I couldn't I could not get up. This was during school during I just didn't go to classes didn't do my work, sort of the same pattern, right. But also, at the same time, I was just super into programming. And this meant that I can-I definitely continued this pattern when I wasn't what I would now term I was depressed and sitting in my bed for three weeks. I would only during those periods, I would sleep like 16 hours a day.
+
+26
+00:18:36,700 --> 00:19:15,910
+But other periods when I wasn't like that I would I was back to four hours of sleep a day. I would program all the time I was either programming or I was outside exploring an old abandoned mine or playing broom ball. I was very busy. But most of it was spent. I skipped a lot of my classes because I was like ah the stuff I'm teaching myself and programming is way more better way more important than whatever they're teaching me in school. So I would skip the classes and teach my own programming stuff. Guess this is a pattern. Yeah.
+
+27
+00:19:15,910 --> 00:19:58,120
+So actually what happened was, I remember the first semester at the end of it, I was like on dean's list or whatever, I got such good grades and everything. Then by the end of the second semester, I was on academic probation because my grades were so bad. I and then I don't know if I was on dean's list every time but this pattern repeated. So. I would be like academic probation. If you don't get your grades up, they kick you out of school. And so go into the next semester being like, Well, I gotta do really well or they're gonna kick me out.
+
+28
+00:19:58,450 --> 00:20:36,310
+I would work super hard and I did the studying the best that I could. And I sometimes went to class even, I still was definitely studying all the computer science stuff on my own. And I was basically years ahead of all my computer science courses, like anytime I got into computer science courses, like Yeah, I taught myself this like three years ago, but whatever. So it was super hard to be motivated, because I'm like, Oh, why am I doing these assignments? Like, I know how to do data structures and algorithms. I know relational databases I did these years ago, like, what is the point of this? And so it was very hard. 
+
+29
+00:20:36,480 --> 00:21:26,070
+But first semester, I would, I would get through it forced myself to out. And I'd get basically all A's or close to all A's, and I'd be doing fine. And then the next semester, I would just crash. And I just, I couldn't do it. I couldn't, I couldn't, I couldn't get myself to do it. I, I would sit there at my computer with a an assignment. And I just literally, physically could not get myself to do it. No matter what I tried, no matter how much caffeine I had no matter what. I tried to everything. And I just I couldn't do it. My body is just like, nope, nope, no, no, no, no. I don't know what to tell you. Like, I think, especially at the time, this made me feel horrible.
+
+30
+00:21:26,280 --> 00:22:01,950
+The environment I grew up in, was super focused on like work and personal ability and personal work ethic. And if you weren't able to do the things that you were supposed to do in life, there was something wrong with you. So that's how I internalized all of this. Like, there's something wrong with me, I can't do this work. I cannot, I can't do this homework, I can't go to class, I physically cannot do it. So there's something wrong with me. And it made me feel horrible. Like, I just felt so bad.
+
+31
+00:22:01,000 --> 00:23:11,470
+And programming really was, I think my escape, I built really cool stuff. Just I would actually I would even stay up for days. There were times I stayed up for three days straight, just drinking Mountain Dew, and programming working on my own programs, and everyone else that like knew me. Like people, when I was a freshman, the seniors would come to my room for help with their programming homework or their computer science homework. And if anyone that knew me got stuck on anything when it came to programming, like usually it was a bug. Everyone came to me because they knew I could figure it out. Like I, I was really, I worked really hard at it. I think this is why I was so good at it. Like I just programmed all the time. But I think in hindsight, this was definitely an escape. For me. It was an escape from this horrible feeling that I was incapable of participating in society in a way that it seemed like everyone else could do. And yeah, it was.
+
+32
+00:23:12,610 --> 00:24:04,330
+I don't I don't really know how to convey this even just that horrible. It was just this horrible pit in your stomach all the time. It didn't matter even if Well, not all the time, there were times that I would get an amazing program working like I remember when I got my first compiler working when I wrote my first compiler from scratch and it was working. It's just this feeling of exhilaration. I just it sort of it was really this escape, it allowed me to finally feel good, because otherwise, I always felt terrible out. I always had this pit in my stomach like I'm a failure, you know. And so this was definitely a continual struggle through throughout college.
+
+33
+00:24:07,420 --> 00:25:02,230
+I, in looking back on it, definitely. There were periods of depression, definitely there were periods of increased productivity. I don't know many other people that would somewhat regularly stay up for days straight doing things. You know, in hindsight, that's how I see things at the time. I will tell you, I thought everyone felt the same way I did. They were just more capable than me. They had, I think, definitely the-the terms I put in at the time was they had more willpower. It I would look at other people and I just assumed they felt the same things as me, but somehow they were able to go to class, somehow they were able to do their homework.
+
+34
+00:25:02,620 --> 00:25:55,120
+And I had all these friends and I'm just like, how do you do this? How are you? You're, you know, three years in or whatever. And like, you're still doing this. I'm like, I can't What's, what's wrong with me? There must be something wrong with me. I'm a terrible person I. And I put all this on me. I'm like, I just don't have enough willpower. It was definitely a period where I would study lots of like, self help books, like how do you work better? How do you work harder? How do you work more consistently? I worked so hard on things like that. Just trying to figure out how to essentially survive. That's what it really felt like, like, how do I survive this? How do I how can I do this? Other people can do it, I must be able to do it. Right.
+
+35
+00:25:55,720 --> 00:26:16,270
+That's, that's the attitude I had and totally internalized, and blamed myself through all this. I had no idea what other people felt if they felt the same, or whatnot, I don't know. I just could see, externally, they were able to do stuff that it didn't seem like I could do.
+
+36
+00:26:17,500 --> 00:26:24,520
+It was definitely large swings between the exhilaration and depression.
+
+37
+00:26:24,970 --> 00:27:18,460
+But throughout it all, even though I really struggled with all this, I still had hope. I, I really, really got into startups and startup culture. And that became my hope it was, I am going to start a software company. And I'm gonna sell it and I'm gonna get rich, because, like, I'm like, wow, if I'm struggling this much with college, how in the world am I going to do a nine to five for 40 years? It just seemed impossible. So I was like, I have to do this, I have to start a company, I have to do a startup, I have to get rich. It's my only option, or I won't survive in this world. I sort of felt like. So yeah, I think we can transition into that part of the story.
+
+38
+00:27:19,320 --> 00:28:24,960
+So I very recently did an episode on starting my first SaaS application. And all of this background played into how that went, and why I did it. Why I actually dropped out of college to do it. But this is the mental health side of what happened. So in that episode, I was like, Yeah, I dropped out of college after my third year, I essentially to to start this company. And this is really the background. So it was again in that semester where I just couldn't do any of my work. I knew my schoolwork, and I was not doing well. And it wasn't like I didn't know the material. At least when it came to the programming stuff. I was waiting again, I knew it was like I just couldn't get myself to do the work. And again, blaming myself, but it was like, Okay, fine.
+
+39
+00:28:25,050 --> 00:29:01,410
+I know, I'm good at programming. I know, compared to other people I am. You know, it's hard to judge yourself in such things. So I'm not going to say I was like better than them necessarily. But I knew I was solid. I was like, I know, I am able to program at a level that it doesn't seem like a lot of people do. And so I was like, This is my secret weapon. This is this is the answer. This is what I need. I need to use this skill to get myself rich, because I will not survive otherwise.
+
+40
+00:29:03,210 --> 00:30:05,820
+So this all played into dropping out to start the software company and I tried to temper things in my head. So I might not have called it a startup, but I definitely hoped it would become a startup. I even tried to raise money at one point sort of feebly really badly. But yeah, I dropped out to work on a SaaS application that I actually did end up selling to people and having some I sold it to customers. I didn't end up making money by getting rich or anything. So jumping ahead here. If you want to hear more about that story. It's episode right right before this or two before this, I forget. But yeah, you can check that out. Maybe I'll even remember to link it or something. Yeah, if you Want to hear more about how that went. But this was definitely more focused on the mental health parts.
+
+41
+00:30:05,820 --> 00:30:48,810
+And, you know, even working on that, that, you know, startup or whatever was SaaS application. I definitely had this pattern I, I worked for months and months straight, like 16 hour days, definitely not healthy. I was super happy, I loved it, it was amazing. It was so much better than doing my schoolwork, I'll tell you that. Like, it was like, wow, I'm really building something. And people are really using it. And they actually like it and they pay me money for it, this beats homework 10,000 to one, you know, this is so so much better. So it felt great.
+
+42
+00:30:49,740 --> 00:31:24,510
+Until I eventually, you know, hit this pattern again, and probably burned myself out if we're being honest, and got depressed. And it was about at this time that I started having to pay on my student loans. So yeah, I wasn't making enough from this SaaS company to pay for living expenses.
+
+43
+00:31:24,840 --> 00:31:53,610
+Rent, I didn't pay rent for like six months, I eventually did make enough to pay it back before I moved out. I don't I don't know why they didn't really I don't know, if they had bad organization-they didn't know I wasn't paying rent, I don't really know, to be honest, but they never said anything to me. This whole time not paying rent because I couldn't afford it. This was what I was like living on $30 A month food budget. And I was, I guess, yeah, this is a good time to talk about this.
+
+44
+00:31:53,000 --> 00:33:05,240
+So the monetary aspect, I think, is really what underlied a lot of my actions and my feelings even back in middle school. So the whole time it was like, I know I can work, I can build really good stuff, I can help people, I can make things. But the pattern that I do it in is I do eight months of work in three months time, and then I take three months off. That's just how just what I've been doing for years. And I couldn't escape that as much as I read all the self help books and tried to, you know, have all the best intentions and in everything I could think of I couldn't get out of this pattern. So it's like, I can do the same amount of output as somebody else can in a year, like over a long time span. I probably am, on average, just as productive as anyone else. If not even maybe more, I don't know. But I know I'm at least as productive over a long time period, but it's not consistent.
+
+45
+00:33:06,680 --> 00:34:36,140
+And it was very clear to me that that's not the way society works. You come in and you do your job, and you do it consistently. Every employer I've ever had, every job I ever saw people have it was, and maybe this was my own limited perspective, maybe there are and were opportunities for me, that would have worked better. But the world I grew up in, which was I would say, you know, we started out, I wouldn't say necessarily super poor, but we didn't have much money for most of my life. Like my parents, we ate oatmeal and going out to eat at a restaurant was I don't know, once every few months, it was like McDonald's and that was you know, a huge deal. Like we didn't we didn't have a lot we weren't like, in super bad shape. Eventually, you know, my dad had a white collar job. And, you know, that changed. You know, as I got older, they ended up having quite a bit more money, but it was still, you know, maybe a perspective of you know, middle lower middle class and so maybe there were opportunities for me outside of that I didn't know about but what I saw was the way that you worked was consistent you know, doing this job consistently nobody hires you. And you know, lets you move up the ranks by working three months and then taking three months off like that. 
+
+46
+00:34:36,140 --> 00:35:51,380
+I never heard of that. I never saw that and and so I this stress in this pit in my stomach. A lot of it came from being worried about surviving. I was like how in the world can I possibly make enough money to survive if nobody wants like Like I didn't know any job where I could make enough in three months to cover the time that I wasn't working, and then, you know, come back and not have to start over. It just I didn't, I couldn't imagine anything like that. And so this whole time, it was a huge, like money was the huge thing underlying all my stress. And why was so focused on a start up and getting rich? Because it was like, I don't, I can't imagine how I can do. You know, like I've said, what these other people are doing to earn this? Like, how can I be a part of this society, and not, and completely broke and not able to afford food. And it was, it was a huge, huge problem.
+
+47
+00:35:51,410 --> 00:36:22,100
+And so, I did this startup for a while, and I made some money, but it didn't, it wasn't a wild success. Nobody was knocking down my door trying to, you know, give me money. And that's what I imagined would happen. I was like, Oh, I'm growing this thing. So well, investors are just going to knock on my door and give me money. And, and that didn't happen. I kind of tried to raise money kinda from family. But my family, this was, they were not into it at all. 
+
+48
+00:36:22,100 --> 00:36:59,300
+They didn't understand it at all. Nobody in my family, like everyone on both sides of my family, were super, what I call sort of Puritan work ethic nine to five, you, you don't rock the boat, you don't start your own company, you don't take that kind of risk. You do a nine to five. And so they had no, they nobody helped me. Nobody in my family encouraged me or helped me in any of this. It was the complete opposite. It was when are you going to get a real job? You know, that type of thing.
+
+49
+00:36:59,000 --> 00:37:56,180
+And so there was, I think, that was hard to overcome. I've seen now people that that have been more successful on that journey, had, like, like almost all of them I talk to you. Oh, yeah. You know, my parents were super encouraging, or somebody was and, you know, oh, yeah, they lent me some money or gave me some money to get started. And I didn't have any of that when I dropped out of college. I had. I don't know, I forget the exact amount, but like, 50 bucks in my bank account. I didn't have any money. I didn't, nobody. Nobody was helping me out. I'm not saying that, that they should have or whatever. Just saying like, in hindsight, again, I probably thought the path for starting a company was a lot different than it seems like it actually is. 
+
+50
+00:37:56,180 --> 00:38:41,210
+There's absolutely a sort of old boys club a, you know, your parents went to Stanford, you went to Stanford, you start a company, you're in this this world, I wasn't in that world. I didn't know that at the time. And you can absolutely do this without being in that world. But I've learned since then, you know, a lot of these stories about like, oh, this person started from nothing and built this amazing software company and sold it for billions. Usually, when you read into it, it's like, oh, no, they had lots of, you know, support and help. That That makes a big difference. And so I went anyways, getting too far pontificating here. Back to the story.
+
+51
+00:38:41,210 --> 00:39:08,030
+So I Yeah, it was it was rough. I needed money. I, I decided, and this is, this is another pattern. It was like, Okay, I feel trapped here. I-this, my plan didn't work with a startup. I didn't get rich, before I burned myself out, essentially. And it was like, I need an escape. And so I was like, I'm going to move.
+
+52
+00:39:08,420 --> 00:39:38,960
+And I heard there were programming jobs in San Francisco in the Bay Area, Silicon Valley. I'm moving there. And so my parents, we have family out in California, and I knew they were traveling out there. So I was like, Hey, can you just drop me off in California? And so that's what they did. I packed up the few things I had, I had one box and my bicycle. And they I rode with them out to California.
+
+53
+00:39:38,960 --> 00:39:54,530
+They dropped me off and the mission in San Francisco and my mom was like completely freaking out. She's like, Yeah, so So I told them so I decided I was doing this and I told my parents Hey, can you can you do this? And they're like, Well, do you have a job out there?
+
+54
+00:39:54,530 --> 00:40:13,970
+I'm like, nope. But I did get one before he moved out. I-I was able. I think actually, because of the startup I tried to do, it wasn't too hard for me to get like my first, full time salaried position, because people would look at me like, wow, this person clearly knows what they're doing. I think that's really what happened.
+
+55
+00:40:13,000 --> 00:40:51,520
+And so I did get a job in San Francisco, before I moved out there, but after I decided I was doing it, and after I had made arrangements to move out there, but I just remember my mom dropped me off in the mission, and my family is weird about cities. They're not. They think all cities are like, the most dangerous thing ever. And anyways, my mom is just like, drop me off. And she's like, Are you sure this job is real? Like, what? Are you sure about this? You don't want us to like, stay around? And I'm like, No, I got this. I got this. It's all good.
+
+56
+00:40:53,170 --> 00:41:36,610
+So, so yeah, then we start the, the actual nine to five journey, this thing that I've been dreading this whole time, but it seemed like I had no other option. And I kind of, I was definitely losing hope at this point. I'm like, I don't know what I'm going to do. I don't know how I'm gonna do this, it seems impossible. But I don't, I have no other options, I have no money, I have to pay this money. It felt like I was forced into it. And so I started this job. It was for a small software as a service company. And it was a startup, I think we had like 15 people or something. And I was one of, I don't know, seven or eight programmers.
+
+57
+00:41:37,180 --> 00:42:20,170
+And I immediately continued my pattern. I really like to work at night, but nobody else was there. So I would often go into the office at, like 9pm. Take, take BART and take the metro. And you know, and I had this like, Scooter, this was before the electric scooters is just a foot powered scooter, you know, and I'd ride that and I'd ride that around the office, I would turn on music or movie. And I'd program all night long and always the next day. So basically, maybe 20 hours straight, 24 hours straight.
+
+58
+00:42:21,650 --> 00:43:09,980
+And I just, you know, more of the same of working hard and I'd probably burned myself out after a while. And this is when I, I call it sort of my Star Trek phase. Because I would work really hard. I did a lot of programming. They were really happy with me. But then I would watch Star Trek at work for three weeks straight, I would go back to work in nine to five show up. And I put Star Trek on in the corner of my screen and not program not do anything. I'd answer emails and make it seem like I was working. But I was too depressed. I didn't notice at the time again. I just felt horrible. So like why can't I do this? This all this stuff again, blaming myself.
+
+59
+00:43:11,300 --> 00:43:52,400
+And I would just watch Star Trek for weeks at time at work. That's all I could do. I couldn't I couldn't do the work. And I think some people might be like, well, that's like stealing and you can't do that. Like that's not right. But I I didn't know about any other option. To me, this seemed like what I had to do. I needed the paycheck. I had to pay bills, I had to survive. I needed food, right. So I would go and feel horrible sitting there trying to pretend like I was working. I was really watching Star Trek. And I would go home and watch Star Trek. That's all I did for those few weeks or whatever how long that period was.
+
+60
+00:43:53,030 --> 00:44:19,190
+And then I'd feel better. And I'd go back to work and really hard. You anyways, you can see how this pattern goes. But I drank lots of Mountain Dew. Yeah, and, you know, this, this, this is how it went. And it's also when I started to learn that not everyone is necessarily the same.
+
+61
+00:44:19,640 --> 00:44:47,270
+So it's when I met my my current partner and she pretty quickly was like your behavior is not what I would say is like normal or like I don't know, she's she would say normal but like, like this. I don't think all our people feel exactly the same as you I think you're imagining this. And I was like no way everyone feels exactly the same as me. They're just more capable. They're just have better willpower.
+
+62
+00:44:47,720 --> 00:45:11,630
+And eventually I was like, Okay, fine, maybe you're right. And this is when it actually when I actually started talking to like my doctor and stuff and when I Um, I ended up going to a psychiatrist and telling them basically my story, a lot of what told you here, and they're like, Well, this is like classic type two bipolar disorder.
+
+63
+00:45:11,690 --> 00:45:42,020
+And boy, that was, I was so strange. I feel like I'm like, What do you mean? Like it to me felt impossible. It just headed ingrained in me that everyone else feels the same way I do. Everyone else experiences the same thing. So it's like, does everyone have type two bipolar disorder? No. Yeah, so. So that was, yeah, I was about 22, I think. And I had that diagnosis.
+
+64
+00:45:42,050 --> 00:46:16,190
+And I was prescribed some medication. And this is where it gets, I think, really interesting, especially as it relates to work in the software, industry and everything. So this this job I had, at the time, I was still working at the startup. In hindsight, they were really great for me, they were really flexible. Nobody ever complained about my weird work habits other than one time, I remember, I don't know what I was thinking. But I was so excited about my code.
+
+65
+00:46:16,190 --> 00:46:56,450
+I was coding so fast, I wrote really terrible code, like all the variables were one letter. And it made sense to me at the time in my head, I don't know where, you know, maybe this was part of the the hypomania with the bipolar, like it all made sense. And it all worked. But somebody else saw this code, and oh, yeah, this company had no, we had no code review process, you just wrote code and pushed it live. There was almost no testing really just you just wrote code pushed it live, right. And so for the most part, nobody ever looked at your code, especially if it was like your area, like everyone had their area, you worked at your area. And so I would say, in general, I wrote good quality code.
+
+66
+00:46:56,450 --> 00:47:19,100
+But sometimes I wrote code like this when I was probably in hypomanic state. And somebody one time saw it. And my boss and the actually, the CEO, who also did a lot of programming was like, Yo, dude this ain't cool, you can't do this. So it's kind of like being on probation a little bit again. But I quickly, I don't know, did better, and it was fine.
+
+67
+00:47:19,000 --> 00:48:24,490
+And in hindsight, I was like, wow, they were really nice. They were really flexible. They had this sort of on, they call it unlimited, combined vacation sick policy. And I would take five to six weeks off a year, which I absolutely needed. I needed more, to be honest, to fit this pattern. But that's I didn't feel right, taking more technically, maybe I could have, but you know, it's one of those things where you don't want to be too far outside the bounds of normal, right. And so if nobody else has taken three weeks off a year, you're not going to take three or sorry, three months off the year, you're not going to take three months off a year too, right? So yeah, they were super flexible. And nobody really ever complained or said anything about my strange work habits. I don't know. They were definitely like, I don't really have anything but good stuff to say about how they were in relation to my mental health. I think they could.
+
+68
+00:48:25,300 --> 00:49:31,600
+Maybe if they saw what was going on, they could have actually helped me more. But I don't necessarily expect them to have, you know, like, if they were like, Oh, hey, do you need some more time off? Or do you need a different work environment like this wasn't? That's another part of it. This was an open office work environment, and I couldn't do any work. When everyone was in the office. I just it felt like I was being watched. I couldn't do any work. So yeah, that was extremely, extremely hard. So probably also why we would do most of my work at night when nobody was there. And they never I would have thought they would have picked up on some of this. They never said anything. Maybe they'd never noticed maybe I was good at hiding it. I don't know. So I'm not really gonna blame them for anything. But we there's definitely more more I'm gonna say about it. It wasn't all like this at all rather jobs. It was much much more difficult at some. But anyways, back to the diagnosis.
+
+69
+00:49:31,600 --> 00:50:06,040
+So I got diagnosed and prescribed some medication. And this was really interesting. So the medication I was prescribed. It seemed like what it did was basically flatline me. That's how I describe it. So I I still sometimes got depressed sometimes I'm still gotten maybe a little bit hypomanic. But for the most part, it just made me real constant.
+
+70
+00:50:06,340 --> 00:51:05,350
+And I was actually more able to do a nine to five and do regular work, I would go in and work like regular people, at least how it seemed like regular people worked. And this worked for a while it was, it feels in my head, when I think about that time. Doesn't feel great. It feels like it dulled all of my emotions. And so I was used to having these really high highs, you know, getting that program to work, making really awesome things in software, or software, or doing really, like, you know, hiking 30 miles and just doing awesome outdoor things. And just having these feelings of super exhilaration, these super high highs. That was gone. And it felt like part of me was gone, too.
+
+71
+00:51:07,000 --> 00:51:47,710
+It was just, I don't know, I felt all the time I started like, Yeah, whatever. I felt like I didn't have a lot of emotion in general. But I was able to survive it, let me survive. And if I didn't have this, I don't know where I would have been but not here, not now not doing this, I would not have survived in any sense that I know of, like, I was basically at the end of my rope at this point. So it enabled me to survive, I think I had to give up kind of my personality, which sucked. 
+
+72
+00:51:49,150 --> 00:52:26,440
+But apparently it was a drug that makes it so you can be a part of the capitalist machinery and go in and earn a company money every day from nine to five just like everyone else. And so I appreciate it in a sense, and, and I'm kind of talking about it negatively. But it's more just because that was the feeling it created and inside of me. But the reality is, it was a big deal in a positive way. Because it gave me space to start to deal with things. I was still really stressed about money because I had so much student loan debt.
+
+73
+00:52:28,450 --> 00:52:53,830
+But it wasn't enough. So it helped me do this nine to five for longer. Basically, I think it gave me another year or two. But eventually I burned myself out. And I quit that job. And I was like I'm starting another company, I'm doing another startup. And that experience didn't go as well as the first time.
+
+74
+00:52:54,160 --> 00:53:44,470
+I think I burned myself out way sooner before I really made a lot of other mistakes. I don't have time to talk about that, you know, here, but I was on the medication. And it helped. But it really wasn't enough. I still was in this pattern. It just wasn't as extreme. And I felt bad. I didn't feel like myself. And so I tried to start this company, it failed. And I got so depressed. And this was kind of this was definitely the darkest, one of the darkest, most difficult points in my life. So it was clear this company I was trying to start wasn't gonna work in I was so depressed, I couldn't even work on it. I just watched Star Trek. 
+
+75
+00:53:45,020 --> 00:54:28,430
+And I, you know, couldn't get out of bed. It was horrible. And I was out of money. So I'd saved up some money. Instead of paying off my student loan debt. I saved up some money so I could stop and try to build this thing. And it didn't go well. In my head. I was like, Well, I'm good at programming, I can just get another programming job. And this, this is something I really, really want to talk about because the sort of prevailing idea in the software industry seems to be that you can just get a programming job, anyone can just get a programming job. It's easy.
+
+76
+00:54:29,420 --> 00:55:16,670
+Well, I can tell you, it wasn't easy. I had years of real professional experience under my belt. I could show people things my portfolio I had done, but it took, I think nine months for me to get a job and I only got two offers in that entire time. And one of them Well, neither of them were very good. So it was horrible. That was It was one of the most difficult times of my life, I didn't have any money, I took out credit cards I lost, I racked up like, I think 40 or $50,000 in credit card debt on top of having $40,000 in student loan debt. 
+
+77
+00:55:17,360 --> 00:55:51,260
+And I just kept thinking like, well, these people get programming jobs in the Bay Area that pay like 150k a year, I should be able to just do that. Like, I should just be able to pick this stuff up. And I interviewed for these jobs. I had no problem getting interviews, I did so many interviews. 50-60, like, basically any place I ever applied to, they wanted to interview me. And I almost always I made it through a lot of the phone screens, most of them, but the in person ones after that I never got the position and thinking back on it. Honestly, I just think I was depressed.
+
+78
+00:55:51,650 --> 00:56:39,680
+Like, if somebody was interviewing me, I was probably like the most like, I don't know, like thinking about interviewing myself at a time is like, wow, I can see why nobody wanted to hire me. Like, I was very desperate, and very cautious. And I'm not good. So I mentioned this before, but I can't work when people watch me. And there, I've learned there is a reason for this. And we'll go we'll go into this, hopefully at some point. Later on. Once I discover why that is. But I can't work when people watch me. I just can't. I literally can't do it physically. I'm just like, Nope, can't do it, my body shuts down.
+
+79
+00:56:41,330 --> 00:57:05,060
+And so the interview process where everyone wants you to code on a whiteboard, I can't do it. I'd sit there and it's like a scribble some things by never do anything useful. And so it was easy to get an interview because people were like, wow, this person has good experience. Look at all the stuff they've done. But then they put me in front of a whiteboard. And it was like, wow, they suck. They don't even know how to do anything.
+
+80
+00:57:06,140 --> 00:57:58,370
+So yeah, we already Yeah, it's already well established, the whole interview process is horrible. But something I think people don't talk about is it's very discriminatory. It's horribly discriminatory. And, you know, Google and Facebook and stuff, have all these things like, oh, yeah, we're inclusive, blah, blah, blah, well, I can tell you what your interview process and the interview process that you've created for the industry, you know, you guys basically created this way of doing interviews, it is extremely discriminatory, it is not, it is absolutely going to filter out anyone like me who can't work very well when people are watching. And that's not for the most part, people aren't watching you do your job. So it doesn't mean you can't do a good job. But that's how the interview process goes.
+
+81
+00:57:58,790 --> 00:58:44,150
+And so I was lucky in that the job that I got before this, they didn't make me do that. I don't know why all I had was like a phone call. And they just asked me some questions that were really basic I already knew. And they hired me all these other jobs at this point, every single one of them was like do these coding exercises, and I couldn't do them. And if I was on my own time in front of my own computer, just doing it myself, I could have whipped it out no problem, but put me in front of someone, I can't do it right. In fact, the only two job offers I get got during that period, were the two companies that didn't make me do that. And so I ended up taking one of them.
+
+82
+00:58:44,840 --> 00:59:05,480
+And this is where I learned about another side of the software industry. I'll say that first job I had was very flexible and accommodating. And I think unusual. I don't think most now that I've had a number of jobs and talked to a number of people, I don't think that's normally how it goes.
+
+83
+00:59:05,990 --> 00:59:33,620
+And so I got this job. And it was immediately horrible. It didn't like oh my goodness. So they had a lot of policies and a lot of things that did not work well for me at all. So they were super strict about being there, essentially from eight till five.
+
+84
+00:59:35,250 --> 01:00:32,640
+You know, I couldn't do I had no flexibility so even though I was on this medication and it helped I still had some of these patterns and I you know, it wasn't like they were completely gone. I was more able to do this but not fully able to. And immediately within like two weeks I was already feeling so depressed at the Job, like a strict eight to five did not work for me at all. It was horrible. It'd be like, I'm not feeling productive right now. Why don't you let me work when I feel productive? Like what the? Yeah, what is wrong with you? Like, why does it matter what I do this like, it's not like we had meetings all day or like it, there was literally no reason for this than I can possibly think of, but they seem to really care about, you know, what I call button seat time, you know, they wanted to see you sitting in that seat, right?
+
+85
+01:00:33,360 --> 01:01:06,480
+It was horrible. It didn't. just didn't work for me at all. And to make it worse. The first job I was I was just salaried. And they never asked you to track your time or what you worked on, ever. That worked fine for me. In that sense. This one was the opposite. They wanted me to track everything I did, how long it was in, it felt like somebody was watching me. And so I couldn't work. I was like, Why? Why does this matter? Just let me get my work done.
+
+86
+01:01:06,660 --> 01:01:36,630
+And I remember even having a conversation with the CTO at this company. Again, it was another small company, but not a startup. They were well established. They'd been in the Bay Area since the early 80s. And they were I remember, they're like, oh, yeah, we're profitable. We're not a startup. We're just bootstrapped, profitable, we've been profitable for a lot of years, were a great work environment, good work life, balance all this stuff. And I was like, ah, sounds great. You know?
+
+87
+01:01:37,530 --> 01:02:27,900
+Anyways, I talked to the CTO and like, why the heck are you making me do this? Like, this doesn't work for me. And I was like, do you actually read these numbers? What do you do with this information. And it was very clear that they never actually look at the data. But they were very adamant that we had to record it. And this was totally a deal breaker for me. And the other part of this was the paid terrible. This job I was, so at my previous job, I started at 75k salary a year. But pretty quickly, I moved it up, I think I was making a one. I essentially like 150 K, by the time I left with some like stock benefits and stuff, they'd gotten acquired.
+
+88
+01:02:27,780 --> 01:03:19,110
+And anyways, this job was 80k, which was like dropping back so many years, it felt like, but also living in the Bay Area. It's not a lot. It's not, I'm certainly not completely broke, or anything, a lot of people make less, but living in the Bay Area is expensive. And this, you know, paying all my expenses while having like, I don't know, 75 100k in debt. I had no money leftover i and it took nine months to find that to even land this job. And so I felt completely trapped. It was it was so horrible. It was so bad. Like, every day was such a chore I hated going to work.
+
+89
+01:03:19,560 --> 01:04:13,080
+I-The funny thing is I loved the software. The software I got to work on was so cool. I loved the actual work. When I was able to work, which was I don't know, like three hours a week realistically, I got a lot done. And it was great. I liked the software. But the work environment was terrible. And I hated going into work. But I felt completely trapped like I needed. It was like, Well, what am I going to do spend another nine months to find another crappy job. You know? When you do that, I felt I felt trapped. I felt like that's where I was. And so yeah, it was, it was really hard. And this is where we even get into a story that is kind of hard to believe.
+
+90
+01:04:14,430 --> 01:04:34,950
+And I guess you know, we're getting long here. So I might think we're going to turn this into a two part episode. But before we get to that, I want to finish by telling a story and I don't know, I'm curious if other people have had a similar experience.
+
+91
+01:04:36,480 --> 01:05:06,750
+But the story is, I was struggling so much at this job and I had a therapist and a psychiatrist notes to them all the time and they were like, You seem like you need time off like you are ju-you seem quite depressed and the drugs are helping but not enough and in so they're like well good Have you will write you a note give you six weeks off, or however much you need to just recover and not worry about work.
+
+92
+01:05:07,290 --> 01:05:50,820
+And in California, this is absolutely a protected thing. If you need to take time off for medical reasons. This is perfectly fine. It's a, you know, protected situation, I don't know what you actually call it. But legally, you know, if you go into a job, at least this type of job and hand them a note saying, hey, I need to take time off for medical reasons. They don't have to pay you during this time, necessarily, but it's totally a thing you can do. And so they're like, yeah, we'll give you a note, the note doesn't have to say what the medical reasons are.
+
+93
+01:05:50,000 --> 01:06:44,930
+And that was important to me, because I didn't feel safe at this place. I didn't really trust my boss or the CTO with this information at all. Like they, I just didn't have a good feeling about it. And so they're like, Yeah, this will just say you need time off for medical reasons. And in California, you actually pay a small tax on your income, to cover medical disability. So in California, if you need time off for a medical reason, the state will actually pay part of your income. And so I was like, Wow, this sounds perfect, I can recover, I can just take the time off, I need to get over my burnout, or whatever it is. And I will still get enough money to survive. You know, I'm not really paying off my debt so much, but at least I can eat and pay rent and stuff.
+
+94
+01:06:46,220 --> 01:07:08,660
+And so I went into work, and I told my boss, I was like, Hey, I got this note, you know, I'm gonna, I need to take six weeks off, I'm sorry, but you know, just how it goes. And my boss was like, Okay, fine. And then, like, half hour later, the CTO comes over to my desk and says, Hey, can I talk to you? And I was like, Sure.
+
+95
+01:07:08,990 --> 01:07:47,930
+And so we go into his office. And this is still hard for me to tell. And he sits me down. And he's kind of like sitting up on his desk, you know, you know, start towering over me. And he's like, why do you need this time off? And unlike in my head, it's like, wait, what I thought in certain, at least in California, you are absolutely, absolutely not allowed to ask about people's medical conditions. This is this is absolutely. It is completely illegal to ask anyone specifics.
+
+96
+01:07:48,320 --> 01:08:40,580
+And so I was like, I need it for medical reasons. Were like, Yeah, I know that. What are the medical reasons? They straight up asked me, I was like, not at all prepared for that. I'm like, wait, what? You know, in my head, I'm just like, what, what's going on? But I felt trapped. I was like, I need this job. I can't lose this job. Like, I literally can't, I don't know what I would do. I need the income. And, and so I felt like I had to tell them, I did absolutely do not want to tell them. They absolutely should not have been asking me both for legal reasons. And I think common human courtesy, you don't ask people specifics about their medical conditions like this, especially in a position of power. This is my opinion. You know, even if it wasn't illegal, anyways.
+
+97
+01:08:40,580 --> 01:09:04,040
+So they were like, in so they asked me this, and I told them, I'm like, Well, I I have bipolar disorder, and I need the time off. And I thought in my head, okay, phew, I really didn't want to tell him that. But I guess I had to, and I'll just do what I got to do to get through this. But I'm sure that will be the end of it. That was not the end of it.
+
+98
+01:09:04,720 --> 01:09:24,820
+They, they seem to be getting very angry. And they were like raising their voice. And they're like, Well, what are you doing about it? And I was like, What do you mean, what am I doing about it? Like, what in the world is going on? You know, and they just started essentially yelling at me, like, what do you what do you take? Like, how are you dealing with? How are you treating it? 
+
+99
+01:09:24,820 --> 01:09:32,560
+You know, and I'm like, a medication. You know, I'm like, I don't want to tell him anything.
+
+100
+01:09:32,770 --> 01:10:14,170
+What medication What are you taking? And so they're like drilling me on it. And I felt like I had to tell them. So it still makes me feel horrible even recounting this experience, because it was so just seems so wrong from a human perspective, you know? But that's what I was. I told them and they were very angry with me, but I think legally they couldn't. You know, you can't fire somebody for that. You know that way. it'd be, like super bad. Like, you could absolutely sue them easily for that, I think. And so I think they knew that. And so they're just started pushing the boundary as far as it would go. 
+
+101
+01:10:14,200 --> 01:11:23,860
+And they ended up letting me letting me do it. But now it's hard, horrible. I never after that experience, it was like, Wow, do I never want to come in to work at this place again. That was horrible. And, yeah, so I'm, I'm really curious if, you know, again, I'm not asking for anyone's medical history. But if you're listening to this, and you've ever had a sort of experience like this with a workplace, pressuring you, in any sort of mental health, or not even mental health, but just health related stuff, I'd be really curious to hear if, you know, there were experiences like this, again, not pushing for any sort of personal information or details. Absolutely. But, you know, it's one of those things where I'm curious how unusual it is. And I suspect after having worked a number of jobs, that this is probably more on the extreme end. But I think a lot of places might tend more towards the way this company works versus the first one.
+
+102
+01:11:24,340 --> 01:11:53,590
+And I can tell you this, as someone struggling with these things, this type of response does-abs-it does the the opposite of what anything you could possibly be wanting, you know, if you want me to be a good worker, you know, supporting the things that I need to be a good worker is way more productive, they make me feel like crap, and making me feel like I suck at life, you know?
+
+103
+01:11:54,520 --> 01:12:31,600
+So, yeah, my advice, if you are ever in a position of power in these situations, you know, I think most people would be happy to be accommodating, you know, and work with you with whatever they're dealing with, to try to fit into the work environment. But if you are just trying to squash people, and, you know, make it seem like their problems aren't real problems, you're only making things worse for yourself, like, I'm not going to come back and be more ready to work in this type of environment.
+
+104
+01:12:31,630 --> 01:13:02,800
+You know, whereas if their response had been like, oh, yeah, take all the time you need whatever you need, we want to support you we want, you know, if it had been a supportive response, it would have been like, wow, okay, great. I actually, this is, you know, I don't love everything about this place, but at least they're supporting me here. And, you know, I'll, I'll come back and do my best work and do it, I can. And, you know, that is a, I think, a much better, much more productive response for everyone involved.
+
+105
+01:13:03,880 --> 01:13:49,330
+I do want to say, where I'm going to wrap up this episode, there's a lot more to the story, I'm going to do another episode and in, in the next episode, we'll actually get into things have gotten a lot better since then. And I've learned a lot. And I want to talk more about how this interacts with the software industry in general, I've been on. I've even been on the other side of that table when I was an engineering manager. So I want to talk about all that. We're definitely running too long for me today, to get into it. I'll try to try to do that as the next episode. So if you're interested, I'll have that.
+
+106
+01:13:50,350 --> 01:14:54,490
+But yeah, so sort of to to wrap things up with this and this current story. Yeah, I, I want to talk a little bit more about what I think is sort of underlying a lot of this. There's some personal reasons that I'm going to get into in the next episode about why these things I'm going to talk about are impacting me the way they are. But I think a lot of this is actually I traced a lot of it to capitalism, I'll be completely honest with you, I think the way in which people that are struggling with mental health, illness, and even probably a lot of the mental health illness comes from having to work in this capitalist system.
+
+107
+01:14:54,840 --> 01:15:19,830
+I've come to learn that while I might be unique and everyone is unique, I absolutely learned that not everyone's like me, not everyone feels the same as me. But everyone has their own unique struggles and their own unique, you know, differences, things that come easy to them things that are hard for them. And that does not fit in well, with capitalism.
+
+108
+01:15:20,160 --> 01:15:53,370
+You know, capitalism is looking to accumulate capital, the people with capital, you know, your bosses, the people that own the company, they, they're going to make money by having consistent output. Almost certainly, that is, that's, that's the way they look at it, they want, you know, a cog in the machine, they want to be able to just plug you in, they don't want to have to deal with all this, they don't want to have to deal with the human aspect.
+
+109
+01:15:53,400 --> 01:16:24,240
+And so my experience at this point is, if you are someone struggling with these mental health issues, the way that you participate in interact with society, is companies will take you in. But if you start struggling with this stuff, you're probably not going to start getting promoted as easily. And you may be on the chopping block, you know, sort of at the front of the line, when, when the company is not doing as well.
+
+110
+01:16:24,570 --> 01:17:16,650
+So the way I see it is capitalism traps you, you have to make money to pay rent, to eat food to exist in this society, you have to, if you want to be a part of the society, in any sort of normal way, you have to do this. But the way in which you do this, and especially in software, it, you know, working in a normal employee position. It's, it's a cog in the machine, as a programmer, you know, the boss, the owners, there is nothing that's going to make them more money than you being a cog in the machine, if they can pluck any programmer off the street, plug them into their machine, and have them write lines of code, produce things on a consistent basis, that's going to make them the most money.
+
+111
+01:17:16,740 --> 01:18:05,250
+And so it creates, I think, this system in which, if you aren't somebody that naturally fits well into that system, you're always going to be, you might get in, but you're gonna get kicked out, you know, you're gonna go in and out, it's gonna be a struggle. And I personally think a large source of this just comes down to capitalism. And the way capitalism works capital capital, is here to accumulate capital, capital doesn't care about your mental health issues. And it's not profitable to have, you know, like, the most profitable thing is if a company only hires people that don't have mental health issues.
+
+112
+01:18:05,940 --> 01:18:40,590
+And I think it's a little more complicated, because probably, at this point, everybody does, to some extent, in some way or another. I think, for reasons related to society again, but basically, minimizing that is going to be your most profitable thing. But there's a huge advantage to having essentially, I think of it as almost like a second class, a class of society, that they're not going to necessarily fit in this machine perfectly. But they're super useful still. 
+
+113
+01:18:40,590 --> 01:19:17,910
+Because, you know, when, when you do need more labor, you can pick them up for a while, and they can produce some output, but then when their output starts decreasing, you just get rid of them. And it basically keeps everyone else in line. You know, you see people that are struggling with depression or other mental illnesses that aren't able to hold down a job consistently. And you might want to leave your job, but you're like, Wow, no, I can't do that. Like, I gotta keep doing this, I got to make this money from my boss, you know, because otherwise, I'm gonna be like that person living on the street or whatever.
+
+114
+01:19:18,780 --> 01:19:33,870
+So, you know, I could probably talk about this a lot longer. But I feel like it's getting into a bit of a rant now. So I'll just say that, you know, if you hear me, you know, being critical of a capitalist system.
+
+115
+01:19:34,110 --> 01:20:05,490
+I think a lot of that is coming from this because my own life experience has shown me that it traps you you get trapped into this situation, and it makes the system money still. But it sucks. It's really hard. It's not enjoyable. Anyways, the wind is starting to pick up here and I've been going for a while. Stay tuned for The next episode, I have a lot more thoughts on this. And I think it'd be a lot more uplifting.
+
+116
+01:20:05,520 --> 01:20:26,820
+There's a lot more positive stuff in the second half of the story. But like always, I'd love to hear from you. And, you know, thank you so much for listening. I have no idea how useful this story is. But I feel like it's important to not ignore this type of thing. And so, here it is, here's the story.
+
+117
+01:20:26,820 --> 01:21:02,790
+Thank you so much for joining us. And I, you know, I want to say I hope you have a great day, and I do. But I also hope you have, you know, I hope you have a supportive day as well. You know, maybe it's not going to be a great day and maybe you're dealing with depression and somebody saying, Have a great day feels like you're being kicked, you know, it's like, I can't have a great day. I'm not feeling great. So I'll just leave you with this. I hope you have the day that you need to have. And yeah, take care. I'll see you later.
+
