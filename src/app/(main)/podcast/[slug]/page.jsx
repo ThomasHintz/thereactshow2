@@ -81,8 +81,8 @@ async function TranscriptWithPlayer({ episode }) {
         <p key={id}>
           <Player
             episode={episode}
-            startTime={parseTime(startTime) + chapterOffsets.find(([start]) => parseTime(startTime) > start)[1]}
-            endTime={parseTime(endTime) + chapterOffsets.find(([start]) => parseTime(startTime) > start)[1]} />
+            startTime={parseTime(startTime) + chapterOffsets.find(([start]) => parseTime(startTime) >= start)[1]}
+            endTime={parseTime(endTime) + chapterOffsets.find(([start]) => parseTime(startTime) >= start)[1]} />
           <strong><time>{humanTime(startTime)}</time></strong> {text}
         </p>
       ))}
