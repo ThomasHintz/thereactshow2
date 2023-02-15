@@ -198,7 +198,7 @@ export async function getEpisodes() {
                                   })
 
   const numEpisodes = feed.entries.length;
-  return feed.entries.map(
+  const feedEntries = feed.entries.map(
     ({ id, title, description, enclosure , published, content, chapters }, i) => ({
       num: numEpisodes - i,
       id,
@@ -214,7 +214,28 @@ export async function getEpisodes() {
         type: enclosure.type,
       }))[0],
     })
-  )
+  );
+  // Should be episodes not published yet so they aren't in the feed.
+  const missingEntries = Object.keys(episodeExtra).map((id) => id).filter((idFromExtra) => !feedEntries.find(({ id }) => id === idFromExtra));
+  console.log(missingEntries)
+  return process.env.NODE_ENV === 'development' ?
+         [...missingEntries.map((id, i) => ({
+            num: numEpisodes + missingEntries.length - i,
+            id,
+            title: `UNPUBLISHED: ${episodeExtra[id].slug}`,
+            published: 'Fri, 20 Jan 2023 07:00:00 -0800',
+            description: 'UNPUBLISHED',
+            content: 'UNPUBLISHED',
+            chapters: undefined,
+            slug: episodeExtra[id].slug,
+            transcript: episodeExtra[id]?.transcript,
+            audio: {
+              src: `https://pdcn.co/e/www.buzzsprout.com/1764837/${id.split('Buzzsprout-')[1]}.mp3`,
+              type: 'audio/mpeg',
+            },
+         })),
+          ...feedEntries]
+       : feedEntries;
 }
 
 export async function getEpisode({ episodeSlug }) {
