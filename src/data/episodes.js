@@ -8,7 +8,8 @@ export const PAGE_SIZE = 15;
 
 const episodeExtra = {
   'Buzzsprout-12260917': {
-    slug: 'my-secret-to-successfully-working-in-react-with-a-mental-illness-mental-illness-in-software-part-2'
+    slug: 'my-secret-to-successfully-working-in-react-with-a-mental-illness-mental-illness-in-software-part-2',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '081-mixed.srt')).toString())
   },
   'Buzzsprout-12258802': {
     slug: 'boss-what-meds-are-you-on-mental-illness-in-the-software-industry-part-1',
@@ -220,16 +221,16 @@ export async function getEpisodes() {
   console.log(missingEntries)
   return process.env.NODE_ENV === 'development' ?
          [...missingEntries.map((id, i) => ({
-            num: numEpisodes + missingEntries.length - i,
-            id,
-            title: `UNPUBLISHED: ${episodeExtra[id].slug}`,
-            published: 'Fri, 20 Jan 2023 07:00:00 -0800',
-            description: 'UNPUBLISHED',
-            content: 'UNPUBLISHED',
-            chapters: undefined,
-            slug: episodeExtra[id].slug,
-            transcript: episodeExtra[id]?.transcript,
-            audio: {
+           num: numEpisodes + missingEntries.length - i,
+           id,
+           title: `UNPUBLISHED: ${episodeExtra[id].slug}`,
+           published: 'Fri, 20 Jan 2023 07:00:00 -0800',
+           description: 'UNPUBLISHED',
+           content: 'UNPUBLISHED',
+           chapters: undefined,
+           slug: episodeExtra[id].slug,
+           transcript: episodeExtra[id]?.transcript,
+           audio: {
               src: `https://pdcn.co/e/www.buzzsprout.com/1764837/${id.split('Buzzsprout-')[1]}.mp3`,
               type: 'audio/mpeg',
             },

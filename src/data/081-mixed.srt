@@ -1,0 +1,420 @@
+1
+00:00:03,390 --> 00:00:06,960
+Thomas Hintz: And welcome to the React show!
+
+2
+00:00:08,010 --> 00:00:20,490
+Brought to you from occupied Kumeyaay and Cahuila territory by me, your host Thomas, and double Coffee Day, Episode 81.
+
+3
+00:00:20,000 --> 00:01:11,060
+When I was 22 years old, I was diagnosed with bipolar disorder, I had apparently experienced many years of depression and hypomania, but didn't know for a long time, I started telling this story in the previous episode, this is part two, the previous episode probably was kind of depressing. There wasn't a lot exciting going on, well, maybe exciting to the wrong choice of word. But, you know, wasn't a lot of hope. This episode, I think will be a lot different. There's a lot more hope. I've learned a lot. And I have a lot of thoughts too, on how it relates to the mental health in the software industry.
+
+4
+00:01:15,530 --> 00:01:42,170
+Thank you for joining us! So I mentioned in the intro is a double coffee morning, just you know, meaning I had twice as much coffee as normal. And the truth is, I'm still nervous a bit about telling the story. And caffeine seems to be one of those things that sort of calms the nerves for me a bit. So yeah, I guess add some extra.
+
+5
+00:01:42,170 --> 00:02:21,230
+And even though this is the second half of the story, and I already recorded the first half, it's not, you know, live yet, just just telling the story. You know, it's not easy. But like I said, in that episode, it's really important to me, and I've been wanting to do it for a long time. So, you know, regardless of my nerves, I'm going to tell the story, and I'm excited for for this episode, because, like I said, I think there's a lot more hope. And it'll probably be more of a discussion about, you know, mental health in the software industry. So I'm excited for that.
+
+6
+00:02:22,470 --> 00:03:18,540
+And as a quick recap, on the previous episode, I talked about sort of my life experience as it related to especially depression and hypomania being eventually being diagnosed with bipolar disorder when I was 22. And how a lot of this played into the jobs I had and the software industry, and sort of left things off on a pretty, you know, at least upsetting story to me, where I was essentially bullied by the CTO of a company into telling them personal medical information, I didn't want to tell them and didn't have to tell them. So that's, that's where we left off. If you want all the details, you know, definitely check out I think it's episode 80. So check that out.
+
+7
+00:03:19,680 --> 00:04:09,510
+But we're gonna jump into where we left off on the last one. So after this disastrous meeting, with the CTO, I felt like crap, it was horrible. Obviously, I hope nobody ever has to be in a situation like that. Absolutely. One of the worst experiences I've ever had. But after that, I did get some time off. And, you know, they didn't fire me. I kind of suspect they wanted to, but that would have been a step too far. Maybe for for them legally. So they didn't, they didn't fire me. And I think I took two months off.
+
+8
+00:04:09,540 --> 00:05:05,970
+And that actually was amazing. It's what I needed. And I knew it's what I needed. And I was able to come back and work for a while. It was still a struggle. I absolutely hated being there. You know, obviously having to see the CTO and on a regular basis. I mean, they're off-I saw him basically every day in It was horrible. I just I was like, Oh, I don't want to be here. But I, again felt very trapped financially. And since I had such a horrible experience, trying to find a job last time, I didn't like even that. That sounded so horrible. I just I couldn't do that either. And it's hard to I don't know if I fully explained how horrible that experience was but to be like, Yeah, I'm capable of doing these jobs.
+
+9
+00:05:05,970 --> 00:05:34,830
+And I know I could do a good job and my past job history, everyone has overall been very happy with my work to, you know, go through countless interviews and you know, be rejected countless times. It's just a miserable experience, while you're, you know, racking up debt. And it's, again, a situation, I hope nobody else ever has to go through. I'm sure other people do. 
+
+10
+00:05:34,920 --> 00:06:06,480
+And I know, I've talked to other people about the interview experience, and just how horrible it is for some people. And, yeah, so I felt like I was stuck between these hard places, you know, on the one hand, I had a job, and it sucked, I really hated it, it was extremely hard for me, I think, at the time, I estimated my productivity was only about 10% of my potential 10%.
+
+11
+00:06:07,080 --> 00:06:48,990
+And it wasn't for lack of trying, oh, boy, I tried so hard I, you know, I wanted to do, I always want to do a good job, I care. But when the environment doesn't, it doesn't work for me to do a good job, there's only so much I can do. And so I would say overall, I was only at probably, you know, 10, 20% of my productivity level, which was really frustrating. And I had countless conversations with my boss, with the CTO, even after this, about trying to come up with some accommodations that would allow me to be more productive. I just wanted to be able to, you know, come to work and be productive.
+
+12
+00:06:49,260 --> 00:07:26,220
+And they were not into it. Like they were like not this is the way we do things is the way we've done things. You just this is how it works. It works for us, why doesn't it work for you? That's essentially what I heard over and over again. And it's so frustrating, because I'm like, I know what works for me, I know, a more flexible work environment works. And I would produce way more for you, I would be able to do such a better job, you'd get so much out of more out of me for the money. They, they were not into that. And that was extremely frustrating.
+
+13
+00:07:27,150 --> 00:07:51,540
+So I had that time off. That helped a lot. I came back. I think I was there for like another year. And I had another medical leave. And that time after I just it was so hard that job just rode me into the ground. So quickly, I burned out so quickly because the work environment didn't work for me at all. And so I couldn't go for very long.
+
+14
+00:07:53,010 --> 00:08:24,120
+And it was really interesting, because when they originally hired me, they made a big deal out of the fact that they had been doing this for like 30 years, they had a lot of money in the bank. They-they were set. They were like, Oh, if there's a downturn in the industry, we're ready. We got we're, we're good. We're not like the startups that you know, hire and fire fast, right? If we hire people, it's very intentional. And you know, you're around.
+
+15
+00:08:24,480 --> 00:09:25,950
+Well, anyways, all that being said, after I'd been there, maybe another year, they laid off me and another person who had been there, they weren't an engineer, they were there. They had been there for, I think 10 years. So, you know, I was definitely lowest when it came to the engineers in terms of productivity, although, I think in fairness, I was more than productive for the small amount they were paying me. So I don't think I was like, taking advantage of them in any possible way. But yeah, so they did let go. Because other person that as far as I know, you know, wasn't also having some issues similar to this or whatever. So it's, so what they told me was, oh, yeah, we lost this big contract and times are tight. And I'm just sitting here thinking like what the heck you told me like, you are good, you didn't have this problem.
+
+16
+00:09:27,480 --> 00:09:59,610
+And in this was a pretty big, I think learning moment for me, which we'll come back in into the story later. But just the fact that even if you're an employee, I've learned both in this instance, other instances looking back at my other jobs, at least in the US. It doesn't really, it doesn't really mean a whole lot. You can you can get fired with essentially two weeks.
+
+17
+00:10:00,200 --> 00:10:43,550
+California has slightly more protections. But in general, you can pretty easily get fired anytime the company decides they don't like you or, you know, they don't want to, they want more money for the boss, you know, whatever it happens to be. They can, they can totally do it, it might seem like being an employee gives you extra protections, it's going to keep you on longer I've learned since it really doesn't mean that much, at least in my opinion, my experience, and it sucks, because in the US, an employee position comes with your health insurance.
+
+18
+00:10:43,580 --> 00:11:03,470
+And for me, that was super important because I used it heavily due to like, so I would see my psychiatrist regularly had medication, I'd see a therapist. So I needed health insurance, right. And it was tied to a job. So anyways, back to the story, they laid off me this other person.
+
+19
+00:11:04,010 --> 00:12:15,470
+And it Yeah, I wasn't that upset, obviously, like I hated the job, it was like, All right, I guess, I guess it's time, gotta do gotta find another job or whatever, I didn't have barely any, I didn't really have any savings, because the amount they paid me for living, you know, compared to living expenses in the Bay Area, I was barely able to pay my rent of like 1700 a month, and food and in just the necessities, like I wasn't really paying off any of the credit card debt that I had taken out when I was trying to get this job. So I wasn't in a great position financially, but they were nice enough to give me I think it was a month and a half of severance, and like a month of health insurance. So between that and the little bit of savings I had, I think I had about two months of like, that I could go before I was out of out of money.
+
+20
+00:12:15,980 --> 00:12:52,970
+And but my insurance, I think was only for like a month. And so that was definitely the biggest thing was like, What am I going to do? I don't, I'm not going to have insurance after this period of time. And there's this program called Cobra in the US where if you lose your job, you can keep your insurance. But the catch is, you have to pay for this insurance, whatever your company used to be paying. And so I think in this case, it was like seven, eight, I think was like $800 a month. I'm like, Where would I get $800 a month to pay for health insurance like, what the heck you know, this doesn't help me. 
+
+21
+00:12:54,770 --> 00:13:36,920
+Luckily, again, in California, there is better benefits because of extra taxes you pay. And so part of that is if you lose your job, you can go on MediCal. So MediCal is basically state subsidized health insurance if you don't make enough money. So throughout this entire thing, I will say this, I was so happy I was in California, when I looked at some of the other places I could have been, not only would I not have been able to take that medical time off that I absolutely needed, I had no choice I had to take it, you know, if I would have taken that I wouldn't have had an income. So I couldn't take it.
+
+22
+00:13:37,140 --> 00:14:33,600
+California I had that, like freedom that that made. I mean, that seriously. Gave me a lifeline that if I didn't have I don't know how I would have survived. And again, losing this job. It was like, Okay, I can't have the same insurance I had and MediCal is nothing great. It's not, you know, I think it's great. They offer it, and you don't have to pay essentially anything if you're not making anything. So that's fantastic. It's not amazing. So I was like, Okay, this is not ideal, but at least I will know I can keep my health insurance because I'm in California. And I could also get a small amount for unemployment, which again, was higher being in California. So all this being said, I think I could stretch it for maybe three months.
+
+23
+00:14:33,690 --> 00:15:12,090
+And so I was like, Okay, what do I do now? And at this point, I think it I'll tie it into some more of the mental health side of things. So being on the medication, allowed me to somewhat have a less extreme, you know, cycles through things so I could sort of participate in society. Add monetarily, you know, in a job in a more traditional manner. And the big advantage to this was it allowed me to do therapy and things like that on a regular basis.
+
+24
+00:15:12,090 --> 00:15:53,310
+And to be honest, the the therapy I started with, like, you know, bless my therapist's heart she was, she was great. But it wasn't amazingly helpful. But what came out of it that was amazingly helpful was just a having support, you know, someone to talk to and, and be supportive, and actually listen to me and be like, oh, yeah, I understand you're, you're, everyone's body is different. Your experience is not the same as everyone else's. And having that confirmation on a continual basis was huge.
+
+25
+00:15:53,000 --> 00:17:09,260
+For me, it was like, okay, all right. It's not about willpower, you know, it's not about the self help stuff. It's about just, it's just who I am. And this was really a fundamental shift in the way I was thinking, it was like, Okay, I used to think there's something wrong with me all the time. Like, other people are just like me, but they can do more than me, they can do things more regularly than me. And now, it was like, Oh, okay. Everyone's experience is different. Everyone has different capabilities. And I, I probably have capabilities other people don't have, but I clearly don't have some of these capabilities around fitting into the, the capitalist cog in the machine, be a programmer like that, you know, being an employee at a company that that doesn't work for me, I was finally starting to acknowledge, like, hey, it's not, it's not something with me it that I'm doing wrong, it's just who I am. It's just, it's something unique about me. And, and I learned through this, everyone's unique, everyone has their own experiences.
+
+26
+00:17:09,290 --> 00:17:51,380
+And I also learned through going to, like support groups and stuff, that I wasn't alone. And that was huge, too. It was like, not like everyone's story is different. And so I'm sure you know, people listening to to this, you know, I definitely don't mean to be like, Oh, I'm unique. And you guys are all like, if you're able to do this and do your regular job, you're, you're all the same. No, I've learned that everyone has struggles, and a lot of people have struggles with depression, even if they are able to reach this sort of baseline at a job that I really wasn't able to do. That doesn't mean that they don't have struggles.
+
+27
+00:17:51,440 --> 00:18:02,030
+And yeah, so anyways, that being said, this was eye opening for me. And this ties into what I did next.
+
+28
+00:18:02,000 --> 00:19:11,720
+And so I was like, Okay, I have maybe three months of living expenses. And unlike the time I dropped out of college to create my first app, where I didn't pay rent for six months. I had much higher rent this time, it was like $1,700 a month. It's just, that's what it's like living in the Bay Area. And I was pretty sure this landlord wasn't going to let me not pay for six months or something like that, you know, they were going to be much more traditional, and hey, you haven't paid your rent, you have to leave type of thing. So I was feeling like I was staring down the barrel of I got three months to get not just get something but have more money in my bank account. You know, because anytime, even if you get a job, it takes time for that, you know, money to actually you don't get money the day you start. And so I was essentially looking at, okay, in within two months, I need something.
+
+29
+00:19:12,710 --> 00:19:53,630
+And it was like, alright, initially, the thought was alright, I guess I gotta go do this whole interview gauntlet. And that was like, I was just like, I don't know how I'm going to do this. Like, maybe I'll get something in two months, but like, how do I know what if it takes me eight months? I don't. I can't take out more credit card debt. I've filled up my credit cards years ago. I don't I don't have any other options. Like if it takes more than two months. I'm I'm done. Like I know I do, you know, so.
+
+30
+00:19:56,480 --> 00:20:43,910
+So that was that was hard. It's just this You know, you're staring down this and you're like, I don't know, I don't have any other options. What do I do? And this is when I started thinking more about what I had been learning about myself and through the therapy and stuff. And that was, I need to find something that works for me. And I thought, okay, so I could look for a job, and just upfront, try to better communicate the type of work environment that I need. And I was like, okay, that could work. But if I'm, like, just trying to get anything, and this is definitely going to scale back the number of positions that I could take, because I know a lot of them wouldn't work for me.
+
+31
+00:20:44,420 --> 00:21:05,660
+And I was like, okay, that's, that's only going to make things harder, right? Yeah, that was, I didn't really see good way through that. But then I had this idea, I was like, Well, what if there's another way I can work, that will give me more control.
+
+32
+00:21:06,230 --> 00:21:35,090
+So when you're an employee, at least in the US, where I have experience, more or less, the employer owns you. So I've learned over the years that technically, you know, for medical reasons, they kind of have to give you some what are called accommodations. And a good I think a good employer would be happy to work with each individual employee to help them be as productive as they can be.
+
+33
+00:21:35,600 --> 00:22:26,000
+I think, for reasons I discussed in the sort of capitalism addendum I had on the last episode, I think this often is not a priority for employers, they'd rather just get rid of you and find somebody that fits into the machine better, that's cheaper for them. It Well, seems cheaper or easier. I think there's other reasons, I don't necessarily think it is always going to be cheaper for them. But that's, that's how it goes. So anyways, my experience with employers is, sometimes they might go out of their way to help you and try to be accommodating. But it seems pretty limited in my experience, and I'm sure there are some employers out there that are a lot more flexible and willing to do this.
+
+34
+00:22:26,270 --> 00:23:07,490
+But my overall experience is the vast majority, they have their way of doing things. And it's just about how well do you fit into that way of doing things, they're not going to be very good at being flexible. And so the first place I worked, it just kind of happened, I don't know how I just got lucky, I suppose that their more extreme natural flexibility worked better for me. But I learned over time and in different jobs, it's just not how all of them are. And even then in that job, I did learn that, you know, their, their flexibility beyond that was not really there either.
+
+35
+00:23:07,520 --> 00:23:49,670
+Basically, companies have their way of doing things. And if you don't fit into that, they don't really care, they're not going to probably go out of their way to do much to help you. And so I'm like, okay, ultimately, it seems like at least in the US, right? Again, like where I've experienced and employer essentially owns you, they get to dictate how you work. And you don't have much influence on that. I think a lot of it comes down to they have a lot of power over you. Especially in the US with health insurance, you know, and other benefits. It's like, it's a kind of a pain that you got to go through a lot of to get hired.
+
+36
+00:23:49,670 --> 00:24:43,040
+And so they know that and part of the the power that they exercise over you as they dictate how you work, the work environment, you know, you're working in an open office, it doesn't matter if that doesn't work for you, if that's how they do things. It's what you're doing. You know, that's that's how it is. And so I thought, I wonder if there's some way that I can sort of flip this on its head, if there's a job or a way of working, that gives me more control and more power over my work because I realized if I had that I could create the type of work environment that allowed me to be as productive as I could be. 
+
+37
+00:24:44,110 --> 00:25:15,520
+And so some of you may have guessed where I'm heading with this, but if you haven't, I started thinking about doing contract work instead of being an employee. So the This, this was in hindsight, super kind of I don't know if I'd call it brilliant, you know, it's not like, people haven't thought of this before. But pretty, pretty big idea in my head.
+
+38
+00:25:15,520 --> 00:26:02,800
+And. But it was also like, while I haven't done contract work before, I don't like how long is it going to take for me to find contract work? I don't know. Can you do that in two months? There was a lot of things I didn't know a lot of questions I had, I didn't, I honestly didn't know anything about it. But what it did seem like was, if I am doing contract work, I can dictate to the client the way in which I am going to work. And if they value my services, then you know, in my output, then it shouldn't matter so much.
+
+39
+00:26:02,000 --> 00:27:25,730
+But I was like, No, I'm going into this. And I have no idea if this is going to work, I have two months to figure this out. But I am going to try to go into this with the attitude of I will give you what you need, and I will be accommodating to your work style, but ultimately, if you want my services, you're also going to be accommodating to the way that I work.
+
+40
+00:26:02,790 --> 00:27:01,320
+And I think this was the this is the big difference between being an employee, being a contractor, I know contractors that don't necessarily have this mentality to have more of like, I'm an employee mentality. But for me, contract work flips this power equation a bit, maybe not fully, but a bit on its head. So what I I eventually found was that doing contract work, it's a lot more about your, your ultimate productivity, what you do, it's less about having your butt in the seat, and especially because I went into this being like, I'm only doing fully remote work. So you know, that can they can still absolutely do butt-in-seat type of thing, you know, are you on Slack is that green button lit up between these hours or whatever, that's absolutely still a thing.
+
+41
+00:27:26,270 --> 00:27:52,310
+And so, yeah, I decided to go down this path. And if you're curious about, you know, I've talked about this before in the past, you know, React and in why I ended up doing React. But this was kind of that that point where I had to decide it was like, What am I going to do contract work in and, and I thought about it a lot.
+
+42
+00:27:52,340 --> 00:28:08,690
+And I researched a lot. And it was like sort of the difference between hiring an employee and a contract position like this is, it seems like people looking for contract work, are looking for solutions to problems.
+
+43
+00:28:09,050 --> 00:28:57,200
+So they have a web application or a website, or maybe they don't even have that, but they want to sell something or whatever they want to solve some problem, they're a business person, they want to solve a problem. So they want to bring you in to solve that problem. Right. And that's a little bit different than I think, I think employee positions are kind of like that. But there's also this sort of, we're looking for to bring somebody in kind of more long term, that's sort of the framing at least. And we want somebody that can do like, basically do whatever we throw on their plate, that seems to be my experiences, you know, you're an employee, you do what gets thrown on your plate, whereas as a contract worker, it's more like, Hey, can you solve my immediate problem.
+
+44
+00:28:57,650 --> 00:29:18,890
+And a lot of times, I have since learned that if you solve their immediate problem, they have many similar problems. And, you know, they want to keep you on and, and keep solving more problems for them. But it's a different sort of framing on things. And so I realized that and I was like, okay, so if I go out there, and I'm like, Yeah, I can do anything.
+
+45
+00:29:18,890 --> 00:30:09,680
+And, you know, my, my experience was kind of like that, you know, being a jack of all trades, you know, whether you wanted somebody to write a new programming language for you, or a new compiler, or a new operating system, or make a web application, or make a web browser library, like I had experienced with so many things a desktop application, I could basically do anything. And I had experience with, like, deep experience with so many languages from Java to Lisp, Java Script, Perl, C Python, like I had experienced, you know, small talk. I mean, I could do basically anything thing I knew that at this point, but I also realized that that is not attractive to somebody looking for contract work.
+
+46
+00:30:11,360 --> 00:30:52,310
+Like I always try to get in other people's minds, you know, and I'm like, okay, if I'm the CEO of some small business, and I don't know, I'm selling, I want to sell something. So I want some sort of E commerce site. I want somebody that's like, yeah, I can build you an E commerce site, and I'm really good at it. And this is my experience doing that. That's what I would be interested in. If I found somebody that I was like, oh, yeah, I can I have experienced with everything, and I kind of do everything. I'm not gonna look at them and be like, oh, yeah, they're the solution to my problem. I'm gonna look at that and be like, Oh, I mean, maybe they are, but like, they just seem like everyone else, you know.
+
+47
+00:30:53,300 --> 00:31:31,910
+And so I was like, Okay, I think I need to specialize, like specialization seems like a pretty big key to effectively getting contract work. And I was like, Okay, what do I specialize in? And naturally, the job I had come from was in Common Lisp. And I love Lisp. But you know, if you listen to this show at all, you know, I do love lisp. And I write a lot of stuff in Lisp. And so I was like, Okay, I could do lisp. And I know there's contract work available for lisp.
+
+48
+00:31:33,470 --> 00:32:17,360
+But the kicker was, I had two months. In I already knew from experience that while yes, there is Lisp contract work, the market is not very big. And so that is both, I think, an advantage and a disadvantage. So the advantage is, if somebody is looking for somebody to Lisp contract work, I would be a great candidate like, and if I was able to find them in those two months, there's a good chance they would hire me, I think. But I was like, Is there enough work? And would I be able to find it within that period of time? And I wasn't convinced I would, maybe I would have, I don't know, it seemed a lot less definite.
+
+49
+00:32:17,510 --> 00:32:53,120
+And so I was like, Okay, what do I specialize in? And I was like, Well, I'm good at web development. I've been doing web development in some fashion for 15 years, you know? So, but I didn't know React, and I was doing a lot of research. And I'm like, Wow, a lot of people seem to be hiring for people to do React. So I decided, Alright, I'm gonna do, I have no idea if this is gonna work, I have two months to pull this off, I got to do. I'm gonna do contract work. I don't know, React, I'm going to learn React, and I'm gonna tell people I'm really good at it.
+
+50
+00:32:53,810 --> 00:33:32,660
+And not not in the sense that I'm gonna lie about it. Like, I am going to be really good at it. Like, I knew I could get really good at it. I looked over the docs and like, okay, yeah, it's, you know, functional reactive programming. And it has these qualities. And I already know all the concepts. Basically, I just need to learn some, some nuances and whatever. So I was like, Yeah, I'm confident I could be really good at this and build really good React applications for people, but I don't know it. And so, within those two months, I set out and made a website, Thomas Hintz consulting i think.com, or something.
+
+51
+00:33:32,660 --> 00:33:54,710
+And I put on it. Yeah, I'm the React expert. And I just started applying to things and at the same time, teaching myself React. And, yeah, so anyways, in the interest of time, in the sense that we're focusing more on mental health here, I'll skip to some of the more relevant parts of that now.
+
+52
+00:33:54,710 --> 00:34:20,870
+So I actually did get a gig. It was just one week. Basically, I found this place. They're like, yeah, we would like to try out contractors for one week. And if that goes, well, we'll continue with you in a larger fashion. And I negotiated $4,500 for I think it was four days of work.
+
+53
+00:34:21,980 --> 00:35:00,290
+So yeah, I forgot to mention going into this. I decided, part of what I needed to do this sustainably was not work like 40 hours a week, I know just isn't sustainable for me. I can, I think be as productive as a lot of people are in 40 hours, I can be just as productive in you know, 25, 30 hours. And so I was like, Alright, I know right up front. I'm not going to do this five days a week. That's not my goal. I know it's not sustainable. For I'm going to do this. I'm going to try to make it work better for me.
+
+54
+00:35:01,130 --> 00:35:27,050
+So I went into this and I said, I will do four days of work, I don't track my time, I'm just gonna give you four days of output. You know, that might take me two hours, if I'm super productive. It might take me 20 hours if I'm not. Or if I get stuck on something. And I was very upfront with them was like, Yeah, this is how I work. But I do good work. I produce good stuff. And so yeah, we, we did that.
+
+55
+00:35:27,050 --> 00:36:03,740
+And I got, and I even got them to give me 50% up front, which was obviously very important in this situation, because it was right at the end of this, like two months, and I had no money left. And I did it and they were very happy with me. And, and I got paid. And it. It, I'm almost like, honestly, I think I'm basically crying at this point. Because like, literally, as I tell this story, because this was such a big deal. It was like it proved that I could do something that worked for me.
+
+56
+00:36:03,960 --> 00:37:11,490
+And it completely changed my life. Completely changed it. So it was not like, all right. There is another way of working a way of working, where I can dictate the the working environment to some extent. And people, they were so happy with my work. And that week, they were like, Oh, wow, you're the best. Like, we'd love to have you do more. Right? And it was like, wow, this is awesome. Like, I did good work. I enjoyed it. It feels like I could do this sustainably. All of this right. And yeah, sorry, I'm just just pausing because like, this was so huge for me. And it was also just huge. In the the mental understanding of like, now Now I get it. It's not about, like, I think this might have been related more to my upbringing, and in sort of my life and my perspective on things, but I hadn't really taken this approach before where it's like, no, I'm gonna make things work.
+
+57
+00:37:11,000 --> 00:37:41,600
+For me, it was always my, my entire life had been how do I fit in to whatever somebody else is presenting. So anytime anything happens, you know, I'm like, I was like, the first person to apologize, even if it wasn't my fault. You know, just be like, I'm so sorry. And bending over backwards to make things work for other people. And this, I think, was horrible for me, because I wasn't taking care of myself.
+
+58
+00:37:41,660 --> 00:38:12,410
+And if you're not taking care of yourself, you can't actually help other people. And so not only was I failing at being accommodating to other people, I was failing myself. And so this experience just taught me like, Okay, take care of myself, do what works for me, and then match that up with if it's possible, some part of the economy that's looking for that. And this was absolutely groundbreaking. This completely changed my life.
+
+59
+00:38:14,330 --> 00:38:48,500
+That so to continue that story. That client was like, okay, yeah, we love you, we want to bring you on a monthly basis, sort of under the same terms, same rate, you know, and I was like, wow, this is fantastic. Like, I was so excited. And we almost got there starting the paperwork. And then they were like, actually, we just decided that we're gonna, like, reallocate resources. And we're not going to continue with any of our programmers.
+
+60
+00:38:50,310 --> 00:39:26,160
+Yeah, I don't really know what happened. But essentially, all of the, the people that had been working for them for a while, they stopped and they're like, Yeah, we might bring you on later. But we've decided to just pause everything. And so that that fell through, but that, you know, $4,500 gave me I couldn't make that stretch, you know, with the other stuff, maybe two more months, at the most and so it's like, okay, wow, it was like this confidence boost, like, okay, I can do this, I can get this work. I can make things work for me.
+
+61
+00:39:26,550 --> 00:40:03,120
+And, and that's what I did. I continued to just keep honing in on that. During this time, that's when I, I was writing foundations of high performance react. I was like, I'm gonna I spend some of my time looking for work, but I can't, I just can't do that all the time. That's just like soul sucking work. So, again, I was like, Alright, I'm not going to force myself to do something that doesn't work for me. And so I would take someone like I would do that while I could. And then As I was, you know, I didn't want to burn myself out.
+
+62
+00:40:03,120 --> 00:40:24,900
+So I was like, Okay, I'll, I'll spend time applying for things looking for work for part of the time. Then the other part of the time, I'll do some programming, I made some React projects. But I also was working on this book, I was like, I love writing, I love teaching. And what better way to convey that you're an expert in something that if you write a book, you know, so, so that was my thinking.
+
+63
+00:40:25,530 --> 00:40:38,430
+And so during this time, I didn't have like, consistent contract work. But I was starting to pick stuff up, and I'd get things here and there. And it worked extremely well, for me.
+
+64
+00:40:39,870 --> 00:41:18,930
+But now, before we sort of go into more of the, my higher level thoughts on all of this, I do want to touch on one other thing, and something that I learned in all of this, and I think something my therapist has started picking up on was, you know, she started saying, like, I don't think I'm really qualified. I'm not really trained for this, but I think you might have an issue with trauma. And, and that was sort of like trauma, like, What do you mean, I thought this was bipolar?
+
+65
+00:41:19,830 --> 00:41:51,090
+And, you know, she wasn't like, Oh, you don't have bipolar and, or anything, but she's like, a lot of your responses to things seem like trauma responses. So where I talked about, like, Oh, if I feel like somebody's watching me, I can't work. So an open office environment or an interview, where somebody's watching me write on a whiteboard, that type of thing. I my brain shuts down, I can't do it. And my therapist is like, that sounds like a trauma response to me.
+
+66
+00:41:51,360 --> 00:42:34,740
+And I was like, really interesting. And so this is gonna be, this is definitely the hardest thing for me to talk about. So I guess bear with me a little bit here. But um, yeah, so. So I started exploring this. And my therapist was like, yeah, some of the things you've told me about your childhood sound like they might, might be the cause of this. And until this point, I had never considered such a thing. Again, I had always thought my childhood is like everyone else was childhood.
+
+67
+00:42:35,940 --> 00:43:06,450
+Why would it be any different? I, you know, like, I never considered that it might be different than other people's, you know, not all I know, everyone has their own unique childhood and their own struggles and their their own things they carry through with that, well, I eventually, I was so thankful. But I was making enough money from the contract work, that I could seek out my own health in this area.
+
+68
+00:43:06,450 --> 00:43:31,410
+So the existing medical system there, I tried some of the stuff related to trauma, but it wasn't very helpful. It was very, like clinical. And I didn't, it was sort of like all strategy based. I didn't feel like it was really solving anything. But I had a friend that was like, you should check out this thing called NVC nonviolent communication.
+
+69
+00:43:31,440 --> 00:43:59,310
+And I was like, Well, what is that? I didn't really know anything about it. But my friends like yeah, a lot of it is about how to sort of learn about your your trauma past in a non violent way, and respond to yourself in a non violent way and learn how to deal with it in a non violent way. And I was like, I don't know, I don't really get it. But hey, I'm willing to try anything, you know.
+
+70
+00:44:00,090 --> 00:44:27,390
+And so I started working with a nonviolent communication counselor and started looking at my especially my childhood, and I, you know, have since learned this is actually the source of a lot of my struggles. So I, you know, I never thought about this apparently.
+
+71
+00:44:28,140 --> 00:45:16,980
+Now, I know, this is a big deal, but from middle school and basically Middle School in high school. I wasn't allowed to eat dinner. I don't know 50% of the time, 75% of the time, and a lot of other meals. So my, my parents, especially my dad, one of their way, one of the ways they would punish people is not letting them eat, which You know, now I know is a thing you should never do to children. It, it creates a you know, it's created a lot of trauma for me, it's a big part of why I've struggled with a lot of this.
+
+72
+00:45:18,480 --> 00:45:53,370
+But it goes a lot deeper, there's a lot more what I, you know what, what you would probably call emotional abuse and physical abuse. And I won't go into all the details, but sort of the the learnings that I've had from that is that, you know, me wanting to run away from situations me freezing up in situations, and not being able to work in these work environments is more related to trauma that I've experienced, especially as a child.
+
+73
+00:45:54,720 --> 00:46:17,010
+So the contract work allowed me to start exploring these things, I don't know how I would have done this, if I was still at an employee position that wasn't working for me something that was five days a week, and all the normal type stuff.
+
+74
+00:46:17,010 --> 00:46:46,440
+And I know there's other things, but the start of general standard is there's a way of working a lot of times Open Office or, you know, you're expected to be on slack between these hours and respond to things and blah, blah, blah, like, if you've been in this industry, you know, sort of the general way of working. And when I was in that, I didn't have the mental space to even process all this trauma stuff.
+
+75
+00:46:46,500 --> 00:47:14,280
+And so like, like just getting through the day took all of my mental energy, I would come home and not be able to do much else because just trying to survive took all my energy. So getting into this contract, and making it more about finding things that work for me, enabled me to start working on fundamentally understanding why was responding that this way to things.
+
+76
+00:47:14,280 --> 00:48:02,250
+And the really awesome part about all of this is it's taken, you know, years of work, but I've been able to work through a lot of this. And now, I am actually able to thrive almost in situations that I used to freeze up in. So I still struggle with people watching me work. You know, this, definitely, I won't go into all the stories here, but definitely a trauma response from childhood where, you know, something similar happened. And there were bad consequences for me. So as as a child, my response was to shut down. And that was a survival response that I had to do as a child to survive my childhood.
+
+77
+00:48:03,780 --> 00:48:37,230
+But I've learned that doesn't serve me as well anymore, for the most part, and my body is much more able to do well in those situations than it used to. So whereas in the past a lot of these work situations that I couldn't handle, they're still definitely not easy for me, but I'm much more able to handle them. And it's not related to the medication or anything like that. It's all about just slowly working through all this trauma.
+
+78
+00:48:37,320 --> 00:49:09,060
+And again, I guess the point that I want to emphasize, in terms of software in the industry, and all of this was it was more about giving myself the space to be able to process this information. Like, even if I tried to do this, you know, five years earlier, when I was in these really difficult positions for me, I don't think it would have worked. I just didn't have the mental energy. Not and it didn't have the money either.
+
+79
+00:49:10,560 --> 00:49:41,910
+But yeah, the the great part is I've been doing contract work for quite a while now. And I've been able to pay off all of my debts. And this that that's I think the other side of this equation, so it was still really hard. This contract work was still pretty stressful, especially initially because I didn't have really money in the bank and as a contractor that's doesn't put you in a position of power. 
+
+80
+00:49:41,000 --> 00:50:29,480
+So you really have a lot more power as a contractor if you can walk away from things. What I have found is that usually you don't end up having to, but if you can tell people Yeah. Hey, you. I think it needs to be done this way. And this is the way I work. If I don't Don't work for you, that's fine, it's mutual, I'll go do something else. You can do that if you have money in the bank, you know, initially I didn't. But I knew that that's how I had to grab that power. And so even though I didn't have money in the bank, there are situations where I'm like, yeah, if this doesn't work for you, that's fine. No big deal, I'll go find something else. And I'm sure you'll find somebody that works better for you. And I have some friends I can recommend to you.
+
+81
+00:50:29,480 --> 00:51:00,890
+And, you know, I had to have those conversations when I didn't have any money. And that's hard. Well, that's really hard. I guess I somehow did it. So fundamentally, having having money in the bank is, I think, not just super important as a contractor. But also as an employee, you can walk away from a bad employee position, if you have money in the bank, and you can go for a while looking for a new job.
+
+82
+00:51:01,430 --> 00:51:35,990
+The reason why I was trapped in some of my other positions is because I didn't have money. And so yeah, the, the other fundamental thing that has made my life so much better, is just not being completely broke. I have been able to pay off my debt, and I don't have a lot of money, I am not rich, like I always imagined I would be, I can't really go that long without contract work. But I can go long enough that I can walk away from things, and it's not the end of the world.
+
+83
+00:51:36,770 --> 00:51:59,000
+And this is fundamentally improved my mental health between this and you know, sort of the other part I was talking about, you know, flip, flipping that power equation and finding things that work for me, these two things together have completely changed my life, they've made it so I can have a healthy, happy, enjoyable life.
+
+84
+00:52:00,380 --> 00:52:45,560
+And I really want to talk about the second aspect more, and I talked about the last episode, I'm going to talk about it again, because I think it's one of the most important but under talked about things, not just in software, but in general. But absolutely any job where you're you're doing wage labor. Being trapped financially, puts power in the position gives power to the people that already have the power the capitalists, the people that own the business, people running the business, your boss, whoever it is, if you are trapped in a position just because you need the income.
+
+85
+00:52:47,150 --> 00:53:21,500
+It's in my experience way more difficult to do what you need to do to be healthy for yourself and do what works for you. And what I see in the software industry, specifically, that I really dislike is related to startup culture is probably the best way to say it. But I think it's even deeper than that.
+
+86
+00:53:21,500 --> 00:53:53,300
+So in software, there seems to be this attitude of like, we have it good. Like, we get paid a lot of money. And yeah, compared to a lot of positions, we get paid a lot, right. And so there seems to be this attitude of we get paid a lot. And you know, anyone can go start a company and get rich, if they really want to they want to take that risk on basically anyone can do it, right? We're software, we can do anything.
+
+87
+00:53:54,500 --> 00:54:19,490
+We shouldn't complain about how much we get paid. We shouldn't complain about our work environment. Because we've got a good we've got it made. And I want to really counter that because I think it's BS. I don't think this is true at all. Yeah, we might get paid more than other people. But that doesn't mean our jobs are good. That doesn't mean it's they're fulfilling. It doesn't mean they work for us.
+
+88
+00:54:20,000 --> 00:54:52,430
+And I think we we really need to change that. And so you'll see this, you'll see this when there's talk about like if there's ever talk about, you know, labor unions, it's basically never brought up in software. And I think a big part of that seems to be this like attitude of like, oh, yeah, you don't like your job. Just go find another one, right. Like there's a million software jobs that pay a lot of money. But yeah, that's just not. That's not how it is.
+
+89
+00:54:53,750 --> 00:55:20,330
+I've talked with a lot of programmers at this point. And what I've learned is Is that a lot of programmers have a hard time in their jobs, whether it's dealing with depression, or you know, a boss that doesn't treat them with respect, or I think a really big one is having to build things that aren't good.
+
+90
+00:55:20,750 --> 00:56:01,910
+You look at a lot of, you know, FinTech or ad tech industries. I've talked to a lot of programmers in the industry that are just like, Yeah, I don't like building spyware. I don't like tracking users. I don't like storing all this data that's just used to, to mine information from users. I don't like to write algorithms that exploit users. I do it because I need the paycheck. And I just kind of have to shut down that part of my brain and be like, Yeah, I don't, I don't like doing this. But I have to do it. And my boss tells me to, I gotta do it for a paycheck. And this sucks.
+
+91
+00:56:03,550 --> 00:56:41,170
+There's no reason why we have to accept this as the people doing the programming. If we band together and, you know, work together as a group, we can demand better working conditions. I think it's really easy for us to I think it's in the best interest of the people running these companies to make us feel like we've got it made in the shade. You know, we we've got it figured out. We don't need anything else, we get paid.
+
+92
+00:56:41,170 --> 00:56:49,060
+So well, we get so much vacation time, blah, blah, blah. We don't need anything else. We should be happy with what we have.
+
+93
+00:56:49,090 --> 00:57:21,130
+And I think the other part of this flip side of this is it actually reminds me of Star Trek. So there's the Ferengi they're, like hyper capitalist, you know, species in Star Trek, well, they have this constant thing, where they say like, Well, you shouldn't complain about exploitation, you should just focus on becoming the exploiter. And I honestly think this pervade this attitude pervades the software industry.
+
+94
+00:57:23,320 --> 00:57:46,420
+The idea is, Oh, you don't like being an employee, start your own company, and subject other people to the stuff that you don't like, you know, we don't say that directly. But I think that's honestly, the attitude that is, is really running in the background of a lot of this industry. So you don't like your working conditions here.
+
+95
+00:57:46,630 --> 00:58:22,900
+A very common thing in this industry is, and this is something that gets talked about a little bit, but not a lot, but it's bringing in people from overseas on Visas, you know, India, a lot of other countries, you know, you're over here on a work visa, these people get paid as programmers much less then even, you know, us who are, you know, from the US. But the worst part is these visas, tie them to these jobs, if they lose their job, they lose their visa, they lose everything. And so they're often at the forefront of this type of exploitation. 
+
+96
+00:58:23,080 --> 00:58:42,430
+But I think it runs throughout the industry. And the whole idea throughout this entire industry is don't complain about exploitation, be the exploiter, you know, come up with this new crypto, whatever company, strike it rich subject to all their people to the exploitation.
+
+97
+00:58:43,780 --> 00:59:50,890
+And it sucks, I want people to be able to program and enjoy it and be able to do it in a way that works for then, you know, this, this is really, I think, a lot goes a lot more beyond me, like just speaking with a lot of other people. I think this is a much bigger deal that doesn't get talked about. I think we should start demanding whether it's contract work or employee work, whatever it is, you know, start start working on flipping this power equation. So that you know, as the people doing the wage labor that people actually doing the work, you know, we say, No, I, I am uncomfortable about, you know, the fact that we have this security breach and you don't want to disclose it to the users, this matters to our users. You know, maybe they need to take precautions because now their personal information might might be available on the internet or I don't want to store this personal information because we don't actually need it to do what we do.
+
+98
+00:59:50,890 --> 01:00:31,270
+You just want to start to mine it but what if this leaks and you know, like, I think I think we need It take a hard look as an industry about the lie we've been telling ourselves, which is that we've got it good and we shouldn't complain. I'm not saying that we need to ignore the positive things that we do have, yes, we do get paid better, we have better benefits than a lot of people in a lot of industries. But that does not mean that things are perfect. That doesn't mean we can't make things better.
+
+99
+01:00:31,690 --> 01:01:07,360
+And I think a lot of the working environments in the software industry are extremely exploitive. Like I had a friend who worked in the video game industry, and they would tell they would work like 80 hour weeks, for very low pay, even in the Bay Area, and they would just get burned out. And they were like, Yeah, this is just how it is in the software gaming industry. People love doing it. And so they're willing to make the sacrifices that's wrong. Like, what are we doing, we're just burning people out.
+
+100
+01:01:07,360 --> 01:01:35,350
+And like this person, they left the industry after a few years, I couldn't take, like I couldn't take anymore, you know, these are places where we are being exploited, where we are not able to take control the situation and be like, let's find something that works for both of us, something that's healthy for us as individuals, and fits into this economy fits into whatever the business is trying to do.
+
+101
+01:01:36,700 --> 01:02:29,650
+So I'm gonna, I'm gonna take a break from from going on that rant, but if you ever hear me on the show, sort of not look favorably on an economic system that essentially creates exploitation, because that's how I see it, you know, I'm going to talk about this on the show sometimes, because it's important to me, I've been in that situation, as you now know, if you've listened this far, where I was being exploited, because I didn't have the power to fight back, I didn't have the money, and I didn't have the mental. And I think the biggest thing is I didn't have the mental capacity to do anything about it, I didn't have the mental capacity to take care of myself, because of the demands of the jobs that I needed to do just to survive in this world.
+
+102
+01:02:31,330 --> 01:04:38,800
+And so yeah, I don't I'm, I think this sort of, I guess, ties up, you know, the story for me and what I've been through, I would love to hear from other people, you know, again, like I said, last time, I don't need any sort of personal details, unless you, you know, you want to tell me or something. But like, that's, that's not what I'm looking for. But I would love to hear from other people your experience in the software industry, and you know, just see if there's ways we can start moving forward and having more of a conversation about labor in the industry and fighting back against this, you know, be the exploiters attitude.
+
+103
+01:03:23,010 --> 01:03:55,650
+Not in fact, most people start software companies, they fail miserably, they don't make money. The success stories, from what I've seen are more people that already have more than other people, whether that's family connections, or whatever it happens to be. It is not something where, like, if you just decide to to get rich starting an app, you can just do it. That's just not real. And even if it was, I don't think it makes it right to exploit other people.
+
+104
+01:03:55,650 --> 01:04:23,190
+So yeah, I'd love to hear from everyone else, your thoughts on all of this. And that's it. I think about wraps up this. I hope you have a great day. And I hope a supportive day and I hope you're able to do what you need to take care of yourself.
+
+105
+01:04:23,190 --> 01:04:38,790
+Thank you so much from the bottom of my heart. Thank you so much for joining me and, you know, listening to what I have to say I'd love to hear what you have to say. Thank you once again. And yeah, take care. See ya.
+
