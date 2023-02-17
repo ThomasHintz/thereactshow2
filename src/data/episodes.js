@@ -9,23 +9,28 @@ export const PAGE_SIZE = 15;
 const episodeExtra = {
   'Buzzsprout-12260917': {
     slug: 'my-secret-to-successfully-working-in-react-with-a-mental-illness-mental-illness-in-software-part-2',
-    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '081-mixed.srt')).toString())
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '081-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/T8kWqE3x3_k'
   },
   'Buzzsprout-12258802': {
     slug: 'boss-what-meds-are-you-on-mental-illness-in-the-software-industry-part-1',
-    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '080-mixed.srt')).toString())
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '080-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/nz45jIY4vAg'
   },
   'Buzzsprout-12228273': {
     slug: 'moving-past-failure-learning-react-on-three-hours-per-week-janes-story',
-    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '079-mixed.srt')).toString())
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '079-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/uSpm2anwPnI'
   },
   'Buzzsprout-12220716': {
     slug: 'dropping-out-of-college-to-sell-my-first-saas-app',
-    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '078-mixed.srt')).toString())
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '078-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/cmT4okpCSrk'
   },
   'Buzzsprout-12207725': {
     slug: 'the-truth-about-react-server-components',
-    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '077-mixed.srt')).toString())
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '077-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/aO9MrsK0Mos'
   },
   'Buzzsprout-12158608': {
     slug: 'how-using-typescript-actually-makes-your-program-worse',
@@ -208,6 +213,7 @@ export async function getEpisodes() {
       description,
       content,
       chapters,
+      youtube: episodeExtra[id]?.youtube,
       slug: episodeExtra[id]?.slug || title.replace(/[\W_]/g, '-'),
       transcript: episodeExtra[id]?.transcript,
       audio: [enclosure].map((enclosure) => ({
