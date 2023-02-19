@@ -1,0 +1,282 @@
+To improve performance of your functional components you can use
+[`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) and
+[`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo).
+`React.memo` is a higher-order component (HOC) that wraps your
+functional component. It then memoizes its rendered output. `useMemo` is
+a hook that gets run during the render stage and also memoizes its
+output based on an array of dependency inputs. Both of these methods
+require you to program in a "pure" style. This means given the same prop
+values you always render the same output. `useState` and `useContext`
+hooks will also trigger a re-render for components that use
+`React.memo`.
+
+If you're working with function based components you should read on but
+if you are working with class based components you can learn how to
+achieve the same thing with `React.PureComponent` in my article "[When
+should you use
+React.PureComponent?](./when-should-you-use-react-purecomponent)".
+
+React.memo
+------------
+
+``` {.javascript}
+const Component = React.memo(MyComponent, areEqual);
+```
+
+`React.memo` takes one required argument, your React component, and one
+optional argument, a comparison function.
+
+### Eligibility
+
+``` {.javascript}
+// Example 1
+// Example of a "pure" component
+// Returns an H1 denoting whether the pancake was over-cooked
+
+const CookedPancake = ({ batter, bakingTime, maxTime }) => {
+    if (bakingTime > maxTime) {
+        return (<h1>{batter} Over-cooked!</h1>);
+    }
+    return (<h1>{batter} Cooked Just Perfect!</h1>);
+};
+```
+
+In the first example we just define a pure component and you can see
+that if the props are the same the rendered output will be the same and
+the component doesn't reference outside state or use random numbers.
+This is the first step in determining if a component is eligible for
+`React.memo`.
+
+The next step is determining if the same props are passed in to the
+component multiple times or not. Like let's say we are using the
+`CookedPancake` component in an app that runs a simulation of baking
+times. The app starts simulating baking times from 0 to 10 incrementing
+the baking time by 1 for each iteration. In this case `bakingTime` is
+not a good candidate for `React.memo` because the `bakingTime` prop is
+different every time React goes to render the component so memoization
+will provide no benefit.
+
+On the other hand let's say we have multiple different types of pancake
+batters in a list and the user is able to re-arrange the order in which
+they cook the pancakes. The prop values will be reused every time React
+re-renders the list of `CookedPancake` components. And since React may
+re-render each `CookedPancake` whenever the order of the list changes
+this means we have the right conditions for `React.memo`.
+
+### Usage
+
+``` {.javascript}
+// Example 2
+// Memoized component
+
+const CookedPancake = React.memo(({ batter, bakingTime, maxTime }) => {
+    if (bakingTime > maxTime) {
+        return (<h1>{batter} Over-cooked!</h1>);
+    }
+    return (<h1>{batter} Cooked Just Perfect!</h1>);
+});
+
+// Render CookedPancake with the same prop values.
+const MyPancakes = () => {
+    return (
+        <>
+            <CookedPancake batter='Swedish'
+                           bakingTime=1
+                           maxTime=1.5
+            />
+            <CookedPancake batter='Swedish'
+                           bakingTime=1
+                           maxTime=1.5
+            />
+        </>
+    );
+};
+```
+
+In Example 2 we add `React.memo` to the component definition and add the
+`MyPancakes` component that renders two Swedish `CookedPancake`. When
+React renders the first `CookedPancake` it will run the component's
+render code like normal but when it goes to render the second
+`CookedPancake` it will find a stored result matching the same prop
+values and instead of running the `CookedPancake` render code it will
+just use the result of its stored run (from the first `CookedPancake`
+render). It should also be noted that if `CookedPancake` had any child
+components their render code would also not be run since their output is
+a part of the memoized result. This means you can stop React from
+rendering an entire portion of your component tree with `React.memo`.
+
+### Pitfalls
+
+``` {.javascript}
+// Example 3
+// WRONG, this will not behave as expected
+
+// A button that takes an onClick handler and some text.
+const Button = React.memo(({ onClick, text }) => {
+    return (<button onClick={onClick} text={text});
+};
+
+// Use the Button component and log to console when clicked.
+const LogButton = () => {
+    return (
+        <Button onClick={() => console.log('Log button clicked!')}
+                text='Log'
+        />
+    );
+};
+
+const App = () => {
+    return (
+        <>
+            <LogButton/>
+            <LogButton/>
+        </>
+    );
+};
+```
+
+It's important to remember that `React.memo` use shallow comparison of
+props so passing anonymous functions or Javascript literals will
+probably not do what you want, as we can see in Example 3. In this
+example we create a simple button that allows an `onClick` handler to be
+set and some text for the button. Then we create a `LogButton` that just
+logs to the console when it is clicked (and this is where the bug is
+too). The `App` component just includes two `LogButton` components. If
+this behaved the way we might expect then we would expect React to not
+re-render `LogButton` when it gets to the second `LogButton` in `App`
+because it appears as if the props to `Button` are the same. But, in
+fact, they are not the same at all. The `onClick` handler is an
+anonymous function that Javascript creates every time it renders that
+code. So even though what the function does is constant a new Javascript
+object is allocated every time. This means that the memoization function
+always thinks the props have changed and will always re-render the
+component. Not what we want.
+
+``` {.javascript}
+// Example 4
+// Re-write LogButton to work with Button's React.memo
+
+const logButtonClicked = () => console.log('Log button clicked!');
+
+const LogButton = () => {
+    return (
+        <Button onClick={logButtonClicked}
+                text='Log'
+        />
+    );
+};
+```
+
+In Example 4 we can see that moving the definition of the logging
+function outside the render path fixes the issue because now the same
+function object is always passed to `Button`.
+
+``` {.javascript}
+// Example 5
+// WRONG, does not work as expected
+
+// We change Button to take text as an object
+const Button = React.memo(({ onClick, attributes }) => {
+    return (<button onClick={onClick} text={attributes.text});
+};
+
+const LogButton = () => {
+    return (
+        <Button onClick={logButtonClicked}
+                attributes={{ text: 'Log' }}
+        />
+    );
+};
+```
+
+Let's say we wanted our button to take an object of attributes that we
+could use instead of adding a new prop for every attribute of our
+button. This might seem straightforward at first, as we can see in
+Example 5 with `{ text: 'Log' }`. But this suffers the same flaw as
+Example 3 with the anonymous function. Every time React renders
+`LogButton` it will create a new object for `attributes` breaking the
+memoization. In this case the fix is the same as for the anonymous
+function: don't create object literals in the render path.
+
+### `areEqual`
+
+What if you want to use `React.memo` but the provided shallow comparison
+is not enough for your use case? Maybe there is an inexpensive way you
+can do a deeper comparison? Well React thought of that too and allows
+you to specify a second argument to `React.memo`: `areEqual`.
+
+``` {.javascript}
+// areEqual signature
+function areEqual(prevProps, nextProps) {}
+
+// Usage with React.memo
+React.memo((props) => ..., areEqual);
+```
+
+`areEqual` is a function you provide to React that receives `prevProps`
+and `nextProps`. You return `true` if passing both `prevProps` and
+`nextProps` to your component would yield the same result. Note that
+this is the opposite of how `shouldComponentUpdate` works where
+returning `true` would cause a re-render. Inside `areEqual` is where you
+would do a deep(er) comparison.
+
+### Children
+
+Also make sure that all child components of your memoized component
+follow the same rules otherwise they won't re-render when you expect
+them to.
+
+`useMemo`
+---------
+
+``` {.javascript}
+const memoizedValue =
+    useMemo(() => expensiveComputation(x, y), [x, y]);
+```
+
+`useMemo` is just a memoization function implemented as a hook that
+React provides. It takes two arguments. The first is a function that
+performs an expensive computation and the second are the variable
+dependencies of that function.
+
+``` {.javascript}
+// Example 6
+// A pancake component visually representing the pancake's height.
+
+const YummyPancake = ({ batterAmount, batterViscosity }) => {
+    const thickness = useMemo(
+        () => calculateThickness(batterAmount, batterViscosity),
+        [batterAmount, batterViscosity]);
+
+    return (
+        <div className='pancake' style={{ height: thickness }} />
+    );
+};
+```
+
+Here we define a `YummyPancake` component that renders a div with its
+height determined by the calculated thickness of the pancake. Since
+calculating the thickness of a pancake is a very expensive operation and
+we might be making many pancakes with the same batter amount and batter
+viscosity (very precise chefs) we take advantage of `useMemo`.
+
+In the example `calculateThickness` is called only if `batterAmount` and
+`batterViscosity`, the dependent variables, do not have the same values
+of any other time that `calculateThickness` was called. This means that
+all dependencies of your expensive function should be in the dependency
+array. If they are not then React may not call your function to
+calculate a new value when you are expecting it to. You'll also notice
+that `calculateThickness` is inside an anonymous function. This delays
+evaluation so that `useMemo` can decide if and when to execute
+`calculateThickness`.
+
+In many ways `useMemo` follows the same rules and guidelines as
+`React.memo`. `useMemo` only does a shallow comparison on its
+dependencies and expects your expensive function to be pure. So be
+careful not to use object literals or anonymous functions in your
+dependencies.
+
+In summary, you should use `React.memo` and `useMemo` when rendering is
+a bottleneck and you are working with pure functions, props, and
+arguments. And if you want to learn more about high performance React
+programming subscribe to the email list or the [atom feed](./feed.atom).

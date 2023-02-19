@@ -1,0 +1,44 @@
+## Which should you use for your React project and why?
+
+React is a declarative model that aids developers in creating interactive UIs. Each component of React defines a part of an application by JSX Syntax. With an increasing number of features available to configure in a project pipeline, and their complexity of configuration, maintenance of React projects can be difficult and time consuming. Boilerplates such as Create-React-App (CRA), Next.js, and many others were made to solve these problems and cater to an enhanced developer experience. This article will dive into Create-React-App, Next.js and when and why you should use each. 
+
+## What is Create-React-App
+
+Create-React-App is a standardized Client-Side Rendering tool used for bootstrapping front-end single-page applications (SPAs) and can be paired with your desired back end, such as Node. By having your application bound to one HTML page that loads the React Apps, errors won’t halt development, dependencies won’t slow you down, and your build folder can be statically deployed anywhere!
+
+CRA keeps dependencies, such as Webpack and Babel, inside of react-scripts, and minimizes the tedium of working with transpilers and bundlers. Want to update those dependencies? Just update with the new release of react-scripts and you’re done without touching your webpack configuration. 
+
+With CRA, you’ll get your time back by eliminating the need for setting up your development environment for your project. Just run a single command, and all the necessary tools to start your project are there. You can begin building your app immediately!
+
+## Advantages of using Create React App:
+
+Create React App is  unopinionated, meaning you have the freedom to use any libraries you prefer. CRA also supports Client-Side Rendering to make for simple deployment and application hosting on other sites, such as Amazon S3. 
+
+If you’re creating a gated application, the perks of server-side rendering are lost. Having an application with only authenticated users benefits from client-rendering, which are cheaper and easier to host. The same principle applies when building web applications with recurring users. Though server side rendering has many perks, CRA allows for caching to speed up load times with less effort than Server-Side-Rendering (SSR). 
+
+## Disadvantages of using Create React App
+
+Any desired webpack customization will have to involve a third-party tool, or “ejecting” from the configuration, which will cost you the benefits of CRA. And there are limits to what is supported. If you need something in your project that CRA doesn’t support by default, then you could find yourself in the weeds. The same benefit of easily setting up your development environment becomes a setback by complicating customization. Lastly, Create-React-App struggles with SEO since we are rendering on the client-side, and server-side rendering with CRA will involve a lot of time and effort with setting up bundling, code splitting, page load performance, and more. Avoid using CRA for e-commerce or marketing projects.
+
+## Best Scenarios for using Create React App
+
+If you’re creating an SPA, your app uses server APIs, you’re looking to start or experiment with React, OR you’re trying a new React project and want freedom of choosing libraries, you might want to use CRA. However, we believe there is a better option out there: Next.js. 
+
+## What is Next.js?
+
+Next.js is an open-source framework that has been gaining traction with programmers and companies alike (just look at some of the companies that use Next.js for their sites!). Next.js is based on Node.js and Babel built by Vercel. Like Create-React-App, it is used to build SPAs with dynamic routes but differs in that it supports Server-Side-Rendering (SSR) along with a host of other features to create a production-ready app. Some of those other features include: Faster development compilation, automatic build size optimization, static site generation (SSG), and pre-rendering. 
+
+Next.js provides smooth integration with back and front end development for complicated web applications. Next.js can be utilized as a web server or integrated into larger node applications that use React as the rendering engine. Like CRA, dependency problems such as outdated webpack won’t get in the way of getting your app started or updated!
+
+Using Next.js To Quickly Bootstrap a High Performance React Application 
+Using SSR and SSG with performance optimizations (like image and font optimization) makes Next.js apps speedy. Deploying full-stack React applications has never been easier! And unlike Create-React-App, it’s a simple thing to customize your webpacks by adding webpack loaders. Next.js also supplies a quick and intuitive path to build APIs within your application. Its API routes are ideal for working with third-party APIs. All of these advantages make Next.js the leading choice for developers, particularly when building landing pages and other marketing materials. Server-side rendering lends itself to making Next.js the top choice for optimized SEO as well as much faster loading times when building websites. The development experience is also enhanced with built-in features such as: Code Splitting, Prefetching, and Hot Reloading.
+
+The main disadvantage of Next.js is that it’s opinionated. Contrasted with the freedom of CRA, Next.js is limited to its file-based router, however, dynamic routes are possible when using a Node.js server. Even though this file-based route system is considered a disadvantage to some, it would take weeks to get the same type of route system with CRA. 
+
+## Optimal Use Cases for Using Next.js
+
+If your app has a server AND client side, you’re looking to building a dynamic website, have dynamic content OR you’re looking to optimize SEO on your site, Next.js is highly recommended. The simplicity of Next.js, along with the wealth of documentation available, will allow you to get started on your app idea, even if you aren’t well-versed in JavaScript. 
+
+## Conclusions
+
+Both Next.js and CRA are awesome frameworks for developing React apps. Although choosing one of the other will depend on your specific use case for your project, we recommend Next.js. Containing the best of CRA’s functions, Next.js truly has everything you need to turn your idea into an application without getting bogged down under the hood with details. If you want to skip the tutorials and configuration, Next.js is your best choice to getting your React project up and running.

@@ -1,0 +1,245 @@
+To improve performance of your class based components you can use
+[`React.PureComponent`](https://reactjs.org/docs/react-api.html#reactpurecomponent).
+`React.PureComponent` is like `React.Component` except it implements
+`componentShouldUpdate` for you. The implementation it provides memoizes
+the component based on its props and state using a shallow comparison.
+To be able to utilize `React.PureComponent` it is required that you
+program in a "pure" style. This means given the same prop and state
+values you always render the same output.
+
+If you're working with class based components you should read on but if
+you are working with functional components you can learn how to achieve
+the same thing with `React.memo` and `useMemo` in my article "[When
+should you use React.memo and
+useMemo?](./when-should-you-use-react-memo-and-usememo)".
+
+`React.PureComponent`
+---------------------
+
+``` {.javascript}
+class Pancake extends React.PureComponent {
+    ...
+}
+```
+
+`React.PureComponent` just replaces the usual `extends React.Component`
+with `extends React.PureComponent`.
+
+### Eligibility
+
+Like for `React.memo` and `useMemo` we must first make sure that our
+component is eligible for `React.PureComponent`.
+
+``` {.javascript}
+// Example 1
+// Example of a "pure" component
+// Returns an H1 denoting whether the pancake was over-cooked
+
+class CookedPancake extends React.Component {
+    render() {
+        const { batter, bakingTime, maxTime } = this.props;
+        if (bakingTime > maxTime) {
+            return (<h1>{batter} Over-cooked!</h1>);
+        }
+        return (<h1>{batter} Cooked Just Perfect!</h1>);
+    }
+}
+```
+
+In the first example we just define a pure component and you can see
+that if the props are the same the rendered output will be the same and
+the component doesn't reference outside state or use random numbers.
+This is the first step in determining if a component is eligible for
+`React.PureComponent`.
+
+The next step is determining if the same props are passed in to the
+component multiple times or not. Like let's say we are using the
+`CookedPancake` component in an app that runs a simulation of baking
+times. The app starts simulating baking times from 0 to 10 incrementing
+the baking time by 1 for each iteration. In this case `bakingTime` is
+not a good candidate for `React.memo` because the `bakingTime` prop is
+different every time React goes to render the component so memoization
+will provide no benefit.
+
+On the other hand let's say we have multiple different types of pancake
+batters in a list and the user is able to re-arrange the order in which
+they cook the pancakes. The prop values will be reused every time React
+re-renders the list of `CookedPancake` components. And since React may
+re-render each `CookedPancake` whenever the order of the list changes
+this means we have the right conditions for `React.PureComponent`.
+
+### Usage
+
+``` {.javascript}
+// Example 2
+// Memoized component
+
+// Only the class signature has changed:
+class CookedPancake extends React.PureComponent {
+    render() {
+        const { batter, bakingTime, maxTime } = this.props;
+        if (bakingTime > maxTime) {
+            return (<h1>{batter} Over-cooked!</h1>);
+        }
+        return (<h1>{batter} Cooked Just Perfect!</h1>);
+    }
+}
+
+// Render CookedPancake with the same prop values.
+class MyPancakes extends React.Component {
+    render() {
+        return (
+            <>
+                <CookedPancake batter='Swedish'
+                               bakingTime=1
+                               maxTime=1.5
+                />
+                <CookedPancake batter='Swedish'
+                               bakingTime=1
+                               maxTime=1.5
+                />
+            </>
+        );
+    }
+};
+```
+
+In Example 2 we add `React.PureComponent` to the component class
+definition and add the `MyPancakes` component that renders two Swedish
+`CookedPancake`. When React renders the first `CookedPancake` it will
+run the component's render code like normal but when it goes to render
+the second `CookedPancake` it will find a stored result matching the
+same prop values and instead of running the `CookedPancake` render code
+it will just use the result of its stored run (from the first
+`CookedPancake` render). It should also be noted that if `CookedPancake`
+had any child components their render code would also not be run since
+their output is a part of the memoized result. This means you can stop
+React from rendering an entire portion of your component tree with
+`React.PureComponent`.
+
+### Pitfalls
+
+``` {.javascript}
+// Example 3
+// WRONG, this will not behave as expected
+
+// A button that takes an onClick handler and some text.
+class Button extends React.PureComponent {
+    render() {
+        const { onClick, text } = this.props;
+        return (<button onClick={onClick} text={text});
+    }
+};
+
+// Use the Button component and log to console when clicked.
+class LogButton extends React.Component {
+    render() {
+        return (
+            <Button onClick={() => console.log('Log button clicked!')}
+                    text='Log'
+            />
+        );
+    }
+};
+
+class App extends React.Component {
+    render() {
+        return (
+            <>
+                <LogButton/>
+                <LogButton/>
+            </>
+        );
+    }
+};
+```
+
+It's important to remember that `React.PureComponent` use shallow
+comparison of props so passing anonymous functions or Javascript
+literals will probably not do what you want, as we can see in Example 3.
+In this example we create a simple button that allows an `onClick`
+handler to be set and some text for the button. Then we create a
+`LogButton` that just logs to the console when it is clicked (and this
+is where the bug is too). The `App` component just includes two
+`LogButton` components. If this behaved the way we might expect then we
+would expect React to not re-render `LogButton` when it gets to the
+second `LogButton` in `App` because it appears as if the props to
+`Button` are the same. But, in fact, they are not the same at all. The
+`onClick` handler is an anonymous function that Javascript creates every
+time it renders that code. So even though what the function does is
+constant a new Javascript object is allocated every time. This means
+that the memoization function always thinks the props have changed and
+will always re-render the component. Not what we want.
+
+``` {.javascript}
+// Example 4
+// Re-write LogButton to work with Button's PureComponent usage
+
+const logButtonClicked = () => console.log('Log button clicked!');
+
+class LogButton extends React.Component {
+    render() {
+        return (
+            <Button onClick={logButtonClicked}
+                    text='Log'
+            />
+        );
+    }
+};
+```
+
+In Example 4 we can see that moving the definition of the logging
+function outside the render path fixes the issue because now the same
+function object is always passed to `Button`.
+
+``` {.javascript}
+// Example 5
+// WRONG, does not work as expected
+
+// We change Button to take text as an object
+class Button extends React.PureComponent {
+    render() {
+        const { onClick, attributes } = this.props;
+        return (<button onClick={onClick} text={attributes.text});
+    }
+};
+
+class LogButton extends React.Component {
+    render() {
+        return (
+            <Button onClick={logButtonClicked}
+                    attributes={{ text: 'Log' }}
+            />
+        );
+    }
+};
+```
+
+Let's say we wanted our button to take an object of attributes that we
+could use instead of adding a new prop for every attribute of our
+button. This might seem straightforward at first, as we can see in
+Example 5 with `{ text: 'Log' }`. But this suffers the same flaw as
+Example 3 with the anonymous function. Every time React renders
+`LogButton` it will create a new object for `attributes` breaking the
+memoization. In this case the fix is the same as for the anonymous
+function: don't create object literals in the render path.
+
+So far we've just been looking at props but React also includes the
+component's state in the memoization so make sure you follow the same
+rules for state as you would for props.
+
+If you have nested state and still want to use `React.PureComponent` you
+can do so by utilizing React's `forceUpdate` API but this not
+recommended as it can lead to code that is more difficult to understand
+and use.
+
+### Children
+
+Also make sure that all child components of your memoized component
+follow the same rules otherwise they won't re-render when you expect
+them to.
+
+In summary, you should use `React.PureComponent` when rendering is a
+bottleneck and you are working with pure components, props, state, and
+arguments. And if you want to learn more about high performance React
+programming subscribe to the email list or the [atom feed](./feed.atom).

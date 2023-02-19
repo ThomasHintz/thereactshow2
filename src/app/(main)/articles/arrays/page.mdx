@@ -1,0 +1,56 @@
+Array Basics and Array Methods Used in React
+It’s time to take a step back and take a look at arrays. Arrays are a powerful tool that can make for more efficient code. React uses arrays in a variety of different ways, but we’re going to begin with the basics of arrays in Javascript.
+
+What are arrays? 
+Arrays are objects that contain items stored in a single variable. Arrays consist of stored items, or elements, and each element in an array has a location demarcated by a numerical index which allows for access to each element. The ability to access individual elements makes for handy approaches to make your coding more efficient. 
+
+Generally arrays are declared with an array name and sometimes the array length (the number of stored elements). Javascript uses the square bracket notation [ ] to create arrays. It is best practice to keep only one data type in your array such as strings, numbers, or objects only. Below we can create our first empty array:
+
+````
+let animals = []
+````
+
+“animals” is our variable, and it now contains an empty array. Using the length property will let us verify this:
+
+```{javascript}
+console.log(animals.length); //expected output: 0
+````
+
+Now if we store some elements in our array and use the length property again, we will see a different output:
+
+```{javascript}
+animals = [‘Nebula’, ‘Loki’, ‘Aviendha’, ‘Munchkin’, ‘Galasper’];
+
+console.log(animals.length); //expected output: 4
+```
+
+Our array is made up of strings and has a length of 4. If we want to access an element, we can do so by using the numerical index for the element we want (It is important to note that the first element’s index is 0, and not 1): 
+
+```{javascript]
+console.log(animals[0]);  //expected output: ’Nebula’
+console.log(animals[4]); //expected output: ’Galasper’
+```
+
+Now that our array is created, we can start playing around with the methods used on arrays.
+
+## Adding & Removing Array Elements
+
+### push() Method
+
+The push() method allows us to append our arrays by “pushing” one or more new items to the end of an array. In our case, we’ll be adding a fifth element ‘Squeakers’ to then end of our array:
+
+```{javascript}
+animals.push(‘Squeakers’);
+
+console.log(animals); //expected output: [‘Nebula’, ‘Loki’, ‘Aviendha’, ‘Munchkin’, ‘Galasper’, ‘Squeakers’]
+```
+
+## pop() Method
+
+Conversely, we can remove the last element of our array using the pop() method as shown below. In this case we do not need to pass a value to pop(); it will automatically remove the last element in the array:
+
+```{javascript}
+animals.pop();
+
+console.log(animals); //expected output: [‘Nebula’, ‘Loki’, ‘Aviendha’, ‘Munchkin’, ‘Galasper’]
+```
