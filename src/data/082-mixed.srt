@@ -1,0 +1,424 @@
+1
+00:00:03,390 --> 00:00:06,600
+Thomas Hintz: Welcome to the React show!
+
+2
+00:00:07,470 --> 00:00:17,640
+Brought to you from occupied Kumeyaay territory by me your host, Thomas, and a pleasant morning, Episode 82.
+
+3
+00:00:22,470 --> 00:00:56,220
+The truth is, I made a big mistake. When React came out, I discounted it without even taking a look thinking it was just like all the other frameworks of the time. It wasn't. The React js documentary just came out. And in this episode, we discuss it and I reflect on my mistakes, and also get some updates on my bicycle adventures and a few quick thoughts on React server components again
+
+4
+00:01:01,680 --> 00:01:22,560
+Yellow Rumped warbler, or butter-butt, as we call them, was chirping off to my right. I twist my neck and take in the snow capped peaks on the opposite side. The sun is out starting to warm up pedaling 100 pound bicycle up this slight grade always helps to.
+
+5
+00:01:24,150 --> 00:02:00,480
+Ah, the beautiful sound of a bubbling Creek. There are reasons why I love riding my bicycle instead of driving a car. The sights, the sounds, the scale, it all is so much more immersive and memorable. I know that if I were to drive this route in a car instead, I wouldn't hear the butter-butts or the creek. The snow capped mountains would only be a frame or two. And I would have no idea this was a decent grade next to a lush temperate jungle.
+
+6
+00:02:01,110 --> 00:02:28,530
+But I also feel like I'm going to deaf in my left ear. I only get to hear the birds half of the time. The other half is the roar of cars as they fly past me at 60 miles per hour on this mountainous two lane highway. There is no shoulder just me pedaling my loaded bicycle slowly up this grade with cars and semi trucks swerving around me.
+
+7
+00:02:29,100 --> 00:02:56,070
+I would choose this route for the mountain landscapes and the creek sounds but there is way too much traffic constantly going by to make it all that enjoyable. But it's the only route out here. It's the singular kind of road they build. So that's what I have to do. No other option no train or regular bus runs through here either.
+
+8
+00:03:02,010 --> 00:03:06,900
+What the! Now I'm really going deaf in my left ear!
+
+9
+00:03:07,800 --> 00:03:40,170
+This pickup just passed me in laid on the horn as they went by, it seemed they think this road is only for pickup trucks. I guess. Bikes not invited. My blood boils, face flushes with heat. I feel so angry! That was completely unnecessary. What a self centered jerk. Do they think I enjoy having to ride on this road? With cars going by all the time? Do they think this is what I want? 
+
+10
+00:03:40,860 --> 00:04:17,430
+After the anger subsides I'm thinking, well, I'm sure they did it for a reason. Maybe they had a bad day at work. Maybe their boss was a jerk to them again, and they just feel powerless to do anything about it. I certainly know how that feels. And maybe their antics made them feel powerful over me and you don't feel powerful in a way they don't normally get to feel gives them a slight sense of their own autonomy in a world they feel powerless within. I don't know could be something else.
+
+11
+00:04:17,760 --> 00:04:50,610
+But I'm sure there's some reason for their behavior. And I'm pretty certain that ultimately, my existence on this road really isn't the true source of their feelings. It isn't really why they needlessly honked after they were already passing me. You know, it wasn't like a warning honk or anything they were clearly angry or upset I was there. And, you know, I just have to remember, it's probably not really about me.
+
+12
+00:04:50,730 --> 00:05:10,230
+I do wish that they had the capacity though to imagine how it must feel to be in my place. And after my anger subsides Now that's what I remind myself of, it's probably not about me. They just have other things going on in their life, and they aren't currently able to empathize with me or probably others. 
+
+13
+00:05:12,300 --> 00:05:40,620
+Thank you for joining us. That little experience was a good reminder, both of the power and necessity of empathy, and that so many people, they just don't have the capacity for employing it themselves. Riding my bike over the mountains to San Diego was full of experiences like that. And it's easy to just get upset with people. And to some extent, that's a healthy response to start with.
+
+14
+00:05:40,620 --> 00:06:11,580
+It's natural to feel anger, and but I also find it much easier to frame my perspective in terms of how the other person is feeling, too. I know it's kind of basic stuff. But I also think it's easy to forget, and often find it especially challenging. After spending a day programming, the computer always does what I tell it to do without complaining. Well, except for that bug, but I'm sure that's not my fault.
+
+15
+00:06:12,690 --> 00:06:46,200
+But anyways, yeah, I find working with the computer is so straightforward, and people often aren't. But at the same time software is ultimately about people. And I know that the better I can understand people, the better the software will be that I ended up writing. Whether it is the end users or my fellow programmers, or the project or even my boss, if I'm able to create the capacity within myself to feel empathy and understanding for others. I feel like it really pays off.
+
+16
+00:06:46,810 --> 00:07:10,030
+So that story was from when I rode my bike from the desert in Anza Borrego over the mountains to San Diego. Even though the cars got thick, nearer to the city, the ride over the mountains was absolutely beautiful, and frigid. The Windchill over the pass was certainly below freezing, but just stunning with the snow all around.
+
+17
+00:07:10,510 --> 00:07:33,550
+And now, as I prep for this episode, I'm just trying to keep my fingers warm enough to type as it's just above freezing and very humid. Not used to this humidity after being in the desert for weeks. It makes things feel so much colder. But the sun is rising, and I have hopes it will excite some atoms and drive some heat into this place.
+
+18
+00:07:35,470 --> 00:08:05,140
+Speaking of heat, what do you all think of the new new music for the episodes? I worked with my friend who created it for me, I really love it, he makes some super rad stuff. I had toned down some some bits from the usual smashing drops that he can make. But if you like this style, I definitely recommend checking out his albums and EPS under the name DRKST DWN, spelled with no vowels.
+
+19
+00:08:06,700 --> 00:08:28,960
+Yeah, it was it was really great working with him actually knew him as a React engineer, originally. So we we worked on a project together. And it was really great working with him. I had a really great time. He's a great react engineer. We would also bond over talking about music. I used to write some music back in the day and produce stuff.
+
+20
+00:08:28,960 --> 00:08:47,740
+And he's like, oh, yeah, I got all this stuff. And his stuff is amazing. I'm like, Wow, you are so much better than me so it's great, because we got to talk about React. But then we also got to talk about music. And yeah, so eventually, I was like, Oh, I love your style. I feel like we could make it a good fit for the podcast. And so we worked together on creating it.
+
+21
+00:08:47,740 --> 00:09:29,890
+Yeah, I hope you all like it. And definitely check them out. And I also just thought it was fun to to work with an artist and create something unique for the podcast. You know, it's it's one of those things that I feel like, artists don't get to do a whole lot. But I don't know, maybe they do, but it doesn't seem like it. And I was like, Ah, I could. I know I'm not like able to pay a tremendous amount or anything. But just to have the opportunity and see what people can come up with is really exciting. I really had a great time. Anyway. So yeah, I'll link below DRKST DWN, definitely check-check them out. I think he's got some new stuff coming out really good.
+
+22
+00:09:30,680 --> 00:09:45,440
+And next I just want to talk a little bit more about React server components, just an update. I've been putting even more time into them. Mostly for working on the thereactshow. I got some really exciting features coming up there.
+
+23
+00:09:45,920 --> 00:09:57,710
+But it's meant spending a lot more time with them. And I know I've said that before, but I just keep spending more time with them. And so I thought I'd give you guys all an update on how that's been going and not too long. Just a quick update here.
+
+24
+00:09:58,730 --> 00:10:34,430
+Yeah, absolutely love using them for data fetching and processing. I, I really don't want to ever go back to the old way of doing things. I still wish this type of API was available client side. I'm not sure why it's not possible. But I just, it is so much easier to use so much more enjoyable to work with. I feel like it takes way less code to do the same thing and seems much less error prone. 
+
+25
+00:10:34,610 --> 00:10:54,950
+I'm super curious how the rest of the community will feel like, are other people going to feel similar to me enjoy it just as much hate it? Is there some other improvements we can make? And I just out on my own? You know, on this one? I don't think so. I think it's really good. I think it's a huge improvement. 
+
+26
+00:10:55,260 --> 00:11:38,160
+And there certainly still downsides. I don't love everything about NextJS 13, and even about React server components. But I gotta tell you, I really think it is a much better developer experience than anything I've done in React before. There's some bugs, some incomplete things, but overall, just so much better experience that thinking about working on anything else. It's just one of those like sinking feelings, like, Ah, you got to like deal with like, client side query cache, and all sorts of other stuff. That is just stuff I haven't had to worry about with the server components just so much less work. I really love it.
+
+27
+00:11:38,640 --> 00:11:47,460
+So yeah, I'm really looking forward to seeing what the community does with this, how things move forward, and how everyone else feels about it. But I love it.
+
+28
+00:11:47,970 --> 00:12:13,740
+And talking about a better developer experience, the React js documentary from honeypot recently came out. And react has definitely brought a better developer experience, in my opinion. And I think a lot of people that use React would agree. So I just wanted to say thank you to one of our listeners, Lex for tipping me off about the documentary, I didn't know about it.
+
+29
+00:12:14,820 --> 00:12:46,980
+And this show isn't to cover the documentary. So I definitely recommend you check it out for yourself. I'll include a link, but you can just find it by searching YouTube for React js documentary as well. But documentary is very good. I really enjoyed watching it. It was entertaining. It was informative. Definitely I recommend giving it a watch. But yeah, this episode is more about three sort of thoughts I had after watching the episode.
+
+30
+00:12:47,340 --> 00:13:39,570
+So the first is I made a massive, a huge mistake in discounting, react initially. And second, I want to talk about the design process that I learned about that react went through when they were building react and creating it and why think it was really good. And how it, I think has been a large part of React's overall success and what we can take away from there, and what you can learn about designing things like this yourself. And third, I just want to chat a little bit about marketing and how I see it relating to open source projects. I also learned a lot about React, growth and how it was marketed and that it was marketed at all from the documentary. And so I have a lot of thoughts on that too.
+
+31
+00:13:41,970 --> 00:14:03,810
+First step, I wanted to address the the first thing I mentioned, which was that I made a huge mistake and discounting react initially. But before we can get to that just wanted to set the stage and talk about what web development was like, at the time react was being developed.
+
+32
+00:14:04,500 --> 00:14:25,320
+So I was working in the industry at this time, I'd been doing development, web development for a long time, even before this. And I always think of it I don't know what other people call it. But I always think of it as the third, the third phase of front end development, at least JavaScript front end development. 
+
+33
+00:14:25,000 --> 00:15:35,470
+So first phase I think of I call the DHTML phase, dynamic HTML. That's what we used to call it. Basically, you'd start with an HTML web page. And then you'd be like, oh, I want this button to have a cool like, rollover effect when I mouse over and a lot of the stuff we did with it was probably completely unnecessary. But, you know, sort of like wow, we could do these cool things with technology. We tried to make these really bad animations with images and stuff. But By the way, a lot of people did well, you know, front end JavaScript run to augment what you did basically was really short snippets like that. They weren't really applications per se, you just copy in like a few lines of JavaScript to animate something or make something happen. It's really simple. You didn't really have internal state free application within the front end or anything, if you did any of that it was usually, you know, PHP and back end stuff where you kept your state, you kept it in the URL, you really didn't do a whole lot in JavaScript, for the most part, most people.
+
+34
+00:15:35,920 --> 00:16:12,040
+The second phase I call the Ajax phase. Basically, this is when we started actually making more what you would think of as modern front end, fully dynamic, interactive front ends with JavaScript. This was usually done with a library called jQuery, which just sort of smoothed out a lot of really basic stuff like event handlers and, and selectors across browsers. And just made a lot of things a little bit simpler and easier.
+
+35
+00:16:12,190 --> 00:16:32,140
+But yeah, this was I remember the time like Gmail was coming out and other things that were really pushing forward. More client heavy JavaScript based front ends that were more like desktop applications. So I call this my the, like, Ajax phase, the sort of initial web application development.
+
+36
+00:16:32,530 --> 00:17:04,990
+But then third after that, and this is more the phase that I think react was coming out of. And that is what I call the MVC or framework application phase of web development. So basically, we built all these front end client applications in like, we use jQuery. And you know, there were some other libraries. But for the most part, we wrote things in pretty simple JavaScript. 
+
+37
+00:17:05,020 --> 00:18:00,340
+But what happened was, there was we started getting internal front end state, and you have to connect that to what the users interacting with to the browser to the DOM. And so it was a lot of like, oh, you set up some maybe global variables or something somewhat local variables within your application, and they would store state like user clicked on this user to this user type this basic stuff. And then whenever things changed, you had to receive the event from the DOM connected to your internal state, update your internal state. And then if, you know, maybe there's some side effects from that, like, oh, the user type this, now we want to have the UI do this, then you have to manually write the code to select the DOM element and use whatever JavaScript API is required to update that DOM element in the browser.
+
+38
+00:18:01,270 --> 00:18:29,830
+And so is a lot of really manual tedious work to connect state from the front end, internally to the browser. And so I think that and this is really hard to do. And yeah, if you ever programmed in this area, you know, it was such a pain to do in an even remotely bug free way. It's just hard to manually do that. 
+
+39
+00:18:29,860 --> 00:19:03,370
+And a lot of times, what would happen is, you would be working the code and maybe some other people, and so you wouldn't quite know how they connected everything together. So you would think, okay, I can update this, and it will update on the DOM. And this should be handled, then turns out, it's only handled part of the time. And so your internal state becomes out of sync with what's seen in the DOM, but only in some cases, and you get bug reports from users. And it's really hard to track down really hard to fix. It was a big nightmare. And so it makes a lot of sense that we saw solutions to this.
+
+40
+00:19:03,490 --> 00:20:58,990
+And so this is where we get into I call it the MVC and framework application phase. So I think what happened was a lot of people saw the spaghetti code saw these bugs, and they're like, there's got to be a better way. And I think what happened was, especially a lot of the large companies that actually promoted some open source solutions, I think they sort of took what they were doing on the server side, in, especially in Java and frameworks like that, which frameworks languages like that, which were really popular, especially at that time at larger companies. I think they took some of those solutions, or like, oh, let's apply them to the front end.
+
+41
+00:19:45,750 --> 00:20:05,430
+And it wasn't, I don't think very organic, or I think it was more of this top down design approach. Like let's try to shove some organization into solving these problems. And so there are tons of libraries and frameworks coming out. At the time, all trying to solve this big problem that we had.
+
+42
+00:20:05,430 --> 00:20:58,980
+But I don't. So, yeah, so from my perspective, I would check these out. And I was always like, This doesn't feel right. This feels like a lot of boilerplate code. This feels like just a lot of code without much purpose, or really just adds complexity. So shirt might fix some of those problems, but just creates more problems by adding more complexity. So I wasn't really impressed with any of the solutions. I don't know, I think maybe this is when Angular was getting started. And in other frameworks like that, and is very MVC focused, you had to do things in MVC, if you weren't doing MVC. You know, people were just like, oh, no, that's not right. You gotta like, go really hardcore and have all this extra framework stuff. And I hated it. I tried it, I didn't like I didn't think it made things better.
+
+43
+00:21:00,270 --> 00:21:19,050
+I didn't think it solved the main issue really either, which was keeping state in sync with the DOM. So that's the era that we find ourselves in. It's this era of really trying to find solutions to this big problem that we had created by making more interactive front end applications.
+
+44
+00:21:19,050 --> 00:22:24,480
+And my solution at the time, I forget exactly what I called it, I think I called it Jxml, or something like that. It was named after the syntax I created for the client side HTML language, which actually is very similar to JSX. But I modeled it after SXML from the lisp world, that's where I got J, XML, it was sort of as XML but in JSON format. But my solution included a lot more than just client side HTML language. And in retrospect, basically, it was a lot like React, but more, I would say server side oriented, my primary solution to the mess with trying to keep apps they in sync with the DOM, was actually very similar to react, I did the same thing react kind of does, which is, I just blew the entire DOM away, anytime there was a state change.
+
+45
+00:22:24,480 --> 00:23:23,640
+So anytime there was an internal state change whether on the server or on the client, I would just rerender all of the affected HTML and replace it on the client side using set, you know, just setting inner HTML on a parent DOM node. And then I have to reset up any event handlers that were associated with that this is very similar to the way react does things. Not I didn't have like the reconciliation algorithm in a generic sense like that. My solution definitely wasn't as good in that area. But in this part, where we're updating the actual state in the DOM, it was very similar, which is really funny to think about the time I, I just sort of, I think I based it off probably some stuff I learned somewhere, but mostly just kind of made it up myself. And, you know, react didn't exist, that wasn't a thing at the time.
+
+46
+00:23:23,640 --> 00:23:52,230
+But yeah, I just thought it was interesting how similar it was. And it was extremely fast and most cases much faster than the regular code that most people were writing at the time. And eventually, with some ideas from Andy Bennett, in the chicken scheme, community, I created an actual component based system very similar to react again, except, interestingly, more like React server components.
+
+47
+00:23:52,230 --> 00:24:19,620
+So my components didn't have support directly for client side state. So a big difference was also that I wrote basically everything in Lisp, including the client side code, which would get compiled to JavaScript. See, I was, I wasn't just trying to solve the problem of syncing client side state to the browser's Dom, I was actually trying to solve two major problems.
+
+48
+00:24:19,620 --> 00:25:13,860
+The other major problem was syncing server side state with the client, which I don't think is as big of a problem. But I think it's still a fairly big problem. And something maybe that's the reason why I like React server components, so much to I feel like it helps with that. But my solution was a bit different in that I actually made it so you could directly call functions, even functions that closed over variables and such closed over values from the client side to the server side and vice versa. So it was sort of like programming in this completely seamless environment where you the distinctions between client and server and JavaScript, internal state and the DOM and all that they all existed because it's important to, in your abstractions acknowledge that so you can work with them effectively.
+
+49
+00:25:13,860 --> 00:25:50,220
+But the solution I created allowed me to do it using the same language for the most part and the same technologies, and not really have to worry about serialization and deserialization, API's and anything like that it was all sort of like writing one big application that just worked the same regardless of where the code was running. And yes, I know, we've strayed from the documentary and talking about React. But there's a good reason for going through this background. And, yeah, so I'll finish this up.
+
+50
+00:25:50,220 --> 00:26:33,870
+But basically, I think I created a really good solution for creating GUI applications. And that's what we call them graphical user interface application. So I came from the desktop world, and that since I'd been doing web development, this whole time, I also did a lot desktop application development using QT GDK and C sharp and other languages and frameworks for doing desktop applications. And so I was taking things from there as well, because I was like, Oh, it's so much easier to make desktop applications than web applications. So I was bringing in a lot of stuff from that as well, including continuations, and really fun things that just make the experience a lot better.
+
+51
+00:26:33,870 --> 00:27:25,740
+Mine was definitely not as well developed as react, I'm definitely not saying I made something better or anything like that, just telling you the perspective that I was coming from. But yeah, I think now that we have that perspective, and the perspective of where web development was at the time, we can jump into the documentary and react and the big mistake that I made. So when react came out, I completely and totally discounted it, without looking at it at all. Obviously, not smart in hindsight. But I had built something very similar. And I am sure that if I had looked at it, and had looked into it, I would have been probably quite receptive.
+
+52
+00:27:25,740 --> 00:28:03,270
+But instead, people would ask me, oh, should they use react like this new thing came out? What do you think of it? And you know, people were always asking you asking my opinion on frameworks and systems. So yeah, I tried to be familiar with things and give people good answers. And I gave people bad answers in this case. And it's something that I sure hope I've learned at this point, you know, now that I'm doing the React, podcasts and everything. Definitely a big learning experience for me, but I totally discounted it without looking into it, or how it worked.
+
+53
+00:28:03,270 --> 00:28:42,420
+Why did I discount it? Well, so the truth is, there were many frameworks that were coming out at that time, like I talked about, and I just thought they were all the same MVC crap, just bad. Like, I'd looked at a lot of them and tried a lot of them. And I was just like, Oh, they're all the same. They're all bad. I don't like them. I basically refused to use them. And so I'm not making excuses, I should have done the right thing and looked into how it worked. But there was another side to this coin too.
+
+54
+00:28:42,420 --> 00:29:25,920
+And now it's Facebook, I hated Facebook, I still don't like Facebook. You know, at this point in time, I was already like, always trying to evangelize anything other than Facebook, like don't use Facebook. And I really didn't like Facebook. I felt I used Facebook in high school. But I quickly even before I left high school, I thought that the way it was changing human interactions weren't for the better. And so I wasn't excited about seeing it develop. And so that was sort of a fundamental issue I had with Facebook, but much bigger than that.
+
+55
+00:29:25,920 --> 00:30:14,010
+I felt like Facebook always exploited and abused its users. I remember very early on it did this really sneaky thing where they would try to get you to give them access to your address book or your I think it was even in your email I forget but basically give you access to all of your contacts, so that they could contact those people to try to get them to join Facebook or when they didn't join Facebook. Use that to build up there. So Social Network. And in a sense, that's cool technology potentially. But the way they did it was really sneaky. It wasn't like, hey, we want the access to this information, this is what we're going to do with it.
+
+56
+00:30:14,010 --> 00:30:40,650
+It was very sneaky. I remember the UI was basically like, you have to do this, even though I don't know if you technically did, but it made you feel like you had to, and it didn't explain what it was. And a lot of people did it, and then found out what it was. And they're like, Oh, I didn't want to do that. But that was just the start of it. Facebook, in my opinion, did a lot of things. And I think still does that aren't user focused. And so I just, I thought Facebook was a bad company.
+
+57
+00:30:40,650 --> 00:31:09,180
+And they also had a reputation for poaching good programmers from open source projects, and then just them sort of disappearing. So yeah, I really didn't like Facebook. And I think I liked that color my opinion a lot about it. I was like, Well, I'm not why, like, it can't be something good if it comes from Facebook, because Facebook is so bad. And that was definitely a lesson to me as well. Good things can come from bad places.
+
+58
+00:31:09,180 --> 00:31:55,470
+Like I'll just, you know, something I've learned is think it's important to keep the perspective of where something comes from, it's very important. But at the same time, it can be good, and there is value in looking at things and analyzing things based on their merit, I don't think we should only do it that way. You know, there's a lot of cases where I think ethically, you could argue something very good coming from a bad thing shouldn't be used because of where it came from. I don't think React is quite to that point. But I still think it's important to not completely discount where something comes from.
+
+59
+00:31:55,470 --> 00:32:33,900
+But I absolutely shouldn't have been talking about it technically in its merit without understanding what I was talking about. And that's actually my biggest criticism of this documentary is that I think it paints Facebook in this kind of good light, it without talking about all of this other stuff, they do touch on the fact that Facebook was poaching good open source engineers, and then they weren't really doing things anymore for the community. But other than that, I think this really paints Facebook in a much better light than I think historically, it should be.
+
+60
+00:32:33,900 --> 00:33:03,570
+You know, overall, I really liked the documentary, I do wish they had at least touched on some of the abuses to just put things in perspective. And I know React is the focus of the documentary. But it does talk about Facebook a lot. So to not mention that I think is doing a disservice to people and kind of doing that big rewriting of the history to me, and not to necessarily defend myself, I should have still looked into React, I did, I guess, do a small amount. 
+
+61
+00:33:03,570 --> 00:33:43,710
+And I do think there was one legit criticism. So yeah, I don't know if you remember this. But early on. And actually, for quite a while react was really bad for accessibility in search engines, it didn't come with a good solution out of the box. For any of those, everyone probably remembers, you would just get this white screen initially, while you're waiting for it to download all the JavaScript and do the initial render. And there were immediately people trying to make solutions, but they were not very good. And so most people just had the white screen. And I didn't like that that was bad. That was a bad user experience.
+
+62
+00:33:43,710 --> 00:34:11,070
+And so it was a legit reason not to use React at the time, but not a legit reason to not look into it and look into how it works and be like, Oh, well, this is actually good design. We should take this and make it better. And yeah, made me sad watching the documentary, because in the documentary, at one point they get to when they were trying to open source it. And when they first attempted to do so at a conference, it was really badly received.
+
+63
+00:34:11,070 --> 00:34:44,940
+I couldn't help but think like, oh, if I had just done my own investigation and actually looked into it, I would have been like, Oh, this is actually good and helped them maybe develop it initially. Or at least tell people Yeah, it's worth using. But instead, I went for years without even considering it and kind of discouraging people from using it. I could have even learned a lot from that, I think and applied it to the stuff I was working on, and at least helped steer people in the right direction.
+
+64
+00:34:44,940 --> 00:35:06,240
+So yeah, I think when it comes to technology and programming in general discounting react initially is one of the biggest mistakes I've ever made. And seeing what the team went through in the documentary when it wasn't in Initially well received really made me feel bad. Like, yeah, I don't know, I probably wasn't a big part of it.
+
+65
+00:35:06,240 --> 00:35:50,370
+But in a way, I feel like I was a part of almost, you know, potentially killing react, like they could have come back from that initial experience and been like, wow, everybody hates it, I guess we'll just keep it to ourselves. And, you know, that's that's how it's going to be. We could have not had react and I could have been way somewhat tiny bit responsible. Not really, but I don't know a little bit makes me feel bad nonetheless. And yeah, so watching this documentary, and just being like, wow, yeah, I, I was a part of that community that didn't respond to it as well as I should have. And it could have killed it. And that could happen with other projects.
+
+66
+00:35:50,370 --> 00:36:28,020
+So it's always a good reminder, I think to actually look into things before discounting them, I think I'm still justified in being skeptical if a crappy company like Facebook comes out with something. But that doesn't mean it can't be good. And doesn't mean we can't look into it. And if it's truly open source, or free libre software, reactors, at least open source and MIT license, we can fork it if we need to. It's not the best solution. And so I think it's definitely worth you know, knowing where something comes from, and taking that into account. I shouldn't have discounted react purely because of that. 
+
+67
+00:36:28,020 --> 00:36:59,940
+But next, we get together to some more fun things other than me just be like, Yeah, I did a bad job there. So I, I really liked hearing how react developed. And they didn't really call it the design process, but seeing the design process. So react was initially created by an engineer at Facebook by the name of Jordan Walke. And it was just super fascinating to me the initial story.
+
+68
+00:36:59,940 --> 00:37:39,870
+So it sounds like they had been doing a lot more of the front end application centric things at Facebook, and they had some solutions, one, which was called bolt, like bolt did a bunch of stuff together type of thing. And Jordan had come up with essentially their own idea of like, how things could be done better. And it was, I don't know, it didn't say where Jordan got these ideas. But essentially, it was the idea for React. Let's blow away the DOM and just replace it with with whatever the state is, instead of trying to use to a data bindings to keep things in sync.
+
+69
+00:37:39,870 --> 00:38:19,950
+And so Jordan was the one that initially created it, it sounds like they were at Facebook, trying to evangelize it more or less and get people to use it there. But from a design perspective, I think this is really interesting, because it's not like what I was seeing from a lot of the top down approaches that other companies were coming out with this was somebody at Facebook, that was like, Hey, I just kind of made this thing organically as a solution to a real problem that we actually have. And it sounds like they just started trying to use it within Facebook in some areas, and working with other people and trying to get them to use it.
+
+70
+00:38:19,950 --> 00:39:03,930
+And so from a design perspective, I think this is the right place to start a bottom up perspective as as me and other people like to say, it's organic, it's bottom up, and Jordan and some other people then started working with React and trying to actually bring react more into Facebook, but it wasn't like somebody high up in the company was like, hey, we need this new solution that's going to solve all of our problems. No, instead, it was just this organic thing that came from trying to solve an actual problem. And just iterating on it and trying to make it better and better and fit into the problems they were having at Facebook.
+
+71
+00:39:03,930 --> 00:39:48,960
+And I think this is you leads to much better products, much better engineering, much better design, then when you have somebody at the top be like, oh, yeah, I heard our current solution has lots of problems. So I'm creating a team to just come up with a solution, they're going to put their heads down for a year come up with a great solution, and we're all going to adopt it. I think those solutions are usually really bad for many reasons, you know, designed by committee and you're not really learning as you develop it. I think this approach that I'm hearing from the documentary was way more organic as the team just struggled to figure out like, Oh, what is it that we created? How does it work?
+
+72
+00:39:48,960 --> 00:40:10,770
+And that was also really interesting to me talking about how, like one of the people I forget their name was like yeah, so I just, I was like, wow, this is way out there. I don't know. get really familiar with it, but I want to understand it better. So they went through and like created a glossary of terms. And essentially, it sounds like tried to understand the design of it and how it worked.
+
+73
+00:40:10,770 --> 00:40:24,360
+And then they would go to Jordan and other people that were actually using React within Facebook and being like, hey, does this Does this match? Is this what you think of it? As you know, am I getting this right, and they would correct them and help them.
+
+74
+00:40:24,360 --> 00:40:46,710
+But I think this was really, really great. This is what it's like, to me, this is just so exciting as like, it's like the type of good design that I really liked to see, you start by creating, you start by trying it, you gain some experience. But at this point, things are not going to it's going to be messy. It's not going to be super well designed, but it's going to be real. And it actually solves a real problem. 
+
+75
+00:40:46,710 --> 00:41:19,620
+And then you come in and you're like, Okay, what did I actually build? What are the abstractions here? How do I actually make this good design? And it sounds like this is the process that just sort of happened organically at Facebook? Another one that engineers was just like, Yeah, I'm going to try to understand this. And they broke it down into all these terms and concepts. And from there, they took it in actually refined it, they took that feedback, and they're like, oh, okay, yeah, so we can improve this, we could. And it sounds like they completely change the API based on this process. And, to me, this is brilliant.
+
+76
+00:41:19,620 --> 00:42:15,090
+And a large part, I suspect of why React is as good as it is, you know, going through this process. This is good design process. In my experience, I think it's really an I think I'm emphasizing this because it's really easy to not do because it's hard to do. So the first hard step is just building it and making it work. And actually using it, you know, that first bottom up organic step is not easy either. But it's really hard to then go from that and to create something coherent and usable by other people on the team, other other companies, whatever, like that part of actually distilling it into something other people can learn easily and apply to their own projects. That's also really, really difficult.
+
+77
+00:42:15,090 --> 00:42:43,890
+And then to go from that, and actually apply the things they learn to improve the API and improve the product. That's the next third hard step. And it seems like that's what they all did sort of organically in the story is really interesting, definitely check out the documentary because they go into a lot of the personnel issues around it. And, you know, how does this interact with like management and a product? And I found that story really fascinating. So definitely check that out.
+
+78
+00:42:43,890 --> 00:43:09,210
+But yeah, overall, it was just super fascinating to me to hear this sort of initial design process. Like to me, if I maybe I should talk about this more, but it just indicates really good bottom up design, which is what I call this. And so it was really fun to hear the story of how they were doing this in practice and actually applying it.
+
+79
+00:43:09,210 --> 00:43:41,580
+And I think there's a lot that even I learned from that like, especially when it comes to interacting with people and getting solutions figured out. It sounds like there was a lot of internal, almost turmoil about like, Oh, do we adopt react? Do we use React? What do we do with React? It's kind of out there? Should we use these other solutions? And seeing the culture that they had there in terms of like, Yeah, let's work this out. Let's sit down together, let's figure out these solutions. It, it was really encouraging.
+
+80
+00:43:41,580 --> 00:44:11,310
+And yeah, if you're interested in what I think a good design process looks like, it's definitely a good place to start. And the next really cool thing to me was they so I'll talk more about the open sourcing it a little bit later. But they they went through and open sourced it. And the next big step that is also really hard to do that I feel like a lot of people don't do whether it's internal or external companies, is they open sourced it.
+
+81
+00:44:11,310 --> 00:44:24,930
+And they had some initial users, one by the name of Sophie Alpert, at Khan Academy, who was like, oh, yeah, this they were, unlike me, they actually looked at it and learned it. And they were like, Yeah, this is good. I want to use this.
+
+82
+00:44:24,930 --> 00:44:49,590
+But they also had a lot of good feedback for the team and the React team. Apparently, they actually listened to the feedback and incorporated it. And they emphasize like, yeah, this feedback was critical. Like we really needed this feedback. And what I usually see with big companies, open sourcing projects like this is they do not they're not as receptive to this type of feedback.
+
+83
+00:44:49,590 --> 00:45:20,970
+They're like, Nah, we make it work for our company, and we don't really care about the wider community. We're just doing our thing and that's how it is. They were like, no This is great, let's actually incorporate this feedback. And so, working with Sophie Alpert, who they eventually I believe, hired for the React team, they, I think we're able to take this design process and just move it to that sort of final stage in the initial development, which is incorporating external feedback
+
+84
+00:45:20,970 --> 00:45:56,160
+ And I don't think I can overemphasize this enough, if you're at a big company, or a small company, or you're open sourcing something, it I guess, technically, in some rare cases, has worked, where people just ignore the wider community and something still takes off. But if you want it to be actually good, getting more experience, for more people in different situations, like what it was developed for it, Facebook probably covered a lot of different use cases, but not all of them. And so getting external use cases, external feedback is critical to creating good design.
+
+85
+00:45:56,160 --> 00:46:14,760
+So it was really fun watching the documentary to me and hearing this experience and being like, yeah, we learned a lot. And it was really important. And I think it also just shows like a really good culture, at least around this team and related teams at Facebook.
+
+86
+00:46:14,760 --> 00:46:52,230
+One really interesting story to me from the documentary was how they're talking about, like, oh, we, we want to try this out, I think it was for like the ads team. But the ads team was like, Oh, we're gonna have to like stop feature development for months for us to try out react and see if it really is better than our current solutions. And that was the moneymaker at Facebook. And so it was seeming like how we can't do that. And someone higher up in the company was like, Well, if you guys need to do that, then you need to do that we want a good solution here.
+
+87
+00:46:52,230 --> 00:47:24,000
+So to me that also showed actually good culture and a good, like, that's the culture you want at your company, there's a time and place in, in capitalism, where you just have to make money. But if you're in a position, where you can invest in that way, a good culture, good company will be like, yeah, we're going to do it, we're going to invest, we're going to make things better, we're going to do the right thing, we're going to choose good design. So it was really cool to me to see that coming out of this project at Facebook.
+
+88
+00:47:24,000 --> 00:48:08,220
+And this wasn't really included in the documentary, per se. But I think it this sort of healthy culture that comes out of the documentary also is reflected in the fact that React is still, I think, doing a pretty good job of listening to community feedback and trying to create a good general solution, not just a solution for Facebook. And I think this just really shows through in all of their efforts, they're not necessarily always trying to create the most popular thing per se, there still, it seems like trying to create something good, while also listening to community feedback, which is awesome, in my opinion.
+
+89
+00:48:08,220 --> 00:48:52,860
+The third thing I wanted to talk about after that discussion on design, is marketing. And this was really fascinating to me coming out of the documentary, especially because I had, you know, as I talked about earlier, created something kind of similar. And I thought about, I think I'd probably technically open source that, but I never promoted I thought about, you know, more promoting it as a real thing for people to use. And so it's really fascinating to me to hear how like, basically the second half, or I don't know, maybe the middle third, or something of the documentary was really about marketing in open sourcing react in that experience.
+
+90
+00:48:52,860 --> 00:49:21,120
+And just super interesting to me, because I've created a lot of open source libraries and, you know, have had, in some cases, more success than others in actually getting people to use them. And what I think I've learned through this experience, you know, personally, is that we in the software community want to think we're so focused on just the technical merits, that's what really matters.
+
+91
+00:49:21,120 --> 00:50:17,760
+In my experience, whether it's open source, closed source, whatever it is, marketing is absolutely critical. When I look at the things that have been successful over the years in software and web development and web frameworks, I think ultimately most of it comes down to marketing. And so it was really fascinating to hear the story around react and how they don't call it this but essentially they had to market react and so they talk about this initial experience where they released react as open source and a non insisted that this conference and the reception was bad, as I mentioned earlier in the episode, the, the reception from people's like, What a joke and things like that, and the team came back really frustrated and upset and like, Is this even worth doing? And, you know, that type of thing.
+
+92
+00:50:17,760 --> 00:50:41,220
+And, but, but then they're like, Okay, no, we're gonna really do this. And it was really interesting to me, because it seems like, initially, they just had to market it better. So they were like, Okay, let's describe this in a different way. And so they come back for a later conference, and they talk about it in a totally different way and talk about like, Hey, what are the benefits of this and, and stuff.
+
+93
+00:50:41,220 --> 00:51:10,440
+And, you know, maybe it shows a bit of hubris on their side in the initial release, where maybe they just thought, hey, we're Facebook, and we create, if we create something that's going to be great, and they just assumed people would like it, or whatever, you know. But then it was sort of humbling. And they're like, oh, no, okay, we actually have to get people to look at this. But yeah, they definitely put a lot of resources into marketing it, you'll have to check out the documentary if you want all the details.
+
+94
+00:51:10,440 --> 00:51:36,600
+But as someone who's open sourced things, and gone through this experience, it really seemed accurate. What I've learned is, you can create really great things. And I've found really great open source projects. And I think I've created some decent ones on my own. That didn't really take off. And I think it really comes down to marketing documentation.
+
+95
+00:51:36,600 --> 00:52:12,540
+And it's, honestly, to me, I want to say it sucks, because I hate that part of these things I like to I like the technical part, I like making things. But marketing it and trying to get people to use it is not something I really enjoy. I love making awesome things. I don't love trying to convince people to use it, I want to be like, Oh, this is awesome. People should just find it and see that it's awesome. And just tell their friends, and everyone should just start using it. But that's just not the way it works. That's not the way it works in this world. 
+
+96
+00:52:12,540 --> 00:52:45,660
+And I think it was really instructive watching the documentary to be like, No, even somebody as big as Facebook actually needs to try to market this actually needs to try to convince people why they should use it. And I'm definitely going to learn from this in the sense that I already have learned to this, but I think it just really shows me that yes, if you're a big company, it's definitely easier you have a megaphone, so it's easier to market it, they definitely had an easier time than somebody who wasn't Facebook, I'm sure. 
+
+97
+00:52:45,660 --> 00:53:18,330
+But I think it's important to remember that if you're interested in creating your own projects, open source closed source products, it's, it's kind of a myth that you can just create a great thing and people will just use it, you have to market it. And by market, that doesn't necessarily mean like paid ads and stuff like that, just like actually putting the effort into communicating why your thing is good, why people should actually use it, and putting the effort into creating a nice looking webpage.
+
+98
+00:53:18,330 --> 00:54:14,280
+And this is this really bothers me to talk about. I'll be honest with you. I don't really don't like this. But this is the reality. If things look nice if they're pretty if they're attractive, it seems to do better. And I don't think I keep thinking of when I talk about this is tailwind. tailwind, in my opinion, is I think it has some good ideas. I don't think it's maybe as great. I don't necessarily think it's better than a lot of things that are similar to it. But it's really taken off. And I think a big part of that is it looks good. It's attractive it it did well on the marketing side. And this is just the reality that we live in. open source projects really do depend heavily on how they are marketed.
+
+99
+00:54:14,280 --> 00:55:04,140
+And I guess the other thing it makes me think of two is the if you ever follow security vulnerabilities Heartbleed and things like that are just so fascinating to me, because they get like a security vulnerability will get like its own marketing page and everything. And I'm just like, why does this need this? It should just on its own. People should be like, oh, yeah, this is bad, I should fix it or whatever. But I think what we've seen is that the better a security vulnerability is marketed, the more people actually try to solve or try to like patch their systems for it and the more press it gets and it's just the world we live in marketing is important and this I'm definitely not the expert on marketing.
+
+100
+00:55:04,140 --> 00:55:24,930
+Definitely not my favorite thing my forte, but it's something that I've had to learn over the years, I used to be in love with this idea that I could just create something and it would just take off on its own. And I don't really need to do anything. But I've had to learn over and over again, that's just not how it works. You You have to market things in some way or another.
+
+101
+00:55:24,930 --> 00:56:03,270
+All right, well, that is my thoughts on the React js documentary, I highly recommend you go check it out. And yeah, I feel like I also wanted to mention if you're interested in sort of the design of react and how it works internally, and you know, writing this episode and thinking about it, a lot of my perspective comes from that initial project that I was talking about, that I worked on, and some of the design principles that I learned, that helped me pick up, react faster and learn, react better.
+
+102
+00:56:03,270 --> 00:56:41,700
+But yeah, if you're interested in how react works internally, you can check out my book, foundations of high performance react, where you actually sort of get to build your own version of React and a more simple way, but it helps you learn the exact algorithms that react to uses internally for reconciliation and things like that. Definitely check that out, you can find it on the website for the React show, react show.com. But I also wanted to I'm bringing this up too, because I just wanted to mention that. I think on the website, it's $12 for the book.
+
+103
+00:56:41,700 --> 00:57:17,400
+But if you're listening to this, and especially if you made it through this far into the episode, and $12 is a lot for you which, you know, at times when I needed books, like foundations of high performance react, I couldn't afford $12, if you heard some of my recent episodes, where I struggled with mental illness and creating my own SAS application, and had $30 a month, to live on for food $12 had been too much. And also, you know, depending on where you live in the world, that could be an astronomical amount of money.
+
+104
+00:57:17,400 --> 00:57:46,950
+So I just want to say, if $12 is a lot for you, I want everyone to have access to it. So there's a contact form on the website, just send me a message. And I'll make sure you get a copy in whichever way works for you, you know, and whichever way you're able to support the show. Yeah, so I appreciate everyone that has bought it. I super appreciate it. It means the world to me. And it also means we can keep making these episodes to be honest.
+
+105
+00:57:46,950 --> 00:57:56,220
+So yeah, if if you are looking to get it in the price has ever been an issue. Definitely just send me a message and I'll take care of you.
+
+106
+00:57:56,220 --> 00:58:10,050
+So yeah, just want to say thank you all once again so much for joining us today. I hope you have a fantastic rest of your day. And yeah, have a good one. See ya.
+
