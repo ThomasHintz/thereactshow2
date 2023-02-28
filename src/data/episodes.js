@@ -228,14 +228,15 @@ export async function getEpisodes() {
                                           length: enclosure['@_length']
                                         },
                                         content: feedEntry['content:encoded'],
-                                        chapters: feedEntry['podcast:chapters'] && feedEntry['podcast:chapters']['@_url']
+                                        chapters: feedEntry['podcast:chapters'] && feedEntry['podcast:chapters']['@_url'],
+                                        duration: feedEntry['itunes:duration']
                                       }
                                     }
                                   })
 
   const numEpisodes = feed.entries.length;
   const feedEntries = feed.entries.map(
-    ({ id, title, description, enclosure , published, content, chapters }, i) => ({
+    ({ id, title, description, enclosure , published, content, chapters, duration }, i) => ({
       num: numEpisodes - i,
       id,
       title,
@@ -249,6 +250,8 @@ export async function getEpisodes() {
       audio: [enclosure].map((enclosure) => ({
         src: enclosure.url,
         type: enclosure.type,
+        length: enclosure.length,
+        duration
       }))[0],
     })
   );
