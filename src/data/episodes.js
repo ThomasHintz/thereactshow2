@@ -9,6 +9,7 @@ export const PAGE_SIZE = 15;
 const episodeExtra = {
   'Buzzsprout-12354761': {
     slug: 'less-stress-and-exploitation-why-we-should-unionize',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '083-mixed.srt')).toString()),
     youtube: 'https://www.youtube.com/embed/rCzACc87VJQ'
   },
   'Buzzsprout-12342672': {

@@ -1,0 +1,284 @@
+1
+00:00:02,820 --> 00:00:07,800
+Thomas Hintz: Welcome to the React show!
+
+2
+00:00:07,860 --> 00:00:17,940
+Brought to you from occupied Kumeyaay territory by me, your host, and warm nights, Episode 83.
+
+3
+00:00:21,110 --> 00:00:58,910
+Have you ever felt compelled to develop something you didn't feel comfortable with? Or maybe you felt like quality, user respect, and security were being sacrificed for launch dates? Or just profit in general? Or maybe so your boss can advance? Do you feel like the standard software interview process sucks? Is your visa dependent on the job that could be easily cut in mass layoffs? I think we, as programmers should unionize. And these are just some of the reasons why.
+
+4
+00:01:02,030 --> 00:01:49,550
+Thank you so much for joining us! I love being outside, programming outside, and even recording the podcast episodes outside. Recording outside was pretty straightforward when I was hanging out in the desert. You just had to find a place out of the wind and you were good. But now that I'm in San Diego, it sure is tough finding an outdoor place to record for some reason, there just seemed to be a helicopter's always flying over all the time. I don't really understand. But I don't I guess that's how it is. I don't know we'll give it a try again. Because I'm stubborn apparently in this case, and maybe cheaper than I should be.
+
+5
+00:01:51,620 --> 00:02:17,540
+So cheap. In fact, it's time for me to tell you that this episode is brought to you by us! Have you ever wanted to really learn React in depth? Have you ever got stuck trying to figure out how to make it render your list fast enough or what you should use for a key or maybe when to use memo memorization. 
+
+6
+00:02:18,320 --> 00:02:52,400
+So about two years ago now, I wrote a book called Foundations of high performance react, which will answer all of those questions. And more in the book, I go over the algorithms that react uses internally and even teach you how to build your own version of React using conceptually the same algorithms that react uses. I created it to be both very simple, straightforward, and very easy to digest, while also helping you to learn how to create high quality and high performance react applications.
+
+7
+00:02:52,580 --> 00:03:14,120
+It's currently on sale at the React show.com for $12. But like I mentioned in the last episode, if $12 is too much for you, just go to the React show.com go to the contact page, send me a message and I'll take care of you no worries at all. Either way, though, we really appreciate the support as it enables us to continue to create and bring this podcast!
+
+8
+00:03:14,180 --> 00:03:38,240
+Before we get into the main topic of the episode, I thought it'd be fun to have a chat real quick about the architecture choices I've made recently, when developing some new features for the React show.com I think some of my choices might be a bit unusual. But I will argue for good reason. And I just thought it might be interesting to people.
+
+9
+00:03:39,050 --> 00:03:52,250
+You know, I I like to try different things. And also, I might have a slightly different approach than what is often popular. And so I'm not saying it's better. But yeah, I thought it might be interesting.
+
+10
+00:03:52,250 --> 00:04:38,480
+So the goal is to create, eventually a premium section that provides a custom ad free podcast feed with bonus content and a lot of other ideas too. But it needs a standard sign in Create Account process. Like the ability to take payments, needs some way to store data, you know, a database or something. And, you know, I-this time around, I'm not planning to create my own database management system, like I mentioned recently and an episode on creating my own SaaS application. That was a mistake. We're not going to repeat that one. So I'll talk about what I chose for that.
+
+11
+00:04:39,680 --> 00:05:13,010
+And I also want to continue building with React server components to try them out. So I already built the new version of the React show.com with NextJS 13 using the experimental App Directory slash react server components support. So I'm sort of going off of that It's just extending that. So I'm going to continue using that architecture. But I also had to, like I said, find a way to store data database, there are a lot of options.
+
+12
+00:05:13,010 --> 00:05:40,370
+And I feel like a lot of people that I talk to, and a lot of places that I work, choose things that I find to be kind of higher maintenance, or just kind of a pain to work with, especially if you're talking server lists, that kind of thing, I went the opposite, I chose something very simple. SQL Lite.
+
+13
+00:05:40,490 --> 00:06:42,380
+So SQL Lite, if you're not familiar with it is a relational database system. SQL. And it is designed to be super simple, lightweight, and reliable. So it's just stored in one file, there's you don't have to install anything. There's no real configuration that needs to be done. Just super simple. It's rock solid, it's used all over the place. And I like it just because it's so simple, and has so little maintenance required. And if you're not building a giant thing with tons of users, it's more than sufficient when it comes to, you know, features that you might need for that kind of thing. And one of the most exciting things is with React server components, I can directly make database calls, right in components. It's simple. It's fast, it, it's been working really well.
+
+14
+00:06:42,750 --> 00:07:31,530
+So I'm not using a serverless architecture. I find those to be, oh, let's see, how do I say this? They can be faster to scale potentially. I don't know if I, I think with my level of experience, sort of running databases and websites and stuff. I don't know if this is as true for me. I know for a lot of people it might be because you don't have to learn how to administer your own system. For me, I already know how to do that. So serverless just isn't a huge benefit. For me, I feel like I can scale most things, quite a ways with just a simple Linux box. In this case, I'm not expecting huge loads or anything. So it's really not a big deal.
+
+15
+00:07:32,400 --> 00:08:25,740
+So just looking for something very simple. And I'm currently running the website on a virtual private server. And I can, I can just have my database there and use it sort of old school. Yeah. So that's the, what I chose for the database, and I've done it before, it works fine. And I'm happy with that. And it should be very, very low maintenance, I don't have to worry about being on Heroku and using Postgres. And they're like, Oh, we're upgrading the library, we're changing the extensions, you have by this date to go in and update a whole bunch of stuff or whatever. SQL lite isn't going to change like that, I'll be able to run this probably for years and years without changes, which I love. Low maintenance.
+
+16
+00:08:26,520 --> 00:09:29,430
+So another thing and maybe even more interesting to a lot of people is I am using something called caprover to deploy the website. And this includes everything I've been talking about so far, the database everything. So what is caprover, Caprover is essentially a PAAS, like Heroku. But it's open source and self hosted. So I just installed caprover on my virtual private server, which was a very simple process, very easy to do. And then beyond that, I can deploy Docker images to that instance, to my to my server, and it's very much like Heroku, where you can set it up with a source control system. You can deploy branches, you can do all sorts of stuff. Very similar to what you might be familiar with in other PAAS systems.
+
+17
+00:09:29,610 --> 00:10:41,250
+Of course, the big difference is it's all completely self hosted. It's I have found it to be very low maintenance, it's going to be slightly more maintenance than probably running on Heroku or something. But again, for me, it's not a big deal. I really like it, it's easy to set up and it has so many really nice features that I just don't have to mess with like I have enough experience. I can set up my own Linux box and configure nginx and configure everything myself manually. But I like quick and easy and low maintenance and cap rover makes it so I can have reliable deployment follow backs, automatic HTTPS setup, I can deploy branches for testing. It has auto restarts of the app crashes and lots of other features that I just don't have to mess with or configure. And it just works. So that's fantastic. I've used cap rover on a few projects now. And I wouldn't say it's the most full featured or developed, I'm not necessarily saying you should go out and use it. But I've had great success with it. I really enjoy using it.
+
+18
+00:10:41,670 --> 00:11:14,040
+And I guess I'm being cheap, too. It's a lot cheaper than than Heroku, or anything like that, that I know of. And I think in general last maintenance. Yeah, so that's, that's caprover, I just made a simple Docker image that gets deployed to it. Beyond that, I think another interesting thing to people is the way that I developed a lot of the interactivity.
+
+19
+00:11:14,600 --> 00:12:16,220
+So there's, there's forms, I created the sign in create account, and all that kind of stuff from scratch. Just using tailwind for styling. And with React server components. I, I just went kind of what you'd call old school. So it's pure server side form based forms. I, I really love it, it's so simple. I don't need any extra client side validation, I can just put all the validation inside the server side components. And I am passing like if I need to, like let's say somebody submits to create an account and the accounts already taken, I just use query parameters to pass that message. Back to the page, they were on that page, you know, says oh, look, this query plan says it was our the account was already taken. So I'll display a message to the user showing that it was already taken or if they didn't include a password or whatever it might be.
+
+20
+00:12:16,640 --> 00:13:04,220
+So I have complete server side validation, which you should always do. And I think always start with client side validation that can always be bypassed. So you should always have your server side validation. And the cool thing is with the React server components, I You really don't need to create any react specific client side validation. I am employing basic HTML5 client side validation just using tags. And I think that'll work fine for a long time, I can always go back and add fancier react client side validation. But this was super quick, super easily super reliable. Just another reason why I'm really enjoying react server components to be honest.
+
+21
+00:13:05,180 --> 00:14:09,890
+But yeah, I think I don't see many people developing this way in you don't even need react server components to do it. They just makes it easier if you're writing things in React. But yeah, I, I am, I think I just think it's a lot simpler, because you always need server side validation. And previously with React projects. It, I think required a lot more code, because you had to have client side support for handling messages and handling a lot of it that you don't really need anymore. And it's just a lot simpler. Like I just like, oh, submit the page, make my database calls and return the result. I know it's if you've been doing web development for a while, you're probably like, oh, yeah, that's super old school. That's how we've done things forever. It works well. But I know a lot of people aren't as familiar with that. And I think it works really well. And yeah, so that's what I chose. I'm really happy with it. We'll see how it goes.
+
+22
+00:14:10,100 --> 00:14:17,360
+Maybe I'll change my mind. And I'll abandon react server components and all of this. Now it's all part of the experiment. We'll see what happens.
+
+23
+00:14:17,570 --> 00:15:11,150
+All right, so let's get into the main topic. And I will admit, this is something I've wanted to discuss for a very long time. But I know from talking to a lot of people in the industry, it's not necessarily super well received. But you know what, I don't care I maybe nobody likes this and nobody's going to agree with me. Maybe nobody's gonna listen to this episode, but that's all right. i It's important to me and so I'm gonna say it but I really hope you will. all enjoy it. And I'm super curious to hear what you think. And in the I've been talking about I should say and and that is unionization.
+
+24
+00:15:11,690 --> 00:16:09,530
+Yeah, I think programmers should unionize. And I think there's a lot of almost misinformation about what that means and why you might want to unionize. There's absolutely a thing within the tech and programming community. I think there's two things. One is that there's sort of this perception of like unionization is for like getting better pay, things like that. And absolutely, it can be used for that. But it's also way more than that. I really see, I really see any, you know, work environment as a default power imbalance, where your boss or bosses, the investors, whoever they might be, has the real power in the relationship.
+
+25
+00:16:11,060 --> 00:16:46,850
+So as if you're in an industry where you're really in demand, and there's a supply demand imbalance, you have more inherent power. And I think that's where programmers have often been when it comes to software. So we have been able to have certainly much better work environment, much better pay than people in a lot of industries. But I think that we often overlook a lot more negatives about the current setup, the current power imbalance.
+
+26
+00:16:47,320 --> 00:17:09,970
+And yeah, I don't want to discount the fact that there are a number of tech workers that are highly paid with really good benefits, and things are great for them. I'm not saying that's not true. But I think there's way more to unionization, like I said, in the hook, at the very beginning.
+
+27
+00:17:12,280 --> 00:18:11,770
+What else? Why else might you want to unionize. And I think when it comes to software, one thing that I have heard from nearly every programmer is how dissatisfied they are with, I think a few main things, some being focused around the work environment, of course, and sort of feeling, I think what I get a lot is people feel insecure. And that's not good, that's not healthy. It causes people a lot of stress in their personal lives. Or maybe you get paid a lot. But it comes with really long hours. And it's not enjoyable soul sucking work, and you would like to have, maybe you're okay with less pain, but better work life balance. But that's just not how the place you're at operates. You don't have that freedom.
+
+28
+00:18:12,970 --> 00:19:23,440
+And I've heard this countless times I think most programmers I've talked to are like, Yeah, I would much rather work less get paid less, and do more with my life. But that's just not, you know, your boss is not really interested in that, I think for a lot of reasons. But I think there's also another huge aspect that we don't talk about enough. And that is the work that we are essentially forced to do as engineers, as programmers, as developers, most programmers that I know, get discouraged about the work that they have to do, including things like data mining users, or just genuinely working on features that actively make our users lives worse, that make the user experience worse, or we're forced to work on a schedule that doesn't allow us to do a good job that doesn't allow us to write good software, that they're tracks from the long term success. I think that's a big part of it.
+
+29
+00:19:23,890 --> 00:19:56,950
+As the people actually building stuff, we can see oh, yeah, this code needs more investment in it needs to be maintained better, it needs to be upgraded, needs to be fixed, we need to focus on security because like, we don't want to be responsible for writing code that ends up, you know, causing somebody to crack into the system and steal our users data. Like that's just nobody really wants that. But we're often forced to do and create these things that we don't like.
+
+30
+00:19:57,700 --> 00:20:45,280
+I've talked to a lot of people in In the ad tech industry, especially, who basically have told me like, yeah, I just kind of have to like to survive in this industry, I just have to suspend all of these feelings. So much of what I have to do on a daily basis, whether it's data mining users, or spying on users, or trying to trick them into providing information or trying to just extract information from so many different sources sort of secretly, like, I just can't do my job, if I'm worried about the actual effect of this. And that's very sad and disappointing to me. Nobody wants to work in that kind of work environment. 
+
+31
+00:20:47,670 --> 00:21:17,340
+So when I talk about unionizing, I am looking at it in terms, especially those terms, correcting that power imbalance, so that we as engineers can come back to our bosses and say, Yeah, I know, you want to do this to our users. But hey, let's, you know, we don't, that is a short term win, maybe maybe we make some money in the short term, but it's not something we enjoy working on. And it doesn't make us happy.
+
+32
+00:21:17,370 --> 00:22:26,970
+And part of having a job, especially a job that takes up so much of our lives is being happy and doing them. And so we can go to our bosses as a group and say, Yeah, we don't want to do that. What you're telling us to do, or asking us to do is not good for people not good for the planet, whatever it might be. Can we investigate some other potential solutions, like nobody's going into this being like, Oh, we just want the company to not make any money. That's, that's not what I'm saying. I'm saying, if we come together as a group, we can demand to find solutions that work for everyone, including us as workers, including the end users, and including the company. So it's no longer just the boss, being able to decide what direction things go in, or what we have to work on, it becomes about finding a solution that works for everyone. So to me, that's a huge, huge reason why I think it could be really beneficial for software engineers and to unionize.
+
+33
+00:22:27,120 --> 00:23:11,850
+And I want to tell you a story. Another story, another reason why I believe so strongly in this. So I worked at a company, and I can't give any specifics, for many reasons, unfortunately. But I can say I worked at a company and I discovered a serious security vulnerability that potentially exposed lots of user information, information that I am sure most users do not want exposed to the general public. And the response from the bosses from from management was very upsetting to me.
+
+34
+00:23:12,690 --> 00:23:42,240
+So I, I disclosed the my discovery of this vulnerability, and I had code that proved it. And it was like, Yeah, this is this is real. It's extremely serious. So my suggestion to management was, okay, we need to obviously, first fix the issue. And of course, they were, they were on board with that, which was great. I suppose they could have been like, Nah, it's not that big of a deal, or whatever. So they're on board with that.
+
+35
+00:23:42,000 --> 00:34:29,640
+And so I'm like, yeah, absolutely. If I'm a user of the system, I would want to know what happened and so I really pushed for that is like no, we need to tell people this is really important. But If it didn't happen, it was makes me frustrated, even now thinking about it, it just it was so disheartening. It's like, clearly, this is about profit in the short term for this company, not long term success and not the users. And I know that this situation happens all the time. I know that the instinct I, so I've been in management, and I know that the pressures in management don't encourage this to be something that happens, like you're not, I think, in most cultures, going to get promoted, if your team is like, oh, yeah, we really screwed up.
+
+36
+00:23:42,239 --> 00:24:45,929
+But then I was like, and then we also need to inform our users and investigate the potential extent of the exploit and see if anybody actually exploited it. And this is where I was very unhappy with the response, basically, I was told, Oh, yeah, I mean, that sounds great. And all but we've got a lot of other priorities. And to be honest, we can't afford bad press, and this isn't going to look good. And they gave me lots and lots of reasons like that. And so no matter how much I tried, they were not interested in me. Like I really felt like if I, the way I thought of it was, if I am a user of this system, and this happened to my account, I would absolutely want to know because I would want to check on, you know, as somebody committing fraud with my information and things like that I would want to know to keep myself safe.
+
+37
+00:24:45,930 --> 00:26:46,320
+And we had this, you know, leak or whatever, even though, I think the situations that lead to these types of security vulnerabilities come from higher up in the company pushing programmers to work to quickly or whatever. And then ultimately, the blame lies with the people at the top. But you don't move up the chain by having this happen under your watch. And so there's a lot of pressures to not disclose it. And at least in this case, it went along with years of the development teams, trying to push back on management schedule, basically saying, Hey, we can't do a good job, we can't write quality code, we can't check and try to make sure we don't have security vulnerabilities because of the schedule you're putting us under.
+
+38
+00:26:46,990 --> 00:27:30,370
+And so it definitely comes from higher up in the company. And I think if, as programmers, we had more power in this equation, we could have at least come to some sort of way of making this work for everyone being like, hey, maybe, maybe there's some less important features that we don't need to do. Now we need to make this code better. And to be honest, in my experience, as, as the workers as the programmers, that the developers actually making things actually producing things, we often understand the software, the code, and the product better than our bosses.
+
+39
+00:27:30,460 --> 00:28:03,190
+And it's also been, I don't know proven if that's the right word. But it's been demonstrated scientifically, that being a boss, also, psychologically over time, transforms your brain. So it's harder to have empathy with other people with other users. And just overall, I think the boss position is always going to be at odds with the workers position and what we want and what makes us happy, and what even what makes our users happy.
+
+40
+00:28:03,430 --> 00:28:47,170
+And so to me, unionizing within software is more about having healthy, happy lives for ourselves, and taking care of users. And also, I think, the long term success of companies. So often, software companies, and actually really any company's, the, the bosses, the investors, the people running it, the stock market, you know, whatever it is, in my experience, in almost every environment I've ever been in the people at the top are super focused on short term gains, and I think, to the detriment of the long term success of the company.
+
+41
+00:28:47,950 --> 00:29:26,800
+It's not that there aren't times when you need to really buckle down, and you got to make it through some tough times or whatever. Nobody's denying that. But in my experience, the people writing things are usually always in short term mode. And I think, as in my experience, personally, but also in talking to a lot of engineers. We have this perspective, that's like, yeah, we know what it would take to make this code base really good to make this product really good, long term, but it requires investing in the product, investing in the code at times, not just always putting out new features, per se.
+
+42
+00:29:27,100 --> 00:30:18,850
+As programmers, I think most programmers care about their work, they care about the quality of the work, it it makes us happy to be able to do good work. And so creating a space creating a place where we can do that, while also still making companies successful. Seems like a win really for everyone, even if the bosses might not admit it. Yeah, so that's a I guess the the long form of many reasons why I feel like In software we should unionize. And of course, there's many other reasons, like I mentioned earlier on in the intro, everything from improving, or completely changing the interview process to make it better, to being more equitable.
+
+43
+00:30:19,690 --> 00:31:01,180
+For everyone involved, whether it's related to disabilities, mental health, ethnicity background, as a group, we can come together and set common goals that benefit all of us. We can say, Yeah, we think this interview process is horrible. We don't want anyone to go through it anymore. And we're going to come up with some better solutions for it. And just being able to have the power in the voice. And the ability to have input on that, I think, would be huge for the industry for improving the industry for improving everyone's lives, who works within the industry.
+
+44
+00:31:01,330 --> 00:31:27,070
+So I could go on and on about reasons why I think it would be beneficial. And you know, if you guys want me to talk more about that, definitely let me know. But I also want to get into what I really mean by unionizing. Because I've been talking about a lot, but not defining it. And I certainly don't define it exactly the way that maybe everyone does.
+
+45
+00:31:28,990 --> 00:32:48,010
+So I think the there's a lot of ideas on what a union is or what a union can be. But to me, I'm not interested in creating another boss. So I've seen a lot of unions, where you trade your one boss for another boss, the union boss. And that's not something that I'm interested in. So when I talk about a union, I'm talking about a Workers Union, a union where we, as the workers have the power within the union, we're not just paying dues to some other union boss, who makes the decisions for us, we are creating an environment where we make the decisions, like for example, one, one option could be maybe you, you still have a management layer, but management is voted on by the workers. Your manager is not just, you know, sort of hand picked by the people at the top, your manager is someone that you elect as the workers. And or maybe even decide you don't need managers, you find some other way to work some other way to get things done some other way to organize. 
+
+46
+00:32:48,210 --> 00:33:14,130
+But the important part is that we as the workers have the power and the voice. And nobody else has that voice or that power over us. We become as a group equal within this equation, you know, our boss is no longer over us, per se, but more like working with us as an equal.
+
+47
+00:33:15,180 --> 00:33:55,440
+And I think that I guess this is this is really what I mean by a union, there are absolutely unions that don't work this way, where you just have the union boss, and you pay your dues. And those are often still better than not having a union at all. But I find that you really lose a lot of the potential benefits. You now you're just working within the constraints of the union that you also feel like you don't have power within and to me the whole goal is about equalizing the power structure, not just moving the power to some other boss.
+
+48
+00:33:55,800 --> 00:34:12,090
+Our goal isn't to replace one bureaucratic structure with another it's to replace a power imbalance with more balance and not paperwork and union dues.
+
+49
+00:34:14,550 --> 00:34:29,640
+Getting pretty intense there. The weather decided to let me know that to cool it off. Take a break here. It started raining on me guess the other joys of recording outside but hey, makes for a nice adventure. Right?
+
+50
+00:34:31,770 --> 00:35:03,390
+So yeah, getting back to you know what I mean by unions and where I think we could go as an industry. I think what I would be looking for is a Workers Union one where we have equal power to each other and to our bosses. And I also think a big part of this, a big advantage could be joining Got a general purpose Workers Union.
+
+51
+00:35:03,390 --> 00:35:33,750
+So you can have unions where you're segregated by the type of work you do. So, you know, you drive semi trucks and you can have a semi truck union. I think the most powerful unions historically have been general purpose unions. So one, essentially one Workers Union for all workers, not just software workers, this gives you even more chance of equalizing the power imbalance.
+
+52
+00:35:33,990 --> 00:36:06,360
+The truth is, if you are creating a union that is specific to one type of work, you're essentially limiting your power, and your bosses might still come out with more power in the situation, just because you have less members. If everyone that works as a part of your union, if all workers are a part of it, then you have a much, much better chance of having your demands met and creating a healthy happy work environment.
+
+53
+00:36:06,000 --> 00:36:35,760
+All right. So let's say we are like, Yeah, let's create a union. What can we do with this union? Like I mentioned before, I'd love to improve the interview process and make it something that is both better and healthier and less stressful. I'd love to look at removing bad bosses, bad bosses, shouldn't be bosses. There's plenty of good people in the world that could do a good job, the bad bosses shouldn't be there anymore, we could remove them.
+
+54
+00:36:37,080 --> 00:37:35,070
+I'd love to focus on the people and the users of the things that we create, have a more long term focus and invest time into making quality programs, this would be huge, like I every basis, pretty much every work environment I've ever been in, the focus has just been so short term, and you're not able to create good quality products, I think you especially see how this compares to an open source product project, where especially early on, it might be a passion project, and people are working on it in their spare time, you look at these projects that ended up being really wildly successful, that ended up getting used maybe more than any, you know, professionally sold product. 
+
+55
+00:37:35,700 --> 00:38:07,980
+Lots of lots of our websites, when we develop things are built on open source software that started as passion projects by people that cared about quality and making something good, some codebase that they enjoy working on. And these projects last a long time because the people creating them are able to create quality projects quality, you know, software. And so being able to do that, in our jobs, I think would completely transform a lot of people's lives.
+
+56
+00:38:08,940 --> 00:38:32,250
+In terms of mental health, and a lot of other things if you can go to work and be like, Yeah, I love working here. Because I get to really make something good. I get to make users happy, I get to write high quality code. I think this would fundamentally improve everyone's outlook in the industry and just make everyone happier in general. Another awesome thing that we could do is push back on unreasonable timelines.
+
+57
+00:38:33,710 --> 00:39:02,360
+I think, like I said, there's always a time in a place where you just have to get scrappy, and you just have to get things done and it but we need to be equal parties as workers in those conversations, you know, if our company is really actually losing money, and we have to do this, then we have to do it. But there's also a time and a place to celebrate and sit back and relax and just have fun and have a good time. We're humans, we're not machines.
+
+58
+00:39:03,590 --> 00:39:47,390
+And I think it's important to, you know, have the ability to say no, this timeline doesn't make sense. Let's talk about other solutions. Another thing that I think would be really awesome to investigate is sharing profits across all workers, not just the people at the top getting rich, or at least having more control and in power and say into how the profits of the company get distributed. Or maybe the profits are just reinvested into the company. Maybe we're like, yeah, we just want to keep working here for 50 years. So our goal is to improve the company not necessarily get paid more today.
+
+59
+00:39:47,600 --> 00:40:30,230
+What about let's create some job protections. So we can't be fired without cause on short notice without a good severance, you know, creating a situation where we can You know, have children and spend time with them, we can have a really stress free work environment and healthy, happier life, create a, a work life balance that we want, you know, let's get a four day workweek, or whatever we're interested in something where, you know, our job isn't just the soul sucking thing that we have to do to earn an income. It's also something that we enjoy doing and makes other people's lives better at the same time.
+
+60
+00:40:30,470 --> 00:41:15,770
+And I'm sure there's many, many, many other things we could do, I would love to hear from all of you, if there are specific things that you're interested in that you struggle with that your job, and you would love to see improve that you think could be improved with this, or even, you know, I'd love to hear from you. If you completely disagree with me. I'm sure this is also going to happen. And that's okay, I'm okay with that. I would love to have that conversation and work through it. It's just seems like, over the years being in this industry, seeing this industry, it seems like this would be an overall benefit to us, as programmers but also to the industry as a whole.
+
+61
+00:41:15,770 --> 00:41:44,060
+And even I think, to our bosses, at least the good ones that don't that we don't fire. You know, because I think is would create much more sustainable long term, long lasting companies that aren't purely focused on short term profits or the advancement of, you know, our, our boss within the chain.
+
+62
+00:41:44,330 --> 00:42:15,710
+Sorry, I just I keep thinking of other things. Like I just recorded a couple episodes on mental health within the industry. And, you know, I told the story, a terrible story that happened to me where I was subjected to harassment because of mental health issues from a boss, you don't that's something that shouldn't happen. If you had a union where you can be like, No, that behavior is unacceptable. You can't do that, like, you got to treat people like people. That's, that's the world I want to live in at least.
+
+63
+00:42:16,790 --> 00:42:22,010
+I don't know about you all. I know there's, I know, there is still an attitude.
+
+64
+00:42:22,000 --> 00:42:52,030
+And I talked about this in the mental health episodes in the tech industry, where it's the sort of, I call that the the Ferrenghi viewpoint, if you're familiar with Star Trek, but it's essentially this thing where we're like, oh, instead of worrying about fixing exploitation, let's be the exploiters. Instead of complaining, oh, our working conditions aren't good.
+
+65
+00:42:52,120 --> 00:43:41,890
+You're supposed to just go start your own company. And so many programmers, I think, get caught up in this trap of like, oh, I don't really love what I do. But the solution is, I'm going to save up some money or whatever it takes. I'm gonna start my own company. And I'm going to be on top and you don't frame it this way. But essentially, what you're saying is, I'm going to become that boss that I don't like currently. And, you know, maybe you think you'll do things differently, I suspect, we often find that isn't how things shake out. But that's also not a world I want to live in. And I think it's important to discuss and talk about as an industry that as much as we might all want to start the next Google or Facebook or whatever it might be and get rich. It's just not how things work.
+
+66
+00:43:42,040 --> 00:44:10,720
+The reality is, not all of us can do that. If everyone is the CEO of their own Google, who's going to do the actual work, you know, who's going to buy this stuff? Like that's just not realistic. It's, it's capitalism, the way things work is a small, a very small minority, ended up at the top end up successful end up making all the money. And it's just not reasonable to think that all of us can end up there.
+
+67
+00:44:10,780 --> 00:44:58,030
+So that's why I'm not in the camp of like, oh, no, everyone just needs to start a startup. That's just unrealistic. Another thing is not everyone wants to not everyone's good at it. There are so many reasons why I think that's a flawed line of thinking. But it's so popular in software, at least, I think, especially where I've been living for the past 10 years in the Bay Area, San Francisco, Silicon Valley. That's, you know, startup Central, essentially. And that's absolutely the attitude and I think it sucks I don't think it's a healthy attitude. I think it only serves to further enrich the people that end up on top and the vast majority of us end up just dissatisfied for much of our lives.
+
+68
+00:44:58,420 --> 00:45:35,560
+All right, so yeah, That is all I got for this episode I would. This is one I know I always say I would love to hear what everyone thinks I would really love to hear what everyone thinks on this one. I know. I've heard from people over time. Like, they might agree with me and be like, oh, yeah, that sounds good and all, but like, how do we get started? How can we make like, it's not really going to happen? That's impossible. Things are fine. They're not that bad. It's not worth going through this. Maybe that's how you all feel. And hey, that's fine.
+
+69
+00:45:36,040 --> 00:46:03,460
+But I'd love to hear from you. Like, do you agree with me? Do you think this is something that we should try to achieve? Do you think it's achievable? Or am I completely, you know, off in the deep end here out on my own, which is fine, but I'd love to hear what you think it? And if, if you all are interested, let me know. And I can I have a lot of ideas on how we could actually make this happen, and how we can move forward with this and start organizing.
+
+70
+00:46:04,690 --> 00:46:25,960
+But I would want to hear if that's what you all are interested in. I might. Who knows I might do an episode on it anyways, you could all just listen, if you're not interested. I would love to make things that people are interested in. I care about you guys. I care about making things you want to hear. So yeah, I would love to get your feedback.
+
+71
+00:46:27,310 --> 00:47:00,580
+Thank you so much for joining us. Once again. Thank you for for listening. Thank you for supporting the show. I hope you have a fantastic rest of your day. Take care. I'll talk to you later for you later. I don't know if I'll talk to you or See you later. But yeah, have a good day.
+
