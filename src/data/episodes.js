@@ -7,6 +7,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-12354761': {
+    slug: 'less-stress-and-exploitation-why-we-should-unionize',
+    youtube: 'https://www.youtube.com/embed/rCzACc87VJQ'
+  },
   'Buzzsprout-12342672': {
     slug: 'i-made-a-huge-mistake-reflections-on-the-react-js-documentary',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '082-mixed.srt')).toString()),
