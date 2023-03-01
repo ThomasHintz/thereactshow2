@@ -10,7 +10,7 @@ const episodeExtra = {
   'Buzzsprout-12354761': {
     slug: 'less-stress-and-exploitation-why-we-should-unionize',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '083-mixed.srt')).toString()),
-    youtube: 'https://www.youtube.com/embed/rCzACc87VJQ'
+    youtube: 'https://www.youtube.com/embed/I4rxbc0EWIc'
   },
   'Buzzsprout-12342672': {
     slug: 'i-made-a-huge-mistake-reflections-on-the-react-js-documentary',
