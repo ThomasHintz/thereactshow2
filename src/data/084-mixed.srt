@@ -1,0 +1,388 @@
+1
+00:00:03,270 --> 00:00:07,470
+Thomas Hintz: And welcome to the React show!
+
+2
+00:00:07,950 --> 00:00:19,350
+Brought to you from occupied Pericu territory by me, your host Thomas, and slap, slap episode 84.
+
+3
+00:00:21,390 --> 00:00:59,580
+What happens if you don't specify a key when rendering a list in React? Or what if you specify the key incorrectly? What happens if you don't include all the dependencies in the useEffect dependency array? Does the world blow up? Or how about if you call a hook inside of a conditional? What actually happens? Can you call a hook inside a non hook function? In this episode, we find out! We try to break React! Some of the results may surprise you. They actually surprised me.
+
+4
+00:01:03,410 --> 00:01:23,060
+And thank you for joining us! Currently, you're joining me from the Pacific coast. I actually think this is more often called the The Gulf of California in Baja, California Sur.
+
+5
+00:01:23,870 --> 00:01:50,840
+Been riding my bicycle down the, at least, some bits of the Baja divide bikepacking route. I rode into Mexico and took a bus part of the way and yeah, it's been amazing. I camped out on this beach here all by myself. Absolutely no complaints.
+
+6
+00:01:51,710 --> 00:02:17,780
+The the slap slap, you may have heard earlier, that I mentioned. It's because I saw I got to this beach. And I heard the waves, like there's very small waves. They're lapping against the shore. And sounds like yeah, it makes sense. But then I kept hearing this, like echoing, like slapping noise and and I'm like, What in the world?
+
+7
+00:02:17,810 --> 00:02:58,640
+What is that, and at first, my brain was trying to I think fit it into things that I knew. And so I was like, imagining somehow the waves were hitting some rock formation in just the kind of way that it would make that sort of echoing noise. It turns out though, I look out to see and I see I see something a bunch of things jumping, and they're pretty far off so I couldn't tell what they were. Eventually I got my monocular out and I was able to figure out that they were rays!
+
+8
+00:02:58,670 --> 00:03:33,350
+I'm not sure what kind but they leap into the air and then they come down and try to it seems like make a lot of noise and just smash the water with like, the the full width of their body. It looks like they're flying and like they're trying to like it sounds like a slap slap every time so and I thought oh wow, this is so wild. This is so cool. And I thought you know maybe this would last I don't know like half an hour. Well, it went all day and all night.
+
+9
+00:03:33,000 --> 00:04:03,540
+This morning like lay your my tent and I can hear the waves lapping the shore that slap slap slap slap it's pretty awesome. Yeah, so I've been having a great time. It's been quite an adventure. Yeah, I really, I really enjoy it. I'm really thankful I get the opportunity to do this. And my fingers are no longer cold when I'm trying to work on these episodes in the morning so that's great.
+
+10
+00:04:05,370 --> 00:05:24,510
+The other flip side it has been only about 80 degrees Fahrenheit in in like the hottest part of the day but the intensity of the sun is so strong that it just feels so hot and riding up these really steep dirt roads Sandy roads, I sweat so much so yeah, I've come to realize you can't you kind of gotta have one or the other you can kind of have nice pleasant days. Well you know not considering the wind like up in Joshua Tree and but but you know, aside from that, you can have these nice pleasant days and cold nights or you get beautiful, amazing nights for sleeping warm fingers for typing on the Computer, but hot days. And I think you know, if you had a lot more humidity, you might be able to have days that weren't so hot and nights that weren't so cold. But humidity brings, it's an you know, a whole bunch of other issues when you're when you're camping, which is what I've been doing for quite a few days in a row now.
+
+11
+00:05:26,760 --> 00:05:47,370
+Yeah. It's been great though, really, really enjoying it. Definitely don't take any of those as complaints. Probably probably makes it sound like I'm complaining. I'm not it's part of the adventure. I love it. You know, there's so many stories I could tell I won't bore you with all them.
+
+12
+00:05:47,370 --> 00:06:45,150
+But like I took a bus for part of the way down because I wanted to make it further down to do some tide pooling here in a couple of weeks. And I am trying to learn Spanish but I don't I really don't know much. I just have a small little vocabulary what I've been able to learn recently, and it's so funny because on the bus, we stopped at a roadside taco stand. And this was like a long inner city bus and entire bus was trying to help me figure out how to order. It was great. Anyways, yeah, love to get down here love to get in Mexico, a really great time. If you're ever into this type of bicycling or even just you like desert environments, friendly people highly recommend you come check it out. But I won't keep going on about this. We'll have to save that for another time, I suppose another place.
+
+13
+00:06:46,290 --> 00:07:21,450
+What you all came here for of course is you know, did I succeed in breaking react? I was like so. So for this this project, I thought, you know, we have a whole bunch of, of things that we do in React, some that are specified in the documentation as like, Hey, these are the rules, like you've heard of the rules of hooks and that kind of thing. And I was like, Well, what happens if I ignore the rules? But what happens if I break them? What if I intentionally break them? What actually happens? Do we does react explode? Do we get subtle bugs?
+
+14
+00:07:22,230 --> 00:07:56,700
+You know, and I think this is really interesting to figure out, you know, from a practical perspective, are you going to accidentally introduce bugs into your codebase? Or are these all things that it's going to like yell at you and be like, No, you're terrible. What were you thinking, you know, you got to fix this, and then you'll know about it, and you can fix it, or, you know, what happens? Maybe, or I was kind of hoping maybe they've made some changes since they created these. And now we can break these rules. And it all just works fine. And they never said anything. And nobody ever noticed. I don't know. But I wanted to find out.
+
+15
+00:07:56,000 --> 00:08:34,130
+So we can start with the first one, which is one of the most basic things in react when you first start learning react, this is what you run into maybe before anything else. And that is: you have a list or an array, and you map over it rendering some results to the screen and it gives react gives you this warning in the console that's like, Hey, yo Bozo, like, come on. Why didn't you specify a key? And you're like a key? What the heck is a key? Oh, I think I remember seeing something about this. And so you go learn about it. And you're like, I don't know, what do I use as a key.
+
+16
+00:08:34,400 --> 00:09:17,630
+And so like, most beginners I've worked with, the first thing they do is come across, I don't know, some old post or just come across the idea of like, oh, use the index. So they index into this array, you know, and use that as the key. And oh, hey, the warning went away. Of course, if you know more about React, you know, this is not what you're supposed to do. But I set out to also find that out. What happens if you don't include a key? What happens if you use a bad key? What if you use the index? What if you use something else? What if you use a random number every single time what happens?
+
+17
+00:09:19,490 --> 00:10:03,860
+And what is it really? Yeah, yeah. So what what are the consequences of this? So I jumped in and I just started messing around with it. I didn't have a key and now it's like, alright, what happens if we don't have the key? And at first, it seemed like, everything was perfectly fine. I didn't notice anything unusual going on my program seemed to work. I was just rendering a list of divs and child content well, okay, so I was rendering a list of React components and and I did that on purpose because I wanted to see, like, Oh, is it?
+
+18
+00:10:04,110 --> 00:10:35,040
+Is there some issue where if I don't specify a key, it messes up rendering out another React component as a child or something like that. And at first, it all seemed to work. And so I was like, okay, all right, interesting. But I know from knowing how react works internally, that the key is actually important because of the DOM element that React is associating with the rendered output of your component.
+
+19
+00:10:35,040 --> 00:11:28,020
+So a real quick, super quick version of how react renders it executes your function, or your component of any kind class or function component. And that returns essentially a tree, you can think of that like your JSX output as a tree of elements. And it does that for your entire application, it goes through and executes all this code and ends up with this tree of divs, and spans and whatever they might be. And then it does reconciliation, which is, hey, let's figure out how to connect this output this tree to what's on the screen currently. And if there's any differences, I need to update what's on the screen the state on the screen to match the output of your components.
+
+20
+00:11:29,610 --> 00:11:52,170
+And so I know that the significance of the key in React is actually to help react, figure out which DOM elements on the screen need to be associated with the output this tree that you've output from your components. And so I wasn't that surprise when it all at first seem to work.
+
+21
+00:11:52,780 --> 00:12:37,570
+And so what I did next was I sort of instrumented the code, I added refs. So I won't go into what refs mean, at this point, it's not not relevant to this. But essentially, I attached refs to the output of the components that I was rendering in this list. And then I was logging out the DOM element associated with those refs. So essentially, what I was doing was telling react, hey, tell me which DOM element on the screen is actually associated with the output from my tree. And I was doing this because I wanted to see how like, what react was doing internally how it was working.
+
+22
+00:12:37,630 --> 00:13:15,760
+And sure enough, and I started figuring some things out. So if I don't specify a key, what react does is, every time it renders your component, it reuses, the DOM element. So let's say I have a list of five things. And I'm rendering five things from my list to the screen, let's say I'm rendering a list item, component, whatever it might be rendering five of them, and they each have different child, whatever that can be whatever content you want to render, right.
+
+23
+00:13:16,300 --> 00:13:50,080
+And if I don't specify a key, what React is going to do? Is it still going to go and render all of your list item components that are in your list every single time no matter what one of the first rules of React is it always renders everything. So it goes through it maps over your array, it renders each component. And then so that all works perfectly fine. Like you can do whatever you want. That's all solid, you don't have to worry. That all works great.
+
+24
+00:13:50,230 --> 00:14:25,900
+And so I had it like generating a random number, or doing a sequence and stuff like this. So I could see oh, is this updating correctly to the screen. And for the child components that I was passing in? It was so now it's like, oh, it's all working. But then with these refs, I was able to see that it was reusing the DOM element for each of these list items and so I was like: Ah, interesting. Wonder what happens if my list item component itself, returns different output.
+
+25
+00:14:26,170 --> 00:15:04,270
+And so I just created this scenario where every other time my list item component renders, it returns different outputs. So the first time it renders a div, the second time it renders a span than a div than a span and it did have under span just alternates back and forth. Every time I do I trigger a render. But the, and then and I had the, I was passing in the child element, right the child value. And sure enough, guess what? It never rendered my span So I started out rendering divs. It never rendered the spans.
+
+26
+00:15:04,420 --> 00:15:53,410
+So okay, okay, sorry, let me be very specific, it executed my component and rendered the span into this tree. So I could look at that. And I could see yes, it is running my code, it executed my list item component every time and it's correctly detecting, okay, I need to render a span this time. But internally, when react went to update the DOM, it just ignored that it was like, oh, yeah, this is like, it's a span on screen is a div. I shouldn't be updating this. But it just ignores that it updates the child, the children, whatever you're passing in, that gets updated. But it's not changing any of the output from your list item.
+
+27
+00:15:53,000 --> 00:16:47,990
+And so this was knowing how react works not super unexpected to me is basically like, Yeah, this is this is what's happening. So to answer the question of what happens if you don't specify a key, well, you could get some weird behavior. And depending on how your application works, it might actually be perfectly fine. Like, if you're rendering a static list, and the components that you're rendering, render the same markup every time, it'll actually work perfectly fine. There'll be no bugs. But then somebody comes in a year later, and their boss says, Hey, add this feature to it. And then they extend your component and have it render different outputs sometimes. And now they'll be like, Oh, why is this not working sometimes. So you definitely want to include a key if you don't include a key, you're gonna run into problems.
+
+28
+00:16:49,640 --> 00:17:23,060
+So the next thing was all right, we know that you want to include a key and we know what that actually means. That means react will be able to associate the output from rendering this list to the DOM elements that it shows on the screen. So sort of going beyond that? What if I, I thought, What if I just give it a key, but give it a new key value every single time.
+
+29
+00:17:23,000 --> 00:18:05,450
+And so I I, for the key, I use math dot random. So every single time I render, I should get a new key. Now, now that we know how React is working internally, what we should be thinking is okay, this should tell react, create a new DOM element every single time instead of reusing the one that's on the screen. But I wanted to verify that so I set up rafts and some other things. And yeah, sure enough, if you use a different key value, every single time your list renders, you're going to get a different DOM element. This means that React is going to tear down the old DOM element and put up a new one every single time.
+
+30
+00:18:05,750 --> 00:18:33,050
+And I think this really gets into why react added this key property to begin with why it exists at all. And that's it's a performance optimization. That's all it is. So to be honest, I'm gonna go into my thoughts about about this a little later on, I'm trying to jump ahead here. I got some opinions on React doing this.
+
+31
+00:18:34,500 --> 00:18:58,440
+But before we get into that, so So yes, if you use math dot random, or some new value for your key every single time, what you'll find is that your program always works perfectly correctly. There should be no bugs, everything works fine. As far as I can tell, this is perfectly legitimate behavior, your program should work. Absolutely fantastic.
+
+32
+00:18:58,650 --> 00:19:16,650
+Other than you may maybe have a performance problem. And I am not saying that sarcastically, I'm saying realistically, you probably won't even have a performance problem unless you're rendering a massive list. So but we're gonna, we're gonna keep going, we're gonna keep pushing this thing.
+
+33
+00:19:16,680 --> 00:19:56,610
+So what if I do the classic thing, which is passing a list index for my key? And at this point, it's probably not surprising, but what's gonna happen is it again, might work correctly, depending on your program. But depending on your program now or how it gets modified in the future, that may not always be the case. You could obviously you could definitely get bugs here. Because again, React is going to try to reuse the DOM element on the screen, maybe when it shouldn't be. So don't use list index.
+
+34
+00:19:56,630 --> 00:20:18,320
+Okay, so technically, you could use the list index and I have used the list indexed. But I've used that when the index is stable and always going to be associated with the list I'm passing in and No, and I don't think anyone's ever going to come in and change how that works. Like it wouldn't make sense.
+
+35
+00:20:18,530 --> 00:20:40,850
+So sometimes if I have like a small list of static data that I've hard coded into the program into that component, essentially, then using the list index might be fine. But we're gonna get into what your key should be in a little bit here. So, I do want to, I should have I should have, I forgot about this.
+
+36
+00:20:40,850 --> 00:21:50,120
+But when I was talking about using math dot random as the key, I did notice some interesting behavior that did surprise me that I don't understand. So what I noticed is, if I use a random key, it caused my components to rerender more. This was I actually don't know how to I don't know what this is. I don't know how to explain it. But what I noticed is that if key equals math dot random, react was doing excessive rerender. Like it was just re rendering, like almost constantly. And so you like the behavior of your program would be correct. But you'd get a bunch of extra renders, which would be terrible for performance, much worse than other potential bugs in your keys when it comes to performance.
+
+37
+00:21:51,170 --> 00:22:12,650
+And so I was like, Oh, that's weird. Does this happen for other props? Like if I, if I use math dot random, for other props? Does that also cause a problem? No, I tried a whole bunch of props, valid props for my component ones that didn't exist for my component, it didn't matter if I use math dot random, it had no effect on React re rendering.
+
+38
+00:22:13,070 --> 00:22:39,290
+But for some reason, if you use math dot random, as the key react behaves very strangely, I would love to understand if you know why this is definitely let me know. But I couldn't, I did. I didn't look too hard. Because I didn't have great internet at the time. Yeah, I might do some more research, maybe dive into the code, because this was fascinating behavior. So don't use math dot random.
+
+39
+00:22:40,940 --> 00:23:52,850
+Anyways, so the summary of keys in React is react uses this key to associate the output from your components with the DOM element on the screen. And another way that you could mess up React is if you are using the same keys, but not associated with the same data. So let's say I have a list of three items, right. And I'm going to use the list index as my key. So the first item gets a key zero, second item key 1/3, item key two. And, but what I do, every time I render is I randomize the data within that list. So what's going to happen is essentially the same as if you don't specify a key, you're going to potentially get the wrong output associated with what's the DOM element that that's actually being used on the screen.
+
+40
+00:23:53,240 --> 00:24:42,110
+So it's very, very, very important for the correctness of your program to use a correct key. So what is a correct key? What key should you be using? The way I always say this is your key should be stable. And it should be unique. So what do I mean by those two things stable. This means that the same piece of data that you're putting on screen, it doesn't have to be in the same order in your list. React will use this key to associate it with the DOM element on the screen. So that's not important. Like your, the data that you're rendering out to the screen can can move around on the order of list items on the screen, that's fine.
+
+41
+00:24:42,560 --> 00:25:08,270
+But the key value should be stable for the data that you're rendering. It shouldn't change. So if you're, if you get some data from the server, right, let's say you get like a list of 10 users in the system, each user that's being run During your list should always have the same key, if you do it this way, you're gonna get the optimal performance in React and you won't have bugs.
+
+42
+00:25:08,690 --> 00:25:43,910
+Now, the other important thing is to have to be unique. So if you don't have unique keys, if you like, if you're trying to use a key and some of the items in the list, end up with the same key, you're gonna get strange bugs and behavior, just like if you don't specify a key, because again, React is going to incorrectly associate the output with the DOM elements on the screen. So it's really important to just use stable, unique keys, if you do that, you'll be good to go.
+
+43
+00:25:45,230 --> 00:26:36,860
+Now, I want to talk about some of my thoughts on the design of react as it relates to keys. After doing a lot of these tests, what I've noticed is that I think I think react went overboard on this performance optimization. And I think they exposed some of the internals of react in a way that they didn't need to. I think it makes sense that they exposed this key property as a performance optimization. But in my opinion, they could have done this as like a lower level API, but provided higher level functions to make it so you don't need to specify a key.
+
+44
+00:26:37,620 --> 00:27:48,300
+So you could actually write, for example, your own map method, that takes a list of Serializable data, and automatically generates unique stable keys, and passes that to react. React could even implement this internally, like they could have. There's, there's a lot of ways to do this. But essentially, there's, you could definitely design react, so that by default, which I think would cover 98% of the cases of people rendering lists to the screen, you don't need to specify a key, you just render your output like normal. And the system is able to figure out a stable, unique key for you or do any other kind of performance optimization at once or not doing at all, the truth is for small lists, you know, 1020, probably 100, mid, you know, items, depending on how complex your output is. Reusing this DOM element, or the shortcut to figure out if it can reuse the DOM element, it doesn't really buy you much in terms of performance.
+
+45
+00:27:48,300 --> 00:28:21,480
+So the way react works outside of lists, is it looks at the output of a component and says, Hey, are all the DOM element types output from this component? Like, it'll go through and be like, Okay, first, we have the div. And inside of that, we have a span. And then inside of that we have a paragraph. And it'll be like is that what I currently have on screen is a div a span and a paragraph? And if it is, it'll reuse those DOM elements. So that's a big performance optimization that react normally does for you internally without you having to worry about it.
+
+46
+00:28:21,000 --> 00:29:05,640
+But for lists, they sort of went, Oh, no, that's not good enough. We can't spend the few extra cycles to detect if the type of output has changed. We need to have the programmer tell us if it's changed. I think this is really bad design. I think it trips up a lot of people causes a lot of bugs. And it's just unnecessary in most cases. I think there are cases when you get into really big lists were having access to controlling what how react reuses this DOM element. Having access to that would be important. I could see this being a valuable performance optimization for huge lists.
+
+47
+00:29:07,080 --> 00:29:53,910
+But the way that I think you have good design, is you make the default case, the normal case, simple, easy, straightforward, not bug prone, it should be bullet proof. And it's okay if there's a small performance penalty for that. Because as long as you provide what I call an escape hatch, so what I would like to see is react not require you to specify a key. Maybe it requires you to pass in the data that you know, is associated with the output so it can serialize it into a key, that would be fine, because you're not exposing the internals of how react works. You don't have to worry about somebody creating a bad key or not doing a key correctly.
+
+48
+00:29:54,330 --> 00:30:31,110
+So what I would like to see is react, take that approach, say okay, or 98% of the time, people don't need to specify a key, it's not important. It just the performance difference is not significant. So we're not going to make people do that. We're just going to do things the right way. So we don't have to people don't have bugs. And then in the 2% of cases where people profile their code, and like, oh, no, we have a performance bottleneck here. We can expose this escape hatch this lower level API, so that in those few cases, people can learn how it works and specify their own key.
+
+49
+00:30:31,530 --> 00:30:41,550
+And yeah, so I'll be honest, after this experiment, I can't disappointed with the design of React, I think they could have done better.
+
+50
+00:30:41,670 --> 00:32:05,490
+Now. I will say, I think I might also be viewing this in a different time. So when react was created, this was when browser, JavaScript engines were not near as advanced, and hardware wasn't as fast. So what I suspect is that they needed this performance optimization a lot more when react was created. Then when the now and they were like, Okay, it's needed. So often, we're just going to make it the default. I think this is always an easy thing to do when you're designing systems, but I still don't think it makes it right. I think even I don't I don't want to say what I don't know what I would have done in the same circumstances. But I would like to think that in those same circumstances, I would have looked at this and been like, okay, yeah, 60% of the time, it'll be fine without specifying the key. But 40%, maybe now we need to specify a key, I would still be like, in the future performance is going to get better. So let's just have good design, be the default and give people this escape hatch, I think it still would have been the better approach.
+
+51
+00:32:06,330 --> 00:32:29,910
+I could be wrong about this. If you know about how this got developed in React, I'd love to hear from you. I'm sure that would be fascinating story. But my opinion is the way react has done the key is not Not good, not good design, I don't like it, we really shouldn't have to specify it. There should be a better API for this. All right. So that is keys in React.
+
+52
+00:32:30,660 --> 00:32:59,010
+But next we have the dependency array for use effect. So if you use use effect, and family, I'll call them there's a bunch of similar functions in React where you can pass in a dependency array. There's this rule, you might see or warning, if you don't include all the dependencies in the dependency array. 
+
+53
+00:33:00,810 --> 00:33:55,230
+What happens though, if you don't, so this is actually really interesting, because many people don't pass in all the dependencies. I see this all the time, I've had many arguments about this, I've talked about this on the podcast a lot. It's very common to use the dependency array for use effect in react as a conditional. Basically, people put, say, variables in that dependency array with the idea that, Oh, only run my effect when these variables change. So you're using the dependency array as a conditional. And that's not what it was designed for. It was designed as performance optimization. And so people will leave out variables that they don't want to trigger it to rerender for so a lot of times, this means functions.
+
+54
+00:33:55,500 --> 00:34:19,740
+So you're, you use state that returns a setter function, and you might use that setter function within your use effect. And people often don't put this in the dependency array. So what what does that mean? What actually happens? Can we like, can I find a way to break the system, you know, by not putting everything in the dependency array? Or is this perfectly fine behavior?
+
+55
+00:34:19,950 --> 00:35:00,090
+This is what I set out to find out. So I'll keep this one. Pretty simple. Even though I've had entire episodes on this, you can look for that if you want more, but basically, I tested this out. So I went in and set up a use effect and put everything in dependency array, and you get exactly what you'd expect. When that variable changes. The use effect doesn't run it doesn't capture that variable. And what does that mean, though? Like, maybe that's fine. Maybe you wanted that, right. Let's say you don't pass in a setter or something in into that dependency array that you're using.
+
+56
+00:35:00,090 --> 00:35:59,610
+In the use effect, well, most likely, when you initially write this code, everything's going to work fine. In my experience, this is what I've seen people write the code, it works fine. Now, where I've seen issues is somebody comes in later. And maybe instead of, maybe they want to wrap that setter in something that processes the data first, and maybe they're gonna pass that into this component as a prop, and who knows what, right. But they essentially change that setter function to be something that could be changed throughout the course of your program, maybe it's a filter, somebody clicks a button, you didn't have a filter, now you have a filter, and you're filtering, what gets set into some state, whatever it is. So the danger of not putting everything in a dependency array is somebody modifies the code, expecting, it's going to filter correctly.
+
+57
+00:36:00,000 --> 00:36:18,690
+But because you didn't put it on the dependency array, react doesn't pick up on the fact that the function changed, like they changed the function that's being used. Now you're gonna have buggy code, and it's going to be pretty subtle and hard to find. So I've helped a couple people now track down this exact bug.
+
+58
+00:36:19,440 --> 00:37:07,800
+So I was working with a more junior engineer a couple years ago, on a project, and they came to me and they're like, I cannot figure out what's going on, I made this change to this code. All I did was change this one thing. But now all like this thing, kind of works. But sometimes it doesn't work. I'm really confused. And I don't see how this one little change I made could just break the program. And I was like, I looked at it, I was like, Yeah, you're right, this absolutely should not break the program. This, you know, as a programmer, you know, making this change, it should be obvious, this just works and there's no problems. So it took hours. But eventually, this is what we tracked down the bug to somebody didn't put everything in the dependency array.
+
+59
+00:37:08,200 --> 00:37:41,590
+And so we got to this, and I was like, Oh, I noticed this function that's being derived from this one that's used here is no longer in this dependency array. It's not in the dependency array. I wonder if that's why and so we added it. And that's funny, because boom, the program worked. At least the the initial bug that we're trying to fix was solved. But it added a new bug because the dependency array was being used as a conditional. And now that condition was being triggered when we didn't, when it shouldn't have been.
+
+60
+00:37:42,760 --> 00:38:11,530
+So this is why I always say, always, if you're going to specify a dependency, right, I usually suggest never specifying one, you don't need to i, okay, I'll tell you this, I have broken this rule from pretty much day one in React, and always broken it, I have never once yet in all my react programming, found a use case where I actually needed to use the dependency array for performance reasons.
+
+61
+00:38:13,390 --> 00:38:49,990
+The way you should do this, is not use the dependency array. And then inside your use effect, you could have a conditional that's like, hey, if this value has changed, then run the body of my use effect. That's the way I do it. In fact, I even have my own I call it use conditional effect, which basically extends use effect. So I can write something that looks like the code that most people write for us effect, but it actually works correctly. But the very short version of this is, if you use a dependency array, put everything in it. If you don't, you're opening up your program for future bugs that are hard to track down.
+
+62
+00:38:50,560 --> 00:39:29,770
+One of the the exact type of bug where it sprouts up a year later after some change. But people don't catch it right away, because it only shows up sometimes. And it ends up in the bug tracker as a kind of serious bug but nobody can figure out where it's coming from and couple of people have tried to figure it out and you've sunk a lot of time into it, it doesn't get fixed. And just don't do it. If you're going to use a dependency, right, put everything in it functions, everything, everything needs to go in it. If you're not going to like I recommend just never using the dependency array, figure out how to do without using the dependency array.
+
+63
+00:39:30,100 --> 00:39:48,070
+Now, if you profile your code, and you somehow figure out you've run into this case, I've yet to figure out how you even run into it. But if you do, then sure, go ahead use the dependency rate. But only in my opinion, you should only use it after you've profiled your code and actually found the bottleneck that requires it.
+
+64
+00:39:49,060 --> 00:39:58,930
+I'm not going to belabor this because we got a lot of other fun stuff to talk about. But keep it simple. You'll get weird behavior bugs if you don't put everything into dependency array.
+
+65
+00:39:59,110 --> 00:40:41,440
+All right. So Next up, we have another what I call beginner instinct. And that is, can I call a hook inside an if statement inside a conditional of some kind. And when you first start using hooks, it feels natural. You're like, Oh, if this value is true, I want to call my hook otherwise I don't law react. If you have es lint warnings on will I guess not react. But es lint will tell you, Hey, don't do this. Or react might tell you. Actually, I don't know if es lint does. But you there are cases where this will be detected, you'll get a warning Hey, about doing this.
+
+66
+00:40:41,470 --> 00:41:11,830
+In fact, actually, I will talk more about the warnings and errors you can get because I tested this. So yeah, let's say you want to call and hook in call a hook inside an if statement inside the body of an if statement. What happens if you do that? Can you do that? I found out. So I did this. And what was fascinating was, at first everything just worked. I couldn't find any bugs.
+
+67
+00:41:11,860 --> 00:41:57,580
+So I had a bunch of use states and I had if statements and I had hooks, my own custom hooks inside of if statements that were logging out values. I could not get it to break. It all worked perfectly. In dev mode, production mode. Everything worked great. I had no issues whatsoever. I was like, wow, this is not what I was expecting. I was very surprised. I thought who's gonna yell at me? I thought it was gonna break. I couldn't figure it out what's going on? So I was like, Okay, maybe, maybe you state it. This, this is actually fine. Let me try some other hooks.
+
+68
+00:41:57,970 --> 00:42:30,220
+So I added a use effect in the middle of my use states inside of a conditional. This is when I finally got it to break. And I mean, break react broke, both in dev mode and in prod mode. So the error I got was array should have a queue, like React just crashed and was like array should have a queue. This is likely a bug in React, please file an issue. This is what he told me.
+
+69
+00:42:30,610 --> 00:42:57,100
+And I was like, okay, probably the fact clearly, react probably wanted to detect this and give you a more useful warning. Based on the documentation, this is a bug in your code, not necessarily a bug in React, maybe the bug is not giving you a better error message. But the error message literally said this is likely a bug in React, please file an issue. So this is when it starts getting more interesting.
+
+70
+00:42:57,000 --> 00:43:46,350
+So I was like, Ah, so I don't want to promise this the version of React that I was using, which is in React 18 I don't know actually the specific minor version, but react 18 It seems like you can actually use custom hooks and use state hooks inside conditionals. It works. without problems. I don't really know why you'd want to do some of that like, but if all you're using is use states and custom hooks. I don't want to promise anything because you're breaking the rules of react. But it seems like it just works perfectly fine. But if you get into other things like use effect, and you put them in a conditional, it does not work.
+
+71
+00:43:47,670 --> 00:44:24,420
+So I messed around with it some more I removed. So I had like a use state and then inside an if statement, I had to use effect. And then after the if statement, I had a use state. And this we got inside removed the use state that was after the conditional and actually had a different error both in dev mode and prod said error rendered fewer hooks than expected. This may be caused by an accidental early return statement. Which is true that would be a form of conditional.
+
+72
+00:44:24,540 --> 00:45:05,400
+In this case, I had it inside an if statement. So this was both interesting, but not all that surprising. So if you call hooks, within any sort of conditional earlier returns, if statements, loops, that you know, whatever it is you're going to break things. It might work depending on apparently some hooks it's perfectly fine. In fact for like custom hooks that don't use use effect ever. It might be fine but then this is a case where somebody might come in late or an add that to the custom hook and then things break. And you don't want that either.
+
+73
+00:45:05,000 --> 00:45:40,700
+So to write robust code, you can't call hooks inside conditionals I was sad. I was excited. I was at first like, wow, this was actually work. Like, I was so excited. I was like, Wow, maybe they fix this. This is awesome. We can use hooks and conditionals I'm so excited. I'm totally blown out the limiter on my, my girI here. But um, yeah, so I was really excited. I thought, Oh, cool. They fix this. But no. And why do I say they fixed this.
+
+74
+00:45:41,300 --> 00:46:24,470
+I also think this is bad design on React's part. I, again, this feels like exposing a performance optimization that they didn't have to expose. So I don't actually know the specifics of how this is implemented. But based on my reading, in other sources, and the errors I got, especially the one about should have a cue. Essentially, I think the way react figures out how to associate hooks with any internal state that they need within React is just purely based on the order in which they run.
+
+75
+00:46:25,910 --> 00:46:56,270
+And so if you have in a conditional, you're changing the order in which things run. You're not, you know, saying, Hey, I thought the third hook was going to be this one, but it's something else. And I find this very strange like why? To me, it seems like there has to have been some higher level API they could have provided that actually have a whole episode on this one tonight, I think about it's been a while.
+
+76
+00:46:57,290 --> 00:47:43,940
+We're actually explored how you could implement this. And I believe if you modify react itself, you could probably implement hooks in a way that allow you to use them in conditionals. how important this is, I'm not really sure. Maybe this isn't that important. It could be interesting being able to use them in loops. But yeah, the short of it is, unfortunately, you don't don't put your hooks inside. Like, every all the hooks in your component must always run every single time your component renders them, they must always run in the same order. Pretty simple. Don't break it, it might work. But eventually, again, you'll get some behavior you definitely don't want.
+
+77
+00:47:44,080 --> 00:48:01,120
+So the next one is the next rule I tried to break is one that people I don't know, if they think about much, I didn't think about much, but I was curious. So what happens if we call a hook in a non hook? So what is a hook?
+
+78
+00:48:03,400 --> 00:48:50,050
+React in their documentation says a hook is a function that uses other hooks, essentially, I think what they're saying is a JavaScript function that uses use a factor you state or something like that. They call it a hook. Okay. So that makes sense. And you'll notice and React code you always put in lowercase that were used on the front of any custom hook that you create. And so I thought, well, what if I don't put the word use in front of it? Does it still work? Can I call use effect inside of that function?
+
+79
+00:48:51,370 --> 00:49:30,790
+So I tried that out. And everything just worked. And then I went back to the documentation, I did notice that they don't actually say you're required to put the word use in front of a functions name for it to be a hook. And so I think initially, I had assumed that they were actually like, parsing the name of your function as a string and seeing if the first three letters were "use" to see if this is a hook and then maybe doing something special internally. But I don't think so based on the documentation.
+
+80
+00:49:33,100 --> 00:50:11,380
+It says in the documentation for the linter, which says the use something naming convention, is how our linter plugin is able to find bugs in the code using hooks. So it sounds like the linter reads the name of your functions and figures out if it starts out starts with us and then looks for other things like not Putting all the dependencies in the dependency array. So putting us in front of a function name is useful for the linter. But actually doesn't matter for React.
+
+81
+00:50:11,860 --> 00:50:56,170
+In fact, it looks like to me, in actuality, a hook, like a custom hook and React is just a JavaScript function. That's all it is. There's, there's nothing else to it react is not actually care what you call it. All that matters, is like I said in the previous segment that you call things in the same order in every time your your component renders, that's all react actually cares about, you could have 30 functions deep not starting with us that eventually use use state or use a factor use reducer or anything like that inside of them. And everything should, as far as I can tell, worked perfectly fine.
+
+82
+00:50:57,440 --> 00:51:21,860
+So a hook is a custom hook in React is just a JavaScript function. There's no magic, there's literally no magic. Putting the word use in front of it just helps the linter give you some better warnings and things like that, but absolutely no magic to it. Custom hooks are just JavaScript functions. That's it. It's pretty simple. Oh, pretty cool, in my opinion.
+
+83
+00:51:22,130 --> 00:52:04,730
+And if you've made it this far, in this episode, and you actually are this interested in these things, I might recommend checking out my book foundations of high performance react, where you will learn the heuristics that react uses internally that a lot of this information in this episode is sort of based on like, if you understand these fundamentals, the fundamental heuristic algorithm react uses internally for reconciliation. Most of this won't be surprising, you might be surprised by a little bit like me, but in terms of like writing correct code and how to do things correctly, probably won't be surprised.
+
+84
+00:52:05,360 --> 00:52:39,050
+So yeah, if you're interested, you can find the book on the on my website, for the podcast, the React show.com. It's $12. Yeah. If that's your thing, you might be interested, if you don't really care, you're just like, hey, this is good enough, I just want to use react the way it's meant to be used, I don't need to learn how it works. And totally, that's fine, too. But if you are curious, and you want to know more, and you want to really dive deep into how things work, and definitely recommend checking out, checking out the book, and it helps support the show. So we really appreciate it.
+
+85
+00:52:40,880 --> 00:53:34,040
+And the last thing I want to talk about is what I call a community rule. This is not something you'll find in the React documentation, but everyone in the community seems to pile on to and that is men boys, every day everything. So I almost every react codebase at a company that I've jumped into to start working on memoize like nearly everything, whether it's use memo, or Oh, use callback or memorizing the, I guess, use callbacks little different? No, really, but kinda. There are cases where you need to use that. But the memo is components all the time.
+
+86
+00:53:34,640 --> 00:54:04,100
+In fact, there's some places I've seen where they have a rule, you must memoize everything. Again, I break this rule all the time. And I think I write perfectly performant highly performant react applications. i So, like, I didn't really do a lot of extra research for this one I live in. I don't mind boys things. I never meant boys things to start with. I have memoized things.
+
+87
+00:54:04,510 --> 00:54:24,460
+This is the process that I take, I write my code, I get it all working, goes through the entire process. Now, if I have some performance issue, or I'm like, hey, I want this to perform better. I profile it, I run the React profiler or run the browser profiler, whatever it is, figure out what the lowest performing thing is. 
+
+88
+00:54:24,850 --> 00:54:49,120
+And in some cases, I found that, hey, I could memorize this and get much better performance. Usually, this will be around lists. So you might have a component that renders out a big list of things. And those things that it's rendering out. Those are usually really good candidates to memoize.
+
+89
+00:54:49,360 --> 00:55:18,340
+So maybe that the list items you have 1000 list items and they never changed but maybe you filter and stored and so they move around in your list but the actual output It never changes. great candidate for memorization. Again, I don't do this unless I actually profile it and find that I have a bottleneck. And so usually in my react programs, you'll find us very small handful of memorized things. And they're just based on my actual profiling.
+
+90
+00:55:18,550 --> 00:55:53,290
+And the funny thing is, I would say, at least half the time where I'm like, Okay, I have a performance bottleneck, I probably need to memorize this component in this component, I run the profiler, I find out oh, that's actually not the problem. And if you do a lot of this, that will surprise you, when you get into performance. It's often surprising what the actual bottleneck is, it often does not match what our assumptions are. So I think it's really important to like, like, Sure, you can memoize everything and still have bad performance.
+
+91
+00:55:53,740 --> 00:56:44,920
+A great example is the key. What if you've made a mistake on your key? And it's like, you did something like using math dot random accidentally, somehow, and it's causing a bunch of re renders? That's the biggest thing, not not using math dot random, necessarily, but like, the biggest issue for performance is usually having renders when you didn't mean to like a bunch of them. And so you'll profile it and be like, Oh, why am I? Why am I getting a bunch of renders. And you could take one route and just pick Oh, should memoize everything. And that'll just get rid of all these excess renders, that's not true, you're still going to be rendering react. That's just not the way react works. If a render is being triggered, it's going to render might not render might not have to execute as much of your component code, because you've memorized things, but it's still rendering, you haven't really fixed the source of the problem.
+
+92
+00:56:45,460 --> 00:57:50,410
+So what I do is I look at, okay, what is triggering all these renders, and that's a hard thing to figure out sometimes. But you'll have a much better program for putting in that effort, like, in the long run, you'll be much better off. So this one's pretty simple to me. memoizing things can introduce bugs. If you don't specify the dependencies correctly. Again, it might actually hurt performance. I haven't seen this too much. But if the output of your component is not consistent, if it's changing every time, you're actually going to make your performance worse by memorizing things. So it also just makes your code more complicated. Don't make your code more complicated, that adds bugs that adds like, just don't do it. It never, it's never worth it. Don't memoize things, unless you need to write your code, make it work, profile it. And if you actually need to memoize something, go ahead and memoize it. That's fine. Nothing wrong with that. That's how performance optimizations work.
+
+93
+00:57:50,680 --> 00:58:11,770
+But there's no need to just do it upfront. It's a waste of time. Not only that, but it absolutely can introduce bugs, it can make your performance worse, it might not fix the real problem. So I break this uncertain, unspoken rule of React all the time. I don't that voice things unless I have to and you shouldn't either.
+
+94
+00:58:23,810 --> 00:58:44,000
+All right, well, we got a bit heated there. But that was a lot of fun. I really enjoyed working on this project. It's, I love to explore boundaries and limits. And one of the reasons why I love to do that is because I feel like it helps you understand and learn more about what you're working with.
+
+95
+00:58:44,390 --> 01:01:49,070
+And it's it's interesting in how this I guess I just do this in general, because so I talked about the beginning I'm riding my bike on the Baja divide in Baja. And if you're not familiar with it, it's a I would I would characterize it as an extreme off pavement route. It is one of the most difficult routes I've ever done. It is extremely serious. It's like through mountains in the desert on dirt sand roads that are I mean, they can be so steep that sometimes I can't even I can barely push my bike up them, let alone ride up it. But yeah, they're in like the Baja divide. I you know, it's one of those things that if you're in, you're into this kind of thing, you'll have heard of it and you'll hear people be like, yes, it's serious. It's serious. But going into it I also knew my bicycle did not meet what they call the minimum requirements for the Baja divide. The biggest one being my tires are 42 millimeters and And don't have big knobs on him. And I knew that I can air down my tires a lot and still go through pretty loose sand and stuff. And I also my bike is not really set up in a traditional bikepacking way, I have lots of racks and baskets, and I take this bike I got 11 years ago or something, I've used it as my primary means of transportation in the city, taking a mountain bike, basically, I've used it for everything. And so it's set up very general not specific to this. And so I knew going in, I was pushing the limits here is like, okay, and I found some other problems. But anyways, the short of it is, yeah, I've I've learned I can't, I really can't reasonably do some parts of the Baja divide because of the way my bike is set up. But now it's like, okay, I know exactly where this setup fails, which stuff is fine in which isn't. And really the only thing I think that has been the problem has been the tire size. So now I'm like, Hey, I've explored these limits, I found the limits of this. And I know what I can change to make this better, and we stuffed doesn't matter. So a lot of people in fact, I haven't seen anyone else doing the trip with the racks and baskets and everything like I have, and they have a much more traditional, if you can call it that bikepacking setup, where the bags are like tightly integrated into the bike and everything and I don't know, I, a lot of people were like, wow, how are you doing that with this? And it hasn't been a problem. Maybe it would be? I don't know, I haven't found that limit yet. But in my opinion, it's been interesting, because I'm learning Oh, how does you know? What do I actually need?
+
+96
+01:01:49,070 --> 01:03:42,560
+What are the actual limits what works for me, and I'm also learning how, how these things work, how I can ride my bike in these conditions, even if there wasn't really made for it. And I learned more about just the sort of stance and the way to to make it work. Anyways, this is getting boring, probably to most of you. But the point is, I love exploring the limits. The other thing I was really, so I'll be honest, sometimes I feel kind of bad dragging on my podcast recording equipment to this, like, oh, I went down. Yesterday, I went down this this ridge that was so Rocky and Sandy. And so I had to let most of the air out of my tires. And it was a really steep and I got my computer and my mixer. And I got my Shure SM seven be the classic podcaster microphone, all packed in my bicycle, everything all this electronic equipment. And I'm just like, oh boy, like, is it gonna make it through? Like I'm sure when sure was creating this microphone. This is not what they had in mind. I'm like, by destroying this very nice microphone. I sure hope not. So I do my best to sort of pack it in. But I can't. I don't have the space to have a lot of packing materials. It's more like strap things down and hope it goes well. And hey, they apparently have done a great job because it seems to be working as far as I can tell. But yeah. So that's exciting. I could bring you this podcast from a beach in remote part of of Baja, there's nobody around had the site to my place last night and all the gear made it through. So that's been exciting. Yeah, always got to have a project, right?
+
+97
+01:03:43,880 --> 01:04:39,110
+This episode was a lot of fun. It was fun for me to explore what the actual, you know, limits are on things and how things actually break what they do when they break what that looks like, where the bugs might come from. I feel like I have a much clearer understanding of a lot of these things than I did before. Even though I think I had a much better understanding then it seems like a lot of people did now I'm like, I know exactly how this breaks and when it breaks and what it looks like when it breaks. If I see something like this, if somebody comes to me in, you know, with a bug, that sort of strange like this, I might be like, Oh, I have some ideas, you know, so I think it'll definitely pay off. I hope it was interesting to all of you. I thank you so much for joining us once again. I hope you have a great rest of your week. And yeah, take care. See ya
+

@@ -8,7 +8,9 @@ export const PAGE_SIZE = 15;
 
 const episodeExtra = {
   'Buzzsprout-12413556': {
-    slug: 'i-broke-the-rules-of-react-the-results-surprised-me'
+    slug: 'i-broke-the-rules-of-react-the-results-surprised-me',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '084-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/xc5vwGrs4IY'
   },
   'Buzzsprout-12354761': {
     slug: 'less-stress-and-exploitation-why-we-should-unionize',
