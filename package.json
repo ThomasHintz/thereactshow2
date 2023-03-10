@@ -24,6 +24,7 @@
         "eslint-config-next": "13.1.4",
         "focus-visible": "^5.2.0",
         "i": "^0.3.7",
+        "mp3-duration": "^1.1.0",
         "next": "^13.1.7-canary.12",
         "nodemailer": "^6.9.1",
         "podcast": "^2.0.1",

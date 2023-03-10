@@ -2,6 +2,8 @@ import * as srtparsejs from "srtparsejs";
 import fs from 'fs';
 import path from 'path';
 
+import db from '@/db';
+
 import { extractFromXml } from '@extractus/feed-extractor'
 
 export const PAGE_SIZE = 15;
@@ -210,7 +212,7 @@ Object.entries(episodeExtra).forEach(([id, { slug }]) => {
   slugToEpisode[slug] = id
 })
 
-export async function getEpisodes() {
+export async function getEpisodesReal() {
   const feedRes = await fetch('https://feeds.buzzsprout.com/1764837.rss', { next: { revalidate: 60 * 10 } });
   const feedString = await feedRes.text()
   /* const feedString = fs.readFileSync('./feed.rss').toString() */
@@ -270,12 +272,36 @@ export async function getEpisodes() {
            slug: episodeExtra[id].slug,
            transcript: episodeExtra[id]?.transcript,
            audio: {
-              src: `https://pdcn.co/e/www.buzzsprout.com/1764837/${id.split('Buzzsprout-')[1]}.mp3`,
-              type: 'audio/mpeg',
-            },
+             src: `https://pdcn.co/e/www.buzzsprout.com/1764837/${id.split('Buzzsprout-')[1]}.mp3`,
+             type: 'audio/mpeg',
+           },
          })),
           ...feedEntries]
        : feedEntries;
+}
+
+export async function getEpisodes() {
+  const dbEpisodes = await db.all('select * from episodes order by number desc;');
+  return dbEpisodes.map(({ title, pub_date, summary: description, content, slug, duration, filename, number, episode_type, buzzsprout_id, youtube_url, transcript_filename }) => {
+    const filepath = path.join(process.cwd(), 'public', 'files', 'episodes', filename);
+    return {
+      num: number,
+      id: buzzsprout_id,
+      title,
+      description,
+      content,
+      published: pub_date,
+      chapters: [],
+      youtube: youtube_url,
+      slug,
+      transcript: transcript_filename,
+      audio: {
+        src: '',
+        type: '',
+        length: '',
+      },
+    };
+  });
 }
 
 export async function getEpisode({ episodeSlug }) {

@@ -44,7 +44,15 @@ pub_date text,
 youtube_url text,
 transcript_filename text
   )`]
-  }
+  },
+  {
+    key: 5,
+    name: 'create table feed',
+    sql: [`create table feed (
+id integer primary key autoincrement,
+last_build_date text
+    )`]
+  },
 ];
 
 const checkForMigrationsSql = `select key from migrations where run='True' order by key`;
@@ -65,21 +73,21 @@ async function runMigrations(db) {
   console.log('Migrations to run:', toRun.map(({ name }) => name));
   await db.exec(toRun.reduce((prev, { sql, key }) => `${prev} ${sql.join(';')} ; insert into migrations (key, run) values (${key}, 'True') ;`, ''));
   console.log('migrations run');
-    /* db.all(checkForMigrationsSql, (err, rows) => {
-     *   console.log('xx')
-     *   const runMigrations = rows.map(({ key }) => key);
-     *   console.log(runMigrations);
-     *   let toRun = [];
-     *   migrations.forEach(({ key, name, sql }) => {
-     *     if (!runMigrations.includes(key)) {
-     *       toRun.push({ key, name, sql });
-     *     }
-     *   });
-     *   console.log('Migrations to run:', toRun.map(({ name }) => name));
-     *   db.exec(toRun.reduce((prev, { sql, key }) => `${prev} ${sql.join(';')} ; insert into migrations (key, run) values (${key}, 'True') ;`, ''), () => {
-     *     console.log('migrations run');
-     *   });
-     * }); */
+  /* db.all(checkForMigrationsSql, (err, rows) => {
+   *   console.log('xx')
+   *   const runMigrations = rows.map(({ key }) => key);
+   *   console.log(runMigrations);
+   *   let toRun = [];
+   *   migrations.forEach(({ key, name, sql }) => {
+   *     if (!runMigrations.includes(key)) {
+   *       toRun.push({ key, name, sql });
+   *     }
+   *   });
+   *   console.log('Migrations to run:', toRun.map(({ name }) => name));
+   *   db.exec(toRun.reduce((prev, { sql, key }) => `${prev} ${sql.join(';')} ; insert into migrations (key, run) values (${key}, 'True') ;`, ''), () => {
+   *     console.log('migrations run');
+   *   });
+   * }); */
 };
 
 const createMigrationTable = `create table migrations (
