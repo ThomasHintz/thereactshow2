@@ -1,0 +1,400 @@
+1
+00:00:02,970 --> 00:00:05,700
+Thomas Hintz: Welcome to the React show!
+
+2
+00:00:06,030 --> 00:00:16,590
+Brought to you from occupied Pericu territory by me, your host, Thomas, and some new sea slugs, Episode 85!
+
+3
+00:00:17,640 --> 00:00:33,450
+When should you use React in 2023? Is it ready to be used for everything? Are there still places on the web where you shouldn't use React, or even single page applications in general?
+
+4
+00:00:35,430 --> 00:01:05,070
+Thanks for joining us. I am still down in Baja, Mexico, actually doing some tide pooling and it was really fun got to go out yesterday and starting to hit the minus tide. So it's when the tide gets the low tides get really low. And yeah, got to go out and see some new sea slug species never seen before. Some really just mind blowing ones.
+
+5
+00:01:05,070 --> 00:01:19,410
+And like, there's this one that is just three or four different colors like purple and red and yellow. And it's just so fun. I love doing it. But yeah, so that's a lot of fun.
+
+6
+00:01:19,410 --> 00:02:02,370
+But I was thinking, have you ever wanted a new boss? Well, I thought maybe, I don't know why I thought this. I thought maybe chat GPT could be my new boss. So I asked chat GPT if it would pretend to be my boss at a new startup. And luckily for me, chat GPT agreed. And that is actually what led me to the rest of this episode where we get into when should you actually use React in 2023. But before we get into that, I just thought it'd be funny to share your story of my interactions with chat GPT.
+
+7
+00:02:02,430 --> 00:02:27,390
+So I started by asking chat GPT what product we should create based on the hot markets of today. It gave me a few ideas. But hilariously at the top of the list. It said, Yeah, we could start an AI startup that uses natural language processing. And interface could be in the form of a chatbot.
+
+8
+00:02:27,000 --> 00:03:21,720
+Oh, yes. So, chat. GPT. How did you come up with that idea? I mean, I guess what I asked for hot markets, it wasn't wrong. I don't know if it realizes it's at the heart of these chat bots, the new chat bots that are powering this hot new market? I don't know. I mean, it probably is. It's probably sentient, right. So I guess started and the other thing is, I was like, wow, okay, that's a great idea, chat. GPT. Because I guess starting a startup with the chatbot that is at the root of all these new startups would give us a leg up, right. So yeah, that was already pretty funny. I was having a good time. Like, yeah, GPT. Great idea. Where did you come up with that one?
+
+9
+00:02:29,790 --> 00:03:54,600
+So I then proceeded to go through the normal product development lifecycle with chat GPT acting as my boss. And so we just did the normal things, discuss the features we wanted, in the first version, discuss the target persona chatbot GPT, decided our target persona was busy professionals that needed to schedule meetings and things and they were going to use this chat bot to do that, I guess.
+
+10
+00:03:55,830 --> 00:04:13,740
+So as the engineer in the room, the I guess I was sort of the lead engineer for this, this new startup, I suggested making a prototype first. And you know, if you've listened to this show, you know, that's what I always say. And I decided again, and luckily for me chat bot obligingly agreed.
+
+11
+00:04:14,940 --> 00:04:38,970
+But one of the first problems I ran into is its feature list for me was so long, I was like that would take me like years to do. And so I kept like, pushing to pare back the feature list, at least for the prototype. It always agreed it was so funny, because there's always like, oh, yeah, great point. Yeah, let's just not do that. Yeah, let's not do that.
+
+12
+00:04:39,150 --> 00:05:10,890
+Except for one thing. It really, really, really wanted to have a calendar included in the interface for the first version. It was just dead set on this. And I would think that I had argued it out of it. And then like later on, it would be like, yeah, so where's that calendar you said? And I'm like, why? I thought we talked about not doing the calendar. So I don't know. Honestly, Chat GPT seemed to have a really bad memory. I kept having to remind it of things in the same conversation.
+
+13
+00:05:12,150 --> 00:05:24,840
+But yeah, so, in general, it was really funny to have as a boss, because for the most part, it just agreed with whatever I said. totally realistic, right? That's, that's how our bosses are.
+
+14
+00:05:26,070 --> 00:05:50,700
+One really funny interaction was after I told that, so I actually did go through the process, and I sketched out a UI, and I implemented a really bad version of this. And I told it, hey, I did this, and the prototypes done and everything. And I said, Hey, I've been doing a really good job here. I deserve a raise. And he's like, oh, yeah, okay.
+
+15
+00:05:51,720 --> 00:06:28,650
+But you need to tell me the salary range for your position. What is your position? What's your salary range? So I told that, yeah, the salary range for my position is $9,001 to $11,000 per hour. And chat. GPT didn't seem bat an eye it was like, oh, yeah, no problem. But then it came back, of course, like a real boss and said, Yeah, that makes sense. But you can only get this raise after we raise our next round of funding for the startup.
+
+16
+00:06:28,990 --> 00:06:53,110
+So yeah, I was pretty bummed. I didn't get my raise to $9,001. But, hey, it was funny. I told it, What did I tell it? I said, it asked me what my position was. And I said, I'm the Lead monkey brains engineer. It was totally cool. That was like sweet, great job being the lead monkey brains engineer.
+
+17
+00:06:56,020 --> 00:07:33,730
+But yeah, another thing that I thought was really funny, too, as it kept. So I was asking, like, how how's the investment going? You know, are you meeting with investors? How's all this going? And it's like, oh, yeah, meeting with investors. And now it's like, so did the investors have any feedback for us? Like, what are they looking for in the product, because at these early stage startups, if you're raising money, investors are kind of like your customer, like, you have to build it for the real customers. But you also have to, it's kind of this tricky dance for science, you have to do things to make the investors interested.
+
+18
+00:07:33,000 --> 00:08:24,960
+And anyway, so it kept telling me that potential investors were really focused on data and user privacy, which I thought was hilarious. I've never ever been at an early stage startup, like this. Unless your product is data privacy and user privacy and that kind of thing. Unless that is your product. I've never been at something like this where that's what the investors are actually interested in. I've never heard of that. I think that's kind of not realistic. But it's pretty hilarious. chatgpt just insisted, Oh, yeah. It had great points was like, oh, yeah, data privacy is super important. Security, super important. We really need to invest in these things. And was like, I totally agree. I can't believe the investors agree to this is the best startup ever.
+
+19
+00:08:27,750 --> 00:09:42,510
+But yeah, all All joking aside, I did think it was an interesting way in practice, or an interesting way to practice. Having some conversations that I might actually have in real life with a boss or a client. It was way too obliging on some things, but I think if you set it up, right, and you tell it, hey, act like this boss, or act like this type of thing. It actually could be an okay way of practicing these interactions that you might have in real life. So if you were planning on having a negotiation for a raise, or even to, you know, a performance evaluation or something, you know, if you can talk to chat GPT and set it up correctly, and get it in the right mode and write thinking it might take some practice, but I think if you can do that, it would actually provide a fairly interesting and novel way and useful way of practicing these types of interactions. It's not gonna be exactly the same, but I found that it helps me sort of refine my thoughts, even in this whole made up scenario.
+
+20
+00:09:42,000 --> 00:10:07,260
+It's like okay, yeah. So it was asking me like, Oh, what are the what? Why should you get a raise? Can you tell me about your recent performance? Can you tell me about things you've done recently that are deserving of a raise? And so it made me actually sit there and think okay, yeah, what have I done that I actually deserve a raise and I I forced me to put that down in writing and get it thinking in my brain. So I don't know, it might be interesting.
+
+21
+00:10:07,260 --> 00:10:32,460
+If you're ever looking if you're ever feeling maybe uncomfortable or unsure about how to handle those interactions, and you're just like, like this could just provide a way to give you a little bit more practice. And again, I'm not saying it's going to be exactly the same because it won't as a real boss, but it could be useful to get stuff out of your head and make it so you can present your arguments more clearly to a real boss or client.
+
+22
+00:10:32,880 --> 00:11:21,900
+What really set me off on the course for this episode, though, was trying to figure out which component library to use for the natural language processing chatbot, that chat GPT was having me create as its boss. So like I mentioned, I actually did go through and sketch out the UI, and I built out a basic chat bot in React. But I got really frustrated when I went to actually go and build the UI. And so there is a bit of a backstory here, before we get into when I think react should actually be used in 2023. But I promise, it's necessary for proving my points. So just stick with me for a little bit. I won't be too long, but I'm just gonna go through a bit of a backstory.
+
+23
+00:11:23,250 --> 00:11:54,930
+So yeah, I'm trying to build this chat bot. And I got frustrated pretty early on. So I was looking at the main component libraries, because I'm like, I don't want to make all these components from scratch. I thought about it. And it was like, Yeah, I don't feel like it. And so anyway, so it's gonna check out material UI, chakra UI, a whole bunch of component libraries. And the first thing I was looking for are layout components.
+
+24
+00:11:54,960 --> 00:13:08,400
+So I've got a blank slate. In my sketches, I had like a little navigation bar at the top, you know, very classic, none below that. Because chat GPT and insisted on it, you know, as calendar, so had like this calendar component. And then below that was just like the chat log, the conversation you have in any chat, right? So it's like an avatar and some text, then below that is just a text input. So super basic. But it's very application like, like, if I was developing an application, a desktop application, or mobile application or whatever, even a web application, I want all of these components to fill up the screen for the most part, unless the screen is gigantic, I guess I can have some white bars on the side or whatever. But like, I don't, yeah, so. So it's like, okay, I need to lay these components out on the screen. And it was like, why is like when I went to these component libraries, I was like this should be the very first thing they talk about this should be front and center is layout components.
+
+25
+00:13:08,700 --> 00:13:43,500
+And it's not the case at all. In fact, I couldn't find in any of the major ones, any good layout components. And maybe this is something I'm curious if other people have thought of this too. But I've had a lot of experience coming from, like desktop application development from decades ago at this point. And those have these great, you always start with these great layouts, you say, Hey, what is my layout going to be for this container.
+
+26
+00:13:43,000 --> 00:14:35,110
+And in fact, some of them force you to choose the layout, and it works really well, because you're like, Okay, so this container, the layout is stacked, this container, the layout goes in rows, or columns, or whatever it might be. There's a whole bunch of different layouts, but you the way you build an application UI, is you have a container. And then inside of that container, you select the Layout. And inside of that, you can add more containers that have different layouts, but it's all based on these containers and these layouts, and you can add spacers, and things like that. So sort of squashes things to the top or the bottom or the left or the right. And you can add padding and margins and, and whatever like you'd expect. But it's all very quick and simple. And it scales really well from a nice mobile screen to a full desktop screen.
+
+27
+00:14:35,530 --> 00:15:22,960
+And another big thing is these older traditional desktop applications have like built in navigation bars, like whether on Linux or Mac OS or Windows. You've got file menus, edit menus, and it's very standard and in web development and web applications. For the most part, we do the same thing. We all have our head hamburger menu and whatever at the top. And so I'm going into this thinking, like, this should be really basic, it should be like, Hey, I'm starting out. Alright, this is the standard navigation bar. And then within this here are your layout components. And then here are the other components, right? But it just doesn't work that way.
+
+28
+00:15:22,960 --> 00:15:53,950
+Like, I don't know, maybe I'm missing something, if I'm missing in material UI, or these other big component libraries, if I'm missing how to do this, then missing these components. I know some of them kind of exist. But when I actually went to implement this, and like I have for many other applications and react before this, it was like, basically, I feel like I'm dropping down to Flexbox. And it's like, yeah, use the box component and, you know, set these different Flexbox things on it to achieve what I'm talking about achieving. 
+
+29
+00:15:53,980 --> 00:16:33,280
+And I'm like, Why do I need to do this every single time I feel like I've built this application skeleton, as I call it, so many times in React. And yeah, so it's like, I don't want to get into the minutiae of Flexbox. Every time it's unnecessary, like it just shouldn't be necessary when we're developing applications. And so I'm like, Okay, this, I'm developing an application. I'm using component libraries that seem to be made for developing applications, I should be able to just plop my components Down, set, my layout types, and everything should just fit together. And it should work great. But I couldn't, just didn't seem to exist.
+
+30
+00:16:33,280 --> 00:16:53,080
+I even tried this new component library hadn't tried before, called grommet, like G R, o, m, m, e, t. And it didn't fare any better in this process than material UI, or chakra UI. And the two other main component libraries I'm familiar with. So anyways, I was really frustrated. That was a long backstory.
+
+31
+00:16:53,080 --> 00:17:36,070
+But basically, it was like, Why is this so hard? This seems like the most basic thing this is seems like where you should start with. And at a previous firm, previous client actually built some of these layout components, and they worked great. Unfortunately, I built them for that company, and I can't use them for myself. I could remake them. But it's like, why do I need to like this should be so basic, this should be how it starts with. And that just sort of led me down this rabbit hole into how we create application UIs in general. And then in to what when should you actually, I know, it's?
+
+32
+00:17:36,520 --> 00:18:02,830
+Yeah, so anyway, so it's like, when when should I even be using React for this? Is there something better to use for this? When should we actually use react in 2023? Like today? Like, if I'm starting a new startup like this? Should I be using React's? Should I be using something else? How do I figure this out? So that's what I set out to do is just outline Okay. Should I like how do I figure this out?
+
+33
+00:18:03,130 --> 00:18:14,320
+So that's what we're gonna go through next is the process that I would take if I was starting a project to figure out if I should use React or where I should use React.
+
+34
+00:18:14,500 --> 00:18:38,440
+So to figure out when anything should be used when it comes to technology, the place that we have to start with is, what is this technology good at? What is it good at solving? What kinds of problems does it solve really well, where does it not solve things? Well, so we're going to break that down what is react good at.
+
+35
+00:18:38,470 --> 00:19:59,980
+So react, in my opinion, is really good at managing app like web applications that have complicated front end logic and state relationships. So I'm going to start with a counterexample. So recently, I built the new version of the website for this podcast, the React's show.com. In react it used to be just hosted on Squarespace. I rebuilt it in React, I've talked about this in a number of previous episodes. But something I realized I never talked about is the fact that it's probably not a good choice for React. So the React show.com It's like a, it's mostly for content, like you would go there, load a page, and you can see the title of the episode, you can hit a play button and listen to the episode. You can see some notes and the transcript, but there's not just not it's not really an application, there's not much complicated business logic or front end anything. So sort of, by default, just making a standard website with HTML and CSS, you know, statically generated maybe or whatever it would it 
+
+36
+00:19:59,000 --> 00:20:29,720
+Yeah, like that would work. And not only would that work, but it would be simple, it would be easy to maintain, like, I could probably just build it and let it run for a decade and not really have to do any maintenance on it, I don't, don't need to upgrade react don't need to deal with some new paradigm react comes out with and I need to go back and update everything. And oh, all my libraries have secured my JavaScript libraries have security vulnerabilities. And I got to deal with that all the time. I don't need to keep this infrastructure running.
+
+37
+00:20:30,500 --> 00:20:53,870
+So purely for the sake of just showing content. Obviously, the React's show.com shouldn't be written in React, I didn't react more because I wanted to experiment with some things. And I've talked about that and in those episodes, but really, for the most part, I don't think I should have done it in React. But thinking about this, it also led to some hang ups with that analysis. 
+
+38
+00:20:54,320 --> 00:21:37,460
+So one thing that I think is really cool about the new site is it has an audio player that spans multiple pages. So you can go to say the homepage, click play on an episode, and then go check out some other episodes while it's playing in the background. And this actually already starts to break down my whole idea of doing this all in HTML and CSS. How do you have sort of cross site or application state, so I'm navigating to different parts of my application interacting with it. And I want to have some sort of state maintained in the background.
+
+39
+00:21:38,420 --> 00:22:14,900
+The way that we used to do this was actually to use something called HTML frames. Essentially, it allows you to have multiple, sort of independent websites on one web page, one website, and so I could have a frame that is my audio player. And then I could just have a regular HTML website with links and navigation for all the content. And that would work really well except frames are deprecated. And you're not supposed to use them. And theoretically, browsers could drop support for them anytime. One of that those kind of annoying things.
+
+40
+00:22:15,860 --> 00:22:49,010
+I think the idea is that iframes are supposed to replace them. And so I could go and make my audio player an iframe. And to be honest, this is probably what I should have done if I was approaching this project with, you know, creating it, so that the least expensive, most maintainable for the lowest price, which is kind of generally our goal with building software, right. So that would be what I should have done, probably, obviously, I chose to use React for other reasons.
+
+41
+00:22:49,040 --> 00:23:28,010
+And yeah, so this, I think, started to highlight some more reasons, when you might use React or what React is good for. So if, if you can't do something with traditional web traditional documents, that is an indication that maybe React is a good choice. But it's also not strictly an indication of that, it might actually not mean you need to use React, it just might mean, you use, you have some sort of single page application that uses some really lightweight JavaScript.
+
+42
+00:23:29,540 --> 00:24:21,320
+The truth is, React is still, like, very heavyweight. So performance wise, you can make react perform quite well enough. But when you look at its performance, including initial page load to the actual, like running of the application, React is way, way more heavyweight than just plain HTML, it's just doesn't even come close, you have to load an HTML document, you got to load all the JavaScript and even if it's compiled and optimized and tree shaped, and you've done everything I said, when it comes to profiling and using memo, and you should and whatever, it's still not going to be as good of a user performance or a user experience as just a regular HTML website, if that's what you could build it in.
+
+43
+00:24:21,800 --> 00:25:02,600
+And I think a great way to explore this is if you try to use some heavy react websites, on a slow internet connection with high latency, low bandwidth, which often does happen, it happens to me all the like, maybe not all the time, but not that infrequently on my phone, like there's a lot of people around so the network is just overloaded and not loading things very well. If you load a basic HTML website, it still works fairly well. Then I go try to load up some really big react website and it just It's a horrible, miserable experience.
+
+44
+00:25:03,800 --> 00:25:30,830
+So the truth is React is it adds a lot of abstraction adds a lot of code. And so you don't want to use it unless you actually need to use it. I think in the industry right now, it's kind of like become the default way to make anything on the web. And I, that's absolutely not the approach you should take when to use react in 2023. It's not all the time, it's absolutely not all the time.
+
+45
+00:25:32,070 --> 00:26:31,020
+So you should use it if you have so much complicated client side state and interactions and business logic with the DOM, that the extra abstractions that react gives you makes up for the fact that react adds a lot of overhead. And this doesn't even you know, we didn't even touch on, I think, a huge piece of React overhead, which is maintenance and infrastructure. So react projects, like there's just no way around it, you have to have bundlers and all sorts of stuff to optimize the code to make it production ready. It's harder to write tests for it, you got to eat, especially if you're looking at maybe the future of React, like I've said, with React server components, oh, now you're running a node server to run react and the front end, and it's a lot, a lot of extra overhead, you do not want to reach for that unless you actually need it. 
+
+46
+00:26:31,080 --> 00:27:31,110
+Unless you you're gonna build something that if you tried to build it using traditional HTML, and CSS and a little bit of random JavaScript here, and there would be a nightmare. So the simple way that I look at it is when should you use React and 2023? I would say, first look and see if you can imagine building it using just HTML, CSS, and maybe some JavaScript here and there for some, you know, interactions or whatever. But if you're like, yeah, that seems like I could imagine doing that, even if that means dynamically generating the HTML with Ruby on Rails, or Java, or whatever your back end is, that's fine. PHP, like that works great. I would say if you can imagine doing it that way. And you're not like getting hung up on anything, that's a really good indication that you shouldn't be reaching for React.
+
+47
+00:27:32,820 --> 00:28:37,350
+Generally, this will be on the internet, things like content. So if you're making a site for content, if you're just trying to show text, or videos, or whatever, in most cases, you probably don't want to reach for react even something like say YouTube where or face, you know, the Facebook feed or whatever things like this, where you're displaying content, even if you want it to be interactive. Maybe React is the right choice. But I would bet it's not as clear cut, like when it comes to displaying content, displaying documents, that kind of thing. My thinking would be, you'd want to start not with React. So you just have regular HTML pages. And maybe for some complex parts, you would have react, just controlling one small container within that page, one div, which you can totally do, you're gonna have multiple of those on the same page, too.
+
+48
+00:28:38,220 --> 00:29:04,860
+So that would be my recommendation is if you're like, Okay, most of what I'm doing is showing content, letting people interact with content, create content. Yeah, I would think you're probably not, you probably shouldn't use react as a single page application to control everything. You might use it to just have a few widgets within your page or whatever. But if you're trying to communicate things, React is probably not the thing you want to reach for. 
+
+49
+00:29:04,860 --> 00:29:14,490
+First, it's only going to add complication, make it harder to optimize for search engines harder to get good performance. I don't recommend it.
+
+50
+00:29:16,140 --> 00:29:39,300
+But before we can completely answer this, I think we need to talk about SPAs, in general, SPAs are single page applications. React is often used as a single page application. So to figure out when we should use React versus single page applications. In general, we need to look at when is it good to use single page applications.
+
+51
+00:29:39,930 --> 00:30:46,650
+So a single page application is, in my mind. It more of an application more than app, so I'm no longer my goal is no longer just to display content per se. My goal might be or maybe it's a game or any, you know, like an admin interface with complex business logic that just makes more sense to do on the front end. Where I want to have a like, like a few Imagine your application needing to have some sort of File menu, Edit menu, AI, tools, menu, all sorts of this, this type of thing, where maybe you need a history, you need a lot of state. To me, this is where a single page application makes sense, because your user interaction isn't based on navigating between content.
+
+52
+00:30:47,020 --> 00:31:12,880
+So if you don't, if your primary interactions are based more on lots of little bits of state here and there, that combined with a bunch of logic to produce some output, then I'd say you're looking at a single page application. You're not looking at it as like, Okay, people are going to just be navigating from this one thing to this next thing, and they want to be able to share these things easily. That would not be a good single page application.
+
+53
+00:31:13,180 --> 00:31:42,970
+But you know, a text editor and you know, an IDE, a mail program, you know, why don't read my mail, a lot of these things are, I would say, make more sense as an application. So you'd look for a single page application. And really, that just means like to make it more clear single page application means you don't load a new document to navigate within your website.
+
+54
+00:31:43,270 --> 00:32:29,950
+So the traditional way you develop web applications is you have an HTML document and you have links, you click that link, it fetches an a new document, right? single page application, you don't do that you might still have the URL might still change, but you do it via JavaScript, the the the API's JavaScript provides. And so when I look at it, I'm like, okay, React is, if you're using React for the entire experience, the entire website, like if somebody goes to your domain, they type in your domain, they go to your website, and you return a document that's essentially just one div and that div is the route of React and react renders inside of that you're creating a single page application.
+
+55
+00:32:31,780 --> 00:32:45,700
+You should only use React for that when everything you're doing your entire site is just based around these these complicated state management and logic that needs to be all connected together.
+
+56
+00:32:45,970 --> 00:33:24,040
+Now, there's another way to use React. And this is something I don't see as often. But you can do what I've been trying to talk about, which is, you can still have regular HTML documents that you build in the traditional way, where you click a link, it fetches the new document, you owe the new page. But within that, you might have, let's say, a calendar component. And this calendar component is really complex. And for some reason, it has a lot of logic and state that needs to be maintained. And just writing that in plain JavaScript could get out of hand to become spaghetti code, you can use React for just that component.
+
+57
+00:33:24,340 --> 00:33:58,090
+In fact, this is, in my mind, a great argument for html5 web components. So what you could do is build this calendar component as an html5 web component that uses react internally. And in the future, you can swap it out with not using React or whatever you want. But in the development of your website, you just use this html5 component that maybe internally uses react for this complicated stuff. But it's not a single page application. It's just made for a component.
+
+58
+00:33:58,450 --> 00:34:53,560
+So for React, I say, first, you look at Hey, is this a single page application? am I building a UI, an application application? Sure, reach for React and use it for your entire site? Maybe. But another use case would be I just have like some components with in my site. Maybe my site in general is mostly content, like the React's show.com. My podcast website is most of the content, but I also have this audio player, and it's a bit complex. So maybe for this audio player, in fact, this is what I'm thinking about doing is trying out making the whole website using traditional web technologies. But for the audio player, just for that I use React, because that's where things get complicated. That's where interactions with the DOM get complicated. That's where I actually have some state. So this is what I look at. That's the process I go through.
+
+59
+00:34:53,560 --> 00:35:21,130
+Okay, React is good at single page applications, especially if you use something like NextJS but it's also Good at just managing state and connecting to the DOM in general. So if I'm creating components, that I could just plop into my page, it could work well to just use React for each individual component. So this really, I think, rounds out the sort of high level of what I look at, for when I should really use react on the project.
+
+60
+00:35:21,910 --> 00:35:40,690
+So in summary, I break down the features, and I look at the features, and I just tried to think or even maybe build a prototype where I try to do it using traditional web technologies, or maybe even some other technology, maybe I'm like, maybe just a plain mobile application, like a native mobile application would be better.
+
+61
+00:35:41,980 --> 00:35:59,770
+I tried to think about, okay, could I do this in these other systems? What would that look like? Would that be really hacky and be really hard and not work? Well, am I like, oh, wow, I've got these really complicated forms. And when the user types this into the form, I want to pop this up, and then I need to show this and have this interaction.
+
+62
+00:35:59,770 --> 00:36:36,010
+And, wow, that's so much like logic, and I'm going to have to, like, update the DOM to show this new thing. And if I'm, if I'm going into it, and I'm seeing a lot of stuff like that, I'd be like, Okay, this might be a good use case for React. React is very good at this type of thing. But if I'm going into it, and I'm like, Yeah, okay, most of what I'm doing is displaying content, most of what I'm doing does not have state or much state, and it's not very complicated logic, then probably I shouldn't build a single page application, I should just use regular old traditional web technologies.
+
+63
+00:36:36,280 --> 00:37:13,450
+And if I run into specific, like, isolated parts of my website components, like the calendar component, or maybe even that specific format is talking about maybe 90% of your website is just showing content. But then you have one page with this complicated form with all this business logic. I'd be like, Okay, that's where I should use React. But the rest of my website should be traditional web technologies. Or maybe I look at it, and I'm like, Oh, this would be way easier to build as a native mobile app. And I don't really need a website to start with or whatever.
+
+64
+00:37:14,320 --> 00:38:16,030
+Basically, when I'm looking, though, at it from a web perspective, you know, if I am going to build a website, when I'm looking at is, how difficult would it be to build this using just regular traditional web technologies. And I would say, if it seems doable, and there's only something maybe some parts that you might need react for, I would not use react as a single page application, I wouldn't use React to control everything, I would just use React for these specific use cases. So in summary, I would say people are reaching for react more than they should these days. So it's almost become one of those things where it's like, oh, you're building something for the web, you should build it in React, I think if you take that approach, you're going to end up with just paying a lot more, whether it's in your time or money. For whatever you're creating, you're going to end up with way more maintenance and overhead and our infrastructure than you need for your project.
+
+65
+00:38:16,360 --> 00:38:55,750
+Potentially, if that's the approach you take, instead, I recommend breaking down these features and looking at which ones actually have complex state and complex business logic. And if those are isolated to specific components, only use React for those specific components and build the rest of your site without react, controlling it. Now, if you find yourself in that case, where you're building something where the entire thing, the entire product is very complex state and logic, then react makes sense, a lot of sense to us.
+
+66
+00:38:56,200 --> 00:39:54,100
+So when should you use react in 2023, you should use React and 2023 only in cases where you have a lot of client side state and logic. So it's logic and state that is just best to have on the client site. And there's a lot of it and in interacting with the DOM and trying to, or trying to do with regular HTML would just be a spaghetti nightmare. That's when you should, you know, when you should use React's in 23 is when you have all this state and logic. That's it. Don't use it for everything. You're you're not doing yourself any favors, unless you're like, hey, you're like me, and you're like, I just want to try these things out. I'm doing it for fun. I know I'm paying an extra cost. That's one thing but if you're like trying to actually choose the best technology, definitely don't retreat for React for everything just for these complicated state situations. 
+
+67
+00:39:54,940 --> 00:40:39,070
+Now, I think if you're listening to this as a beginner you This is a case where I think it's hard to lay out specific rules for when exactly you should use React. And so you've heard me talk about all these things, you're kind of going, I don't really know, like you're saying, imagine building this and imagine how it turns out? I can't imagine it because I haven't done it. I don't have that experience. And I think the difficult truth is when it comes to when to use React and 2023. It's going to be hard to judge without some level of experience.
+
+68
+00:40:40,270 --> 00:41:36,610
+Hopefully, the pointers on am I doing mostly content? Or do I have a lot of complex internal state can point you in the right direction. But ultimately, you're going to need the experience, one way to do it might be to build two prototypes really quickly. So let's say you're new to this and you're like, I don't really know, I would suggest trying to like, just spend a week building each prototype a week building one that uses traditional web technologies a week building one that uses react, and just see what happens. I bet if you do that, you'll it'll become a lot more clear which one to use. And this is actually something that even if you do have a lot of experience could pay off, maybe you're like, Nah, I definitely need to use React. But then you spend a week trying to do it with traditional web technologies, you're like, oh, actually, I didn't really need to use reactor, I only needed to use react in this one place. So I bet that could still happen.
+
+69
+00:41:36,780 --> 00:42:07,020
+But if you're a beginner, and you're not sure, and you're actually on a project where you need to make this decision, I would recommend doing a couple of quick prototypes. Otherwise, just reaching for react by default, I think will create a lot of problems down the road. Now, when you should use any technology, I think is also more complicated than just which technology is right for the situation.
+
+70
+00:42:07,290 --> 00:42:39,030
+From a technical perspective, there's all sorts of social interactions here, like you know, you only know react well. And you get hired to do something and you have some timeline. I mean, you can try to communicate, well, I only No React's I'm gonna have to build this in React, whether that's the right solution or not. I mean, that's still something you could communicate to whoever your client is, at least so they understand. But maybe you don't have that freedom, either. Maybe you're like, I need this work.
+
+71
+00:42:39,720 --> 00:43:26,250
+So yeah, I think when we're looking at answering this question, the way we answer is purely from a technical perspective, there's many other reasons why you might choose react like I did for the React's show.com. I didn't choose to use React because it was the best technology. I chose it because I wanted to learn it. I wanted to learn more about it more about how react server components work. So I'm talking about from a purely technical standpoint when to use it, but there's a lot of social reasons why you might choose react when it's not the best technology. And it might still be the right choice. So the point I just want to make here is it's important to know what the technical correct choice would be when you're going into something.
+
+72
+00:43:26,250 --> 00:44:12,660
+But that doesn't necessarily mean that's the one you have to use. There's a lot of other reasons to use a lot of other technologies. And but it's still important to be aware of it to be like, okay, yeah, so I chose to use React, even though it wasn't the best technology choice. But I'm also going to act based on that. And maybe in some cases, I'm not going to go so react heavy, I'm going to try to limit the react because I know it's not the best choice. Or, you know, the framework you reach for within react, whether it's NextJS or remix or something like that, you're going to use that to help yourself out and cover these cases where maybe I shouldn't have been in using React, but it provides routers for me that handle things that I would have to do manually. So that's why I would look at it is there's technical reasons.
+
+73
+00:44:12,690 --> 00:44:38,400
+And then there's other reasons, we're talking about technical reasons, use it, you know, for complex state logic, client side type things. But you might want to use it for other reasons, too. And that's cool. I say go for it. So use React and 2023 for technical reasons, like we discussed, but also for other reasons, if you want you know, and let me know if there's other cases, I'd love to hear from you.
+
+74
+00:44:38,400 --> 00:45:15,810
+Do you know Did I miss something? Is there other cases where you should have used React or shouldn't use React? Have you? I'll be really interested in this. Have you used React on a project where later on you're like I shouldn't have used React. I think this would be a great way to highlight some more of the distinctions between when we should and shouldn't use React. So as a part of this rabbit hole I went down that started with like, I want to, like make an application. And I feel like there should be layout components, but there aren't. It really got me thinking a lot more about component libraries in general.
+
+75
+00:45:15,840 --> 00:45:34,710
+So we're moving on from when should you use react to, I want to discuss sort of the state of React and component libraries, and component, like library infrastructure in general. So there'll be a new section.
+
+76
+00:45:36,090 --> 00:46:11,070
+And I saw, so I started going, going down this rabbit hole, I was also like, boy, this really sucks. I see all these component libraries that seem to be sort of duplicating themselves, but doing things differently, in some ways. But it seems like there's still a lot of shared knowledge between them shared logic, really. And so that's when I was like, oh, yeah, I remember the creator of chakra UI, created this new library called zag, like Z A G JS or something like that.
+
+77
+00:46:11,910 --> 00:46:43,800
+So zag is essentially a state machine library for UI components. And so I was like, really intrigued by this, I'm like, I gotta go check this out more, because I want to have, I think a big problem with component libraries is, some of them have components I want. And then I'll be like using it. And I'm like, Oh, this other one has a component, I want it, but it's not in this one. And I gotta go remake it.
+
+78
+00:46:43,800 --> 00:47:21,030
+Or I got to find some random thing and NPM. And I'm like, Why isn't more of the shared? Why isn't there a larger body of components in these component libraries? Why don't they have the like, almost like, I'm thinking a much better way, a much better state for the React ecosystem would be, hey, this is how we build UIs. And this is how layouts work. And you can have different component libraries that have different approaches to things. But a lot of the fundamentals are the same. A lot of what we want is the same.
+
+79
+00:47:21,090 --> 00:47:47,520
+And so zagjs is this library, that the creator of chakra UI made, so that they could share this logic between-it sounds like they originally created it. So they could share logic between the view version of chakra UI and the React version. But I got to thinking this really is the type of thing that should be shared across all component libraries.
+
+80
+00:47:47,520 --> 00:48:24,750
+So with zagjs, you can go to the website, and it's got components, but they're not full components. It's basically just the logic. So maybe have a toggle button, they have a zag, you know, quote component for a toggle button, which really just provides logic and an API for interacting with the toggle button. So it defines the states a toggle button can be in it can be activated or deactivated. When it's an deactivated state and it gets interacted with it transitions to the activated state, you know, and vice versa.
+
+81
+00:48:25,080 --> 00:49:20,130
+And then on top of this, the Zag library provides the sort of, I don't know what you call it, but essentially, ways to hook into your markup. So provides like data tags that can be injected into your markup. So it's like, hey, when. So you just interject whatever it says the current markup should be. So for example, with this toggle component, when the toggle is activated, it might inject a data state equals activated into your markup. So you can write CSS or more JavaScript that selects based on this markup that it adds what I guess Yeah, so.
+
+82
+00:49:21,540 --> 00:49:56,100
+So the cool thing about zag Jas is it essentially takes care of the bottom layer of your components. It handles the logic so you don't have to keep rewriting logic between component libraries. But it also handles the sort of markup side of it the styling side of it without coming with styling, per se. So you could use zag to create your own component library. You could use it from material UI chakra UI all of them they could all share this foundation.
+
+83
+00:49:57,350 --> 00:50:38,510
+And I love this idea. This is fantastic in theory, I'm super excited about this because it's like, yeah, why are we duplicating all this work? And, but that also got me thinking like, what this is really showing me is that all these component libraries, not only are they based on React, which adds a lot of overhead, which is complicated, but they also have complicated logic within them. Which makes sense, because like we've been talking about React is good at that kind of thing. But it also, I think, was just highlighting to me how complicated these things are, and how much abstraction we have in this ecosystem.
+
+84
+00:50:38,930 --> 00:51:10,040
+So zagjs, I'm like trying to learn how it works. And I'm like, Ah, this is like, not super. So like, it is super simple, conceptually. But when you get into the API and how to use it, you're like, Wow, this is actually kind of complicated. So I'm like, I think what this is really showing me is that from a design standpoint, developing these components can create a lot, it might have a lot of intrinsic complexity. And so I think that's great.
+
+85
+00:51:10,040 --> 00:51:42,800
+There's this library zag, that is helping to sort of standardize this complexity and centralize it and make us so we don't have to keep rewriting it all the time. And I definitely want to try out Zags and mourn and actually use it myself. I think it could save a lot of time. But this is, like, if we go all the way back to the beginning of the episode, this is kind of what led me down this rabbit holes was I was like, Yeah, this shows to me that there's just a lot of intrinsic, inherent complexity in these components in using React for anything. 
+
+86
+00:51:42,800 --> 00:52:21,530
+So not only do you have the complexity of compiling your React code, your JSX code, getting it to run in the browser and adding routers and query caches and all this other stuff, not only do we have that we also have the complicated logic that goes along with these components that we use from the component libraries. And that's before we add our own complicated logic in our own state. And so it really just made me think like, wow, this is actually just like, I think it's easy when we're developing these applications to forget how many layers and how much abstraction and how much overhead is really here.
+
+87
+00:52:21,830 --> 00:52:55,460
+And that may be perfectly fine. It might be, but at the same time, I'm like, Wow, maybe we're overusing react. And so that's really what led to me trying to create this sort of framework for figuring out when you should use React and 2023 was, maybe we are reusing re are overusing it. Because, you know, of just the sort of industry trend that this always happens, you know, something becomes popular, people learn it. And that's just what you use for everything.
+
+88
+00:52:55,880 --> 00:53:30,800
+But React is really heavyweight, especially when you bring in these component libraries, and it may not be the best choice for everything. So that's what led to the rest of this episode. But yeah, I definitely I'm curious if anyone has tried out zagjs, just let me know what your experiences with it or anything like it or if you think is a great idea, I'd love to hear from you. But it also got me thinking to sort of wrap up my overall thoughts on component libraries in this whole scenario ahead at the beginning, trying to find better layouts and layout components.
+
+89
+00:53:32,480 --> 00:53:51,950
+It got me thinking that maybe component libraries should not be react specific. So the more I'm thinking about this, the more I think HTML five web components are where component libraries should be.
+
+90
+00:53:52,220 --> 00:54:26,750
+So if you're not familiar with it, HTML five web components is actually an HTML standard, that allows you to create something that's kind of like a React component. And using various library, in fact, you could use react within an html5 web component. But basically, the way it works is you register your component, essentially, with the browser, you say, Hey, I have a component, this is its name. And you can kind of write components like you do in React. And like I said, you could even use React to create HTML five components.
+
+91
+00:54:27,110 --> 00:55:05,450
+But then in your markup, whether it's JSX or HTML, you can just reference that component, the name of the component. So I could create a calendar html5 web component called my dash calendar, and then include that on my page. And then anywhere I want to use that calendar, I just use the my dash calendar tag HTML tag in my JSX, or even plain HTML. And so this got me really thinking like, why aren't we building component libraries this way? We can still use react if it's Really the best choice for a specific component or most of the components.
+
+92
+00:55:06,500 --> 00:55:52,160
+But if we built it using if if the component libraries were built using web components, then you could use them in React and Vue and Angular and, you know, basically anything, even just a plane, it really got me back to full circle, because I'm like, Oh, if our component libraries were written, using web components, I could just make a traditional website with HTML and CSS and regular navigation. That's not a single page app. And then when I needed some complicated calendar component, I can just grab the web component, and I don't have to care if it's written in React, I don't, I could use it in my react single page application, or I could use it in my non react application. 
+
+93
+00:55:52,580 --> 00:56:40,220
+And it wouldn't matter, it just be the self contained component that I can pop in here. And I got to think, more and more about this. And I'm becoming more and more convinced that this is really the way that we should be doing things. So I don't know how much time I have to do this. But I am planning to investigate this further. I looked into existing html5 web component libraries. And there are some, I would say they're definitely not as mature or as developed as, say, material UI. But I am really, really curious about looking into using zagjs or something like it to power html5 web components that we can use in React or non react projects.
+
+94
+00:56:40,610 --> 00:57:17,300
+And I think this could be a much better way forward for the future, instead of locking ourselves into react in the React ecosystem. We use React where it makes sense to use React, but the actual encapsulation of our components is handled by ratified html5 standards, HTML standards that are handled by browsers. So it's going to continue being supported. And you can use it in things that aren't react, you can essentially it allows us to use the best solution for the problem.
+
+95
+00:57:17,630 --> 00:58:11,330
+You know, if you listen to this podcast, I care a lot about using the right design making the right design choices, and that includes using the right technologies. And being forced into using React because react comes with the most developed component library is not what we want. That's not going to lead to a better world, I think it would make way more sense if we invested our component library resources into developing component components and component libraries that work for everything and work into the future and are based on standards and we pool our resources to make them accessible and really robust. That's the future that I I'm sort of thinking we should lean towards and work towards. So I'm intending to investigate this further.
+
+96
+00:58:11,330 --> 00:59:49,340
+But if anyone else has already done this, or researched it, or has opinions, I would love to hear from you. I'd love to hear what you think, should we use web components, html5 web components directly, instead of just doing everything purely as react single page applications. I'd love to hear your thoughts, your experiences. It's still something I want to explore. And I'm intending to we'll see, hopefully, we can have some more episodes on this. If it's actually interesting. We'll find out maybe I'll start doing it. And it's like, oh, no, that's completely wrong. In that case, I'll definitely let you know, too.
+
+97
+00:58:46,920 --> 00:59:12,720
+But yeah, I'm really curious if you have experienced those kinds of thing, what you think and what your experience has been. Once again, thank you so much for joining us. I hope this has been useful to you and learning when you should use React today and 2023. And also, you know, a bit interesting when it comes to sort of exercising how component libraries should be.
+
+98
+00:59:12,720 --> 00:59:22,470
+And, you know, maybe you're not a component library author, all you want to do is write your applications, and which case, hopefully, it was just entertaining.
+
+99
+00:59:22,470 --> 00:59:42,840
+But I just want to thank you once again, for joining us and for all the support that you've shown. I love hearing from everyone that writes in. So definitely if you want to send me anything, just let me know. Just go to the React's show.com. There's the contact forum. You can send me a message love hearing from you.
+
+100
+00:59:42,840 --> 00:59:49,320
+So thank you once again for joining us and I hope you have a great rest of your day. Bye
+

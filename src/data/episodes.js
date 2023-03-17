@@ -8,7 +8,9 @@ export const PAGE_SIZE = 15;
 
 const episodeExtra = {
   'Buzzsprout-12458395': {
-    slug: 'when-should-you-use-react-in-2023'
+    slug: 'when-should-you-use-react-in-2023',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '085-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/TvCnpy-Qq_8'
   },
   'Buzzsprout-12413556': {
     slug: 'i-broke-the-rules-of-react-the-results-surprised-me',
