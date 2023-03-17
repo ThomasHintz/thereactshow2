@@ -49,7 +49,7 @@ async function syncEpisodes() {
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    await syncEpisodes();
+    // await syncEpisodes();
     const feed = new Podcast({
       title: 'The React Show (Reactors)',
       description: "Premium subscription to The React Show. Discussions about React, JavaScript, and web development by React experts with a focus on diving deep into learning React and discussing what it's like to work within the React industry.",
