@@ -1,0 +1,612 @@
+1
+00:00:01,890 --> 00:00:05,400
+Thomas Hintz: Welcome to the React show!
+
+2
+00:00:06,050 --> 00:00:15,590
+Brought to you from occupied Pericu territory by me, your host, Thomas, and sustainability, Episode 86.
+
+3
+00:00:17,780 --> 00:00:54,680
+How do you create and grow an open source project into something that is both physically, monetarily, and environmentally sustainable? In this episode, we learn from creator of react-admin, how they have built a popular and sustainable open source project. And now marmelab CEO, author, founder of greenframe.io, and creator of the popular open source project react-admin: Welcome to the React show, François Zaninotto!
+
+4
+00:00:55,970 --> 00:00:57,170
+François Zaninotto: Good morning, Thomas.
+
+5
+00:00:58,040 --> 00:01:08,150
+Thomas Hintz: It's great to have you on the show. Good morning. So briefly, for those who don't know, what is react-admin, and why should someone use it?
+
+6
+00:01:09,140 --> 00:02:06,530
+François Zaninotto: So in a few words, react-admin is a single page application framework for React, designed for b2b apps. And it packages many of the repetitive stuff that you have to do in b2b apps, like how you present a list of content, or you edit content, how you do crud, basically, plus, or you do authentication, how you save your changes, etc, etc. The idea is that you shouldn't have to redevelop all these repetitive stuff yourself to focus on business logic, and react administers that. And it's not a general purpose framework, because it won't work properly with server side rendering, or it won't work properly for business to customer apps. It's not designed for that. It's redesigned for b2b apps, and single page.
+
+7
+00:02:08,430 --> 00:03:00,750
+Thomas Hintz: So I have to say, I actually spent a good part of the last three years working on an admin interface for an internal operations team, I was, by the end leading that team and the people that started the project did not use react-admin or anything like that. And we spent a ton of time implementing many of the things that a synchronous, like React Add button provides out of the box, I would have much rather spent our time actually implementing features for the, you know, the business needed, instead of trying to fix obscure infinite scroll bugs that only the CEO ran into. So in the end, I felt like, like looking through react-admin, I was like, Wow, I feel like we kind of built our own bad version of react-admin internally, is this a story you've heard before?
+
+8
+00:03:00,750 --> 00:03:03,180
+François Zaninotto: We've all done that several times, I believe.
+
+9
+00:03:04,020 --> 00:03:33,720
+For myself, it's the third time I'm developing an admin framework, or the fourth time. And and the idea is, it's always the same stuff, always the same, you know, data grid forms, always routing, you have to do validation, you have to manage several types of inputs, preference, internationalization, security, theming, real time, always the same stuff. And, and my company's web agency.
+
+10
+00:03:33,720 --> 00:04:12,330
+So we have many, many customers, Project customer projects, and all these customers, they need an admin. And at the beginning, we will rebuilding all these things each time and then we, as every web agency, I'd say, we started to have our own library for our news. And then we went faster when we had to build these admins. But then we realized that we were not the only ones to have this this problem, and we might share that solution with other people. And that's how ng admin was born.
+
+11
+00:04:12,750 --> 00:04:34,950
+Because before Yeah, before, right, I mean, back in 2013, we published a version in AngularJS. With a slightly different approach. But as AngularJS was popular at the time, when we published it in open source, react—I'm sorry—ng admin, as well.
+
+12
+00:04:36,600 --> 00:05:10,410
+Thomas Hintz: Okay, so you've built a number of these admin sites and, and way back, you said 2013, about you worked on a version for Angular. Yes. So So I was just curious is this like, it sounds like this is just something we've done many times and so it was like, Okay. It'd be nice to share it but that That's a pretty big jump going from, we built this thing or we view built it internally or whatever to open sourcing it and sharing it.
+
+13
+00:05:10,590 --> 00:05:30,510
+So specifically with react-admin, so I guess jumping forward a little bit, how was that process, that decision? Did you go into it being like, I want react-admin to be open source from the beginning? Or did you just build it internally? And then you're like, hey, let's, let's open this up. How did that story go?
+
+14
+00:05:31,650 --> 00:05:39,150
+François Zaninotto: So we open sourced right from the first line of code, I'd say. But there's, there's a reason for that there, there are many reasons for that.
+
+15
+00:05:39,270 --> 00:06:20,280
+The first one is that ng admin, its predecessor was also open source. The second is that it was it wasn't the first open source library that we built. And so we already saw the benefits of open source meaning, having people hyping helping you locate bugs sometimes fix them, having people test your app in in different situations, and having also some popularity that that can that can, I'd say, reach, the author's the companies that contribute to it. That's, that's, there's a return on this investment investment.
+
+16
+00:06:20,790 --> 00:07:27,000
+And as and I'd say it's not the first time I work with open source, as a matter of fact, that started building open source project back in 2006, when open sourcing stuff was just completely crazy. It was basically giving you work for free, and nobody would do that. Why would they? It's completely stupid. At least, that's how most of the people thought at that time. But then, I just, it was a discovery for me, because not only would could you get feedback from your peers, which is very valuable when you do open source, you could also build a community that that would reward you with lots of ideas, lots of help. And and that that is truly a miracle, I'd say, when you do open source, right, and it works. It's just there's nothing like it.
+
+17
+00:07:28,320 --> 00:07:47,190
+Thomas Hintz: Yeah, absolutely. It's a, it's almost like a more collaborative effort, right? You're no longer just sort of shouting into the void. Here's what I created. And it's more like getting community feedback, and maybe even having some other people contribute their ideas. Is that right?
+
+18
+00:07:47,640 --> 00:08:33,510
+François Zaninotto: Yeah. So this is, this is the ultimate step having other people contribute. And it's quite hard to reach honestly, you need to be quite popular to have people repeatedly contribute. But and that requires a huge investment. Before that, when you reach that point and record, it has reached that point, it's yeah, it's great to be part of something that's bigger than you, it's great, that part of something that will go beyond your ideas, and, and you will get input from people smarter than you and it's really, you have the whole the entire internet the entire world.
+
+19
+00:08:33,000 --> 00:09:23,760
+How can you? So yeah, it's it's fantastic. I, I have worked as an editor on closed source projects, as well. And, of course, you have some feedback from users, of course, you have some product managers with ideas, but you'd never have anything close to the feedback that you have with open source projects. And and of course, the quality is not is not the same at the end of the day, because we so much feedback, you you, you converge much faster to something that's usable, secure, fast, maintainable. Whereas with with the closed projects, well, it just depends on the investment you are.
+
+20
+00:09:25,950 --> 00:10:11,250
+Thomas Hintz: Yeah, that's a great point. I wanted to dig into that a little bit more though, because I have created, you know, open source projects. And it's, it's one thing to put your your code on the internet and be like, Hey, this is open source, I have it under the GPL license or the MIT license or whatever. And it's another thing entirely to actually get people to use it and a whole nother level to actually get people to contribute in a meaningful way. Right? So how, like with react-admin or even in general, how did did you? Or do you go from that sort of, hey, here's some code on the internet to actually creating a live vibrant, open source project?
+
+21
+00:10:12,630 --> 00:10:21,900
+François Zaninotto: So what's the secret sauce? I wish I knew. Because we, we've built some open source projects that are successful, and some others that are less successful. 
+
+22
+00:10:22,320 --> 00:11:17,400
+But if I have to look at react-admin, I'd say that what what makes it easier to to use what makes it easier to start with and continue is first, the documentation. This is super important, important, having good up to date documentation with tons of examples, and not just the API documentation, you know, with the names of the methods to components that you can use? And okay, you will, you will figure out no usage examples, how to use it, why and in which case, and with real data, not just, oh, look, I'm doing a counter or I'm doing a Hello World? No. How do you do a real, real world app. So the documentation would be the number one factor to help bootstrap a popular open source project.
+
+23
+00:11:17,430 --> 00:11:43,170
+Second one would be usage examples. So react-admin has demos which are full, real life, web apps, with the authentication with a complex complex screen, etc. So you can you can, you can go beyond the simple example. And you can see how you build something real, you probably know this, this funny drawing, it's how to draw an owl, I don't know if you know it.
+
+24
+00:11:43,470 --> 00:12:12,180
+So the idea is that you draw an oval, you start by drawing two circles, okay. And then you draw the owl, because you have to figure out how to do that. How to do the, the path in between for yourself and most of the documentation, on on anything is like that, here is how you can do something simple. And for something complicated, we'll figure that out yourself.
+
+25
+00:12:12,570 --> 00:12:23,520
+And with react-admin, when we tried very hard to show how to do things hard, the simple way as well, with examples. So the second one would be examples.
+
+26
+00:12:23,960 --> 00:13:10,700
+The third one would be reactivity issue issue, you have an issue an issue with an open source project, and you open an issue, and it takes a month for the author to answer while you have already forgotten about it. So maintainers need to go there, maintain their projects and look at issues quite often. And with React, we do that every day. And most of the issues are closed within a few hours. So that's something mostly companies look at, because they will only use an open source project, if they know they can fix they can have bug fix, quite quite literally, quickly.
+
+27
+00:13:11,180 --> 00:13:44,240
+And, and I think the real, most important factor would be that it must be something useful. You can you can do anything super documented, you know, it's great marketing and stuff, and we're very limited marketing. And you have but you can, you can you can do everything. If if it's not useful, if people don't have the same itch as you do, then it will never get very popular, or it may be popular, but people won't use it.
+
+28
+00:13:44,390 --> 00:14:39,170
+Just for instance, we launched an open source library to to do monkey testing on the browser. The idea is to try and break a single page up by clicking everywhere and scrolling and typing on the keyboard as much until the app breaks. And we've called it Gremlins.js. And it was super popular because people's thoughts are that stride. You're you're throwing Gremlins at your webpage. So we have tons of stars on GitHub. And nobody uses it because it's just funny, right? But it's it's not something people do very. They don't do that every day. They don't try the single page app. They don't try and break the single page app every day. So in the end, that's not really a popular project.
+
+29
+00:14:40,860 --> 00:15:34,440
+Thomas Hintz: Yeah, that makes sense. I it is making me think I recently watched the React js documentary and the React team details how when they first tried to they first open source react and tried to get people to use it. They really struggled and so it seems like to me they focused a lot on marketing initially, basically, people seem to think it was a joke. It wasn't very good. And, you know, they in the documentary were like, Yeah, we had to, like take a step back and be like, are we not communicating this effectively? Like, what's the what's the deal here? And they came back and tried to communicate it in a different way. I'm curious, is this something you've experienced as well, where maybe it is something useful, and you've done these other steps, but you're not effectively communicating how it's useful?
+
+30
+00:15:35,860 --> 00:16:20,950
+François Zaninotto: Well, sure. And again, we're very bad at communicating and marketing what we do. We're mostly an engineer company. So Software Engineer Company. So this is this is not my skill. I see many companies who do excellent job at communicating what they do. And just on the top of my head, NextJS, supabase. Again, companies like that are very good at marketing, what they do. And it's, it's fascinating to, to see how just a simple feature can be made into something you want to have. And I would love to have that talent. I don't, unfortunately.
+
+31
+00:16:21,640 --> 00:17:22,450
+So we do our best just to talk the same language as our users. Who are developers like us. And I'd say the package is not super beautiful. The, the the updates are not properly worded as as marketing stuff. But we think that if we can already reach people with that level of communication, it means better communication. And better marketing can only get us further, but we have the fundamentals right. I think on the contrary, if you have great marketing, great communication, but you don't have a product that is good enough for that doesn't differentiate you from the competition, then, while you'll get users, because they'll see the bells and whistles and whistles, and they want to try your product, but they won't stay. And that's my experience as well.
+
+32
+00:17:22,450 --> 00:17:40,870
+I've tried a number of appealing products that had great packaging, but in the end, if you don't have good documentation, if you don't have good support, if you don't have a large feature set, and if it doesn't match your own need, well, it doesn't matter, you won't you won't come back to it.
+
+33
+00:17:42,360 --> 00:18:03,210
+Thomas Hintz: Yeah, makes sense. Speaking of matching needs, you'd mentioned earlier, that you sort of wrote a an earlier version of react-admin in Angular. So I think this begs the question, why did you write a newer version based on React and not Angular?
+
+34
+00:18:05,460 --> 00:18:15,390
+François Zaninotto: Just to rewind a little bit before writing an Angular JS version, I even wrote a PHP version and then mentioned, I wondered,
+
+35
+00:18:17,490 --> 00:18:21,720
+Thomas Hintz: I suspected, yeah, what's what's the reason why, how did we end up at react-admin?
+
+36
+00:18:22,200 --> 00:18:54,900
+François Zaninotto: So there's no particular reason. I mean, we use languages and frameworks to build the websites that our customers want. Because a they are trendy, meaning it helps us motivate our developers to to use them be they allow the user experiences that our customers want, and see they're productive. And this makes is different.
+
+37
+00:18:55,350 --> 00:19:43,470
+One, whether you're on 2008, or whether you're on 2013, or whether you're now. So in 2008, the good mix for that was PHP and symphony, and it was the best tool to be productive and to build moderately interactive interfaces. In 2012, an Angular JS got it. They got their moments, right. They, they were some of the most popular full stack framework on on JavaScript after backbone and, and, and jQuery, of course, but there was the best tool to use and to motivate people at the time.
+
+38
+00:19:43,990 --> 00:20:21,580
+And then the Angular team said, we have had a great idea. We're going to rewrite it from scratch. We'll call it Angular, not Angular, JS, Angular and Angular two. And then we looked at our code base and we thought we'll have to rewrite everything. So let's look at the competition first, and see if there's nothing better. And at the time, there was this new kid on the ground, the React framework, which was way less than react JS, than the Angular JS, because it was only a view framework and not a full stack framework.
+
+39
+00:20:22,450 --> 00:21:08,020
+But the one way, data binding was so refreshing, when you had struggled for month with how-do-you-call-it "watch". And, and I don't know if it's refreshed with AngularJS. Anyway, with ng admin, we had, we had reached the limits of Angular, and it really became a pain. So we thought if we need to either rewrite it with Angular two, or with React, we'll go with the one that scales the most. And that doesn't have a data model that is that is broken from starts. Broken is maybe too big a word.
+
+40
+00:21:08,000 --> 00:22:09,380
+But so yeah, we started with React. And initially, it was just a proof of concept with we thought, okay, can we rebuild something similar to ng admin, with React, the click moment when we understood how we could compose components, and use that as the as a domain language. Like, if you look at web applications built with React, use basically what you see is XML. I mean, JSX with JSX is XML. And you say that, okay, I want a list page containing a data grid that has a title field, and that as a, I don't know, a name, shield. And you describe what you want. And that's working code. And that's the miracle, the miracle of declarative programming and of React js, you just design what you want. And it works.
+
+41
+00:22:09,770 --> 00:23:08,480
+And ng admin had a different approach, you had to write a configuration file, which was a JSON file at the time. And then the framework would would eat that configuration file and generate the admin. But when you have, you had to reuse parts of or create new components, so you had to inject them into the framework using dependency injection, and it was less and less readable. With react, you don't need dependency injection, jet direct, doesn't need that. And when you need to compose one component with another, you pass it as child or as prop, and it's super natural and super readable. So the difference, the striking difference was with between the configuration file in JSON, and JSX, and this JSX was so expressive, that it became obvious that it was the right pass, and we went forward with it.
+
+42
+00:23:09,710 --> 00:23:51,620
+Thomas Hintz: Yeah, that makes sense. It's something I have said a lot to actually like regarding JSX. And it's one of the main reasons why I even did react at all. Like I remember, for a lot of years, it seemed like Front End Web Development was all about these sort of restricted templates and templating languages. And I really didn't like those. It was like, great at first you for a little bit. And then it just got really unwieldy whenever you try to, like make anything real, you know, it's a saint JSX. I was like, yes. Finally, you're not forcing me to do stuff that just doesn't make any sense.
+
+43
+00:23:51,000 --> 00:25:00,750
+I, I do want to talk a little bit more about this narrative, though, it seems like you you had this narrative or was like, okay, PHP was the best solution. And then Angular was the best solution. And now React is an improvement. And it's better. I know, I'm a sort of Lisp snob. And so I've, I've sort of lived in this world where I've like, oh, nothing's quite as good as that yet. But you know, we're getting closer. So I sort of, I've done PHP, but you know, I did Lisp, mostly, instead of PHP, and I skipped Angular, because I just looked at it. And I was like, I just it seems like so many bad design choices. So I'm curious, like, is it as much about what is popular at the time as much as what is actually better? So maybe the real question is, how much does something's popularity matter versus how good it is, from a technical standpoint, when you choose to use it for something like this, like making an admin interface?
+
+44
+00:25:01,860 --> 00:25:09,300
+François Zaninotto: Well, it looks like you're asking the same question you asked me about open source before. But from the other point of view, or
+
+45
+00:25:09,300 --> 00:25:10,500
+Thomas Hintz: Yeah, exactly. Yeah.
+
+46
+00:25:10,000 --> 00:25:51,010
+François Zaninotto: I think why would we choose something? Is it because it's popular? Yes, obviously, because if it's popular, then it's maintained. It has good documentation. There are other people that we that may use it. You, you probably live that period with the word when there was one new JavaScript framework every week. It was exhausting. We tested them, we tested a lot of them, we learned a lot of them. But in the end, we chose the ones that that, that stay longer that have better documentation that have BAM in the larger community. So yeah, that's an important decision.
+
+47
+00:25:51,010 --> 00:26:11,620
+When you're opting for an open source, library, open source framework, you need to be able to, to maintain your own application. So the bricks you're using to build these applications must be maintained as well, for the long run, and must be easy to learn. So yes, popularity is important.
+
+48
+00:26:11,770 --> 00:26:28,720
+I wouldn't say that some frameworks have bad decisions, bad design decisions, because they have decisions, they made decisions in relationship to the use case they're trying to implement.
+
+49
+00:26:28,990 --> 00:27:25,900
+For instance, you could say, react-admin has made the bad decision of being only for single page apps. While now less and less people build single page apps and they build server side rendered applications. Well, I'm not sure server side rendered rendered applications are the best architecture for admins. And I'm even sure the country because when you have a database, you can have a CRUD API on top of that database for free using tools like Postgres, and then you have an API. And then why would you bother, right, as a full stack web app, using this API and reinventing everything that's that rectum in has, while you can do that as a single page app and have, in addition, a better performance, etc. So architecture is really a mean that the choice that we make is to solve a particular problem.
+
+50
+00:27:26,110 --> 00:28:06,760
+So you may say, recommend is bad to build a front end ecommerce website. And that's right, because single page app is not a good accurate architecture for that it's bad for SEO, it's bad for the first load, etc. But for an admin for a b2b app for I don't know, a CRM, you don't need SEO, you don't need first, first load that is fast, you need that, because those are long lived apps. And it's not the first load that is important is, is the length that each task takes. And a task is a sum of many, many screens, and single page apps are really good for that.
+
+51
+00:28:07,060 --> 00:29:03,100
+So Angular JS, made some design decisions at the time to solve the problems they had. And it worked for the problems they had, it didn't work so well for the problems other people had. But you could say the same about React. There are so many people saying these days that React is slow, cumbersome, how to learn. It has many problems, and that they cannot build, I don't know, the new the new Facebook, was it. Not Facebook is a bad example, because because I'm sure they can build a new Facebook with React. It was designed for that. But they say that they cannot build the new, I don't know, medium clone or Hacker News clone with it. Which is wrong as well. But anyway. But my point is that there is no bad design decision is just a design decision that doesn't match your own problem.
+
+52
+00:29:04,960 --> 00:29:39,850
+And I'd say that the reason we changed the tools that we use at my company, is also because we are doing different things. Back in in 2008. We were building moderately interactive apps. And then we start bringing we started bringing reactivity with AngularJS. But the more and more feature we added, it became really hard. So that's when react became as a breath of fresh air. And now the only limits is our imagination.
+
+53
+00:29:39,000 --> 00:30:22,020
+Thomas Hintz: I do I am curious, because I might have a bit of a different take on you know, there's no bad design decision. I think the key is designing the right solution for the problem you have at hand but also So I think good design is flexible in the sense that it doesn't necessarily force you to write bad code when you're trying to solve an ancillary problem, or it doesn't let you integrate with another tool that would let you solve it in a better way.
+
+54
+00:30:22,020 --> 00:31:12,120
+And I think that's where when I look at something like Angular, to me, it seemed like more of solving a problem that a company like Google might have, with layers of management and sort of more like, I would say, Java two, it's a different, you're not going to be solving a technical problem in the best way. But you might be solving other problems. And so I look at that, and I say, Yeah, you're solving a problem. But are you really is it a good design? From a purely technical standpoint so that I can build the best application with the least amount of code? Or am I maybe solving some other human problem that maybe you've also fabricated that doesn't need to exist? I don't know. I'm maybe sort of rambling. But does that any of that makes sense?
+
+55
+00:31:12,870 --> 00:32:16,140
+François Zaninotto: Yeah, I'm not sure I agree with you on this one, because having built a large number of tools. And having seen people use that tools for them, so things they were not designed for? I I don't think it's there is a one size fits all design. And and I don't think especially with web frameworks and the realm of possible usage, I don't think you can find us a single solution that matches everyone's needs. I would agree that Google solutions are more enterprise focused, and they're good for very large companies. But not for all the needs anyway. So they are not sure I agree with you, I would love to be able to find a design that works for everyone. I would love to invent it. But this won't happen, I guess.
+
+56
+00:32:17,010 --> 00:32:38,610
+Thomas Hintz: Yeah, I think another way of looking at this, for me is what I characterize as the difference between a library and a framework. To me, a library is more like I would call react more of a library approach and Angular, more of a framework approach.
+
+57
+00:32:39,630 --> 00:33:14,910
+React is basically saying, I'm not gonna make a lot of decisions for you. And you can bring in other libraries and other systems to do that for you. Whereas something like Angular was more like, I'm going to make a lot of these decisions for you. And I think this ties directly into react-admin, because react-admin, I would characterize as being more of a framework approach where it's like, yeah, we've made a lot of these decisions up front. And this, I presume, will allow you to build applications much quicker, because you no longer have to glue everything together yourself, right.
+
+58
+00:33:16,320 --> 00:33:58,110
+So my experience, like going back to what I mentioned earlier, in the episode, I was working on this admin project, and the business team came to us and they said, Hey, so I know you guys built this great admin interface. And all of us admins here, love it, right? But yeah, we actually have customers, and we want to give them access to part of this admin interface. And this is where using something like react-admin, I would have been like, oh, okay, this is sort of a different problem I'm trying to solve like, is react, can I even do this? You know?
+
+59
+00:33:58,800 --> 00:34:28,110
+And so the question for you here is, when you're designing react-admin, is that something that you consider, you know, the potential that somebody might be using it for? Not what you intended to use it for? And is that does that enter into your design decisions? Or are you just approaching it as we are laser focused on this is what it's for and people can figure it out if they want anything else?
+
+60
+00:34:28,510 --> 00:35:17,740
+François Zaninotto: Yeah, I think that's a big trap. It's a trap. If you generalize too much, you will over engineer a lot. And I've done that. I'm guilty of having done that numerous times. When you're laser focused, you do something that works on one use case, and then people might say, Okay, can I use it for that? Can I use it for that? And you what we do is we look at the way we design it. If it doesn't bend it to me If it's not too hard, we accept it. If it goes, if it doesn't work with our design, we say no. And we say no a lot with React and men, it's hard to, because people have genuine needs and, and in many apps have the same needs.
+
+61
+00:35:17,740 --> 00:35:48,790
+But if it doesn't work with the design with we've had, then we prefer to build another feature. For it, we prefer to or to postpone that. Because when you generalize too much, you you have many, many new costs. The first one is that it's harder to learn, it's harder to learn an abstract framework, when you have to do the mental path between this abstraction and your own need.
+
+62
+00:35:49,480 --> 00:36:30,670
+For instance, if you have, let's say, in an admin, you have an abstract form stuff, where you don't know you would inject everything that's possible. whereas indirect, I mean, we have a form where you, you have already layout of inputs, we already have a basic validation, you have a submit button, etc. So with this pre built approach, then we can address needs faster. So yeah, if you if you're very abstract, then you need you have a steeper learning curve. 
+
+63
+00:36:32,700 --> 00:37:28,740
+But then, what one thing we we were confronted with with React admin is that the more and more feature we added, the more and more we had to reuse logic between each of these features. So eventually, we had to build this abstract library. But we don't really expose it in rectum. It's called Eric core. So it's, it's one of the packages used by react-admin, it's also open source, but it's mostly internal hooks and components that are reusable logic for the components that we expose. And we don't document them because they're too abstract. And because that would be I mean, people don't need to look under the hood, how it's built to actually use it, you don't need to, to know how a car engine works to drive a car, right.
+
+64
+00:37:28,770 --> 00:37:53,970
+And that's the same approach we have with React admin, you have a car, you can just learn how to drive it. And you can also have access to the engine if you want, but okay, you need different skills. So to summarize, I'd say we try to focus on on very, on use case that we know, the best would be problems that we have, we are on with our own customers.
+
+65
+00:37:54,030 --> 00:38:25,560
+So we know perfectly well the problem, and we can quite well evaluate whether a solution is good or not. And when we have people that come with other problems, well, we start by trying to understand the problem very much. And if it works with what with what we have we accept it. If it doesn't, we say okay, maybe you should start your own framework, you know, maybe, or maybe you can publish it as a third party, third party package for recommend, that would be a great idea.
+
+66
+00:38:25,800 --> 00:39:08,040
+But the other trap is that people come and say, Okay, I have I have done this compliment directadmin. Here is the code, can you add it to to your library? And if you say yes, then you've become the maintainer of someone else's code. And you have to write the documentation, you have to fix the bugs and etc, etc. And if you don't have that use case, well, it's a solution that you may never experience. So it's, I think, I'm not sure it's a good idea. So, yeah, directadmin will never be what other people think it will be. Because we try to, to, to keep it to a problem that we know.
+
+67
+00:39:09,630 --> 00:39:45,870
+Thomas Hintz: I completely agree with you on all of that. It's, I think, especially when you talk about over engineering, it's sort of the classic sort of, you know, introductory junior level programmer, take where it's like, just you just keep it abstracting and keep adding things and, you know, it's like, I'd be in code reviews, and it's like, do we really, like, Is this really necessary this, like, You created all of this just for this one use case? I mean, like, can we, you know, say no, sometimes. So I completely agree.
+
+68
+00:39:45,870 --> 00:39:56,580
+And I think when it comes to the health, the long term health and sustainability of a project that's critical, otherwise, you're gonna grow into something unmaintainable would you agree?
+
+69
+00:39:56,940 --> 00:40:11,340
+François Zaninotto: Yeah. And, you know, I'm thinking about the way We currently add new functionality to recommend. We start by adding functionality to a real app or a storybook an app and a storybook.
+
+70
+00:40:11,550 --> 00:40:58,680
+So we write down in pure react, and it works. But it's, you know, it's a lot of code. And we have to integrate with many third party libraries, with routing with the timing and with the forms, etc, etc. So all that code is not easy to write. And we think, what would be easier to work to write what would be a better API for that, particularly, that particular feature. And so we tried to extract what we did, and add an API for that. And we test this API in different use cases. And usually, the first try is not the right one. So we have to have to repeat that quite a few times. But then we end up with something that we're satisfied. And that can be used in various use cases, but not to various.
+
+71
+00:40:59,100 --> 00:41:43,590
+So we start by something very concrete, something that is real app, and then we extract. And the hard part is designing the glue between what the code we've extracted, and the application code, how to make that declarative, how to make it easy to be configured. Easy to learn. And that's, I'd say that that's the hardest part, sorry, because it's like doing UX for developers. So you have to know how they think you have to know how they look for documentation. I mean, they never look for documentation, they just expect VS code to do to complete for them, or the error message, tell them what the problem is, et cetera, et cetera.
+
+72
+00:41:43,890 --> 00:42:10,080
+So yeah, this this, this is the hard part. And and if you do it, otherwise, you said, Okay, I want to, I want to build something very abstract to solve that problem, then you will probably hit a wall regarding this developer API, you will build something that is super configurable. It's probably beautiful code. But it will be very hard to make it usable.
+
+73
+00:42:11,430 --> 00:42:49,830
+Thomas Hintz: Absolutely. I have so many times. Yeah. It's, it's, I think, it's an advantage to having other people on your team too, because I think it's easy as an individual person to just be like, Wow, I created this thing. And it's so beautiful, like, everyone's gonna want it. This is perfect. I solved all the world's problems, you know? And then, you know, three years later, you're like, okay, that may have been a massive mistake. But if you have other people, at least hopefully they're like, Yeah, I don't know about this, right. Yeah. So I think that's fascinating.
+
+74
+00:42:49,830 --> 00:43:22,530
+I'd love to talk a little bit more about some of the in depth technical details in a little bit. But I also wanted to give the listeners a little bit break of a break here from some of the design and such questions and talk about how react admin and react in general relates to another project that you're involved in. So you, I believe you you also started the green frame project. Is that correct? What what is that?
+
+75
+00:43:22,000 --> 00:43:53,320
+François Zaninotto: Yeah, that's correct. So green frame started with the question that we had regarding the sustainability of the applications we built for our own customers. Are these applications emitting a lot of carbon? Are we going in the right direction? Because you know, everyone is supposed to reduce their carbon emissions by 5% per year, for the next 20 years? So are we doing that? How good are we riding on that level?
+
+76
+00:43:53,320 --> 00:44:46,810
+So we started looking for tools that would allow us to assess the carbon emissions of our web apps. And the only ones we found were not based on scientific studies were not based on on, on on all what they did to have a scientific background, but with a too simplistic approach. And most of the tools that we found, just assume that the carbon emissions of a website are proportional to the number of megabytes that the page downloads, which is super simplistic, and it abstracted, it doesn't take into account like the complexity of the JavaScript, the server side rendering or the network or the type of animations that you have the time you spent on the page, etc, etc. 
+
+77
+00:44:48,370 --> 00:45:00,520
+And so we're a software engineer company, and we thought, well, that shouldn't be so hard to build, right? That's our job. Classical engineer mistake. It was very hard.
+
+78
+00:45:02,380 --> 00:45:03,460
+Thomas Hintz: That sounds really hard!
+
+79
+00:45:04,780 --> 00:45:36,580
+François Zaninotto: It was really hard. And but we had to build it to, to realize how hard it was. So we, we partnered with a computer science researcher here in France, who built this model based on many scientific papers around the world. And then we had to build the engineering to collect a signal and feed it to the model. And then we had to make it into a cloud based solution, so that people could use it. And we could use it as well.
+
+80
+00:45:36,610 --> 00:46:15,730
+And there came green frame, a green frame also has a an open source core. So this model that we built, and the collector that grabs the data and runs, user scenarios, all that is open source, and everyone can can try them. The idea is that we want to change our practices for a greener web. And we'd like everyone to do that as well. Because, you know, if we are the only ones to, to build greener websites, total carbon emissions won't change. So yeah, we're showing this tool as well.
+
+81
+00:46:15,940 --> 00:46:38,440
+There is a commercial service, that is called Green frame.io. It's a SaaS based service using this open source solution, but hosted. And we hope that it will, one day help us cover the expense that we put into developing this project. But we will need a lot of users for that.
+
+82
+00:46:40,110 --> 00:47:46,620
+Thomas Hintz: Yeah, I I'm really curious. So I, I've tried to go down this path a bit myself. And like even just trying to look at sort of the energy usage, or the carbon emissions from running just the front end of a React application. I found it kind of overwhelming, because I'm like, Okay, first, you'd have to figure out the actually how much energy are we using by this approach versus this approach? Or whatever, right? But then, where's that energy coming from? How can you know, like somebody, you know, viewing your webpage on a mobile phone is going to have a total totally different amount of carbon emissions than somebody doing on a desktop computer in a different location? You know, so how do you actually gather that data? Or is it more that sort of a problem where you're like, we can't effectively do that. So we sort of take an average, or I'm just curious, like from a, I've tried to do this, and I was just like, I don't really even know where to begin. Like, this just seems like so many variables.
+
+83
+00:47:47,320 --> 00:48:13,720
+François Zaninotto: It is a complex problem. It is a complex problem, because there are many variables. But it's even harder because computer scientists don't agree, there is no consensus on model of the carbon emissions of a web application. Or rather that too many. And whenever you pick one, you will always find a paper that contradicts the model that you've chosen. So that's really hard. 
+
+84
+00:48:13,900 --> 00:48:56,020
+And whenever you use a tool that tells you, okay, this page emits, I don't know, one gram of co2 equivalent per visit, you can find another one that says it's four gram and other another one that says it's 0.2 grams, and you know, the amplitude is quite large. Yeah, the solution we found is, is that we don't care about how many grams it actually emits. Because what we want to do is to reduce the actual emissions. And you don't need to know the Absolute. You don't need to know the absolute score, you just need to have a score that is proportional to the actual score.
+
+85
+00:48:56,200 --> 00:49:34,660
+So if we say that we measured one gram, but in fact, it's 10 grams, but then after, after a change, we see that it's two gram, while in reality, it would be 20 grams. Well, we have the right information, we've doubled the emissions. And that's the signal that developers need when they instrument their code to make it greener. The idea is to make green frame, a tool that you put in CI workflow. And that will tell you on each pull request, you have added, I don't know 10%, or you have removed 5% of the carbon emissions of your of your web app.
+
+86
+00:49:35,230 --> 00:49:54,430
+And, and then I as a manager, I don't give to my teams and objective in terms of carbon emission, I give them an objective in terms of carbon emission reduction, I say you have to to decrease carbon emissions by 10%. This month or this year.
+
+87
+00:49:55,080 --> 00:50:29,100
+And we did that with the the biggest French newspaper called Le Monde. The website will learn point out, they hired us to reduce the carbon emissions of the web the, or of their homepage, by an an after two months of work, we told them, okay, we've managed to reduce the carbon emissions of a visit of a visit to your homepage by 21%. And if you remove ads, it will be 70%. And they said, 21% is alright, we'll take 21.
+
+88
+00:50:29,000 --> 00:51:03,680
+Thomas Hintz: It's gonna ask about that. That was a big one of my conclusions when I was first investigating, this is like, so much of the code at the energy used is not really the code I wrote. But yeah, that's a whole nother thing. And I think we could talk about this a lot more, because I almost look at it where, you know, maybe, and I'm probably, at least in the US not going to have this isn't a very popular opinion.
+
+89
+00:51:03,680 --> 00:51:59,960
+But there might even need to be some sort of, you know, governmental or mandate to sort of say, hey, everyone needs to run the software and reduce their emissions this much, because I feel like that would create. You know, I don't know what how you would implement it, there's probably a lot of ways, right. But there kind of needs to be more than just a voluntary. Yeah, people should do this. Because, you know, in capitalism, that doesn't pay, at least for somebody short term, you know, gains, right. So I think, you know, I don't know if you want to say anything about that. But I look at tools like this. And I'm like, this is where we need something pushing people to actually use them, because it will make it so we can continue to write programs 100 years from now, right? I mean, this is very important. But there's not a lot pushing anyone to use it.
+
+90
+00:52:01,100 --> 00:52:39,710
+François Zaninotto: Yeah, I agree with you. If you look at the car, the automotive the automobile sector, I don't know how it is in the US. But in Europe, car manufacturers, they have to measure the emissions of their car. And in every advertisement, they have to write it down. Okay, so this beautiful SUV is absolutely awful. Or the I mean, it's not absolutely awful, it's D, sometime it's E or G, I don't know. And then consumers, they can make an informed decision when they have the information. But regulators force manufacturers to measure and communicate their emissions.
+
+91
+00:52:40,010 --> 00:54:05,240
+And I think it's, it's, it's necessary that the same regulations arrive to the digital sector, because we are the manufacturers of the web applications that people are using every day. And we are the ones that can give them enough information to make an informed decision. So it's, it's probably, I mean, at the European level, it will arrive within a few years, there are already discussions about that. The public sector in France has to has to put green it considerations into the choice of contractor that they that they make. And so it's it's good starting and I believe it's, it's inevitable, people we have to get used to it. And I can imagine a future when you go to the app store to download a new game and then you have okay, it's rated the 13 Plus and it's also rated for carbon emissions as I don't know the and then you will say okay, do I really need to add more carbon by playing that game? Or going to that website? It's right but that's more matter of politics then.
+
+92
+00:54:06,830 --> 00:54:51,620
+Thomas Hintz: Yeah, it's I will say yeah, hearing the European perspective is encouraging you know, in the US here we don't have such a system for our cars. In fact, if you if you can categorize your vehicle as a I don't know how this works but a light truck which apparently includes like all SUVs and everything else you don't really have to have much of any regulations on fuel consumption or so if you come to the US you'll notice many very large cars and a big part of the reason for that is you don't have to meet any or very little you know, regulations if you buy, make big cars.
+
+93
+00:54:52,970 --> 00:55:19,190
+So anyways, I'm very encouraged to hear at least at the EU you guys are looking in to this But without going to too much further into politics, I was curious. Do you actually apply this to the React admin project? Do you see if new feature is, you know, ---? Like, I guess, how do you do this? How do you apply it to the React admin project? Assuming you do.
+
+94
+00:55:19,300 --> 00:55:46,450
+François Zaninotto: So, yeah, the idea is that we want to see if what the new features we we add or the refactorings, we do have an impact on the carbon emissions of user scenario. That's where the difficulty lies. Because a program doesn't have a carbon footprint per se. Usage of a program has a carbon footprint, a user scenario has a carbon footprint, right?
+
+95
+00:55:47,710 --> 00:56:30,160
+So we have to design user scenarios that are constant when we change the code, right, and that's, that's quite hard to be honest, because we have built demos, like we have built an E commerce demo a CRM demo, help this demo. And when we what we can do is when we modify the demo without modifying, modifying the functionality, then we compare the footprint of the two applications with a green frame. And, and that happens very seldom, I'd say, because most of the time, the reason why we modify the director encouraged is because we add functionality, we add new functionality.
+
+96
+00:56:31,060 --> 00:57:08,620
+But we particularly use it when we do performance optimization, because when we do performance optimization, the features don't change. And we expect that the carpet footprint will not increase and ideally it will decrease. So that's when we use green frame the most in react-admin. And and that's also what allows us to determine which practices are good for the environment as well, because you have many web performance optimization practices.
+
+97
+00:57:08,800 --> 00:57:48,040
+Are they good or not regarding regarding carbon footprints? Well, it depends. It depends. For instance, having your images having smaller images, will have your page load faster. And that's good for the carbon footprint. But moving all your assets to a CDN, which is a common practice? Well, we don't know because we don't know how much carbon did the CDN servers emits. Right? So we cannot answer that question. So this helps us validate or invalidate good practices regarding to web sustainability.
+
+98
+00:57:49,150 --> 00:57:59,110
+Thomas Hintz: Do you publish any of this these learnings that you have in terms of like practices that you found, generally make things better or worse?
+
+99
+00:58:00,190 --> 00:58:36,490
+François Zaninotto: We're in the process of doing that where we regularly coach our customers about them, we have given a couple of conferences in French, regarding these these matters. And we're slowly integrating these proven good practices into green frame itself. The difficulty being that greenframe doesn't see the code doesn't see, I mean, green frame measures, metrics at the system level, like CPU cycles, or the memory or the network IO, or the disk IO. 
+
+100
+00:58:36,940 --> 00:59:18,460
+So we don't see the code. We don't see the code running, we know, when we see a spike in the carbon emissions, we know when in a user scenario, it happens. So you can relate that to a particular action. We know in which component of the N tier architecture it work, it happens. So it can be on the server, it can be on the reverse proxy can be on the client side, it can be on a network, etc. So you have clues about where where the carbon leaks, that's how we call them where the carbon leaks happen. But then it takes a bit of a habit and a bit of test and learn to determine the actual culprit, the actual piece of code.
+
+101
+00:59:18,490 --> 00:59:34,270
+And that's why it's also great to have green frame integrated in to the continuous integration. Because when you see a spike related to a PR, you know that it's decoding this PR that is responsible for the new emission, so it's easy to find.
+
+102
+00:59:35,670 --> 00:59:52,530
+Thomas Hintz: Yeah, that makes sense. It reminds me a lot of performance optimization. You're sort of like trying to trace down what where's the bottleneck? You're trying to trace down what you called the leak. Right? Is that does that sound right? Is it feel like the same thing?
+
+103
+00:59:52,530 --> 01:00:40,560
+François Zaninotto: Absolutely. It's it's the same discipline. And I'd say that's one more indicator that developers have to look at. They look at it Did I mean their unit tests to look at the security vulnerability vulnerabilities that they have they look at the performance. And soon they will have to look at carbon emissions. And and they will have the same process the same optimization process with these metrics as they have with performance. And yes, it's more or less the same process. Some of the practices or comments are more, some are not some practices of performance of story of with carbon optimization are totally counterintuitive. But, but yeah, it's it's, it's similar.
+
+104
+01:00:42,240 --> 01:01:45,270
+Thomas Hintz: It sounds fascinating, I'd love to have a much longer conversation about this. But I think this would be a good time to sort of segue into some more technical aspects of both react admin and maybe the future of React admin. So one thing that, you know, to make it concrete, I noticed in the documentation, you talk about using context, a lot react context, right. So in my experience, if you use a lot of React context, it can be very easy to have a lot of performance bottlenecks. And I might even imagine some some carbon leaks, as you call them. So I'm curious, you know, is this actually your experience that, you know, maybe by default, there are some performance bottlenecks, it doesn't perform as well? Is that something you've run into? Do you address that in some way?
+
+105
+01:01:46,110 --> 01:02:21,990
+François Zaninotto: Well, React is not a framework designed for performance. First. It's, it's, it's designed for user experience, developer experience first. So it's very easy to build something until you run into performance bottlenecks. But then, it's quite easy to address them, to profile them that are lots of great development tools, and to address them with the use memo, use callback or other optimization techniques, and routinely do it with React admin.
+
+106
+01:02:22,650 --> 01:03:06,750
+So yes, we start by adding the functionality and we use contacts, because contacts are super, super convenient. And when this leads to too many renderings, then we do a profiling session, and we fix that. But that works. That works really, really, really well. And I'd say, that's, that's the natural way of developing web apps start with the functionality. And when you have a performance problem, fix it, rather than, okay, you might have a performance problem once. So choose this framework, which is particularly performance oriented, but you might have problems building your app in the first place.
+
+107
+01:03:07,590 --> 01:03:45,150
+Thomas Hintz: I just laughing because I feel like I've met so many conversations, and so many code reviews were in React, for instance, somebody memoizes literally everything. And I'm like, Why did you do this? Like, did you profile it did? Was there an issue? You know, oh, no, you need to do that to have good performance. And so it's it just it I always love hearing when people are like, yeah, build the future, then figure out where the bottleneck is? I don't know. Have you? Have you seen that as well, where I think you did touch on it. You're like people choose languages you've been based on?
+
+108
+01:03:45,360 --> 01:04:17,160
+Yeah, this has slightly better performance. And I've always said on the show like, that's, you know, I think it comes to performance. You really can't predict where the actual bottleneck is. And memoizing everything might be the solution. But it might not be you might have a bottleneck somewhere else. Or you might be creating a new bottleneck, and you might be unnecessarily memoizing things is. Anyways, I think I'd probably just restating what you said, but do you have any other thoughts on that?
+
+109
+01:04:17,250 --> 01:05:04,920
+François Zaninotto: Yeah, no, I mean, I totally agree with you. It's usually too much of a concern too early for many developers, in my opinion. And React is really naturally pretty good at doing large applications without too many performance problems. And I'd say we experience a lot of, of large react applications with React-admin, because usually a large admin has many, many resources. Many relies on many API's, etc. And it runs remarkably fast most of the time. without any special optimization.
+
+110
+01:05:04,920 --> 01:06:03,870
+So yes, I think you should, you should not really, I mean, you should not many developers they love to optimize, you know, I've read countless times. For instance, in PHP, you should use a plus plus I instead of five plus plus. Right? So you might turn one cycle on your CPU, I think you will not because the compiler does the optimization Anyway, yes. But when you compare that to, I don't know, the time it takes for an AJAX call to go back and forth to the server waits, it's, it's really not significant. So we should really, just like you should not do it UX, without user should not do user experience with a user, you should not do performance optimization without a performance problem.
+
+111
+01:06:05,520 --> 01:06:37,050
+Thomas Hintz: I completely agree. So I do want to also talk about the future of React-admin, I assume this is something that you probably think about a lot. So do you is there anything you'd like to discuss specifically about what you have in mind for React-admin, if not, I also have some specific questions related to the future of react and how that ties into React-admin as well?
+
+112
+01:06:38,550 --> 01:07:22,680
+François Zaninotto: So about the future of React-admin, I may surprise you, but we have no plans. I mean, oh, at least we have plans. But it's not like the master plan. And this is where we're gonna go, we want to be the king of the world, etc, etc. We're not the growth mindset company, we just try to solve the problems that we have little by little, and we're already satisfied with what we have growing is not a target have adding more features is not a target, I would say adding more features is a risk. Because then you increase your maintenance costs, you increase the time it takes to learn the framework, you increase the chances that it will not work in particularly in particular use cases.
+
+113
+01:07:22,980 --> 01:08:20,250
+So our main goal is to keep it lean, and to keep it convenient for the use case that we've designed it for. And that's already hard. Because there's so many people asking for, oh, you should do that. And, oh, there's this new library, you should use it because it's better at solving their problem, but not ours. So that's, that's, I'd say, our first priority. And that may not vary. That may not be very, you know, sexy, saying I just want to continue doing what I am doing. But I love to have, you know, more libraries that have the same, the same view on things because so many libraries lose their directions, they try to do too many things. And eventually, you have to try something through something else, because you need something simple. So that's what yeah,
+
+114
+01:08:20,000 --> 01:08:59,540
+Thomas Hintz: it sorry to cut you off. But I want to say it's sort of like in my head, I think of it as almost becomes the natural progression of projects. Like, they start out, they're ramping up, and they're very focused. And maybe they don't have a large user base yet. And they build something. And it's really great. And it solves that problem really well. And then it gets more attracts more and more people and more and more features. And then it sort of starts deteriorating because it's hard to maintain. And people are like, and gets complicated doesn't really solve my problem that well anymore. And then they all abandon it. And then we all jump on, you know the next bandwagon. Exactly. Does that sound about right?
+
+115
+01:08:59,570 --> 01:09:06,440
+François Zaninotto: Yeah, exactly, exactly. But they're one of a few directions that we want to explore though.
+
+116
+01:09:07,100 --> 01:09:43,100
+The first one is no code. react-admin is a low code framework, meaning it helps developers build applications using using code, but not as much code as they would use by by doing that by hand. So it's a low code framework. But then there are many tools these days that are no code tools like retool, etc, where non developers can build applications, or I'd say, glorified Excel spreadsheets to to achieve repetitive tasks.
+
+117
+01:09:43,760 --> 01:10:37,280
+And what we've learned is that the initial steps of writing an no code app are hard. You need to know. SQL, you need to know what a what a request is, you know, you need to do some JavaScript, even in return when you want to do something a bit to sophisticated, you need to write code. So these are not really no code tools. And on. On the other side, when developers built a web app using code, there comes a time where where users asked for things they should be able to do themselves, oh, I want, I want to keep that in my preference, I want I want to change the order in which this list is sorted, etc, etc. So we need something in between, we need to give the users the way to customize the apps that was built.
+
+118
+01:10:37,880 --> 01:11:18,200
+But it doesn't make sense to tell them, Okay, build it yourself, because that's a really hard problem. And you need a developer for that. So one, one direction where we're exploring with React admin is no code on top of low code, meaning we, you develop an application with React admin, and then you give it to the end users, they have the basic functionality, and they can enrich it using a graphical user interface. And that's Configurable Components. There is already a few of these components in recommend that you can test. And this is the direction that we want to explore.
+
+119
+01:11:19,920 --> 01:11:41,130
+Thomas Hintz: I sounds fascinating, I very curious how that sort of sounds like almost an experiment works out. But yeah, I did want to sort of wrap up our technical discussion here. Did you have any more thoughts you want to share? Before we do that?
+
+120
+01:11:44,390 --> 01:12:01,130
+François Zaninotto: Well, just one, one, maybe one. Prior to that we have react-admin is to maintain backwards compatibility. And I think that's also one of the priorities of the react project itself. And it's, it's a super strength.
+
+121
+01:12:01,280 --> 01:12:39,200
+And to be honest, when you have to maintain an application for more than a few months, and you deal with the JavaScript ecosystem, it's a nightmare, or all these library maintainer, think oh I have this great idea, okay, I have to break compatibility first. But you will see it will be better afterwards. It's a pain. It's a pain, you know, when you take and we have that with with all customers, and they call us back after a few years. And they said, Okay, we want to upgrade this application. And then when you open code that is three years old, it takes days, sometimes weeks, just to upgrade to the latest version of the libraries.
+
+122
+01:12:40,310 --> 01:14:12,260
+Except if you use barebone, React's, it just works. Yeah, if you use React admin, it just works as well. We're really working. I mean, we broke backward compatibility last year, but we really struggled to maintain backwards compatibility, because our job is to make apps not to upgrade to the latest version of the dependency, this, this doesn't have much value from the customer's point of view. So this question of backwards compatibility is, is I think, one of the biggest strength of the React ecosystem. And when we consider alternatives, I don't know solid or, or svelte, etc. This is one of the things I'm looking at the most, how often do they break compatibility? How often are the tutorials on the web? outdated? How often is the community splits between the old users the old API and the users of the new API? And, and, I mean, we can say, a lot of things about React and a lot of problems that the react committee has. But this question of backward compatibility is key. And they're not doing the same mistake. Angular JS did with Angular two. And so I think it's if they continue on this path, it's it will be a great framework to use for for the years to come.
+
+123
+01:14:13,460 --> 01:14:44,990
+Thomas Hintz: Yeah, I also completely agree, and I think people don't understand how important that is, like when you look at software, at least in the US, our tax agency, you know, they're running software that's, like 60 years old at this point, right. And they've had to, like, I don't know, it's like running on virtual machines that emulate the mainframes of whatever, right? But that's because it works.
+
+124
+01:14:45,020 --> 01:15:29,720
+And, you know, maybe there's value in investing in new technologies and new tools, but at the same time, like, there's not value in doing it just for no good reason, like I see a lot of, especially in the JavaScript world, it feels like this all the time, it's like all those new shiny thing was reimplement everything and it's like, but what are we getting out of it from an actual useful perspective? Is it actually going to be that much better? Probably not. So I think that's really encouraging to hear and, you know, someone that, you know, implement solutions, that's also super important, because I will look at that and be like, okay, yeah, I'm not going to have to spend half of every year just upgrading my software, that's expensive. Nobody wants that.
+
+125
+01:15:31,010 --> 01:15:59,120
+And I think this ties into the final thing I wanted to talk with you about in that is react admin, as a project being sustainable. So we've been talking about that, essentially, sustainability on the technical side, is there anything that makes react admin sustainable, from a more business side so that we know react admin will be around in a few years? You know, do you have thoughts on that?
+
+126
+01:15:59,570 --> 01:16:01,460
+François Zaninotto: Oh, yeah, very much, very much.
+
+127
+01:16:04,220 --> 01:16:20,180
+Open source is great. I mean, when you have a popular open source, it's also a curse. Because the more and more popular a project will become, the more and more expensive it will be to maintain. And that's, you will see that everywhere.
+
+128
+01:16:20,990 --> 01:17:02,240
+So react-admin started as a just simple library that we published, and we thought, okay, well, people may use it and report bugs and will and help us solve it. So that could be beneficial. And then it became very popular, and, and now we spend about one, I mean, there's one person full time working on triaging bugs, qualifying them, fixing bugs, documentation, etc, updating the dependencies, because there's so many users, how do you pay for that person? And it's just for, you know, maintenance when you want to add new stuff?
+
+129
+01:17:02,780 --> 01:17:38,870
+Well, how do you pay for that. And that's the biggest problem of open source in general, I'm passionate about open source. And I have published numerous open source projects. But only once have I found a way to make it sustainable. And that's with React admin. And it feels like I have found, you know, the key to the marvelous world of being paid to do open source, what everybody dreams off. And I'm so happy about it, because it's really very hard to find. And we finally found that key.
+
+130
+01:17:39,320 --> 01:18:00,740
+And the key, you would never guess it, it's asking people to pay for it. Yeah, as surprising as it gets. So what we did, so after building react admin, we added a new layer on top of it for enterprise customers. And it's called react-admin Enterprise Edition.
+
+131
+01:18:00,770 --> 01:18:34,430
+So it adds new modules force for enterprise use cases, like I don't know, when you want to deal with a tree structure when you want to build a complex nested forms, when you want to have role based access control, etc, etc. So these are modules that we sell with the subscription to enterprise customers. And, and this brings revenue to, to our company, and this revenue is enough to pay a team to work on directadmin full time.
+
+132
+01:18:34,970 --> 01:19:24,020
+So it's not that we're My company is a sponsor of react-admin in the way that we put money in it, hoping that one time it will come back. It's not that we have had an an investor, put hundreds of millions of dollars into the project, hoping that one day they will have people two, they will have customers paying for that. Good luck with that, is that we have now today, a sustainable project. We have enough customers to pay a team to work on the open source and the enterprise version full time. And wow, I'm just when I think about it, it took us so much tries and energy to to do that. And eventually the solution is to ask people to pay for it.
+
+133
+01:19:24,170 --> 01:19:59,840
+So simple. I mean, it's not so simple, because we've moved from just developing an open source framework to being an editor. And this requires a lot more skills. You need to be able to, you know, do accounting, to market the new features, you need to be able to do support to your customers, etc, etc. So it's it's a whole new job and an engineer doesn't know these skills usually. So we need to we had to hire people to do that. But anyway, it is beneficial.
+
+134
+01:19:59,840 --> 01:20:17,180
+So So my point is that this open core business model, having an open source core, and then a layer of paid modules on top of it is one of the keys to the sustainability of open source.
+
+135
+01:20:17,900 --> 01:20:49,910
+You probably know this XKCD cartoon, where you have an a very complex application, and it relies on one tiny library maintained by a sole developer somewhere in Nebraska. And that's, that's a problem that we that people don't realize how much it's critical. We need open source libraries, we need open source solutions that are sustainable.
+
+136
+01:20:50,060 --> 01:21:52,820
+And I myself when I choose libraries, and for instance, dependencies are right, I mean, I look for the ones that I can pay for, I want them to be open source, because I know that there's an inherent merit into looking at the code, finding the bug yourself, suggesting changes, etc. But I want it to be funded because I want the people not to leave the project, because they burn out when they or they have another employer that don't let work on open source, or they just change their mind. If we build business projects on top of open source, the open source must be funded. And unfortunately, the other solutions like sponsoring, or VC money, or donations, they don't work in my experience, but having enterprise customers pay for your product works. So surprisingly, that's what we did.
+
+137
+01:21:54,350 --> 01:22:56,420
+Thomas Hintz: That's fantastic to hear. As I told you earlier, I have had, you know, that experience of being that developer that makes the open source library and there's no income and you get no, you get this email that's like, hey, there's a new version of whatever, are you going to update your library to support it? And I think it was like, I remember I had one of these. And it was like, okay, yeah, I guess let me look and see what this is going to take a run the test suite on it, and oh, all my UTF eight tests fail. And it's like, I don't have time in the next two weeks to try to figure out why it's failing. And you know, and it because you're not getting paid for it. So I think that's sort of an, to me an unfortunate reality. I wish I could just develop it and not have to worry about that. But that's not the world we live in. Right. And so it's very encouraging to me when I can see something then it's like, yes, they figured out a way to stay around. And it sounds like that's what you've been able to do.
+
+138
+01:22:56,960 --> 01:23:24,500
+François Zaninotto: Yeah, but you need to reach a critical mass for it to work. I mean, we couldn't have started with these two editions, right from the beginning, because I think it wouldn't be popular enough so that people would actually build applications with it. These days, the two 3000 new applications using reckoning published every month, so it's really a very popular.
+
+139
+01:23:24,810 --> 01:23:26,640
+Thomas Hintz: Wow, that's fantastic!
+
+140
+01:23:26,640 --> 01:24:28,950
+François Zaninotto: Yeah, very popular. And so if only a tiny fraction of these applications are customers of the enterprise version 10. It's enough to sustain, you know, the open source framework. So, yeah, it we need to reach a critical mass for it to work. And also, as I said, we need a lot of skills, special skills that software engineers usually don't have. So it's not simple. It's something you need to learn to do. And we still need to learn to do it better. But But I think, especially in these troubled times, where Vc money's running out, where companies are closing or doing layouts, having a business line that is working, that is sustainable, is really critical, especially if you're if you're doing open source.
+
+141
+01:24:30,510 --> 01:25:00,210
+Thomas Hintz: Yeah, I think that makes a lot of sense and especially touching on the sort of serious side effects of the investment or VC economy as it relates to software as well and how it is not always as sustainable. You see these projects that a lot of people jump on that have VC funding and then it gets shut down and you know, the leaves you kind of out to dry and nobody wants that either.
+
+142
+01:25:01,230 --> 01:25:36,480
+François Zaninotto: Yeah, I mean, we've been confronted to that. There is a popular VC in the in the US called a16z. You probably heard about them. They contacted us to say, Oh, tell us what's, what's the deal with the react-admin? And how you doing? What's your numbers? What's your projects? And we've seen that these these, these VCs have invested in, in a lot of developer tools, hundreds of millions. And we see companies that have, I don't know, 20 $50 million in VC money.
+
+143
+01:25:36,510 --> 01:26:32,430
+And we think, okay, these guys are doing open source. So what will will it become? And we've seen that, you know, yeah, at one time, these the investors, they want their money back. So the company has to earn some money. So the cut features, they make stuff paid. And that's when you start using another tool, usually admin for us. So, when when these people come to us, and they say, Okay, what would you do if you had a lot of money? And what are your plans, we said, we have no plans, we already have rich sustainability. Achievement unlocked. And, and, you know, it's, we don't want that we want profitability. And if we take debt from you, profitability will be in three 5, 10 years, how much with the actual crisis, we already have profitability? Sorry, we want to have your money.
+
+144
+01:26:33,330 --> 01:26:49,680
+Thomas Hintz: And in a different type of profitability, they're probably not looking for the profitability you might have now, they might be looking for, you know, hundreds of millions a year in profitability, which I'm sure you'd love to get to. But if that's your only option,
+
+145
+01:26:50,160 --> 01:27:03,870
+François Zaninotto: I would not love to have hundreds of millions because you know, I want my health. I want my family life and Issue. Issue work on having hundreds of millions, you have to make some choices I'm not willing to make.
+
+146
+01:27:05,070 --> 01:27:21,120
+Thomas Hintz: Yeah, totally. Well, it's been really great getting to know you François and the React project, react-admin project. Yeah. Thank you so much for joining us. Is there anything else you'd like to leave people with? Before we sign off here?
+
+147
+01:27:21,470 --> 01:27:37,830
+François Zaninotto: I'm just I'm really grateful that people like you are popularizing the system and the developers, the authors we need. We need the community to get larger and richer, and you're contributing to that. So thank you very much.
+
+148
+01:27:38,970 --> 01:27:51,779
+Thomas Hintz: Oh, well, thank you. I appreciate it. Yeah, is there you know, if somebody's interested in React admin, or any of your other projects, is there a great place for them to go to check it out?
+
+149
+01:27:53,280 --> 01:28:48,360
+François Zaninotto: So the web that react admin is hosted by my company's website, marmelab.com. And that's also where people will see the other open source project we're contributing to, if they want to follow us, we have a blog where we publish about one article per week. And we've been done. We've been doing that for the past 10 years. So it's a great place to follow us. i It's we try to publish our updates on various social networks. And I'm not sure what the value of social networks is right now. But you can also use a good old fashioned RSS reader to follow us. In any way, ----, if you want to get in touch with us. We have Contact Forms and Publications. So please don't hesitate to get in touch.
+
+150
+01:28:49,409 --> 01:28:58,409
+Thomas Hintz: Awesome. Well, thank you. And I'll make sure to include some links as well in the description. And yeah, take care and have a good one.
+
+151
+01:28:58,680 --> 01:29:00,149
+François Zaninotto: Thank you very much domestic care.
+
+152
+01:29:02,460 --> 01:29:23,730
+Thomas Hintz: Well, that was an absolutely fantastic discussion! I'm so happy we got to have François join us. And I had a really great time discussing the gamut of things from sustainability to the technical future of React. I guess time will tell what happens there.
+
+153
+01:29:23,970 --> 01:29:31,680
+But I just want to thank all of you once again for joining us, and I hope you have a great rest of your day. Bye.
+

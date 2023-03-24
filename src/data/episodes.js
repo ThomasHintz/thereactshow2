@@ -7,6 +7,11 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-12490659': {
+    slug: 'profitable-open-source-with-react-admin-founder-francois-zaninotto',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '086-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/XnQWumbYxio'
+  },
   'Buzzsprout-12458395': {
     slug: 'when-should-you-use-react-in-2023',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '085-mixed.srt')).toString()),
