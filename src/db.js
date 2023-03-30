@@ -53,6 +53,17 @@ id integer primary key autoincrement,
 last_build_date text
     )`]
   },
+  {
+    key: 6,
+    name: 'create table subscriptions',
+    sql: [`create table subscriptions (
+id integer primary key autoincrement,
+user_id integer not null,
+uuid text not null,
+started_date text,
+foreign key (user_id) references users (id)
+)`]
+  }
 ];
 
 const checkForMigrationsSql = `select key from migrations where run='True' order by key`;

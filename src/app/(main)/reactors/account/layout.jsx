@@ -28,7 +28,9 @@ export default async function Layout({ children }) {
       signed in as: {userId}
       <nav>
         <ul>
-          <Link href="/reactors/sign-out">sign out</Link>
+          <form method="POST" action="/api/sign-out">
+            <button type="submit">Sign Out</button>
+          </form>
         </ul>
       </nav>
     </>

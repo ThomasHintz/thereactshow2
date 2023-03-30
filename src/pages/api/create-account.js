@@ -3,7 +3,7 @@ const stripe = new Stripe('sk_test_51MVz87Ke2JFOuDSNa2PVPrs3BBq9vJQwwDITC3sOB521
 
 import db from '@/db';
 
-import { scrypt, randomBytes, timingSafeEqual } from 'crypto';
+import { scrypt, randomBytes, timingSafeEqual, randomUUID } from 'crypto';
 import { promisify } from 'util';
 
 const scryptPromise = promisify(scrypt);
@@ -45,6 +45,8 @@ export default async function handler(req, res) {
       const salt = genSalt();
       const hashRes = await hash(salt, password);
       await db.run('insert into users (email, salt, password_hash) values (?, ?, ?);', email, salt, hashRes);
+      const { id: userId } = await db.get('select id from users where email=?', email);
+      await db.run('insert into subscriptions (uuid, user_id) values (?, ?);', randomUUID(), userId);
       console.log('done inserting user');
       res.redirect('/reactors')
     } else {
