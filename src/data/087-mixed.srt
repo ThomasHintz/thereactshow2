@@ -1,0 +1,580 @@
+1
+00:00:00,870 --> 00:00:04,710
+Thomas Hintz: And welcome to the React show!
+
+2
+00:00:05,490 --> 00:00:17,550
+Brought to you from occupied Miwok territory by me, your host, Thomas, and some fruity Chiapas coffee, Episode 87.
+
+3
+00:00:19,260 --> 00:00:41,370
+Are you ready to learn react quickly, and methodically? In this episode, we go through the entire mechanics of React, from how it gets loaded, to how your components actually run. We learned how to program in React and how it all fits together in a structured way.
+
+4
+00:00:44,460 --> 00:01:07,470
+Thank you for joining us! So I was out tide pooling, of course, near La Paz, in Baja California Sur Mexico, and I met a new friend. It was actually incredibly remarkable, because they actually wanted to learn React.
+
+5
+00:01:07,680 --> 00:01:16,470
+So I asked them to join me on this episode of this show. So we could cover the mechanics of react together.
+
+6
+00:01:16,770 --> 00:01:22,530
+All right, so hi, Norris. Welcome to The React Show.
+
+7
+00:01:25,290 --> 00:01:25,320
+[unintelligible]
+
+8
+00:01:27,000 --> 00:01:38,730
+Norris. Hey, Norris! I know you normally live underwater, but you have to take your head out and speak into the microphone, or nobody will understand you. 
+
+9
+00:01:39,780 --> 00:01:50,880
+Oh, all right. Sorry about that. I just wanted to say hi, and thank you for having me on the show.
+
+10
+00:01:51,480 --> 00:02:12,270
+Of course, I'm really excited to get into the mechanics of React. So if I remember correctly, you said that you know a little bit about HTML and CSS and JavaScript and making webpages but you've never learned react? Is that correct?
+
+11
+00:02:12,420 --> 00:02:40,170
+Yes, that's correct. Yeah. So you know, being a sea slug out here and the rocky reef of Baja California. We're a little bit you know, it's a little bit slower some of the the latest technology and making it to us. Just just by nature of being a slug, and I don't know, maybe we're slow at building our internet infrastructure. I don't know.
+
+12
+00:02:40,200 --> 00:03:03,750
+But hey, I've heard about React. And so what's really been going on is I built a simple website in HTML and CSS to showcase upcoming music events at the reef. And there's this burgeoning underground rap scene developing. And I really wanted to highlight some of the awesome new artists that are joining the cruise.
+
+13
+00:03:04,470 --> 00:03:42,030
+The website I made, I think, is pretty cool. I even used this fancy thing called Flexbox wants to send her some content, it was great. But now everyone is asking me to make it. So the webpage can be used to buy tickets to the event as well. I tried adding some JavaScript to the webpages to make this work. But honestly, it doesn't work very well. I keep having a lot of bugs crawl out from under the rocks. And the internet told me I need to use React instead. What do you think?
+
+14
+00:03:42,000 --> 00:04:08,250
+Wow, that sounds really cool. Norris. Congrats on launching the initial site. Yeah, this sounds like a potential application for React. React is good at handling complex state and logic in a way that eliminates some classes of bugs. Why don't we first start with a quick overview of how web pages work and how react actually gets loaded?
+
+15
+00:04:08,580 --> 00:04:35,400
+Oh, yeah. Okay. Yeah. Thomas, that sounds great. So to be honest, I have a rough idea. But I find like I have a rough idea of of React. I mean, I sort of looked, I spent like an hour looking at some react documentation. But I find learning more about the mechanics of how something works helped me just helps me understand how to use it better.
+
+16
+00:04:35,550 --> 00:05:40,710
+Okay, great. The first thing that happens is a server sends the browser an HTML document. This is just a text document made up of HTML tags, the browser, it then converts those tags it sees to visual components on the screen. For example, See, if it sees a button HTML tag, it will draw a button on the screen correspondingly. I mean, that makes sense, right? All of the tags together, though, form a tree, that the browser sort of internally in memory converts into what, what we call the DOM, or document object model. This is just a really fancy way of saying the browser keeps track of what is on the screen in the form of a tree structure. And it has a JavaScript API available to allow programs to manipulate the content on the screen beyond a button tag.
+
+17
+00:05:40,740 --> 00:06:18,330
+Another tag that browsers understand is the script tag. This is a special type of tag that doesn't describe a visual element like a button, but it actually tells the browser how to load and run code written in the JavaScript programming language. So to use a React program, you first include a script tag that contains all the source code for the React library. This just means it defines all the functions you need and sets up the browser environment to be able to run react programs.
+
+18
+00:06:18,450 --> 00:06:41,010
+Okay. Okay, Thomas. So let me double check with you. So first, the browser, it gets this HTML document, then somehow it reads that document, I guess, and sees the script thing. And the script thing includes the actual JavaScript code for React. Is that correct?
+
+19
+00:06:41,070 --> 00:07:04,470
+Yes, exactly. Sounds simple. But I imagine it's a lot more complicated underneath. i If I've learned anything about computers and programming at this point, it's that everything is more complicated underneath. But anyways, I'm curious what what happens next? How do you actually include in run your React program?
+
+20
+00:07:04,590 --> 00:07:39,030
+You're absolutely right. There are many layers of complication below that. But that is just the basics. And really all we need to know in terms of mechanics. Before we start getting into like how react actually works. Next, after this, to actually include your own react program, you just need to have another script tag that includes the JavaScript that defines your program. Or you could even add your code after the React library code in the first script tag doesn't really matter.
+
+21
+00:07:40,110 --> 00:08:33,030
+And anyways, after that, your code then needs to call the createRoot function. The react library code that was loaded and run by the browser from the first script tag is what actually defined the createRoot function. It's not really magic, it's just JavaScript code, it defined a function called createRoot. And if you call the createRoot function, passing in a reference to a DOM element, then react will get set up to use that DOM element as the container for the output of your entire react program. So all of the output your React program creates, will show up and on the screen and in the DOM inside this container element that you pass to create route.
+
+22
+00:08:33,210 --> 00:08:49,380
+Hmm, Ah, okay. That kind of makes sense to me. But what the heck is a DOM element? And how do you pass in a reference to one seems like you're speaking in a foreign language here? I mean, come on. Here, Thomas.
+
+23
+00:08:50,160 --> 00:09:09,720
+Alright, great question. I don't want to be speaking a foreign language to you here. So a DOM element DOM standing for document object model just means one of the HTML tags that you included in the HTML document that the server sent to the browser.
+
+24
+00:09:10,290 --> 00:09:37,320
+So if you include a div tag, in the HTML, you can write some basic JavaScript code to tell the browser to give you a reference to that div tag. A reference is just something that you can assign to a variable and then use with the browser's JavaScript API's to interact with those elements that are on the screen.
+
+25
+00:09:37,500 --> 00:10:03,480
+Oh, so that must be what I'm trying to remember. Yeah, the document.getDOMElementById. I used to call that all the time when I was working on my basic HTML pages. That was so so yeah, I used to use that when I was trying to create this new ticketing feature that had all these bugs. Is that kind of what you're talking about in terms of like JavaScript API functions.
+
+26
+00:10:03,510 --> 00:10:18,330
+Yes, exactly. There are a number of functions you can call that browsers provide that will allow you to get a reference to one or more of the elements that you see on the screen.
+
+27
+00:10:18,450 --> 00:10:32,220
+Oh, okay. Sweet. So we grab a reference to this kind of container element, and then pass it to react createRoot. Is that correct? I mean, what what happens after that?
+
+28
+00:10:32,250 --> 00:10:43,980
+Yes, that is correct. After that, you need to call the render method on the return value from createRoot passing in a React component object.
+
+29
+00:10:44,850 --> 00:10:58,470
+Wow, Thomas. That's a lot. Alright, so we call the render method. That makes sense. But can you elaborate on what you mean by a, quote, React component?
+
+30
+00:10:58,660 --> 00:11:45,160
+Yeah, of course, we're getting there. Don't worry, don't worry. So from a high level, react just actually pretty simple. You just call the render method passing in a specific type of JavaScript object that react understands. React then converts that JavaScript object into DOM elements that you see on the screen. Similar to how, when the page was initially loaded, it took the HTML tags and converted them to elements on the screen. It's basically kind of appears to be the same thing as just like creating a regular HTML document and having the browser load and render that.
+
+31
+00:11:46,210 --> 00:12:24,400
+But now, most programmers don't actually directly pass in the JavaScript object to the render method themselves. Instead, react programmers use another programming language called J S. X. To create these special JavaScript objects for then JSX, which is short for JavaScript syntax extension, is an extension to the JavaScript programming language, it supports JavaScript expressions, but also adds support for what looks like HTML tags.
+
+32
+00:12:24,460 --> 00:12:49,450
+And I just thought I'd give you this fun fact Norris. So you don't actually need to use JSX. To write react programs. If you look up react on the internet, you will pretty much always see JSX in React programs, but you can actually write react programs completely without it and just write plain vanilla JavaScript code. And that will work perfectly fine.
+
+33
+00:12:50,800 --> 00:13:04,900
+But programmers use JSX instead of plain JavaScript, because plain JavaScript, it's it's not very easy to use for describing what a user interface should look like.
+
+34
+00:13:05,680 --> 00:13:30,670
+I'll give you an example. With plain JavaScript, you can create a button element inside of react by calling a function provided by react, that's called createElement, specifying the element type. In this case, let's say a button, and using JavaScript object keys to specify the attributes for that button. Like, say the class name.
+
+35
+00:13:31,600 --> 00:14:07,750
+For extremely simple interfaces, this works fine. I've done it many times before JSX, before react, and it works. But for complex UIs, with many nested elements, is very, very hard to read and work with as a programmer. So instead, you can use JSX. And write these HTML like tags, like it'll feel like you're writing HTML pretty much. And you can just write a button tag very similar to how you would do it in HTML.
+
+36
+00:14:08,650 --> 00:14:22,930
+But before your program can be run in the browser, a compiler converts the JSX code to that plain JavaScript code we were talking about earlier that calls createElement.
+
+37
+00:14:23,110 --> 00:15:34,690
+And as a quick side note, compiler is just another program that transforms one program into another form of that program that does the same thing, but might be written in different code. Compilers are nothing inherently magical. And nearly all the code you will ever write will be run through a compiler or something similar, like an interpreter. You'll you might hear in the React community that it's, you know, you might hear people saying, Oh, it's so bad. We have to compile our code and you know, in the pipeline and in everything for compiling this code in JavaScript can be very complex. But the reality is basically all the code you will ever write gets compiled, even the JavaScript code that gets sent to the browser, modern browsers compile that JavaScript code. So it's nothing really special or magical. It's just another programming language. And in this case, the compiler converts the JSX code that you write into pure JavaScript code that the browser can understand. Since nobody taught the browser how to understand JSX.
+
+38
+00:15:35,950 --> 00:15:57,700
+That was a lot. Let me see if I'm following. All right, so we call the render method that react provides, and that is expecting some kind of JavaScript object and react, Dom converts that JavaScript object into DOM elements that we see on the screen. Is that correct?
+
+39
+00:15:57,820 --> 00:16:03,880
+Yes, absolutely. You got it. Correct. You follow along so well!
+
+40
+00:16:05,050 --> 00:16:18,010
+Yeah. Okay, great. So then you're saying I should use a different programming language called JSX? And that goes inside of the call to the render method?
+
+41
+00:16:18,130 --> 00:16:19,750
+Yeah, exactly. You got it Norris!
+
+42
+00:16:19,840 --> 00:16:32,980
+Okay. I think I'm following. But what about components? I thought react was all about components. What are components? You haven't said anything about components yet? Are you even talking about React?
+
+43
+00:16:34,900 --> 00:16:36,670
+Indeed, you caught me.
+
+44
+00:16:37,860 --> 00:17:13,770
+So the truth is, though, you can actually write a React program without creating any components, you can just pass in objects to the render method that describe plain HTML elements, like you do when creating a regular HTML web page. Essentially, you can use React to create web pages that look just like the web pages you would create in plain HTML. And if you use JSX, then the code will even look very similar to plain HTML.
+
+45
+00:17:14,430 --> 00:18:01,680
+But as you alluded to, the real power of React comes from what we call components. A component is actually just a function that returns the special JavaScript objects that the render method understands. So to create a React component, you just declare a new function in your JavaScript source code that returns some code, probably written in JSX, at least partially, it will look a lot like you have a function that returns HTML, a simple way to think of a component is that it allows you to essentially create your own HTML tags. 
+
+46
+00:18:01,750 --> 00:18:06,220
+What? Are you kidding me? Wow, that sounds awesome!
+
+47
+00:18:06,370 --> 00:18:24,190
+So for example, if the browser's don't have, like a calendar, HTML tag, I could create my own in React, and then reference it in the JSX. And it will just show up on the screen. Like I've created my own new HTML tag?
+
+48
+00:18:24,430 --> 00:18:28,990
+Yes, you've got it, you can totally do that. It's pretty cool, right?
+
+49
+00:18:29,080 --> 00:19:03,850
+Yeah, I can't wait to give this a try. So you're saying I could create this calendar tag or component, and use that on the page for people to click on to select when they want to book their favorite underground artist? What if I want, though, to be able to control aspects of the calendar like, say, gray out days that has been sold out? Do I need to create a new calendar component for every single use case for every single concert? I mean, that sounds like a lot of work.
+
+50
+00:19:04,090 --> 00:19:41,680
+That's a great question Norris. And the answer is no. And this is where react really starts to shine. So you know how with HTML tags, you can set attributes, right? Like the type of an input or the class name. Well, you can do the same with React components, you can set attributes, which in the React World that we call properties, or you'll often hear props for short. And react will pass those to your React components as function arguments.
+
+51
+00:19:41,710 --> 00:19:50,170
+Huh. That sounds cool. I'm not quite sure I follow yet. Could you just elaborate a bit more on that?
+
+52
+00:19:50,230 --> 00:20:29,680
+Yeah. So let's say you want to create a new calendar component and you want to pass in the days that a user can Click on, you could define a function in your JavaScript code called calendar with a capital C, then you can specify that function to take a keyword argument named days, for example, now you can dynamically pass in the days you want to be enabled as a JavaScript array. And your calendar component can render those days specially for viewing by the user or interacting with by the user.
+
+53
+00:20:29,740 --> 00:21:04,810
+Wow, really, I can't wait to do that. Sounds like I can use these React components to create my own HTML elements and pass data into that is, that sounds really exciting. I'm going to find a large rock to crawl under here and give that a try. But before I get to that, I was wondering, what did you mean by render? You've said that I think a few times now and I hear that a lot with React. But what does it really mean? What does render mean?
+
+54
+00:21:04,870 --> 00:21:22,420
+Oh, I love talking about rendering. But unfortunately, before we do that, we should talk about one more thing and well, okay, I say one more thing, it might be a few more things. But the first thing I want to talk about before we get into rendering is state.
+
+55
+00:21:24,310 --> 00:21:38,620
+It's cool to create your own components, right. But they, I promise, you won't be very useful without state somewhere in your program. And state just means a way to store and retrieve information basically.
+
+56
+00:21:39,580 --> 00:22:06,250
+For example, with the calendar component that we're talking about, let's say you want to allow the user to page through months of the year. This means that somewhere you will need to store which month the user is currently viewing. So when your component renders, you know, which days to render in the output for the user, right? React actually provides multiple mechanisms to do this.
+
+57
+00:22:06,550 --> 00:22:22,450
+The simplest is what is called the useState hook. It sounds scary. I know, I know, I can see you over there Norris sort of flipping out there as you slugs do sometimes. But I promise you, it's pretty easy to use at least this hook.
+
+58
+00:22:22,000 --> 00:22:57,040
+You can call the useState hook within your calendar component, you can set it up to give the name or index of the month that is currently being viewed. And you set it to a new value when the user clicks a button in your calendar, for example, the useState hook and the other hooks we haven't talked about yet are nothing fancy. They're really just JavaScript functions provided by the React library that got loaded when the browser loaded the React library code initially.
+
+59
+00:22:57,340 --> 00:23:18,040
+Okay. Wow, Thomas, I'm getting a bit lost. I don't understand why can't I just declare a variable like I would normally do in JavaScript and set that why do I need this weird hook thing? sounds completely unnecessary. I thought I knew JavaScript. I didn't understand.
+
+60
+00:23:18,130 --> 00:23:40,900
+All right, yeah, you're right, that it would be your first instinct, and it would feel the most natural. But this is where we start to get into the whole render thing. So remember how components are just functions that we've defined? Well, these functions should be programmed specially, so that they don't have any direct side effects.
+
+61
+00:23:42,400 --> 00:24:20,740
+React might actually call your function any number of times for various reasons. So if you used a global JavaScript variable to store your state, you could end up with very strange behavior. For your React code to work correctly, you must never modify global state within a React component except via the hook functions that react provides in its library. There's some small minor details, you know, to that statement, like using refs, and we're not going to get into that now. It's, it's really not important.
+
+62
+00:24:21,400 --> 00:24:54,820
+But the important part is that you use these hooks for managing state and this ensures that your React program will work correctly, your React components should always be what we call in the programming world. The computer science world we call pure, pure functions, can transform their attributes and properties, their arguments and state to output JSX but they can never affect anything outside of the function.
+
+63
+00:24:55,150 --> 00:25:04,420
+You can think of pure functions and pure React components as tiny little isolated programs inside of your larger program.
+
+64
+00:25:04,570 --> 00:25:19,030
+Okay. Okay, so to make sure my program works correctly, I need to make sure that my React components don't modify or read from any global variables. Am I getting that correct?
+
+65
+00:25:19,120 --> 00:25:24,760
+Yes, yes, you're right. You're getting you're quick at this. I'll be honest, that is correct.
+
+66
+00:25:25,690 --> 00:25:37,720
+All right. So you're saying for storing the current month the user is viewing, I should not store that in a global variable, that my component reads? And sets, right?
+
+67
+00:25:37,780 --> 00:25:58,180
+Yes, again, correct. Think about it this way. What if you wanted to use your calendar component in multiple places on the same page? How would you actually store state in a global variable? Would you create a new variable for every instance of your calendar on the page? How would that actually work? 
+
+68
+00:25:59,020 --> 00:26:35,920
+There are ways to make that work. But what if instead, you use the state hooks provided by react like you state, if you do this, react will take care of that for you. You don't need to worry about it. You can include as many calendar components on the page as you want. And you won't need to keep track of the state in some special way to make sure that one instance of your calendar component doesn't affect the state of another instance of your calendar component. You can just program the component like it lives in total isolation.
+
+69
+00:26:36,100 --> 00:26:56,170
+Ah, I guess that makes some sense. So this hook and state mechanism allows me to program my components in an isolated way so that I can include as many as I want without having to worry about them interfering with each other. I mean, that's what it sounds like, right?
+
+70
+00:26:56,480 --> 00:27:17,000
+Yeah, exactly. Right, Norris. Hmm, that sounds a bit complicated. I'll be honest. But I guess I can see the advantage. Okay. I think I got that under, under my my gill here. Does that now mean, we are able to talk about rendering finally?
+
+71
+00:27:18,350 --> 00:27:30,380
+I think we're very close to talk about rendering. But I want to cover two more things very quickly before we get into that, that is events, and effects.
+
+72
+00:27:31,040 --> 00:28:05,660
+So inside your components, you can set up events, like let's say when a user clicks a button, you can set up a click event on that button. Oftentimes, inside of the handler for an event like that is where you will put your code that actually changes the state. So for example, if the user clicks the button to show the next month in the calendar, inside of the handler for that buttons, click event is where you would actually make the call with the use state hook to update the name of the month that the user is viewing.
+
+73
+00:28:06,260 --> 00:28:22,940
+Once you do that, react will run your component code again, in your component will be like, Oh, I'm supposed to be rendering may now instead of April, and it will render different days out to the screen and different orders or whatever it wants to do.
+
+74
+00:28:22,940 --> 00:28:32,360
+Right. Okay, so the event handlers sound a lot like the regular JavaScript that I would write where I set up on click handlers.
+
+75
+00:28:32,450 --> 00:28:55,250
+Yep. And the other thing to cover is effects. So sometimes you do need your components to have side effects, like maybe they need to make a network call. Well, you can't just put this code directly in your React components, because that would make them no longer pure, and you'll start to get weird behavior and bugs.
+
+76
+00:28:55,610 --> 00:29:23,060
+Instead, react provides another function called useEffect that you can call that can include code that has actual side effects. But using the useEffect function, you're setting up your side effects in a structured way that allows react internally to handle that code specially. So it doesn't create unexpected bugs for you.
+
+77
+00:29:23,840 --> 00:29:40,700
+It sure seems like React does a lot of special handling. For me, I can imagine I might use an event handler or use effect to then submit the network request when a user actually buys a ticket. Is that right?
+
+78
+00:29:40,880 --> 00:30:04,520
+Yeah, that's exactly right. You can have side effects in event handlers, or inside calls to useEffect. You can't put them in the regular main code path that you use to render the JSX output for what gets shown on the screen, but you can have side effects they just need to The inside of event handlers or calls to useEffect.
+
+79
+00:30:06,440 --> 00:30:36,800
+Alright, so now that we we have that covered, I think we've done enough to get back to your original question about rendering. So rendering is the process by which react runs the code for your components, and then syncs them with the DOM. Calling render the first time causes react to take the output from your components and actually converts them to the elements you see on the screen.
+
+80
+00:30:37,170 --> 00:31:01,860
+And as react runs your components for the first time, it also sets up some internal triggers, like events that can in the future, tell react to call your component again and get the updated output. So every time react calls your function that represents your React components, it is called a render.
+
+81
+00:31:02,490 --> 00:31:54,540
+So really, React is actually very simple. Like I said before, it just calls your component or child components over and over again. And a child component is any React component that you return in your JSX from a React component. So you can have a parent React component with multiple children React components. And so when you define a React component, you should just think of it as an isolated entity that can get called one or many times, and you don't have any, like direct control over when your function or React component gets called React is allowed to call it as many times as it wants, whenever it wants. This is another important reason why you shouldn't have direct side effects in your React components.
+
+82
+00:31:54,600 --> 00:32:07,230
+Ah, okay, I think I see, the way you describe it with child components makes it sound like a tree kinda. Is that a good way to think of it as a tree?
+
+83
+00:32:07,260 --> 00:32:14,400
+Yes, exactly. Your react program will be made up of a tree of React components.
+
+84
+00:32:15,210 --> 00:33:18,000
+Okay, I think we can now talk about the rest of the rendering process. So react starts by calling your top level component highest up in the tree. And that component returns JSX. That includes other components. React just works its way through the JSX, calling all the components that you've defined, eventually, it makes its way through your entire tree of React components, is left with just plain native HTML elements, like defined in your JSX, basically, like all of your React components eventually decompose down into HTML, elements of some kind, like, let's say your calendar component is made up of a bunch of divs, and spans and whatever eventually, by executing your React components, your functions. React ends up with a bunch of just basic HTML elements, right?
+
+85
+00:33:19,230 --> 00:33:39,420
+But how does it go from this tree of HTML elements to actually putting something on the screen. And what happens if a user triggers an event or state change? This is the fun part that makes React, React. And that is called reconciliation.
+
+86
+00:33:39,480 --> 00:34:43,350
+So remember how react goes through and executes the code for your tree of React components, and ends with a tree of JavaScript objects representing the HTML elements? Well, the first time it just goes through that tree, and using the browser's built in JavaScript API's, it creates all of those elements and puts them on the screen. But it also stores that tree representing the current state of your React application. And then, if, say, a user clicks a button on the calendar to change the month, they're viewing, the click event tells react that it needs to rerender the calendar component that the user interacted with. So react then runs your code for the calendar component, with the state being updated to reflect the new month to display and returning a tree again.
+
+87
+00:34:44,310 --> 00:35:20,010
+Now, it then reconciles this new tree with the tree it stored before and if it detects any differences between the trees, it updates what is on the screen to match the new screen. And this is if you have ever heard of like the virtual DOM in reference to react. This is basically what it's referring to this internal tree that React is storing and analyzing and reconciling that represents the state of your React application.
+
+88
+00:35:20,000 --> 00:35:57,440
+In fact, the earliest versions of React were much simpler. They didn't even have a virtual DOM, they didn't have these, it didn't store these trees. Instead, anytime there was a user interaction, or state change, they just deleted all of the elements that initially added to the screen. It then reran all of the code of all of the React components, and converted the output to what you see on the screen. Basically, it just reran the program over and over again, every single time there was any change, blew away everything on the screen and rebuilt it all. 
+
+89
+00:35:58,250 --> 00:36:21,320
+And this is actually conceptually still a very good way to think of how react works. Technically, it's not how react works. And we're gonna get into that a little bit more. But conceptually, you can absolutely imagine that's the way react works. And that will basically cover all normal uses of writing a React program.
+
+90
+00:36:21,440 --> 00:36:31,610
+Okay. Okay, so I'm just a sea slug here. And this is a lot. Can you give me a chance to extend my gills and catch some oxygen? At least?
+
+91
+00:36:33,680 --> 00:36:37,010
+Yes, yeah, absolutely. It is a lot. You're right.
+
+92
+00:36:37,310 --> 00:37:02,000
+Okay. Thank you. Alright, so let me see if I got this. Right. So in summary, are you saying that I can just imagine that react runs all the code for all of my components, anytime some state might have changed? And then I imagined react, deleting everything that it added to the screen and replacing it with the new output from my React components?
+
+93
+00:37:02,060 --> 00:37:06,110
+Yep, conceptually, that's exactly how react works.
+
+94
+00:37:06,140 --> 00:37:20,210
+Huh. So basically, I don't need to do anything to actually tell the browser what updates to make when the user interacts with my calendar, react just kind of magically takes care of it for me.
+
+95
+00:37:20,300 --> 00:38:06,680
+Yes, exactly. And that is what makes react react, you just declare how your components should function. And react takes care of making sure the browser is in sync with what you've declared without react in just plain JavaScript, you have to manually call JavaScript API's to update what is on the screen to match the state of your program. With react, however, you only need to keep track of the state updates and how you want, you know, things to look and behave on the screen. You don't actually need to do anything with the browser DOM API's. React handles that all for you. It reacts.
+
+96
+00:38:07,490 --> 00:38:18,830
+What, wow. Oh, that's so cool. Now I see why React is useful. It sounds like it eliminates a lot of manual work, I would need to do otherwise.
+
+97
+00:38:18,860 --> 00:38:38,480
+Yes. And that also eliminates an entire class of bugs that you might crawl out from the rock next, you know, where you might make a mistake in that stage of your program, where what the browser shows on the screen becomes out of sync with the internal state of your program.
+
+98
+00:38:38,480 --> 00:39:02,300
+It's something that I ran into all the time when trying to program back in the day with jQuery and just plain JavaScript, you would end up with your program for you know, the calendar, thinking it's showing the month of April, but you didn't get the, you know, connection right to the browser, and the browser is still showing February on the screen or something like that. 
+
+99
+00:39:02,480 --> 00:39:06,320
+Awesome. Neato Bandito!
+
+100
+00:39:07,670 --> 00:39:19,250
+So that old thing about React, reconciling and storing trees and stuff is really just irrelevant. Like, why did you tell it to me? Do I actually need to care about any of that?
+
+101
+00:39:19,430 --> 00:39:29,180
+Okay, well, that is an astute observation, Norris. But the answer is, unfortunately, kind of I wasn't just telling you that for no good reason.
+
+102
+00:39:29,660 --> 00:39:53,690
+So remember how I said that initially, react didn't do this whole tree reconciliation thing and just reran all of your React code all of the time, and rebuilt the onscreen content from scratch each time. Well, that absolutely did work, and it still would work. But for complex applications, it is just too slow. 
+
+103
+00:39:54,560 --> 00:40:25,250
+So react decided to make some performance optimizations to me render your React program react executes the code for your components and stores, the tree of output, like we talked about, after putting everything on the screen, then whenever an event occurs, or react thinks some state might have changed in your components, it reruns all, or at least some of your components code, your components, again, output this tree of nodes.
+
+104
+00:40:25,700 --> 00:41:00,170
+React then compares the new output. It's to the output, it's stored from the previous time that rendered all of your components. And if there are any differences in the output, react will update the DOM elements on the screen to match the new output from your components. It does not touch or change any of the DOM elements higher in the tree that it doesn't think have changed. This is the performance optimization.
+
+105
+00:41:01,020 --> 00:41:12,840
+It allows those elements on the screen to stay the same. You know, react doesn't have to run a bunch of extra code to, you know, delete them and re add them to the screen.
+
+106
+00:41:12,900 --> 00:41:25,290
+But how does react actually detect when something in the tree has changed? It has these two trees, right? But how does it actually detect when these trees are different from each other?
+
+107
+00:41:26,580 --> 00:41:46,650
+There is an algorithm in computer science that lets you detect differences between trees. If react use that algorithm, the performance optimizations would be completely transparent, and we wouldn't be talking about it now. So obviously, react doesn't use that algorithm, because that algorithm is too slow again.
+
+108
+00:41:47,460 --> 00:42:10,050
+So instead, react created their own algorithm that tries to guess, when the new output differs from the previous output, or when parts of the tree differ from each other without needing to sort of look in depth at the entire trees every time. This process is called reconciliation.
+
+109
+00:42:10,110 --> 00:42:27,060
+Ah, of course. Yeah. So Okay, let me try to Okay, okay. Okay. Well, that I'm not sure you can call my basic slug nervous system, a brain, but whatever you call, it is a chance to catch up here.
+
+110
+00:42:28,350 --> 00:42:29,970
+Okay, okay, of course.
+
+111
+00:42:30,360 --> 00:43:06,030
+Okay. So let me try to recap this. Rendering is the process react takes to run my component's code and figure out what changed from the previous run, so that it can update what is on the screen to match the latest output from my components. Reconciliation is a part of the rendering process where react actually figures out what changed, so it knows what to update on the screen. Did I get that correct?
+
+112
+00:43:06,090 --> 00:43:12,930
+Yes. If they don't call your nervous system of brain, they absolutely should, because you nailed it.
+
+113
+00:43:14,010 --> 00:43:24,240
+Thank you. Okay, so what is it about the performance optimizations then, that I actually do need to know about or care about?
+
+114
+00:43:24,300 --> 00:43:36,090
+Unfortunately, yes, you do need to care. And there are a few things. For the most part, it is transparent, but there are a few things you do need to be aware of.
+
+115
+00:43:37,080 --> 00:44:23,970
+So reconciliation is done by comparing the types of the nodes within the trees. So if the node in the same place in two trees are of the same type, like if the top node in both trees are dibs, then react knows it doesn't need to create a new DOM element and add it to the screen, it could reuse that div that's already on the screen, right? So it goes through both trees comparing the nodes in the same places in the trees. If it detects any type changes between the two, it destroys all the DOM elements on the screen from that point in the tree down and rebuilds them with the output from the new tree. 
+
+116
+00:44:24,000 --> 00:44:42,120
+So if your component used to return a div, and now it returns a span, along with maybe some other React components, it's going to destroy and remove the original div and everything inside of it from the screen and rebuild it from the new tree.
+
+117
+00:44:42,210 --> 00:44:58,260
+So in technical terms, this is called a heuristic algorithm and is generally transparent to you as a programmer, you don't normally need to think about it except if you're specifically trying to optimize the performance of your program.
+
+118
+00:44:58,980 --> 00:45:24,780
+But there are Are there some special cases where you do need to be somewhat concerned about it, even if you're not doing performance optimizations, and a special case, where you do need to do some extra work to help out this heuristic algorithm is when you have a component that renders a list of other components or a list of other HTML DOM elements.
+
+119
+00:45:24,900 --> 00:45:53,280
+Like if you iterate over an array to build a list in your output, then you have to do something special. The first node in the output for the list needs to have the special property set called key. React takes the shortcut on lists and doesn't run its full hueristic algorithm. Instead, it only looks at the key property to determine if it needs to update the DOM element on the screen. 
+
+120
+00:45:53,450 --> 00:46:11,420
+So whenever you render a list, you need to specify this key property and its value should be unique for the data in each list element, it should be stable, meaning it should always be the same value every time your component renders for that same list element.
+
+121
+00:46:12,230 --> 00:46:26,360
+I know this sounds like a lot, but react will remind you in the warnings if you ever forget the key property, and at least without getting into performance optimizations. That's pretty much it for rendering and reconciliation. 
+
+122
+00:46:27,230 --> 00:46:39,530
+Okay, wow. So really, I don't need to care too much about how all of that works. I just need to make sure to specify the key property and list items. Is that correct?
+
+123
+00:46:39,560 --> 00:47:04,580
+Yes, exactly. In normal react programming, that is really the only extra thing you need to care about. Now, if you have performance issues, the knowing how that heuristic algorithm works is important because you can use it to your advantage to make your React programs faster. But I don't ever think or worry about it, except if I actually detect a performance issue.
+
+124
+00:47:04,700 --> 00:47:27,800
+Okay, so it sounds like in summary, if I'm getting this right, Thomas, react works by just running my component code whenever it thinks it needs to. And then by comparing the trees of output between renders, it can keep the internal state of my program in sync with what the user sees and interacts with on the screen.
+
+125
+00:47:27,860 --> 00:47:35,840
+Yes, that is an excellent summary. Now I need to figure out how your slugged nervous system works because you are one excellent student.
+
+126
+00:47:37,970 --> 00:47:47,270
+Well, I'm not sure it is compatible with your system, but maybe we can run a reconciliation algorithm on our nervous systems and see the difference sometime. 
+
+127
+00:47:48,770 --> 00:48:02,630
+Okay, yeah, absolutely. How about you get your new React ticketing system web application working and we can use your new calendar component to schedule a time to do a nervous system reconciliation.
+
+128
+00:48:02,750 --> 00:48:07,280
+I can't wait. I wish maybe I can even sell tickets to that event.
+
+129
+00:48:07,430 --> 00:48:21,230
+Yeah, I would. I would love that Norris. I just want to thank you once again for joining us. I had a lot of fun talking through the mechanics of react in a super condensed and fast way and I hope it is helpful to you.
+
+130
+00:48:21,260 --> 00:48:37,490
+Yeah, absolutely. I feel like I understand react a lot better now. I think I will need to practice and read the documentation and look at some examples to fully get it but at least I now know how it all fits together.
+
+131
+00:48:38,270 --> 00:48:52,190
+Thank you for having me on the show. And if your listeners are ever down in the Baja California Sur area they are welcome to stop by my rock and I'll make them some roasted sponge or whatever they're into.
+
+132
+00:48:53,630 --> 00:49:03,410
+I'm not sure how much my listeners want to eat sponges. But I'll let them know. Thanks again Norris. It's been great. You have a good one.
+
+133
+00:49:04,370 --> 00:49:40,520
+All right, so that was the mechanics of React. I know it's definitely more beginner focus but I also know a lot of people listening to this are beginners maybe if you're not a beginner that was probably really boring and you didn't make it to this point but I hope it was at least still entertaining it was so Norris is is based on a really awesome slug that sea slug that we actually did find tide pooling down in Baja, Mexico.
+
+134
+00:49:41,260 --> 00:50:21,220
+Just it's it was actually a pretty common slug but it was just so different from anything that we normally see up in the United States and California it has a whole bunch of really cool colors and yeah like to be under rocks, at least during the day when the low tides were I assumed because the sun is really intense down there. So if you were careful and turned over a rock, you could find these slugs. There may be like, you know, one to two, maybe three millimeters in length. But yeah, it was really fun.
+
+135
+00:50:22,840 --> 00:50:29,860
+Yeah, so this this whole thing was based on on the Norris slug that that we saw quite a bit.
+
+136
+00:50:30,790 --> 00:50:58,210
+But yeah, if you're if you're into this whole mechanics of react and how it works and maybe you're not a beginner or maybe you're a beginner, but you really want to dive into things I've actually covered not not all of this, I really focused a lot more on some parts of it like rendering and reconciliation in a book that I wrote, called Foundations of high performance react, you can find it on the React's show.com. website.
+
+137
+00:50:58,720 --> 00:51:21,730
+So yeah, if you really want to get in depth in how this works, and, you know, get it in written form, and really dive in and learn not only the specific details of the heuristic algorithm and this entire process, but also learn how to optimize your React programs to take advantage of this algorithm.
+
+138
+00:51:22,480 --> 00:51:39,370
+Yeah, definitely check out the book. If you're able to purchase it, it really helps support the show. It makes it so we can continue to build and bring you awesome episodes like this. And you know, have Norris come visit and hang out with us. Right? Yeah.
+
+139
+00:51:39,370 --> 00:51:55,600
+And like I said before, if it's something you can't afford, just send me a message on the website. And I'll make sure to get you a copy some way. But either way. If you're interested, definitely check it out. Anyways, yeah, that's about all I have in the show for you today.
+
+140
+00:51:55,600 --> 00:52:11,890
+And I'm actually back in the San Francisco Bay area. I flew up from Mexico yesterday. I wrote this episode and worked on it down in Mexico just doing the recording today.
+
+141
+00:52:14,140 --> 00:52:52,270
+And yeah, a bit of I'll be honest, a bit of culture shock after spending a month in Mexico. It's like, why are the roads here absolutely gigantic. I won't complain about this. But definitely take it a bit of getting used to. And especially because even before that I I've been in the desert for like two months, two and a half months or something now straight. And in the Bay Area, I flew in and it was raining and everything is green. It's totally different. It's really cool. I haven't seen green and forever aside from a few like river deltas and stuff.
+
+142
+00:52:52,930 --> 00:52:59,140
+So yeah, it's fun, I'm looking forward to exploring some wildflowers and doing some other fun things.
+
+143
+00:52:59,140 --> 00:54:14,260
+And I've been Yeah, a little bit of inside information. I've been also working really hard on what I think is going to be this really fun series where me and a another person that we've worked with on the show before Jane, we're going to sort of compete with each other to create a, I'm not going to give away all the details yet. But we're going to create a program the same program together based on some specifications. But there's all sorts of fun things to make it more game like where you can choose maybe different paths and different features and different ways of doing things. You can choose to add tests or not add tests you can. And essentially, we're gonna play this game against each other to see who can create the best react version of this program. And score the most points and we have all sorts of fun things like you can throw, you know, you can attack the other player and they can defend or they can, you know, it'll be fun. 
+
+144
+00:54:14,260 --> 00:54:35,830
+I am really looking forward to it. I don't feel like I super explained it all that well to make it all that enticing. But I could tell you, I think it's gonna be a lot of fun. And we've been working really hard on that. So it's gonna take a little bit to make and produce. But yeah, definitely stick around, subscribe, whatever, you know, you want to call if you're interested in that.
+
+145
+00:54:36,610 --> 00:54:47,920
+But yeah, I just want to say thank you once again for joining us and I hope you have a fantastic rest of your day. See ya. Bye
+

@@ -7,6 +7,11 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-12552230': {
+    slug: 'mechanics-of-react-a-beginners-intro-to-react',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '087-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/GXE8XFBro0s'
+  },
   'Buzzsprout-12490659': {
     slug: 'profitable-open-source-with-react-admin-founder-francois-zaninotto',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '086-mixed.srt')).toString()),
