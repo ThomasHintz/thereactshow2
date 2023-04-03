@@ -212,7 +212,7 @@ Object.entries(episodeExtra).forEach(([id, { slug }]) => {
   slugToEpisode[slug] = id
 })
 
-export async function getEpisodesReal() {
+export async function getEpisodes() {
   const feedRes = await fetch('https://feeds.buzzsprout.com/1764837.rss', { next: { revalidate: 60 * 10 } });
   const feedString = await feedRes.text()
   /* const feedString = fs.readFileSync('./feed.rss').toString() */
@@ -280,9 +280,9 @@ export async function getEpisodesReal() {
        : feedEntries;
 }
 
-export async function getEpisodes() {
+export async function getEpisodesLocal() {
   const dbEpisodes = await db.all('select * from episodes order by number desc;');
-  return dbEpisodes.map(({ title, pub_date, summary: description, content, slug, duration, filename, number, episode_type, buzzsprout_id, youtube_url, transcript_filename }) => {
+  return dbEpisodes.map(({ title, pub_date, summary: description, content, slug, duration, filename, number, episode_type, buzzsprout_id, buzzsprout_url, youtube_url, transcript_filename }) => {
     const filepath = path.join(process.cwd(), 'public', 'files', 'episodes', filename);
     return {
       num: number,
@@ -291,14 +291,13 @@ export async function getEpisodes() {
       description,
       content,
       published: pub_date,
-      chapters: [],
+      chapters: [`https://feeds.buzzsprout.com/1764837/${buzzsprout_id}/chapters.json`],
       youtube: youtube_url,
       slug,
-      transcript: transcript_filename,
+      transcript: transcript_filename ? srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', transcript_filename)).toString()) : undefined,
       audio: {
-        src: '',
-        type: '',
-        length: '',
+        src: buzzsprout_url,
+        type: 'audio/mpeg'
       },
     };
   });

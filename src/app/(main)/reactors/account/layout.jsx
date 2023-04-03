@@ -33,6 +33,7 @@ export default async function Layout({ children }) {
           </form>
         </ul>
       </nav>
+      {children}
     </>
   );
 };

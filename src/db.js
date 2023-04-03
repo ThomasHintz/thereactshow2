@@ -63,6 +63,16 @@ uuid text not null,
 started_date text,
 foreign key (user_id) references users (id)
 )`]
+  },
+  {
+    key: 7,
+    name: 'set initial last_build_date',
+    sql: [`insert into feed (last_build_date) values ('Fri, 07 Apr 2000 14:00:00 GMT')`]
+  },
+  {
+    key: 8,
+    name: 'add audio url column',
+    sql: [`alter table episodes add column audio_url text;`]
   }
 ];
 
