@@ -117,7 +117,7 @@ const createMigrationTable = `create table migrations (
           run boolean not null
 )`;
 
-let db = new sqlite3.Database('./db.sqlite3', sqlite3.OPEN_READWRITE, async (err) => {
+let db = new sqlite3.Database('/var/www/db.sqlite3', sqlite3.OPEN_READWRITE, async (err) => {
   if (err && err.code == "SQLITE_CANTOPEN") {
     db = new sqlite3.Database('./db.sqlite3', async (err) => {
       if (err) {
