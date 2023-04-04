@@ -84,13 +84,14 @@ export const EpisodeShow = (props) => (
       <TextField source="title" />
       <NumberField source="season" />
       <NumberField source="episode" />
-      <NumberField source="duration" />
       <TextField source="slug" />
       <TextField source="episode_type" />
       <TextField source="buzzsprout_id" />
       <UrlField source="buzzsprout_url" />
       <UrlField source="youtube_url" />
       <UrlField source="audio_url" />
+      <NumberField source="duration" label="Duration (seconds)" />
+      <NumberField source="audio_size" label="Size (bytes)" />
       <FileField source="transcript_filename" title="transcript_filename" />
       <DateField source="pub_date" showTime={true} />
       <RichTextField source="content" />
@@ -100,26 +101,44 @@ export const EpisodeShow = (props) => (
 );
 
 export const EpisodeEdit = () => {
-  return (
-    <Edit>
-      <SimpleForm>
-        <TextInput source="number" />
-        <TextInput source="title" />
-        <NumberInput source="season" />
-        <NumberInput source="episode" />
-        <TextInput source="slug" />
-        <TextInput source="episode_type" />
-        <TextInput source="buzzsprout_id" />
-        <TextInput source="buzzsprout_url" />
-        <TextInput source="youtube_url" />
-        <TextInput source="audio_url" />
-        <TextInput source="transcript_filename" />
-        <DateTimeInput source="pub_date" />
-        <RichTextInput source="content" />
-        <TextInput source="summary" />
-      </SimpleForm>
-    </Edit>
+  const { data: transcriptFiles } = useGetList(
+    'transcript_files'
   );
+  if (transcriptFiles) {
+    return (
+      <Edit>
+        <SimpleForm>
+          <TextInput source="number" />
+          <TextInput source="title" fullWidth />
+          <NumberInput source="season" />
+          <NumberInput source="episode" />
+          <TextInput source="slug" fullWidth />
+          <RadioButtonGroupInput
+            source="episode_type"
+            choices={[
+              { id: 'full', name: 'full' },
+              { id: 'bonus', name: 'bonus' }
+            ]}
+          />
+          <TextInput source="buzzsprout_id" />
+          <TextInput source="buzzsprout_url" fullWidth />
+          <TextInput source="youtube_url" fullWidth />
+          <TextInput source="audio_url" fullWidth />
+          <NumberInput source="duration" label="Duration (seconds)" />
+          <NumberInput source="audio_size" label="Size (bytes)" />
+          <SelectInput
+            source="transcript_filename"
+            choices={transcriptFiles.map(x => { return { id: x.filename, name: x.filename } })}
+          />
+          <DateTimeInput source="pub_date" />
+          <RichTextInput source="content" />
+          <TextInput source="summary" fullWidth />
+        </SimpleForm>
+      </Edit>
+    );
+  } else {
+    return null;
+  }
 };
 
 function listElement(arr, proc) {
@@ -171,6 +190,8 @@ export const EpisodeCreate = () => {
           <TextInput source="buzzsprout_url" fullWidth />
           <TextInput source="youtube_url" fullWidth />
           <TextInput source="audio_url" fullWidth />
+          <NumberInput source="audio_size" label="Size (bytes)" />
+          <NumberInput source="duration" label="Duration (seconds)" />
           <SelectInput
             source="transcript_filename"
             choices={transcriptFiles.map(x => { return { id: x.filename, name: x.filename } })}

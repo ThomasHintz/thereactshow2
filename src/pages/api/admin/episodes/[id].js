@@ -2,7 +2,7 @@ import db from '@/db';
 
 const COLS = {};
 const COLS_PREFIXED = {};
-const COLS_LIST = ['id', 'number', 'content', 'summary', 'slug', 'season', 'episode', 'duration', 'filename', 'title', 'episode_type', 'buzzsprout_id', 'buzzsprout_url', 'pub_date', 'youtube_url', 'transcript_filename', 'audio_url'];
+const COLS_LIST = ['id', 'number', 'content', 'summary', 'slug', 'season', 'episode', 'duration', 'filename', 'title', 'episode_type', 'buzzsprout_id', 'buzzsprout_url', 'pub_date', 'youtube_url', 'transcript_filename', 'audio_url', 'audio_size'];
 COLS_LIST.forEach((k) => COLS[k] = k)
 COLS_LIST.forEach((k) => COLS_PREFIXED[k] = `$${k}`)
 

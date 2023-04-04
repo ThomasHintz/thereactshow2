@@ -11,7 +11,7 @@ const COLUMN_MAP = {
   'episode': 'episode'
 };
 
-const COLS_LIST = ['number', 'content', 'summary', 'slug', 'season', 'episode', 'duration', 'filename', 'title', 'episode_type', 'buzzsprout_id', 'buzzsprout_url', 'pub_date', 'youtube_url', 'transcript_filename', 'audio_url'];
+const COLS_LIST = ['number', 'content', 'summary', 'slug', 'season', 'episode', 'duration', 'filename', 'title', 'episode_type', 'buzzsprout_id', 'buzzsprout_url', 'pub_date', 'youtube_url', 'transcript_filename', 'audio_url', 'audio_size'];
 
 export default async function handler(req, res) {
   const sessionId = req.cookies?.session;

@@ -50,7 +50,7 @@ async function syncEpisodes() {
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    await syncEpisodes();
+    // await syncEpisodes();
     const { uuid: uuidRaw } = req.query;
     const uuid = uuidRaw.split('.rss')[0];
     const subExists = await db.get('select id from subscriptions where uuid=?', uuid);

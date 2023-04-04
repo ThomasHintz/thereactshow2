@@ -73,6 +73,11 @@ foreign key (user_id) references users (id)
     key: 8,
     name: 'add audio url column',
     sql: [`alter table episodes add column audio_url text;`]
+  },
+  {
+    key: 9,
+    name: 'add audio size column',
+    sql: [`alter table episodes add column audio_size integer;`]
   }
 ];
 
@@ -117,9 +122,9 @@ const createMigrationTable = `create table migrations (
           run boolean not null
 )`;
 
-let db = new sqlite3.Database('/db/db.sqlite3', sqlite3.OPEN_READWRITE, async (err) => {
+let db = new sqlite3.Database(`${process.env.DB_PATH}db.sqlite3`, sqlite3.OPEN_READWRITE, async (err) => {
   if (err && err.code == "SQLITE_CANTOPEN") {
-    db = new sqlite3.Database('./db.sqlite3', async (err) => {
+    db = new sqlite3.Database(`${process.env.DB_PATH}db.sqlite3`, async (err) => {
       if (err) {
         console.log("Getting error " + err);
       }
