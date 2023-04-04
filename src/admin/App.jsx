@@ -144,7 +144,7 @@ export const EpisodeCreate = () => {
   const { data: transcriptFiles } = useGetList(
     'transcript_files'
   );
-  if (lastNumber && lastEpisode && audioFiles && transcriptFiles) {
+  if (lastNumber && lastEpisode && transcriptFiles) {
     return (
       <Create>
         <SimpleForm>
@@ -192,7 +192,6 @@ const App = () => (
     <Resource name="users" list={UserList} />
     <Resource name="subscriptions" list={SubscriptionList} />
     <Resource name="episodes" list={EpisodesList} show={EpisodeShow} edit={EpisodeEdit} create={EpisodeCreate} />
-    <Resource name="audio_files" list={AudioFilesList} />
     <Resource name="transcript_files" list={AudioFilesList} />
   </Admin>
 );
