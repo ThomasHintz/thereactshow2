@@ -31,6 +31,7 @@ async function syncEpisodes() {
                    slug,
                    1,
                    num,
+                   '',
                    title,
                    'full',
                    id,
