@@ -32,7 +32,7 @@ function Transcript({ children }) {
     <>
       <hr className="my-12 border-gray-200" />
       <h2 className="mt-2 text-3xl font-bold text-slate-900" id="transcript">Transcript</h2>
-      <div className="space-y-4">
+      <div className="space-y-4" data-cy="transcript">
         {children}
       </div>
     </>
@@ -119,12 +119,13 @@ export default async function Page({ params }) {
             <div className="flex items-center gap-6">
               <PlayButtonClient audioPlayerData={audioPlayerData} size="large" />
               <div className="flex flex-col">
-                <h1 className="mt-2 text-4xl font-bold text-slate-900">
+                <h1 className="mt-2 text-4xl font-bold text-slate-900" data-cy="title">
                   [{episode.num}] {episode.title}
                 </h1>
                 <FormattedDate
                   date={date}
                   className="order-first font-mono text-sm leading-7 text-slate-500"
+                  data-cy="date"
                 />
               </div>
             </div>
@@ -142,6 +143,7 @@ export default async function Page({ params }) {
           <div
             className="prose prose-slate mt-14 [&>h2]:mt-12 [&>h2]:flex [&>h2]:items-center [&>h2]:font-mono [&>h2]:text-sm [&>h2]:font-medium [&>h2]:leading-7 [&>h2]:text-slate-900 [&>h2]:before:mr-3 [&>h2]:before:h-3 [&>h2]:before:w-1.5 [&>h2]:before:rounded-r-full [&>h2]:before:bg-cyan-200 [&>ul]:mt-6 [&>ul]:list-['\2013\20'] [&>ul]:pl-5 [&>h2:nth-of-type(3n+2)]:before:bg-indigo-200 [&>h2:nth-of-type(3n)]:before:bg-violet-200"
             dangerouslySetInnerHTML={{ __html: episode.content || 'CONTENT' }}
+            data-cy="description"
           />
           {episode?.transcript && <Suspense fallback={<TranscriptNoPlayer episode={episode} />}>
             <TranscriptWithPlayer episode={episode} />

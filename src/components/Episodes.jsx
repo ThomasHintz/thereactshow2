@@ -14,20 +14,23 @@ function EpisodeEntry({ episode }) {
     <article
       aria-labelledby={`episode-${episode.id}-title`}
       className="py-10 sm:py-12"
+      data-cy="episode-entry"
     >
       <Container>
         <div className="flex flex-col items-start">
           <h2
             id={`episode-${episode.id}-title`}
             className="mt-2 text-lg font-bold text-slate-900"
+            data-cy="episode-title"
           >
-            <Link href={`/podcast/${episode?.slug}`}>[{episode.num}] {episode.title}</Link>
+            <Link data-cy="show-notes-link" href={`/podcast/${episode?.slug}`}>[{episode.num}] {episode.title}</Link>
           </h2>
           <FormattedDate
             date={date}
             className="order-first font-mono text-sm leading-7 text-slate-500"
+            data-cy="episode-date"
           />
-          <p className="mt-1 text-base leading-7 text-slate-700">
+          <p className="mt-1 text-base leading-7 text-slate-700" data-cy="episode-description">
             {episode.description}
           </p>
           <div className="mt-4 flex items-center gap-4">
@@ -62,6 +65,7 @@ function EpisodeEntry({ episode }) {
                    href={`/podcast/${episode.slug}#transcript`}
                    className="flex items-center text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
                    aria-label={`Transcript for episode ${episode.title}`}
+                   data-cy="transcript-link"
                  >
                    Transcript
                  </Link>

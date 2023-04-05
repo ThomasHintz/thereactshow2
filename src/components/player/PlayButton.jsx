@@ -34,6 +34,7 @@ export function PlayButton({ player, size = 'large' }) {
       )}
       onClick={player.toggle}
       aria-label={player.playing ? 'Pause' : 'Play'}
+      data-cy="audio-player-button"
     >
       <div className="absolute -inset-3 md:hidden" />
       {player.playing ? (
