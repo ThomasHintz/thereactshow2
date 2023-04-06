@@ -1,0 +1,336 @@
+1
+00:00:02,790 --> 00:00:06,360
+Thomas Hintz: Welcome to the React Show!
+
+2
+00:00:07,230 --> 00:00:16,020
+Brought to you from occupied Miwok territory and some fire, episode 88.
+
+3
+00:00:17,820 --> 00:00:39,120
+AI, artificial intelligence, is it the absolute best thing since sliced bread? Is it the solution to all of your programming woes? Is it the technological progress that we have been waiting for for decades?
+
+4
+00:00:40,500 --> 00:01:48,720
+Thank you so much for joining me. i Okay, so the big news, of course, for a while now and technology has been AI. And like, many people, I've been trying it out and learning it. And I've actually been working on a podcast episode, where we take a look at how AI works. And the biggest thing is, you know, how can we actually effectively apply it to what we do, for example, I've been working on like I said, an episode on AI, but specifically, how do we use it within react programming to build better programs, build programs faster, be more efficient, whatever we can do with them, you know, trying to figure that out, and then, you know, coming back, and I want to be able to come back to all of you all and be like, Yeah, this is, given the current state of things, this is the best method for utilizing it. And this is what you can expect, and you know, all that kind of stuff, right?
+
+5
+00:01:49,830 --> 00:02:08,850
+So I've been working on that, and it's not quite finished yet, but it's gonna be really good. So if you do want that type of thing, definitely subscribe and, you know, leave a comment or whatever it takes these days, or you could be like me, and I don't subscribe too much.
+
+6
+00:02:08,850 --> 00:02:25,440
+But I just sort of remember the things I like, and I check them every few days. I don't care, that's fine with me. I know, metrics and everything are all about subscriptions. But I don't know, whatever, I don't care, however you want. If you're interested in that, you know, come back check check later, right.
+
+7
+00:02:26,160 --> 00:03:24,060
+But the, during during this process of building this episode, I keep running into things that are, I would say to call them concerning, I guess would be an understatement. And this is not necessarily this is this is not an episode today on like, oh, the ethics of AI specifically or anything like that. But there's a lot of rhetoric and thinking around AI that is common to new technologies in general. And I think in a lot of very harmful ways. So what I feel like I need to discuss before I can bring you the episode on how to effectively use this new technology is the technology, I guess not the technology itself.
+
+8
+00:03:24,060 --> 00:04:02,370
+But technology in general. And what happens when there's new technology and the effects of that the word that people will often use with AI or any new technology that comes out is progress or advancement. The narrative that we hear is, you know, oh AI is going to revolutionize such and such industry, it's going to make it so you no longer have to do XYZ manual process AI will take care of it for you. This is progress.
+
+9
+00:04:02,670 --> 00:04:44,490
+And you know, people are definitely like, oh yeah, this is going to mean a lot of people lose their jobs. And, you know, people are going to have to learn new skills but like, this is the way things go this is we're marching forward, this is progress. Let's you know look at Star Trek or other sci fi things where the AI just takes care of everything for us, right and, and we see that and we're like, oh, yeah, okay, that's that's the next level that's where we're trying to go that would be progress once we achieve that, like it's going to be painful along the way because you know, people's jobs might be replaced like we don't need them anymore because AI takes care of it but it's worth it right it's worth it. 
+
+10
+00:04:44,490 --> 00:05:04,710
+We're making progress because the end result is these amazing AI systems that free us humans up to do whatever you know we really want to do, we can do our and we can spend our time doing what we Want to do because AI is going to take care of everything for us.
+
+11
+00:05:05,010 --> 00:05:22,440
+And this is not even an argument specific to AI, this is the argument you will often hear for any new technological advancement, you know, talk about computers, cars, whatever it is, this argument always comes up, oh, we have cars.
+
+12
+00:05:22,440 --> 00:05:39,870
+Now you don't have to spend three days, you know, taking a horse and buggy or a train or whatever to someplace, you don't exactly want to go and then hop on another train. And, you know, you can have your own car and just drive straight there. And this is progress, we are making progress, we have improved the world.
+
+13
+00:05:42,060 --> 00:06:08,580
+That's it's just, it's just, it's not. It's just not progress. It is something is it's not it's even advancement. I posit that technological changes, they are changes, they are not inherently progress.
+
+14
+00:06:08,610 --> 00:06:41,040
+And, in fact, it's a lot worse than that, because I know that most people that listen to this podcast live in western so called Western economies, Western societies that are all hyper capitalist. And what you have with new technologies mixed with capitalism is the further accumulation of capital, more profits.
+
+15
+00:06:42,240 --> 00:07:37,140
+A great way that I think to think of it as technology is, can be a lever, right, and this is not I didn't come up with this, this is very common, right. And you can think of technology as a lever. You know, the, that used to be maybe with agriculture, it took 10 people to farm one acre, doing everything by hand. And then we invent some new tools, some tractors, whatever it might be, and now that not one person can farm that acre. And so they're leveraging the technology, leveraging that technology, it's a lever, right? And what happens if you take a lever and apply it to a machine whose sole goal is to accumulate capital and profits and power for the people in control of that machine?
+
+16
+00:07:38,580 --> 00:08:13,290
+This is what we've seen with technology, you know, recent technology like computers, the internet, what this does is this concentrates capital, this concentrates wealth, this concentrates power, the people running Google and Microsoft, the leaders, you know, essentially of this new wave of AI. And the executives and the investors in these companies, they're the ones that are going to get more profitable with AI.
+
+17
+00:08:14,880 --> 00:09:05,430
+As a React engineer, are you going to get more profitable? You know, are you going to make more money? I suspect not. And, you know, maybe, maybe you would, maybe what's really going to happen is AI is going to improve program programmer productivity so much, that we don't need so many programmers, in which case, if you happen to be able to hold on to a job as a programmer, maybe we'll make a little bit more money, because we're concentrating that capital, the elite programmers that exists that can that can wield this AI power, can demand a higher premium and make a little bit more money, it's not going to be a lot because you're not in control of the companies, you're not in control of the capital.
+
+18
+00:09:05,670 --> 00:09:49,530
+So it's not impossible that some people, some programmers are going to make more because of AI. But the reality is the people that are really going to make more money is anyone that can take the new technology, and leverage it to get more capital and monopolize that capital. And so you what you really have is, anytime you have new technology that comes out, you have in a capitalist system, like most of us live in, listen to this, maybe maybe all of us at this point, you know, capitalism is sort of taking over the globe right? Or at least its effects.
+
+19
+00:09:50,890 --> 00:10:21,520
+And so the way that I see it is you you have a new technology, whether it's AI or anything else, company Use with capital with power, they're going to see that new technology and go, Hey, if we can monopolize that new technology, this new lever that's longer than the other levers we've had before, we are going to be ridiculously profitable. That's, that's how the system works.
+
+20
+00:10:22,660 --> 00:10:54,160
+If, if you are, say open AI, and you create a chat, GPT and GPT, one, and two, and three, and four, and you're just lightyears ahead of everyone else, and everyone uses your AI and AI increases the amount that each person can do by some massive factor. So every business and every individual ends up using your product, you can charge whatever the hell you want for that product, right? Like, that's, that's the reality. You've monopolized it.
+
+21
+00:10:54,310 --> 00:11:40,900
+And as the owners of open AI, and open AI, the fact that open in is ridiculous at this point, it's just another company, it's not anything special, some open thing, right? It's just a company, with investors, including one of the biggest ones being Microsoft, they are seeing this as, hey, let's control this lever, if we monopolize this lever, and make it so nobody can compete with us, push everyone else out of the market or buy them. That's the way it goes with tech, right? We can charge whatever we want. And not only that, but we can essentially control the world. Not only do we actually control the software, but even bigger, we control the capital behind that software behind that technology.
+
+22
+00:11:40,960 --> 00:12:14,710
+So I've jumped ahead and said some things without backing them up. But we are going to cover it. So why do I say that AI or pretty much any technology is not inherently progress is not advancement. And if you listen to this podcast, I'm sure you know, I love to dig into the root of things, the mechanics of things, start with the foundation, and we work backwards from there.
+
+23
+00:12:14,710 --> 00:12:50,500
+So when we talk about the design of a React program, I look at it as okay, what is the ideal? Like if we were to build the perfect react program? Let's imagine that, you know, we're not restricting ourselves with a budget or, or any other constraints, we just build the best react program. Okay, we know what that looks like, like, once we've defined that we can work backwards from be like, Okay, how do we get to there? What are the most efficient ways to get there? What's the best way to get there? I do the same with humans with society too.
+
+24
+00:12:50,920 --> 00:13:45,970
+So to me, I am like, Okay, let's look at humans. What? What do humans want? What is the ideal situation for humans? And I'm not going to claim that I have all the answers here. Certainly don't. But I do know some things for sure. And I think most people would agree on these things. So when I look at humans, and what I'm looking at is what what makes us as humans, happy, what makes us satisfied, what makes us fulfilled? What makes us feel like life is worth living, you know, these really, really deep existential questions that you could probably research for an entire lifetime and not fully solve it right. 
+
+25
+00:13:47,920 --> 00:14:29,620
+Even with that being said, there are I believe, things that we can generally agree on. And so the place that I usually start with is human interactions. Deep real, connecting friendships. I, you know, when you talk to people, when I think about myself, that is one of the most fulfilling, satisfying things that makes me and anyone else happy like that, um, the amazing friendships that you have the experiences you can have with other people. That is definitely one of the most important things when it comes to answering these, you know, life questions, right?
+
+26
+00:14:30,460 --> 00:15:35,710
+Another one would be autonomy, individual or collective autonomy. It's the idea that nobody wants somebody in power over them, telling them what to do. are, you know, this is pretty counter to how many of us exist in society, but this is also like, really well known and really common like, you complain about your boss you complain about the guy ever meant to complain about basically anyone that is put into a position over have authority over you, making you do things you don't want to do or you don't think are right, or you don't think is the best way to do things. So another, you know, aspect to what I look at, as you know, the ideal for humans is a society in which all of us have our own individual autonomy and power, and nobody has authority or power over us.
+
+27
+00:15:36,850 --> 00:16:16,510
+This doesn't necessarily mean like a society where we all just run around doing whatever we want. This is more like, in the ideal society, all of us feel empowered to work within society and have influence over society and most importantly, influence over our own lives, where we can make our own choices about what we want to do with our lives. This is also I believe, central to what makes people feel happy and fulfilled and satisfied, and all the other things that we want as humans.
+
+28
+00:16:17,410 --> 00:16:55,420
+So when we're talking through the rest of the points I want to talk through in regards to technology and AI and progress. The place I'm coming from, is imagining this ideal world in which humans, which me and you and everyone else are feeling these good things were like, Yeah, my life is great. I love living my life. I love waking up every morning, you know, that's not always perfect. Sometimes I have conflict with, you know, my best friend, and we have to resolve it, whatever. It's not perfect, but like, life just feels full and worth living. 
+
+29
+00:16:56,290 --> 00:18:09,760
+And so I am, I don't know, I'm not claiming I know, exactly. You know how to achieve that, or whatever. But I think we can all look at this and agree that there are some things we can know, especially as this in this whole idea interacts with technology, and AI. So backing up some more. I think the other part of what we need to take a look at is what what is technology? What is progress? What is advancement, and we've talked about it a bit in terms of being a lever. But I want to really dig into the idea of progress and advancement. And for the first example, I want to go back in time to before the washing machine was invented. So before then, people washed their clothes, by hand, it was a very manual process, often primarily done by women--arduous, like, you know, it took a long time, right?
+
+30
+00:18:10,270 --> 00:18:54,250
+I don't know if you've ever actually tried to wash clothes by hand and do it effectively. I have tried it quite a few times. And it's not, you know, it's a lot easier to throw stuff in a washing machine, right. So let's say we go back in time, and you are somebody that's had to manually wash clothes your whole life, and then the washing machine is invented. And people are like, wow, this is amazing. This, look at the progress we're making. You no longer have to spend hours cleaning, and and scrubbing this, the clothes by hand. You know, you can just throw it in this machine, and it will do it for you.
+
+31
+00:18:54,670 --> 00:19:29,500
+And so everyone's like proclaiming the progress that we've made, we are saving people so many hours every year, they no longer have to wash their clothes, they no longer have to do this manual labor. It's so much better. You can sit and read a newspaper. You know, while you know before you would have had to spend those hours washing clothes. Now you can just sit and read a newspaper right? You can relax you can do your hobbies, you can spend your time doing more fulfilling things. Right. We've made progress, right.
+
+32
+00:19:29,000 --> 00:20:11,330
+This is this is the whole point we have freed up time for people we've we've freed them from manual labor, we've made progress. Well, let's go back in time and look at that. What did that really happen? When we invented washing machines? Does that mean that you know people used to work 60 hours a week and then they got a washing machine and now they only have to work 50 hours a week is that what happened? Everybody reduced the amount had to work by 10 hours a week. Does that really happen? Did every technological advancement that we ever had just keep reducing the amount of work that we actually have to do?
+
+33
+00:20:12,080 --> 00:20:51,050
+Maybe for a very small portion of people, maybe you could say that's true, but we need to look at us as a society as a whole. Absolutely not like, think of all the like, in my lifetime, which is not, you know, there's a lot of people have lived a lot longer than me. And so even in my not super long lifetime, there's been a lot of technological advancements that, you know, people call them advancements, right, like, smartphones, cell phones, when I was a kid, we used landlines, you know, like, we typed in numbers and call our friends and, you know, it was attached to the wall, right.
+
+34
+00:20:51,050 --> 00:21:55,790
+And now, we have computers in our pockets, right like that. That should have meant, oh, you know, as a worker, this would save me a lot of time, I have a calculator in my pocket, right. So I used to, you know, like, did my dad who was working out that that time, you know, he did a 40 hour workweek did the advancement of a smartphone mean? Oh, now he only has to do a 30 hour workweek. Or maybe he still has to do a 40 hour workweek. But did he get a massive bump in his pay? Did his employer say, wow, look at this, we have better computers, with phones in our pocket, you can travel around and do your meetings, on your way to visiting a supplier. This saves us time, this saves us money. And we're going to give that back to you. So did my dad then make twice what he used to make? No, in fact, it that's not the effect we had at all getting, getting a washing machine getting computers getting smartphones, it changed the society that we live in.
+
+35
+00:21:55,910 --> 00:22:23,390
+But it didn't, it didn't mean that oh, now I only have to work. Like if you look at all the technological achievements we've had in the last even 50 years, if the whole idea was that this is progress, that this frees us up to work on what we really want to work on and to do our hobbies to hang out with our friends to do the things that make us feel fulfilled. Did did these technological improvements actually do that?
+
+36
+00:22:23,900 --> 00:23:17,690
+No, absolutely not. In fact, it's probably done the opposite for a lot of people, a lot of people, you know, you're working multiple minimum wage jobs, you don't even have time to look at chat GPT or AIs. I mean, you barely have time to eat and sleep. Right? I just, I think when you look at this, this reality, I don't think you can look at it and say this is inherently progress. This is inherently advancement. Because, again, going back to what actually makes us happy and fulfilled as humans. It isn't like improving that part of the equation. It's not it's just not. And I think it makes sense.
+
+37
+00:23:17,750 --> 00:23:45,890
+So I think what we what we can look at next is like, what is what is technological improvements? What is this new AI actually going to do? What effect is it actually going to have on society to take a look at the effect that technology is going, you know, change, technological change is going to have on society, we have to talk more about the system in which we live in and that is capitalism.
+
+38
+00:23:46,160 --> 00:24:14,600
+Capitalism dictates basically everything about our lives. So we have to start there. Like when we're breaking things down and trying to get to the root of things, we just have to do it. And so what what is, you know, capitalism, what is it? Well, and how, you know, in a sense, that is related to what we're talking about? Well, it is the accumulation of capital, it's in the name.
+
+39
+00:24:15,830 --> 00:24:56,570
+The if you control capital, you control the means of production, you, you control profits, and you know, by control that might mean you're an investor in mutual fund that mean, might mean you're the boss that might mean many different things. But if you are the one that has control over that capital and where that capital gets allocated, whether that capital is money, or labor, you know, people that work for you, or whatever it happens to be if you are in control of that capital, what is your goal in a capitalist society?
+
+40
+00:24:56,570 --> 00:25:40,310
+How do you like what do you what are you incentivized to do? Do well, I'll give you an example. I look at the advancement of advancement, as people might say of AI, right? So I'm like, Okay, I'm a programmer. I love programming. I really do. And I, I look at this, and I'm like, okay, so what if I just don't learn how to use API's? What if I'm like, Hey, I love programming as it is, it's great, I enjoy it, why I don't, you don't feel any particular need to learn this API, right? Let's say I saw, I don't learn this AI.
+
+41
+00:25:40,340 --> 00:26:27,800
+But let's say the AI technology improves programmer productivity by some factor, one, like one to 10, whatever the factor is, I guess, if it improves it by a factor of one that's not really much different. But let's say it, like has some significant improvement on our productivity as a programmer, and I don't learn this new technology. And a few years down the road, I'm like, oh, yeah, I love doing the podcast and all but you know, I'd love to get a job, you know, writing code for someone, or more likely, oh, hey, I ran out of money, I need some money, I'm gonna go get a job. And so I started applying and, and people look at me, and they're like, Wow, you are like a really slow ancient programmer, like, we don't want you.
+
+42
+00:26:29,030 --> 00:26:52,370
+And that's because I didn't learn this new technology. And so I am no longer competitive with other programmers. I mean, I'm not know if this is what's going to happen with AI. But it could, right if, if AI makes programmers way more productive, and you don't use that new technology, you're kind of getting left behind, you might not be able to get a job as a programmer anymore.
+
+43
+00:26:53,270 --> 00:27:35,330
+So I think you can look at this though, and apply it in general to businesses and capital. So running a business, you're seeing AI in your life, like maybe you're not Microsoft or Google, you're not the ones creating the AI. But you see it and you're like, oh, okay, if my competitor, or a new competitor that, you know, springs up because of the invention of AI, uses it and and allows them to do what I'm doing for cheaper than they can sell their product for cheaper their service for cheaper, and I will no longer be competitive, and I will go out of business, I will no longer exist as a business.
+
+44
+00:27:36,320 --> 00:28:08,390
+This is the reality, this is how capitalism works. So as a business, what you have to do, if you want to, like continue to exist as a business, you either have to stamp out all the competition, make it so nobody can use this new technology, that's an option. If you have a monopoly and you're like, oh, no, I don't feel like adopting this new technology, I'm just going to pass laws that make it illegal for people to know I'm going to lobby people make it impossible to use this new technology, or I'm going to buy up anyone that tries to use it.
+
+45
+00:28:08,420 --> 00:28:39,920
+I mean, there's a lot of different ways you could go about not using the new technology if you're in control of all the capital. But let's say you're not, let's say you have a few competitors, you have no other option other than to adopt to this new technology. It's just if you don't your business is gonna go out of business. And if you want to remain in business and keep getting a paycheck and keep eating food, what do you do you have to play this game, this is the system this is how the system works.
+
+46
+00:28:40,550 --> 00:29:17,690
+So we can take this now and go back in and start analyzing our actual the current situation with AI. So we have we have on the one side we have humans and and what us as humans need what we want, what makes us happy and satisfied and fulfilled. Right? And we can all I think at this point agree. Just a thing. A technology doesn't long term make anyone happy. I love programming, right?
+
+47
+00:29:17,870 --> 00:30:12,020
+I absolutely love programming and, but like if it was a vacuum, and I was the only person that existed and I was the only person that existed in the world. Like and you gave me a computer and you're like, hey, I guess you wouldn't because I'm the only person somehow I get I make a computer right and I can program things. If I'm just programming for myself that's fun for a while but like the real joy in building things and making things is the impact it can have on other people. I love to build programs because I love to be like oh wow look. This person enjoys using my program they They, they get some sort of benefit from it, right? That's sort of on a micro level. That's why I love it. It's it's the connection to other humans.
+
+48
+00:30:12,440 --> 00:30:53,510
+But you take away that connection and the technology, it might be interesting for a little bit because it's fun to learn new things, right? But, I mean, I don't like if it's just me in a computer on an island or whatever, for 30 years, like, I'm not gonna just program every day for myself, that's just not I don't think anybody would. So we, I think we can agree that technology, by itself, is not what makes life worth living for humans. It's just not it is not that important. And then we can look at the the capitalist system side of things. 
+
+49
+00:30:53,540 --> 00:32:01,490
+So the whole drive in capitalism is to accumulate capital, and monopolize industries, because that's the way you accumulate the most capital the most profit. Now, let's take a look at the the AI lever, the AI technology, maybe this, you know, is allows your business to do more with less capital. Maybe it's a huge lever that allows your business to do way more with less capital. And you have then companies like Microsoft, open AI, Google, whoever is making these AIs, right? They're looking at this, and they're going, Wow, if we control this technology, if we monopolize this technology, or even just get a large slice of it, we are going to be fabulously wealthy. And is there any other like, there's nothing else in capitalism, that's like, okay, yes, that's true.
+
+50
+00:32:01,520 --> 00:32:39,380
+But you need to be careful. Because if, if you do something harmful to humans, or you don't make humans lives better, or you exploit people, or you exploit the planet, or you pollute the planet, or whatever it might be, if the if there are side effects to this new technology, you're going to pay the consequences is that that's not how it works like Google, you know, if they're creating a new AI, there, the way that it works is if they succeed, and people love using their product and or at least feel like they have to use their product.
+
+51
+00:32:39,380 --> 00:33:19,130
+Maybe they don't love using it, but they're like after use it to remain competitive, and they pay Google money and Google makes money from it. Google doesn't care what the side effects are, if there are major side effects, oh, no, a bank collapses, what's going to happen? The government's going to bail them out, oh, we're destroying the planet because we use so much energy. It causes climate change. Oh, wait, you know, Google's not responsible, or the oil companies aren't responsible for all the nasty side effects they've caused? No. us as individuals, and as the government? Oh, we're the ones that ended up holding that bill. Right.
+
+52
+00:33:19,550 --> 00:34:20,630
+So just the nature of the systems we are in? What does it do? It encourages the people with capital, the businesses or people that want capital startups to focus solely on capturing market share. Without worrying about the side effects, like all that matters is capturing market share, you will look at a great example be open AI lets us use chat GPT for free, even though it's they've said it you know, it's very expensive to create their models and all of the research they did and run all the software, the services, they let us use it for free. Why? So they can capture market share. That's it maybe so they can also do more research or whatever you research on us were the guinea pigs, right. Yeah, there's other things too, but their ultimate goal is captured the market share. 
+
+53
+00:34:20,660 --> 00:34:57,470
+They want to be the one that provides AI to everyone. And, yes, there might be people there that are like, oh, we need to do this ethically or whatever. But when push comes to shove, that is not as important as being the first to market capturing that market, capturing that capital being the monopoly over AI. That is the driving underlying force. There's no driving underlying force that's like, Okay, how do we use this technology to actually make human life better?
+
+54
+00:34:59,000 --> 00:35:31,310
+There's that's just not a part of this system. So let's go back again and take a look at things from the ideal perspective. So in what I think would be an end, I think a lot of people would agree an ideal way to introduce new technology would be to look at, like, how this new technology is actually going to make people happier and more fulfilled, more satisfied all those other things. Right. 
+
+55
+00:35:31,310 --> 00:36:15,920
+So let's say we have AI, the the way that I think, ideally, as a society we introduce it is all right, like, before, we just open it up and let everyone start using it. Like, let's take a look at the impact it could have and, you know, make decisions, oh, is the potential impact actually going to make things better? How are they what changes? Could it have? What can we do to mitigate any potential side effects? Any potential negative externalities? That would be I think what most people would say, is an ideal way to approach any new technology.
+
+56
+00:36:16,970 --> 00:36:51,950
+Because it's not necessarily like, like we established earlier, it's not inherently better. New technology does not inherently make us happier, humans make us make our lives better. So given that premise, it only makes sense that in an ideal world we look at okay, like, before we actually do this, let's do it. Right. Right. You know, let's, let's actually figure out how to do this, right. So it actually makes things better. That's the ideal scenario, right?
+
+57
+00:36:52,610 --> 00:37:21,140
+That's absolutely not how new technology plays out. That's not how AI is playing out, as we all know, or maybe you don't, if you're not paying attention, which is fine. But the way it's playing out is the land grab everyone who's like, oh, I need to get as much AI market share as I can as quickly as I can. And I'm going to say things like we care about ethics, we're going to do a little bit of work to make sure our AI doesn't say something that gets us a lot of bad press, right.
+
+58
+00:37:22,160 --> 00:38:00,470
+But there's not a, oh, let's take a step back before we release this and actually make sure it makes people's lives better. Instead, let's just go along with this narrative, that technology inherently makes our lives better. It's just progress. Its advancement, that that is profitable for us. So let's go along with that. So if you hear that, you know, if you even think that if you think, oh, technology is progress, if you equate those things, I would challenge you to take a look at where that narrative is coming from.
+
+59
+00:38:00,830 --> 00:38:53,240
+Because I suspect it's coming from the people that are going to profit from those technologies, the love that argument, regardless of whether it's true or not, because with that argument, they don't need to deal with potential negative side effects, because people will just go, they'll defend them, they'll go, Yeah, you know, there might be some negative things, but we'll figure it out. You know, it's just important to make progress. Making progress is the ultimate goal. Again, like I don't cares about whatever you call as progress, that's not progress. What matters is making our lives better as humans, like I don't, I don't give a about AI. If it doesn't make our lives better. That's, that's what it comes down to.
+
+60
+00:38:53,450 --> 00:39:38,030
+But that's not how any of any logical company is going to behave. Because that's not the system we exist in. So yes, I am exploring AI, I'm exploring this new technology. And my you know, goal in this podcast is to educate and help people learn how to effectively use technology, whether that's react, software programming, or AI is whatever that happens to be. You know, I take it on myself to come to all of you and be like, I want to give you the best possible education and information I can so that you can effectively utilize these technologies.
+
+61
+00:39:38,690 --> 00:40:52,280
+But at the same time, I don't see it as, you know, inherent progress, and I can't, you know, I feel like I can't necessarily make this episode on how to effectively use AI to be a more efficient programmer. Without just coming out and saying, I don't necessarily think that the way in which this is happening, the order in which things are happening, the speed in which things are happening, the way in which things are happening when it comes to AI and the development of AI is inherently good or inherently progress. That's just not how I feel. And so I, that needs to be said, because I think, if it's not said, it's easy to imagine that just because it makes you maybe it makes you a more efficient react programmer, it's easy to be like, Oh, this, this is making programming better. This allows us to create more programs faster, and just think in your head, oh, this is better.
+
+62
+00:40:52,820 --> 00:41:33,080
+But I'm just gonna come out right now, I'd say, maybe not. Maybe it does. Maybe it doesn't. But it's not inherent, it's not a given. It's not like just a guaranteed progress or advancement. So then you might ask, Well, why are you? Why are you making? Why would you make that educational material anyways? Well, that's the other side of the equation. You know, you're not hearing me be like, you know, talking, you know, this podcast isn't about like, oh, you know, how do we have a different society than capitalism or whatever, that's just not what this is.
+
+63
+00:41:33,470 --> 00:42:03,440
+This, to me is, we exist. Within a capitalist system, we exist within a lot of different systems. And especially as you know, people not at the top, they're not the people controlling the capital. We have to exist in these systems, we have to earn a living, we have to, like, like, you got to pay for that washing machine, right? You know, going way back.
+
+64
+00:42:04,580 --> 00:42:21,350
+How, you know, before the washing machine, you just needed I guess, some water and some soap, maybe, and a few other basic things, you didn't need energy. You didn't need to buy a new washing machine every 10 years, or whatever it might be, you didn't need to repair the washing machine.
+
+65
+00:42:21,680 --> 00:43:14,720
+But now that you have a washing machine, you're not like just using that time to go, you know, read a newspaper, no, you have to get a job. So you can earn money, so you can pay for that washing machine pay for the energy that washing machine needs. So it's just not it's not it didn't really make our lives better. And I look at this, maybe in an extreme way, but I go way back, I'm like, Did did agriculture even make our lives better? In a sense of making us happy and more fulfilled? You know, maybe before agriculture, people had more fulfilled lives, happier lives? I'm not right now saying, I know that for sure anything, I'm just saying, like, when we like, there's nothing that prevents us from imagining that maybe that's possible.
+
+66
+00:43:16,100 --> 00:44:25,190
+And, like, you know, just just being like, we shouldn't just take new technological changes, and assume they are either better now, or they will eventually make the world better, because I think what we've seen over and over and over again, is that that's just not true. Like if if technology really was our Savior, if it really was progress. Why if we've made such monumental technological improvements over the last whatever, 10,000 years, right, you go improvements, right? Like, like, why twice? Why? Why is a job still 40 hours a week, like, all these accumulated technical improvements, you would think that at this point, we should all be working like two minutes a week, and the rest of our time is our free time to live a happy, autonomous life doing what we want to do. That's not what's happened.
+
+67
+00:44:25,940 --> 00:45:02,930
+So I guess, you know, the very the main point of all this is, yes, I am going to, you know, work to bring you all the best information on how to use whatever technologies are available effectively. But that doesn't mean that these technologies are progress. That doesn't mean they're inherently good, doesn't mean they're inherently better. It just means we exist in this system. We need to Do what the system requires.
+
+68
+00:45:03,080 --> 00:45:30,320
+And if you're a programmer, that means programming. So let's do the best we can at that, right? That's, that's what, that's what this is really all about. To me, at least I want to provide people with the best resources, the best tools to do the best they can at what they need to do within society. And, you know, maybe you're just programmed for fun. And that's awesome. That's the best. 
+
+69
+00:45:30,620 --> 00:53:13,490
+And in that case, just you don't you don't even listen to the episode on how to use AI unless you're you want to, because nobody cares. Like, if you're just doing it for fun, who cares? Whether you use some new technology, who cares what programming language you use? Who cares? It doesn't matter? Do what you want to do? What makes you happy? What makes you feel fulfilled? And, you know, this touches on another huge, huge aspect of new technological changes? What if I don't want to learn how to use AI? What if I die? Or what if it's, um, you know, as people age, it gets harder to learn new things.
+
+70
+00:46:12,630 --> 00:46:56,790
+What if I'm like, I really love programming the way I already do it, and I'm just not interested in this new thing. I mean, if, if this is your job, you don't really have a choice, you potentially, like you might not have a choice. If you want to keep your job, you might have to learn how to use this new technology that is taking autonomy away, and I think, from us, and I think that makes us less happy. It's like, you know, it's like the sort of grumpy thing like, Oh, I gotta learn this, because otherwise I'm going to be left behind. And so technological change, and you hear, you know, this a big part of the topic around AI is like, which jobs are going to be replaced? 
+
+71
+00:46:56,790 --> 00:47:39,180
+Like, I don't know, to me, it's, it's absurd. It's like, Why? Why do we want that? Like, why? Why as a society, is that a thing? Why aren't we like, oh, okay, AI could replace these jobs. But the amount of money that businesses make, shouldn't change, right? So maybe, if your job gets replaced by AI, you just get free income, like, the income was going to that profits, that revenue is going to the company, regardless of whether you are doing the labor, or the AI is doing the labor.
+
+72
+00:47:39,180 --> 00:48:32,460
+So as a society, why are we not like, oh, okay, if technology replaces a job, well, then that revenue should go to the person that no longer has to do that job. Because oh, what would that do that would free up that person to, you know, do whatever they actually want to do. And if you took that approach to society, where every technological change, just freed us up to do what we wanted to do, that would potentially actually be progress. But if, if your technological change just means somebody no longer gets a paycheck, and they can no longer buy food, or they must re educate themselves? Well, that sucks. Like, like, why would we want to exist in a society where that's the way things are?
+
+73
+00:48:32,460 --> 00:49:33,030
+Anyways, we could go way down that path, but the main point is just like, again, it's not inherently progress. It does not necessarily make things better. Maybe it does, maybe it doesn't, but the systems we exist in, they're not incentivized to figure out answers to these questions before deploying the technology. They're just not, that's not the way things work. The world that we are going forward into with AI is one where we haven't answered any of these questions about its impact on society or us as humans. We're just gonna deploy it anyway. We're gonna use it anyways. It's, you know, and it's not something you can really stop either, like, the government can't come out and say, oh, you can't use AI, like, we need to pause AI before.
+
+74
+00:49:33,030 --> 00:50:03,870
+You know, we start deploying it. I mean, you could try to do that. But the reality is this technology, that we live under capitalism, so if somebody can use the technology secretly or whatever, or go to a different country that doesn't have as much control over what people do, and use this technology, they're going to accumulate more capital and more profits and it's just there's the system the capitalists have system is going to do what it's going to do. 
+
+75
+00:50:03,870 --> 00:50:52,410
+And we can't. Like, there's nothing we can do about that if we're existing within this system, that's just the way it is. So yeah, the world we're going forward into, like with all other technological change is one where change is going to happen in it's going to be painful, people are going to lose their jobs, or they're going to have to re educate themselves when maybe they don't want to. And there might be a lot of other negative side effects. But we are not going to have the opportunity to look at those first before we deploy the technology. So, yes, I'm going to make educational resources on how to use the technology.
+
+76
+00:50:52,410 --> 00:51:40,920
+But I implore you, if you're the one using the technology, think about its impact. Think about, you know, how it impacts society, how it impacts you how it impacts the people around you. And I don't know if there's much we can do about it, you know, you need to earn a paycheck, it's just the way it is. There's only so much you can do as an individual. But at least we can come at this, you know, from a perspective of, yeah, we're using this technology, but we're also acknowledging it might. It's just technology, it's not necessarily better, it might make the world worse, it might.
+
+77
+00:51:40,920 --> 00:52:03,570
+But at least we can acknowledge that that's that's where we have to start with, we have to start with acknowledging reality and acknowledging the truth. If we do that, we can move forward into making decisions on how to use that technology, what to do with that technology. But we have to start there, we have to start with what it is we're actually dealing with, and the potential effects of it.
+
+78
+00:52:03,570 --> 00:52:20,760
+Well, I I've said a lot, I have no idea if it's interesting, or I repeated myself too many times. But something I personally needed to say before we get into actually using the new AI technology.
+
+79
+00:52:20,760 --> 00:53:13,500
+But I absolutely want to hear from all of you. How do you feel about it? You know, on the one hand, I'm like, Oh, this is exciting, like working with Chat GPT. It's been really interesting. It's like, wow, this is really impressive. How does it do this? It's fun. I'm enjoying learning about it, and learning how to use it and learning what it's capable of. So that is makes me happy and fulfilled going back to all this right? That's reality, too. So yeah, I'd love to hear, you know, from from all of you out there, like, what do you think about it? Are you excited for it? Have you looked into it? What do you feel like? Or are you like, Oh, I am dreading having to learn this new thing. Or in one of the feelings I've had is, I don't know if I enjoy this as much as programming without the AI.
+
+80
+00:53:15,420 --> 00:53:57,240
+It's another one of those things where it's like, I can see how maybe it's making me more able to make programs quicker. But am I enjoying the act of programming as much as I used to? I think that's still somewhat of an open question for me. But I would love to hear from you. If you've tried it, how do you feel about it? And just how do you feel about the whole situation as a whole? You know, how do you feel about having to exist within this system that forces you to adopt new technologies, whether you want to or not? Anyways, I would really love to hear from you.
+
+81
+00:53:57,240 --> 00:54:33,210
+Definitely, you know, if you want right into the show, you can find the contact form on the website, you can leave a comment on whatever platform you listen to. I love hearing from people it it's what makes this podcast in this community what it is, you know, I guess that's the central thesis of this entire episode, right? It's about it's about people, it's about the relationships. So I would love to hear from you I will always do my best to respond in whichever way I can I even have a conversation.
+
+82
+00:54:33,210 --> 00:54:56,730
+You, the people listening are what makes this whole thing worth doing. And so yeah, I'd absolutely love to hear from you. I hear from listeners all the time and it always makes my day even if it's just a hey, I enjoy this or I didn't enjoy this or I didn't like this or I don't agree with you or I agree with you or how do I do this?
+
+83
+00:54:56,730 --> 00:55:04,080
+Whatever it is, it's fine. I just I love to have that connection and make that connection with people.
+
+84
+00:55:04,080 --> 00:55:23,400
+And yeah, like always. Thank you so, so much for joining the show today and I hope you have a good rest of your day or week or whatever it might be. And yeah, take care. Bye.
+
