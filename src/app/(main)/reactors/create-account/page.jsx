@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import Link from 'next/link'
 import Stripe from 'stripe';
-const stripe = new Stripe('sk_test_51MVz87Ke2JFOuDSNa2PVPrs3BBq9vJQwwDITC3sOB521weM4oklKtQFbJ03MNsJwsxtjHO5NScqOHC9MABREVjU900yYz3lWgL');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 import { dbRun } from '@/db';
 
 import { XCircleIcon } from '@heroicons/react/20/solid'

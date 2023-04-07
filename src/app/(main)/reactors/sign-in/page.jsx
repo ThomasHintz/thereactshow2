@@ -2,8 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import Link from 'next/link'
 import Stripe from 'stripe';
-const stripe = new Stripe('sk_test_51MVz87Ke2JFOuDSNa2PVPrs3BBq9vJQwwDITC3sOB521weM4oklKtQFbJ03MNsJwsxtjHO5NScqOHC9MABREVjU900yYz3lWgL');
-import { dbRun } from '@/db';
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 import { XCircleIcon } from '@heroicons/react/20/solid'
 
@@ -17,10 +16,6 @@ export default async function Page({ searchParams }) {
   const csi = searchParams['csi'];
   const session = csi && await stripe.checkout.sessions.retrieve(csi);
   const email = (csi && session && session.customer_details.email) || searchParams['email'];
-  const message = searchParams['message'];
-  const submitted = email || message;
-  const valid = submitted && email && message;
-  let emailSentSuccessfully = false;
   if (unexpectedError) {
     return (
       <>
@@ -43,7 +38,7 @@ export default async function Page({ searchParams }) {
                  </div>
                  <div className="ml-3">
                    <h3 className="text-sm font-medium text-red-800">There was an error with your submission</h3>
-                   <div className="mt-2 text-sm text-red-700">
+                   <div className="mt-2 text-sm text-red-700" data-cy="error-message">
                      {msg}
                    </div>
                  </div>
@@ -52,11 +47,6 @@ export default async function Page({ searchParams }) {
           )}
           <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-              <img
-                className="mx-auto h-12 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Your Company"
-              />
               <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
               <p className="mt-2 text-center text-sm text-gray-600">
                 Or{' '}

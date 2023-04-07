@@ -44,7 +44,7 @@ describe('Create Account Page', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/reactors`)
   });
 
-  it.only('should rate limit when sending multiple requests', () => {
+  it('should rate limit when sending multiple requests', () => {
     const testPassword = 'aVerySecureP@ssword123';
 
     // A helper function to submit the create account form
@@ -60,7 +60,7 @@ describe('Create Account Page', () => {
     cy.url().should('not.include', '/reactors/create-account');
     cy.visit('/reactors/create-account?csi=cs_test_a1WLk3QvOyIJRFeV21BNIhdtXx26z5rF2x6pIzYKHq32ujVSz4W4fZ0IGI');
     // Send requests up to the rate limit
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       submitForm();
 
       cy.contains('Unexpected Error');
@@ -73,7 +73,7 @@ describe('Create Account Page', () => {
     submitForm();
 
     // Check that the user is still on the create account page with a rate-limiting error message
-    cy.url().should('include', '/reactors/create-account');
+    cy.url().should('include', '/rate-limited');
     cy.contains('Too many requests.');
   });
 });

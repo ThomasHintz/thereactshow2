@@ -11,7 +11,8 @@ async function getSession() {
   if (!sessionId) {
     return false;
   }
-  const { user_id: userId } = await db.get('select user_id from sessions where session_id=?;', sessionId.value);
+  const dbRes = await db.get('select user_id from sessions where session_id=?;', sessionId.value);
+  const { user_id: userId } = dbRes ? dbRes : { user_id: false };
   if (!userId) {
     return false;
   }

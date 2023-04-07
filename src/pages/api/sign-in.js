@@ -1,10 +1,11 @@
 import Stripe from 'stripe';
-const stripe = new Stripe('sk_test_51MVz87Ke2JFOuDSNa2PVPrs3BBq9vJQwwDITC3sOB521weM4oklKtQFbJ03MNsJwsxtjHO5NScqOHC9MABREVjU900yYz3lWgL');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 import { setCookie } from 'cookies-next';
 import { v4 as uuidv4 } from 'uuid';
 
 import db from '@/db';
+import { withRateLimiter } from '@/lib/rateLimiter';
 
 import { scrypt, randomBytes, timingSafeEqual } from 'crypto';
 import { promisify } from 'util';
@@ -14,14 +15,24 @@ const scryptPromise = promisify(scrypt);
 async function verify(password, hash, salt, rounds = 64) {
   const keyBuffer = Buffer.from(hash, 'hex');
   const derivedKey = await scryptPromise(password, salt, rounds);
-  return timingSafeEqual(keyBuffer, derivedKey);
+
+  // Ensure both buffers have the same length
+  const keyBufferLength = keyBuffer.length;
+  const derivedKeyLength = derivedKey.length;
+  const maxLength = Math.max(keyBufferLength, derivedKeyLength);
+  const paddedKeyBuffer = keyBuffer.length < maxLength ?
+                                             Buffer.concat([Buffer.alloc(maxLength - keyBufferLength), keyBuffer]) : keyBuffer;
+  const paddedDerivedKey = derivedKey.length < maxLength ?
+                                               Buffer.concat([Buffer.alloc(maxLength - derivedKeyLength), derivedKey]) : derivedKey;
+
+  return timingSafeEqual(paddedKeyBuffer, paddedDerivedKey);
 }
 
 function makeMsg(email, text) {
   return `/reactors/sign-in?msg=${encodeURIComponent(text)}&email=${encodeURIComponent(email)}`
 };
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method === 'POST') {
     const { email, password, remember_me: rememberMe } = req.body;
     if (email && password) {
@@ -48,6 +59,8 @@ export default async function handler(req, res) {
       }
     }
   } else {
-    // Handle any other HTTP method
+    res.status(405).json({ error: 'Method not allowed. Only POST method is supported.' });
   }
 }
+
+export default withRateLimiter(handler, true);

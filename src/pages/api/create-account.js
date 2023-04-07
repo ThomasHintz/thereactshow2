@@ -2,6 +2,7 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 import db from '@/db';
+import { withRateLimiter } from '@/lib/rateLimiter';
 
 import { scrypt, randomBytes, timingSafeEqual, randomUUID } from 'crypto';
 import { promisify } from 'util';
@@ -44,46 +45,9 @@ const createSubscription = async (userId) => {
   await db.run('insert into subscriptions (uuid, user_id) values (?, ?);', randomUUID(), userId);
 };
 
-// Rate-limiting settings
-const rateLimitWindow = 60 * 1000 * 3; // 3 minute
-const maxRequests = 10; // Maximum number of requests within the rateLimitWindow
-const rateLimiter = new Map();
-
-const isRateLimited = (ip) => {
-  const currentTime = Date.now();
-  const record = rateLimiter.get(ip);
-
-  if (record) {
-    const [requestCount, windowStart] = record;
-
-    // If the request is within the rate limit window, update the request count
-    if (currentTime - windowStart < rateLimitWindow) {
-      if (requestCount > maxRequests) {
-        return true;
-      }
-      rateLimiter.set(ip, [requestCount + 1, windowStart]);
-    } else {
-      // If the request is outside the rate limit window, reset the request count
-      rateLimiter.set(ip, [1, currentTime]);
-    }
-  } else {
-    // If the IP is not in the rateLimiter, add it
-    rateLimiter.set(ip, [1, currentTime]);
-  }
-
-  return false;
-};
-
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method === 'POST') {
     const { email, password, passwordagain, csi } = req.body;
-
-    // Check for rate limiting
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    if (isRateLimited(ip)) {
-      res.redirect(makeMsg(csi, email, 'Too many requests. Please try again later or send a message on the contact page if you believe this is an error.'));
-      return;
-    }
 
     // Validate email, password, and csi
     if (email && password && password === passwordagain && csi) {
@@ -143,3 +107,5 @@ export default async function handler(req, res) {
     res.status(405).json({ error: 'Method not allowed. Only POST method is supported.' });
   }
 }
+
+export default withRateLimiter(handler, true);
