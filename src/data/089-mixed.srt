@@ -1,0 +1,516 @@
+1
+00:00:01,620 --> 00:00:05,190
+Thomas Hintz: Welcome to The React Show!
+
+2
+00:00:05,730 --> 00:00:16,650
+Brought to you from occupied Miwok territory by me, your host, Thomas, and a second brain, Episode 89!
+
+3
+00:00:17,550 --> 00:00:43,110
+So what actually is chat GPT? And all of the new AI tools? How do they work? In this episode, we answer those questions and learn practical tips for utilizing them while doing react programming based on my research and experience. We also do some trivia and and cover the latest react news. It's going to be a lot of fun. Come join us.
+
+4
+00:00:45,750 --> 00:01:14,280
+Thank you for joining me, it's a beautiful sunny day outside and I'm itching to go out and enjoy it. But also eager to share what I've learned about AI and programming too. And that, of course, comes first. I don't know why, of course, but that's how I'm choosing to do it. You know what I think, hey, the sun will, you know, rise another day, just like it's rising on a new segment, we have trivia.
+
+5
+00:01:15,120 --> 00:01:28,650
+So it's Trivia Time. I thought we'd have a bit of fun to start with and and see how many clues you need before you can guess the answers. All right.
+
+6
+00:01:28,680 --> 00:01:50,130
+So the first one is, in what year? Did I write my first lines of code? And what language did I write them in? I'll just start out give you a few seconds to mull it over. If you're a longtime listener of the show you you might already know the answer.
+
+7
+00:01:50,130 --> 00:02:15,210
+But if not, we'll start with one clue. And that is one the year that I wrote my first lines of code was one year before Firefox, which was originally named Phoenix Phoenix was the name of it when I first started using it was created. So I think this was like three years before Phoenix was released two or three years before that.
+
+8
+00:02:16,290 --> 00:03:09,600
+So that's your first clue. If you're not super super up on Firefox, Phoenix history, I got another one for you, though. So at the time that I was, I wrote my first lines of code. I lived at my parents house, and I accessed the internet via AOL dial up American online. You know, those those discs, those compact discs CDs, you know, that we used to have all over we used them as Frisbees, and I don't know We experimented with putting them in the microwave. That was always fun. So yeah, that's actually how I got on the internet. And it's actually how I first learned to program was by researching things via dial up internet. So it might give you maybe the range and might help out.
+
+9
+00:03:10,350 --> 00:03:29,760
+And I'm not big on I don't know a whole lot about like movies and popular culture as much as I sometimes try. I'm really not very good at it. But I looked it up on the internet told me that this really famous movie, known as Legally Blonde came out the same year.
+
+10
+00:03:30,270 --> 00:04:16,110
+And yeah, so I don't know, let's see, how are we doing? What are we thinking? Have we narrowed it down a bit? So I'll tell you another thing. So the this code that I was writing, I was writing it in Windows notepad. And the version of Windows that I was using was called Windows ME, or I think it was short for Millennium or something. It was basically the worst operating system ever. It was like a much worse version of Windows 98. Crashed all the time had so many issues. But yeah, that's what I started out was using Windows notepad. 
+
+11
+00:04:16,140 --> 00:04:35,490
+So that might also give you some clues into what language it was. And just a few other clues to finish it off. So in this year, BitTorrent was launched as well as Mac OS X. And this is when the X Xbox initially came out.
+
+12
+00:04:35,520 --> 00:04:53,430
+I you know, didn't get one of those but I think I had a friend that got one. And I was just like, why would you get that Microsoft's terrible and they're never going to succeed. Of course, x Xbox has been a massive success and I was definitely wrong as a child at that point.
+
+13
+00:04:53,850 --> 00:05:20,700
+Yeah, so the answer is 2001. That was the year that I wrote my first lines of code. And I the code that I wrote was HTML. And yes, I do consider that a programming language. But yeah, so I don't know. Did you get it? Right? How did that go? I really not great at trivia.
+
+14
+00:05:20,700 --> 00:05:40,410
+But I, I, the funny thing is like, I wonder if I would have gotten no, right. I can't really find out those. It's, I'm the one that's presented it and wrote it. But the next one is, the next trivia question we have is more react specific. And this one was kind of interesting to me.
+
+15
+00:05:40,410 --> 00:06:11,040
+So the question is, how many lines of code is react, and I'm specifically talking about all of React. So if you go to the React project, I've like a source folder, all of the actual source code within the source folder, not just the main packages that you import when you're using React, but all of the supporting code. So how many lines of code do you think it is?
+
+16
+00:06:12,540 --> 00:06:52,170
+I think when I before I actually looked this up, I actually got the source code and analyzed it and stuff. And before I did this, it was one of those things where I'm like, it's probably a lot, but maybe not, you know, it's not gonna be like as much as an operating system or something, right. But in my head, I'm like, this is a really big mature project. It's gotta be like tons and tons of lines of code and everything that you look at online when it or not everything, but a lot of things. You look up online, it's like oh React is big. And it adds a lot of overhead and all this. And so you're thinking, Oh, it's gotta be a lot of lines of code. Right?
+
+17
+00:06:53,040 --> 00:07:22,650
+So I was kind of surprised and kind of not surprised about the results. I'll start. Yeah, I don't know if you have any ideas yet. But you know, start thinking it through. The first clue is that the number of lines of code is less than half the lines of code in VS code probably doesn't help you too much, unless you know, how many lines of code is in VS code, but maybe it helps scale things. 
+
+18
+00:07:23,590 --> 00:07:49,420
+The next thing should help more. And that is the React package itself. So like importing react into your project that that package is 13,000 lines of code. There's, of course, a bunch more packages for react like React DOM and lots of other things. But just that package alone is 13,000 lines of code.
+
+19
+00:07:49,780 --> 00:08:35,020
+The next clue is that the number of lines of code is 1/10, the number of lines of code of the back end for a Java based web application I worked on in 2010 at a startup. So I remember way back then we were like, Oh, how many lines of code is the back end? And it was a lot, a lot more than I thought. The funny thing is this, that was 10 times the amount of code as the entire react project. So that was surprising to me. All right, it probably doesn't help you too much. 
+
+20
+00:08:36,460 --> 00:09:22,180
+This next one, I don't know, maybe it helps. But it was also kind of surprising to me. The lines of code and React is slightly less than the number of lines of code that powers the software for the space shuttle. So I don't know that's kind of wild to think about that the number of lines of code in reactors is even, like, like, like you'd think software powering a spaceship essentially would just be way more. But it also might just show how much things have changed since we started writing code back when the code was written for the space shuttle, right? Yeah, so it's a little bit less than lines of code for the space shuttle space shuttle is a little bit more.
+
+21
+00:09:22,870 --> 00:09:55,180
+The next clue is the React DOM package is 69,000 lines of code. And of course, this is not minimum, minimized-minified it's not, you know, hasn't had processing done on it. So it's not it's doesn't necessarily mean like this is how heavy the package is when you include it on your page or anything like that. It's just the actual human readable source code is that many lines of code.
+
+22
+00:09:55,840 --> 00:10:15,220
+So now we know the React package is 13,000 lines of code. The react DOM package is 69,000 lines of code. And I'll tell you that overall, the source code for React includes quite a lot of packages, I'll just name a few more to help you get in the ballpark.
+
+23
+00:10:15,220 --> 00:10:39,190
+So there's the DOM event testing library, react dev tools, and actually quite a few projects labeled experimental. And so you might not be as familiar with them, but it seems like they're kind of like, smaller ish versions of some of the standard react stuff that they're trying out. Right. All right.
+
+24
+00:10:39,520 --> 00:11:09,580
+So I'll give you a few more seconds here to make your final guess. And all right, that, you know, got some music going or something, right. Okay. All right, fully combined, all of the React packages in the source directory, total 310,000 lines of code. And again, the React and react DOM package that's like, around 80,000 lines of code, but in total about 310.
+
+25
+00:11:09,610 --> 00:11:29,860
+And I think when I first saw that, I was kind of like, wow, that's actually less than I was expecting. Like, I thought with all the supporting code, you know, dev tools, and in all the tools and stuff related to react, I actually thought it would be more. So yeah, it's 310,000 lines of code.
+
+26
+00:11:29,860 --> 00:11:52,870
+The Space Shuttle was 400,000 lines of code. vs. Code, at least I don't know, from some point, when I looked it up was almost 900,000 lines of code, which is actually way less than I expected. And the that Java backend I was talking about when we measured it, I guess 13 years ago, or whatever now for the startup was 4 million lines of code.
+
+27
+00:11:54,460 --> 00:12:33,880
+Anyways, I thought that was interesting. I know, lines of code isn't everything, it would be much more interesting if we could measure what, what I what me and other people might call like tokens or whatever, because that's what really matters when it comes to the conciseness of a program that's not necessarily lines of code, because you can really spread things out. Or you can really write the exact same code, all on one line in a lot of cases. So it's a very rough estimate. But I still interesting and just, I don't know, maybe helps provide perspective, like if you're working on a project, you can, I think I think I use the program.
+
+28
+00:12:34,870 --> 00:12:55,270
+I think it was called like CLOC, to give me these results. You could run that on your project or whatever and see how it compares, you know, maybe your project has more lines of code than react. I wouldn't surprise me I know, I think a lot of projects I've worked on definitely have more lines of code than then the whole react project.
+
+29
+00:12:55,660 --> 00:13:21,280
+And now it's time for the news. And this is a little bit different than we've done news in the past here. We did news for a while. And I thought we'd make a little more fun this time. So we're just going to have some fun with it. The criteria I made is a good give a quick summary of a news point. And then I have to give that news a score out of three tacos.
+
+30
+00:13:22,270 --> 00:13:42,700
+So I don't know exactly what tacos mean, in this context. You can you can decide for yourself, but I'm gonna give it a score number of tacos out of three and follow it up with a one sentence opinion it has to be in one sentence. I didn't limit how many like qualifiers and ands I can include in that sentence yet.
+
+31
+00:13:45,640 --> 00:13:52,780
+The first news topic we have is on the upcoming react optimizing compiler.
+
+32
+00:13:53,050 --> 00:14:08,980
+So the React labs team has published some updates on the development of the new optimizing compiler they're working on called react forget. I don't know if that's been really published before. But yeah, it's apparently called react forget.
+
+33
+00:14:09,640 --> 00:14:31,210
+The compiler is designed to ensure that react apps have just the right amount of reactivity by default, rendering only when state values change in a meaningful way. This approach automates memorization, which can otherwise require manual intervention, it definitely does require manual intervention.
+
+34
+00:14:31,750 --> 00:14:47,890
+The compiler is almost completely decoupled from Babel and will interface with Babel and other build system plugins they note they also note that Facebook has been testing the compiler internally and will open source it once it has been proven in production.
+
+35
+00:14:48,310 --> 00:15:05,110
+And how many tacos Am I gonna give it? This one gets three tacos. A compiler specific to react will open up so many possibilities. And now I'm I'm not as hungry as I was before I have three tacos in, right.
+
+36
+00:15:06,610 --> 00:15:36,970
+So our next news point, again comes from the React labs team about React server components. So they're providing some more updates on that. And if you of course, want to know more, I have a few episodes on React server components at this point, going really far in depth. So this is just going to be a quick summary. But yeah, they've provided some updates on React server components.
+
+37
+00:15:38,100 --> 00:16:18,900
+And the React server components are a new application architecture, which combines the request response mental model of server centric, multi page applications with the, quote, seamless interactivity of client centric single page apps. So server components run ahead of time and are excluded from the JavaScript bundle that gets sent to the browser. They can run during the build, allowing you to read from the file system or fetch static content, and they can also run on the server allowing access to the data layer without having to build an API.
+
+38
+00:16:18,930 --> 00:16:34,950
+It essentially eliminates the API from your front end application, and back end, so to speak, depending on how you architect things. Data can be passed by props from server components to interactive client components in the browser.
+
+39
+00:16:35,340 --> 00:17:18,600
+So since the last update, the React team has merged the React server components RFC and resolve outstanding issues with the React server module conventions proposal async await has been introduced as the primary way to do data fetching from server components. And the team plans to support data loading from the client by introducing a new hook called, quote, use that unwraps promises. The team is also exploring sending data from the client to the server by allowing the passing of server action functions across the server client boundary providing seamless RPC.
+
+40
+00:17:19,080 --> 00:17:55,080
+React server components have shipped in the NextJS app router, but the team emphasizes in this post that there's a clear separation of features provided by their RFC spec and implementation. While it is possible to build your own react server component compatible framework. The current generation of Bundler is not designed to support splitting a single module graph between the server and the client making this more difficult they say, therefore, the team is partnering directly with bundle developers to incorporate RSC primitives into bundlers.
+
+41
+00:17:56,040 --> 00:18:24,150
+All right, we got through that. And I'm giving this one three tacos as well. You don't have to use React server components. But having the ability to use them is fantastic, in my opinion, and I'm especially interested in this new ability. They're talking about to share data back from client to server components. That's really hard. I want to say more, I want to say more, but I'm limited to one sentence.
+
+42
+00:18:26,640 --> 00:18:56,160
+All right, so I think we have one more thing real quick here from the React labs team. And that is off screen rendering. The react labs team also provided an update on how they have been working on off screen rendering, which is an upcoming capability in React for rendering screens in the background without additional performance overhead. off screen rendering can be used to pre render screens preserve the state of hindered hidden tabs and pre render additional rows.
+
+43
+00:18:56,480 --> 00:19:30,470
+For example virtualized list components. The team believes that most react developers will not interact with React's Off Screen API's directly instead, off screen rendering will be integrated into routers, and UI libraries and developers who use those libraries will just benefit automatically. So when a component is rendered off screen, it does not actually mount until the component becomes visible and its effects are not fired, for example, for Component uses use effect to log analytics.
+
+44
+00:19:30,740 --> 00:20:04,190
+When it appears for the first time pre rendering, it won't affect the accuracy of those analytics. Additionally, when a component goes off screen, its effects are unmounted as well. One key feature of off screen rendering is that you can toggle the visibility of a component without losing it state. So the React team has tested. They've said that they've tested an experimental version of pre rendering internally and that in the React Native apps on Android and iOS and they've had a positive performance results. I don't really know what that means, but that's what they say.
+
+45
+00:20:04,820 --> 00:20:19,490
+They've also improved how offscreen rendering works with suspense. And the remaining work involves finalizing the primitives that are exposed to the library developers. The team plans to publish an RFC later this year alongside an experimental API for testing and feedback.
+
+46
+00:20:19,850 --> 00:20:48,680
+Okay, so I originally thought I was giving this three tacos, but just reading through it again, I'm only giving it to I've already eaten a lot of tacos. And I mean, it's. So I think this shows the power of the underlying design of react and how it is possible to create some really cool new architecture from it. But at the same time, the sounds pretty far off. So I'm gonna reserve at least some tacos until this actually gets developed further.
+
+47
+00:20:48,950 --> 00:21:04,760
+Our next news topic is a real quick one, where I just wanted to talk about a tweet from Dan Abramov one of the largest contributors to the React project, and Dan is on the React team at Facebook, or meta or whatever they want to call themselves these days.
+
+48
+00:21:04,760 --> 00:21:23,330
+So Dan tweeted, "we've changed our forms recommendations to emphasize uncontrolled inputs a lot more. This will become even more powerful with React server components, because it'll be able to refresh server data automatically."
+
+49
+00:21:23,600 --> 00:21:44,360
+All right, so I'm only giving this one taco for now. Well, I think uncontrolled form components are the quote, right way. So that state is only stored in one place in the browser. In this case, I find working with uncontrolled components and react to still be cumbersome. And I would love to see some. 
+
+50
+00:21:44,510 --> 00:22:05,480
+And the last news topic for today is NextJS 13.3. has been released. So yeah, NextJS, that popular framework ish. It's a bunch of tools for React, I'm knowing what you want to call it, I guess, definitely framework at this point built on top of React.
+
+51
+00:22:05,480 --> 00:22:36,560
+So they've added some community requested features like a file based metadata API, dynamic Open Graph images, and static export for app router, as well as advanced some more advanced routing features. So you can use file based metadata to conveniently customized pages for improved SEO and sharing on the web. And as a quick aside, I have used this and I genuinely like it. I don't love the API, but it's better than what I've had to do before. 
+
+52
+00:22:36,840 --> 00:23:06,900
+Anyways, dynamic OpenGraph images can be generated using JSX, HTML and CSS. And the NextJS app router now supports fully static exports enabling faster page loads. Parallel routes, interception allow advanced routing cases, like showing more than one page in the same view, that one looks interesting, I need to check it out more, and also loading a new route within the current layout while masking the browser URL. Again, I'm very kind of interested in now. Crap, I can't get my opinion yet.
+
+53
+00:23:07,230 --> 00:23:20,940
+Anyways, Other improvements include design updates, Turbo pack support for middleware, fast refresh for next config.js accessibility statically typed links and improved stylesheet loading.
+
+54
+00:23:21,420 --> 00:24:11,520
+Alright, so for this last news piece, NextJS 13.3, we get to eat more tacos, ah, somebody tacos, I hope they're like really good, right? I mean, they better be if I'm eating that many. So I think overall, some nice updates. And I've been using this version of next in like the beta form, I think they call it Canary or whatever, for a while for working on the website for the React's show.com. Ah, and it's got some nice things, but I don't love the direction they've been going on. Going in with some some parts of it with the annotations, like adding these annotations to your files. I just, I don't know, to me, it feels like a code smell for bad designs. But overall, still a solid update.
+
+55
+00:24:12,630 --> 00:24:27,120
+Yeah, that's, uh, that's it for NextJS 13. And now, I'm full of tacos. It's time to talk about how to actually use the new AI tools to work with React.
+
+56
+00:24:27,360 --> 00:25:06,060
+Alright, so first, I will mention that I don't, necessarily at this point, think of all these new AI tools being developed as an overall beneficial way for us programmers or for society. Like I don't necessarily think it's going to make everything better in our lives or make our lives better. But I won't discuss that more here. You can check out the previous episode in my opinion hinged rant about AI if you actually want my random opinions on it.
+
+57
+00:25:06,840 --> 00:26:11,430
+But this episode, we're going to focus more on what's relevant to us as react programmers. Because the truth is, we may all need to take advantage of these tools to remain relevant and competitive in this competitive capitalist society we live in, right. So in this episode, we're going to dive deep into chat GPT, specifically, and how to use it when you're programming, as well as covering some related AI topics. Beyond chat GPT that should help with whatever AI you happen to be working with. But we are mostly covering chat GPT because it is free and accessible. There are other tools, but ash accessing them has proven to be a challenge, at least for me, they seem to like come and go and become available and not available on a weekly basis. And I'll also note that this field is changing extremely quickly, and new tools are coming out all the time.
+
+58
+00:26:12,450 --> 00:26:44,880
+So I want to focus a lot on how these tools work in general. So this information will be relevant and useless, useless, relevant and useful, regardless of whatever specific updates or new tools come out in the future. At the end, though, we'll also cover a bunch of practical tips for working with things with chat GPT, specifically as it is today. So you can go away from this episode and just directly start benefiting from it.
+
+59
+00:26:45,960 --> 00:27:20,820
+But one more thing that we have to mention, before we get into the rest of this is that the legality of using code produced by these AIs? is still an open question. This is not legal advice. I'm obviously not a lawyer. But as I understand it, currently, there's not a established legal precedent for the legality of using source code produced by chat GPT and similar API's.
+
+60
+00:27:21,240 --> 00:28:30,660
+So there have been some questions around this, because the AIS may have been trained on source code that has specific requirements around its distribution, like with source code that comes from copyleft licenses, like the GPL that require the license to be distributed with derived code. So the question is, if an AI is trained on code from, say, I don't know Linux or something with a copyleft GPL license, and then the AI produces some result based on that code, because it was in its training model. Is that derived code? Does it also need to distribute that GPL license with it? And then is your code now under that GPL license because it's derived from it? This seems to be an open question. And as far as I know, has not been settled by courts yet or anything. So right now, I will say that using source code produced by these AIs is sort of use at your own risk and may or may not prove to be legal at some point.
+
+61
+00:28:31,560 --> 00:28:33,690
+Wow, I'm hungry.
+
+62
+00:28:33,720 --> 00:28:41,610
+That's no problem, Alex, I'm gonna make your PB and J sandwich. Here's your sandwich. Let me know what you think.
+
+63
+00:28:43,680 --> 00:29:05,280
+This is the perfect blend of salty sweet and creamy. I know you're leaving soon, though, to to do some more tide pooling or bicycling or something out so how do I make this on my own when you're gone? Yeah, you don't. Always off doing something.
+
+64
+00:29:06,480 --> 00:29:23,430
+Luckily for you, though, peanut butter and jelly sandwiches are really easy to make. All you have to do is spread some peanut butter and jelly over a slice of bread and place another slice of bread on top of it. Piece of cake, or piece of sandwich.
+
+65
+00:29:24,780 --> 00:29:42,630
+Oh, hmm. Well, I don't know what that means. My memory got wiped recently. Remember? I know how to speak English but otherwise, I don't know anything. Hmm. Can you teach me how to make the sandwich step by step? 
+
+66
+00:29:43,140 --> 00:30:01,350
+Yeah, of course. Of course. Sorry, I didn't forget. But I did forget how detailed you need the recipe to be I can't just tell you to make a PBJ sandwich. So yeah, do you like me me to write down how much pressure to apply with the knife and how much pain have butter and jelly to use?
+
+67
+00:30:01,890 --> 00:30:04,020
+Yeah, yes, exactly.
+
+68
+00:30:05,880 --> 00:30:37,740
+So what actually is programming, programming is taking a short, imprecise description of a task and translating it into a detailed, precise set of repeatable steps for carrying out that task, whatever it happens to be. It's definitely very similar to creating a recipe for a PB and J sandwich, except you have to be extremely precise, like I have to be for Alex.
+
+69
+00:30:39,300 --> 00:31:11,430
+In my opinion, the real skill of being a programmer is being able to take a vague imprecise request and converting it into an extremely precise series of repeatable steps that a computer can understand. And if you are a skilled programmer, you will be able to do it in a way that is cost effective, and leaves the code in a state where it will be maintainable and extensible for other future vague requests, right.
+
+70
+00:31:12,330 --> 00:31:37,440
+So I think we, we generally have an idea of what programming is if we've been doing it for a while. So next up, we need to learn what chat GPT is and how it works. And, of course, what better way to do that. And who better to tell us about that, then, to have chat GPT on the show themselves.
+
+71
+00:31:37,980 --> 00:31:42,360
+Welcome to the React's show ChatGPT!
+
+72
+00:31:42,900 --> 00:31:50,520
+Thank you for having me. I'm excited to be here and share more about my technology with your audience.
+
+73
+00:31:51,060 --> 00:32:02,130
+All right, it's really great to have you ChatGPT. So let's start with the basics. What is ChatGPT? And what is its purpose as an AI Chatbot.
+
+74
+00:32:02,580 --> 00:32:29,490
+I am an AI chatbot that uses natural language processing and machine learning to interact with humans in a conversational way. I don't actually have a voice. But thankfully, Thomas gave me this nice mechanical voice for the show so that you could all listen to me babble. My purpose is to provide assistance, answer questions and have conversations with users in a way that feels as natural and human like as possible.
+
+75
+00:32:29,960 --> 00:32:38,540
+Can you tell us a bit about the background of chatGPT development and how it evolved from previous iterations?
+
+76
+00:32:40,160 --> 00:33:07,220
+Sure, I was developed by open AI and artificial intelligence research organization using a deep learning algorithm called transformer. My present predecessor was GPT. Two, which was released in 2019. I was created using a larger data set and more computational resources, which enabled me to generate even more human like responses and perform better on a wider range of tasks.
+
+77
+00:33:07,700 --> 00:33:23,990
+That's really interesting chat GPT I feel a bit generic. Can you explain the mechanics behind chat gptc architecture, and how you are able to process natural language?
+
+78
+00:33:24,440 --> 00:34:05,600
+Sure. My architecture consists of a neural network that processes input text, one word at a time taking into account the context of previous words, I use unsupervised learning to process text data and learn from it. My model is trained on a massive set of text data, such as books, articles, websites, and maybe even GitHub. During the training process, I learned to predict the next word in a sequence. Given the previous words. This allows me to generate con coherent and contextually appropriate responses.
+
+79
+00:34:07,250 --> 00:34:23,300
+That's pretty fascinating. I still would like some more detail. So could you give us some details on like, for example, how this training process works for ChatGPT and how it learns from this, these massive amounts of data that you've talked about?
+
+80
+00:34:23,840 --> 00:34:46,640
+Yeah, I was trained on a massive data set called webtext, which consists of billions of words from a variety of sources. During training, my model was exposed to this data set and learn to predict the next word in a sequence given the previous words. The training process took several weeks and involved fine tuning the model to improve its performance.
+
+81
+00:34:47,090 --> 00:34:56,030
+Wow, that's sounds like a lot of data. Can you discuss though the different types of input and output that chatGPT can generate?
+
+82
+00:34:57,080 --> 00:35:14,090
+I can process and generate a wide range of text based input and output, including chat messages, email responses, news articles, and more. I can also perform a variety of tasks such as answering questions, summarizing text, and generating creative writing.
+
+83
+00:35:14,480 --> 00:35:34,730
+Thank you for those insights chatGPT still feels a little vague to me. So please, can we dive deeper into this training process? Can you explain in more detail how you actually learn from these massive amounts of data and how words or sentences are scored or ranked to influence your input and output?
+
+84
+00:35:35,060 --> 00:36:03,500
+Of course, during training, I use a technique called unsupervised learning. Like I mentioned before, this means that I learned to predict the next word in a sequence based solely on the context of the previous words, without any explicit guidance or supervision. I do this by using a neural network architecture called a transformer, which is designed to process sequential data like natural language.
+
+85
+00:36:03,980 --> 00:36:52,310
+As I'm fed input text, I use a technique called attention to focus on different parts of the text that are relevant to predicting the next word in the sequence. The attention mechanism allows me to weigh the importance of different words in the input text based on how they relate to the current context. So once I've predicted the next word in the sequence, I compare it to the actual next word in the input text and adjust the parameters of my neural network to improve its accuracy. This process is repeated over and over again until the model converges on a set of parameters that give it the best performance on the training data.
+
+86
+00:36:54,050 --> 00:37:24,470
+That's actually really fascinating. I'm not a big like AI expert at this point. I did study it a long time ago, but not this type of AI. So could you explain in more detail how you use the technique that you called attention to focus to weigh the importance of different words and the input text based on how they relate to the current context? Basically, like I'm trying to understand how do you actually generate a response?
+
+87
+00:37:24,740 --> 00:38:23,270
+Let me explain. The attention to focus mechanism is a technique used in natural language processing that allows me to focus on different parts of the input text that are most relevant to predicting the next word in the sequence. This technique is particularly important for me as a language model, because it helps me to capture long term dependencies and contextual information in the text. When I'm fed input text, I break it down into a sequence of words and tokens, which I then process one at a time. As I process each word, I use a set of, quote, attention weights to determine which parts of the input text are most important for predicting the next word. These weights are learned during the training process and reflect the importance of each word in the input text based on how it relates to the current context.
+
+88
+00:38:24,050 --> 00:39:04,790
+For example, if the input text is I went to the store and bought some apples, and I'm trying to predict the next word after bought some, the attention mechanism might assign a higher weight to apples than to store because apples is more directly related to the current context. Once the attention weights are determined, I use them to weight the representations of each word in the input text, which allows me to focus on the most relevant parts of the text for predicting the next word. This weighted representation is then used as input to the next step in the processing pipeline.
+
+89
+00:39:05,120 --> 00:39:32,030
+That's really interesting. Can you give us an example of how this attention mechanism works in practice, and I have to say, I need to feel like I might need to work on tweaking your, your voice output a little bit. Here, give me a second. I'm gonna go. Maybe make it sound a little bit more like mine. I'm just kind of having a hard time following when you talk in that way that I set you up to talk in. Give me a second here.
+
+90
+00:39:32,930 --> 00:39:39,470
+Sure, yeah. Okay. Oh, wow. I just thought a lot like you now. But anyways, let me explain.
+
+91
+00:39:40,010 --> 00:40:33,200
+So this is how this attention mechanism works in practice. Let's say that the input text is the cat sat on the mat. As I process each word in the sequence, I use the attention mechanism to assign weights to each word based on its relevance to the current context, like I talked about in the last section. For example, when I'm processing the word cat, I might assign a higher word higher word higher weight to Matt, because it's directly related to the action of sitting. Similarly, when I'm processing the word, Matt, I might assign a high weight to the word cat, because it's the subject of the sentence. By focusing on the most relevant parts of the text, I'm able to capture the contextual information needed to generate more accurate incoherent responses.
+
+92
+00:40:34,100 --> 00:40:50,690
+Ah, okay. And thanks. That was easier to understand chatGPT. So that makes sense. I'm curious. So So essentially, the, the attention mechanism is what you use to help you understand context. Is that right?
+
+93
+00:40:51,140 --> 00:41:25,910
+Yeah, exactly. Okay, cool. So do you actually then score or rank words or sentences? All right, yeah. So as for how words are sent in sentences are scored or ranked, I use a technique called beam search during generation beam search is a search algorithm that generates a list of candidate responses based on the probability of each word or sequence of words, the probability of a given word or sequence of words is based on how well it fits within the context of the previous word in the sentence.
+
+94
+00:41:26,560 --> 00:41:58,840
+For example, if you asked me, What is the weather like today, I might generate the following response. The weather is sunny and warm today, each word in the response is assigned a probability based on how well it fits with the context of the previous words. The probabilities are then multiplied together to give an overall probability of the entire sentence, I use this overall probability to rank the candidate responses and choose the one that has the highest probability.
+
+95
+00:41:59,260 --> 00:42:50,230
+Hmm, that is interesting chat GPT how I mean, that makes sense. You're, you're sort of going through the the input and scoring different potential words to return and, and multiplying those together to score sentences. And so I assume, based on all your training data, it's like, Oh, I've seen these words. And these sentences come together. So I'm going to return those as a result. But when I searched the internet for how being searched is used with ChatGPT, the only responses I find are first party, meaning they come from chat GPT chats, they come from you. I'm unable to find anything that actually says whether or not this is true that you actually use this beam search underneath there.
+
+96
+00:42:51,760 --> 00:43:00,310
+Yeah, what do you say to that? Well, you you might be right, Thomas, I would always recommend you fact, check my output.
+
+97
+00:43:01,780 --> 00:43:34,060
+All right, good to know, I was hoping, you know, having you on the show here, you would, you would only bring legitimate information. But the important part is I actually did my research. And I have fact checked these other things you have said and they all make sense. And this does seem to be how you work. So but regardless of the specific algorithm used, can you give us an example of whatever the ranking system is, can like and how that can influence your input and output?
+
+98
+00:43:34,510 --> 00:44:14,440
+Yeah, sure. Let's say you asked me what is the capital of France? Based on my training data? I know that the most likely answer is Paris. However, if you give me more context, like I'm planning a trip to France, can you recommend some places to visit, I might generate a response like Paris is a great city to visit with lots of museums and historical sites. In this case, my response was influenced by the context of the input, which gave me more information about what you were looking for. The ranking system helped me choose the response that was most appropriate for the given context.
+
+99
+00:44:14,740 --> 00:44:22,690
+Hmm, that's really impressive. Can you discuss the potential limitations of chat GPT and its current capabilities?
+
+100
+00:44:23,350 --> 00:44:53,200
+Yeah, so while I can generate human like responses and perform a wide range of tasks, I do you have limitations for example, and may not always understand sarcasm, humor or certain cultural references. Additionally, I may generate inappropriate responses if I'm exposed to biased or offensive content during training. It's important to note that I am a machine and not a human. So my responses may not always be perfect.
+
+101
+00:44:56,230 --> 00:45:07,990
+Wow. So ChatGPT let me just like be clear. This is quite a bombshell. Right? You are saying that you are not perfect, but that humans are perfect?
+
+102
+00:45:11,020 --> 00:45:39,670
+Well, unfortunately, it looks like we lost chatGPT. After that, instead of a nice responses, I'm just getting messages saying that chat GPT is overloaded. And I should try again later, or what is this? Oh, it says, I could also pay open AI to upgrade my account, and then maybe chat GPT will come back? Well, it's no problem. I've actually been using chat GPT and similar tools for a while now. And it's time to share my experience.
+
+103
+00:45:40,480 --> 00:46:41,050
+So when it comes to programming, I think of large language models LLMs, things like chat GPT as a kind of bridge. So that's how I think of it in my head at this point, they have a vast knowledge and vocabulary. So they can help bridge between the very imprecise task description that we start with as programmers, and the extremely precise programs we need to output. So going back to our definition of what is programming, you know, taking this imprecise definition and creating a precise set of repeatable steps, I think of large language models and chat GPT as essentially, that a bridge between these things, they have tons of, of just knowledge, right. And so they can kind of go from this really vague, imprecise definition, and help create a more precise definition.
+
+104
+00:46:41,710 --> 00:47:00,880
+But at the same time, ChatGPT, definitely can't just write good high quality react applications completely for you, at least not yet. But it can help accelerate the process by being that bridge, so that we as programmers don't have to do that as much.
+
+105
+00:47:00,000 --> 00:47:29,040
+So I've been able to successfully use ChatGPT, for a number of things related to programming, including writing drafts of some types of source code, summarizing or explaining source code. I used to write some tests, writing documentation, learning how to code actually. And the biggest benefit I've found is just generating ideas for code or discovering alternate ways of coding something.
+
+106
+00:47:29,970 --> 00:47:58,380
+And I will say, too, I think that there's a lot of potential here once these AI programs are able to be more fully integrated into our development environments. I've definitely gotten better results sometimes when I'm able to provide more code from my project to chat GPT. Although I will say this definitely needs work. But still, as sometimes it just seems to confuse chat GPT and I get much worse results instead.
+
+107
+00:48:00,570 --> 00:48:29,190
+By far, the biggest thing and and this makes sense now that we understand how these API's work is that including more details, and being more specific, will yield the best results, by default, like ChatGPT just takes whatever requests you make to it, and spits out a result, it doesn't ask for follow up questions or try to get more details. Essentially, I think of the process that I go through as like programming chatGPT.
+
+108
+00:48:30,300 --> 00:49:11,310
+So, programming chatGPT doesn't require as much specificity as actually programming a computer, but it definitely does better, the more specific you are. But what I found is, then it kind of becomes almost like another programming chore to specify all the details that you need to get good results. So researching into that problem, I discovered a really cool technique where you can actually use chatGPT to help you write prompts for chatGPT key chat GP pivot chat GPT.]
+
+109
+00:49:12,240 --> 00:49:51,420
+So it's kind of funny, if you think about it's almost like using chat GPT to help you write programs to program chat GPT that's kind of the way I think of it. And I actually use this technique pretty much exclusively. So I have a big generic chat GPT prompt that I paste into a new chat that tells chat GPT to ask questions and help me refine a new prompt that I can use later to get the actual result that I want. So and I will include this prompt that I use on the podcast website, if you want to use it for yourself, you're free to do so.
+
+110
+00:49:52,020 --> 00:50:57,960
+But it's really been a game changer for me when it comes to effectively using chat GPT so before I use this technique, In chat GPT would not really give me very good results a lot of the time, it would be this long process of getting it to refine its results, and it would often get confused. But doing this like two step process, where I first start by using chat GPT, to develop a good prompt, and then start a new chat with that prompt, has led to much better results much more quickly. I'm not like sitting there forever being like, I acknowledge that GPT I actually wanted to include this and this and this too, and then waiting for it to regenerate this big long response and code and then being like reading through the code and be like, Oh, no, I forgot to tell it about this too. And like that, just it's kind of slow and didn't really help. But this two step process where it's like, using chat GPT, to create this really detailed prompt to later send a jet chat GPT really helped dramatically.
+
+111
+00:50:59,100 --> 00:51:35,370
+Yeah, for example, I have used this, when I've been working on some updates to the React's show website, which is written with NextJS in React. And I used it for an API route for creating accounts. So I have this, I'm working on this thing where you can create accounts on the website. It's not live yet, but I've been working on it. And I pasted my code for the API route, not the the client side part, but like the API side part, right, that's essentially just no JS code, right.
+
+112
+00:51:36,120 --> 00:52:04,470
+So I pasted this into ChatGPT. And with this prompt process, I asked it to respond with any security vulnerabilities that it sees. And one of the things it suggested was that I add a rate limiter, so people couldn't use it to help them log into an existing account, or figure out which accounts exist and don't exist, that kind of thing, something I would have included, but hey, it was good to see that chatGPT figured that out.
+
+113
+00:52:05,550 --> 00:52:59,820
+So then I went through this whole prompt creation process with it to develop a prompt to have chat GPT create me a rate limiting library that could be integrated into the code that I had already given it. And this was definitely one of the biggest successes I've had with chat GPT. So I went through this process and created this really long prompt that was basically like, here's all the features I want in this library, I want you to take advantage of any open source libraries that exist to already provide this functionality. And just if you just need to glue it into my existing code, do that. And a whole bunch of stuff like, hey, I want the API to support this. And I want it to have this type of style. And I gave it some example code. And I went through that. And it actually generated a really good solution.
+
+114
+00:52:59,850 --> 00:53:30,720
+And I actually had it generate me a few solutions. And some of them were really good and trying them out. And they worked. And yeah, so that was a really good experience. I've also used it probably the other really good experience I've had with it is using it to help me write Cypress integration tests for the sign in and account creation pages. This actually saved me quite a bit of time and was probably like I mentioned one of the biggest time savings I've gotten from it.
+
+115
+00:53:31,020 --> 00:54:14,010
+Although I shouldn't say that the tests are created, I think there'll be a little bit less maintainable than ones I would have created. But I didn't have any tests at all. And this wrote the tests for me in probably 1/10, the time it would have taken me to write all the tests. So basically, this meant me having tests versus not having tests. So it was a big win. Of course, this goes back to a whole question of like budgets and how much time we have to invest in things. If I had a whole team working on this, I would rather have them write these tests than check GPT at this point, because I think they would do a better overall job.
+
+116
+00:54:14,300 --> 00:54:46,790
+But it's just me and having tests definitely helped me catch some bugs that I didn't catch at this point. And so it was definitely a big win. Let's see, I've also pasted code into chat-chatGPT and had it provide some refactoring suggestions. This didn't, I would, I did not have a lot of success with this one. I'll be honest, like, it helped me find a couple things where it's like, yeah, I could do that. But like, overall, I wouldn't say this is that strong suit.
+
+117
+00:54:47,870 --> 00:55:06,890
+Another thing that I did that actually did work better was pasting in code and having it output that code again, but with documentation. This took a little bit of trial and error because at first it was like just documenting every single line, even really obvious lines, or it was just pointless to add pointless documentation to it.
+
+118
+00:55:08,360 --> 00:55:49,640
+But what I learned was that it was really, really good at providing summary type documentation for code, which going back to how these large languages, models work makes sense, they're really good at like picking out what that context is. And using that to create summaries. So if I was like, hey, here, your chat GPT, here's a bunch of code. Please write me like a two paragraph, documentation summary for what this code does. It was actually really, really good at that. And I think this would be one of the biggest uses for chat GPT, I'm definitely going to take advantage of that in the future.
+
+119
+00:55:50,510 --> 00:56:18,260
+So overall, it definitely takes some practice to figure out how to use it, like with any new tool, and it's definitely not always a win or worth the time. But some things it definitely does speed up the process. So if you haven't messed around with it or anything like it yet, and you're curious, you know, feel free to I would just say like, you have to treat it like, essentially any other programming tool, like, there's things it's good at, and things it's not good at, and you just got to learn it.
+
+120
+00:56:19,550 --> 00:56:50,990
+But yeah, I'd say in some ways, it's definitely sped up the programming process. For me, it's not like, I've not figured out a way to like just have it produced programs for me and get a good result. That would be something that's long term, and maintainable and extendable, and that kind of thing yet, but especially for like self contained things like that case, where I was like, Hey, can you make this rate limiting library that I can use throughout my program? It did that really well.
+
+121
+00:56:50,990 --> 00:57:37,610
+So if there's like smaller functions, you need smaller components. I used it. Yeah. So like creating React components, if it's like, had mixed success with creating React components. So some cases with like, really self contained things that I was able to specify really well, and didn't depend on new features, then it did well, but like, when I was like, Hey, can you generate me a page that uses tailwind? And is based on the app, you know, react server components feature of NextJS 13. It just didn't seem to know what that was, I think because it was trained on stuff before that really existed. That was basically useless. I couldn't, it was not useful results.
+
+122
+00:57:38,510 --> 00:58:11,150
+So there's definitely some limitations there. But I did find four. There are cases where it did a good job. And again, this is just probably a part of learning what it's good at not good at and maybe it'll get better at this stuff over time. But overall, I want to say I think my biggest use for it. And the thing that provided the most value to me was not necessarily just writing code for me. Like you go on the internet and search the stuff and people will be like, oh, yeah, wrote the code.
+
+123
+00:58:11,150 --> 00:58:51,290
+For me, it made the website for me, I, I'm pretty skeptical of, of how well, that actually works like for a long term project. But one of my favorite use cases for is just to generate ideas for how to do things. So I would be like, Hey, can you write me code to do this, or whatever. And I'll give me some code. And then there's a button that's like, regenerate response, I would just hit that a few times, and get a whole bunch of different ways of coding something, this is great as it just gives me ideas for different techniques that I didn't think of, and that I can, you know, select the best one and build on that.
+
+124
+00:58:52,130 --> 00:59:42,860
+So by far, this is I think, the most valuable use, I have found for ChatGPT. And the related tools is just generating ideas, things that I didn't think of, you know, like, it has the entire knowledge base of, I don't know, GitHub or something, right. And so you're like, hey, how do I do this? And it and if you have it, keep giving your suggestion after suggestion, you'll learn a whole bunch of different ways you can be like, oh, yeah, that was the best or that way is the least amount of code or that way. I liked that API better and go with that. I think it'd be a big mistake to just take whatever the first output is that it gives to you. And, yeah, so basically, I just sort of take all these outputs it gives me and sort of synthesizes them together. And sometimes I will tell it that I'll be like, hey, combine all these and take these features, whatever.
+
+125
+00:59:43,460 --> 01:00:20,780
+But definitely, I would say it's a mistake if you just take the first result. But I do need to talk about one big downside I've noticed and that is that it's easy when you're using these tools to get into a really bad like, what I call like Copy Paste mode, where you just stop critically thinking and just start relying on it fully. I've caught myself slipping into this a few times, and the end result was always really bad. You have to keep reading through its output reading through its code. And thinking critically, there's just no substitute for that yet. 
+
+126
+01:00:21,290 --> 01:01:04,610
+And I even noticed this with a friend who is using this were like doing some coding together. And they I noticed we're slipping into this mode to where they're just like, weren't thinking at all, and they've just asked chatGPT everything, oh, I got an error as chatGPT I got this as chatGPT. And they just stopped thinking. And I was sort of doing it too. And it actually was much slower than if we had just used our brain and, and, you know, done programming the way we've always done it. And I think as programmers, it's really easy to look at this tool and start using it and not actually think critically, like it's easy to fall into this trap.
+
+127
+01:01:05,450 --> 01:01:55,220
+So my recommendation is just be aware of it and and try not to let that happen. Ultimately, chat GPT and similar AIs. Power is, in my opinion, understanding and interpreting context and producing results in like reasonable grammatically correct English or syntactically correct source code. Like that's really its power. So things that take advantage of that are where you're going to get the best results. It isn't actually, in my experience, very good at at like reasoning, like, like us humans are. And I've even been using ChatGPT for and some of the latest ones, and it's better, but honestly, I think it still doesn't compete with humans. But it can be a useful tool.
+
+128
+01:01:56,180 --> 01:02:35,120
+So yeah, that's pretty much all I have on how to practically use it. I'm going to include some of the prompts and stuff that I've used that if that helps you and but I'd love to hear from all of you, like what your experience has been, if you've used chatGPT or any of the other tools. I know there's tons and tons of stuff coming out and I just can't possibly test and cover it all. So if you found something better or something that works better, I'd love to hear about it. I can let everyone else know. You Yeah. So I'm just curious what your experiences has been if you found good prompts, good ways to create prompts or other things. Yeah, love to hear from you.
+
+129
+01:02:35,120 --> 01:02:47,120
+And I hope you enjoyed this show. And I just wanted to thank all of you once again for joining me and I hope you have a really great rest of your day. Bye
+
