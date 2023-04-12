@@ -3,7 +3,6 @@ export const dynamic = 'force-dynamic';
 import Link from 'next/link'
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-import { dbRun } from '@/db';
 
 import { XCircleIcon } from '@heroicons/react/20/solid'
 
@@ -15,12 +14,9 @@ export default async function Page({ searchParams }) {
   const unexpectedError = searchParams['unexpected_error'];
   const msg = searchParams['msg'];
   const csi = searchParams['csi'];
+  const patreonMagicKey = searchParams['patreon_magic_key'];
   const session = csi && await stripe.checkout.sessions.retrieve(csi);
   const email = (csi && session && session.customer_details.email) || searchParams['email'];
-  const message = searchParams['message'];
-  const submitted = email || message;
-  const valid = submitted && email && message;
-  let emailSentSuccessfully = false;
   if (unexpectedError) {
     return (
       <>
@@ -57,6 +53,11 @@ export default async function Page({ searchParams }) {
             <input
               name="csi"
               value={csi}
+              type="hidden"
+            />
+            <input
+              name="patreon_magic_key"
+              value={patreonMagicKey}
               type="hidden"
             />
             <div className="space-y-8">

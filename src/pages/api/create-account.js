@@ -47,18 +47,19 @@ const createSubscription = async (userId) => {
 
 async function handler(req, res) {
   if (req.method === 'POST') {
-    const { email, password, passwordagain, csi } = req.body;
+    const { email, password, passwordagain, csi, patreon_magic_key } = req.body;
 
     // Validate email, password, and csi
-    if (email && password && password === passwordagain && csi) {
+    if (email && password && password === passwordagain && (csi || patreon_magic_key)) {
       // Check for minimum password length
       if (password.length < 12) {
         res.redirect(makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'));
         return;
       }
 
-      // Retrieve Stripe session and email
-      const session = csi && await stripe.checkout.sessions.retrieve(csi);
+      // Retrieve Stripe session and email or get verify patreon magic key
+      const session = (csi && await stripe.checkout.sessions.retrieve(csi)) ||
+                      (patreon_magic_key === process.env.PATREON_MAGIC_KEY ? { customer_details: { email } } : false);
       const emailFromSession = session && session.customer_details.email;
 
       // Validate session and email
