@@ -183,7 +183,7 @@ export default async function Page() {
                                     <div className="lg:min-w-0 lg:flex-1">
                                         <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Discounted</h3>
                                         <p className="mt-1 text-base leading-7 text-gray-600">
-                                            Can't afford a full-priced subscription right now? Or live in a place with a lower cost-of-living? The discounted subscription includes all of the benefits of a full subscription at a reduced price ($20 USD annually) and still helps support the show!
+                                            Can&apos;t afford a full-priced subscription right now? Or live in a place with a lower cost-of-living? The discounted subscription includes all of the benefits of a full subscription at a reduced price ($20 USD annually) and still helps support the show!
                                         </p>
                                     </div>
                                     <a

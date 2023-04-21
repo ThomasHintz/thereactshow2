@@ -9,6 +9,11 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-12694669': {
+    slug: 'how-to-keep-your-software-job-if-ai-takes-over',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '091-mixed.srt')).toString()),
+    youtube: 'https://www.youtube.com/embed/Cwb-vjJTGCU'
+  },
   'Buzzsprout-12631045': {
     slug: 'how-to-use-ai-to-write-react-programs',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '089-mixed.srt')).toString()),
