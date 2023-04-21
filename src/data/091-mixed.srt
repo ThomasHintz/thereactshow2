@@ -1,0 +1,324 @@
+1
+00:00:01,290 --> 00:00:43,020
+Thomas Hintz: AI is here, and it is going to have an effect on society, and us as individuals within the software industry. It's impossible to predict exactly how it will affect us. But I believe we can be prepared, regardless. In this episode, we will imagine what a future AI might look like. And break down the software development process to analyze how AI might impact us as developers, and what we can do as individuals and as a group to be better prepared.
+
+2
+00:00:46,380 --> 00:00:55,080
+Hi and welcome to The React's Show. I'm your host, Thomas. And I want to thank you so much for joining me.
+
+3
+00:00:55,890 --> 00:01:51,390
+Before we get into the main topic for the show, AI, I wanted to cover a few things first related to the podcast and react itself. And I know the we've been talking about AI a lot recently. And the biggest reason for that is one, obviously, it's, you know, in the news, something going on it's current. And the other reason is just because I've gotten a lot of people that have just contacted me asking about it, whether it's how do we use AI as react programmers, or in a lot of cases, people being like, Oh, I'm really discouraged about programming. Like, I don't know what to work on anymore. I feel like it's a dead end. You know, like, I've watched these videos on YouTube or wherever tick tock or something of the AI writing programs for us. And yeah, I'm really demoralized.
+
+4
+00:01:52,200 --> 00:02:16,410
+So, yeah, I promise we're going to talk about other things coming up and future episodes. But I just wanted to directly address a lot of these questions that that people had. But before we get into the main topic for the show, AI, I wanted to cover a few things first related to the podcast and react itself.
+
+5
+00:02:17,340 --> 00:03:27,180
+So if you are perhaps more observant than I normally am, you may have noticed that this episode was labeled episode 91. But the last episode was 89. While I promise, there is a reason, the simple answer is I am just not a podcasting expert I had some learning to do. The longer answer is I created a trailer for the show as some podcast applications have you eyes that allow you to play a trailer directly. And I thought, hey, that'd be nice if people are unfamiliar with the show that could get a taste for the show really quickly and easily. While the software I use to create the podcast feed to post the episodes. It's called Buzzsprout. It's a it's a web service. So I use that to create the feed and it has a bunch of form fields. And one of those fields is labeled episode type. And that field has three options. Full bonus and trailer it also has fields for season and episode number. 
+
+6
+00:03:27,600 --> 00:04:23,460
+Yeah, so I thought I could set the trailer as like type trailer and specify and just not specify an episode numbers since it wasn't intended as an episode. It's just a short minute long thing you know, that help you feel like get a taste of the show, right? Like I mentioned. Well, the software did let me do that. Let me specify the episode type and not put in an episode number and but what I learned after pushing that out is that even though the podcast RSS feed itself has the type and you know lack of episode number set correctly, most podcasting applications actually seem to ignore those or something, it just just plays it like a normal episode and in the order that they are in the feed and just assumes to assign them numbers based on that.
+
+7
+00:04:24,510 --> 00:04:52,890
+So yeah, now a lot of the podcasts offer shows that we have made 90 episodes. So yeah, just to keep things simple. I'm going with now this is episode 91 It feels like cheating cuz, you know, Episode 90 is, I don't know much shorter, although definitely took a lot of time. Maybe it's just because I'm not good at that kind of thing. Yeah, anyways, if you're curious, that's what we have.
+
+8
+00:04:54,240 --> 00:06:13,800
+And I guess you know, podcasting via an RSS feed, which is the normal way to do Whew, podcasting isn't really based on a specification per se. It's more convention, as far as I can tell, like, like what you actually put in the RSS feed? And well, okay, I wrote in my script here that it's more based on convention. But the truth is, a lot of it is based on Apple. So Apple dominates the podcast application industry. So what you do when you're creating a podcast generally is based around what Apple will accept, and well, Apple will display. A lot of podcasting applications used the feed kind of from Apple based on Apple. So that's just the way it is, I guess it's convention, but it's also whatever Apple has essentially created as the industry de facto standard, right? And I guess, like, I'm also learning, I really should have like a second nonpublic feed or something I can use for testing things like this, especially because it's not a true specification.
+
+9
+00:06:14,850 --> 00:07:29,130
+So to me, it's just like, with a lot of software, if you want to do the best job that you can, you just got to test things. And granted, it's not so easy when you're using a paid service like I am, that limits your ability to set up something like that, that I could definitely do it, but it's a little bit more difficult than it could be. But yeah, to me, it, I think, ultimately highlights the lack of a UI design pattern that I think a lot of people miss, but also is incredibly valuable. And that is previews, I think some of the best user interfaces I've used are ones that give you a preview of the result. For whatever you're creating, like, in real time, as you're creating it, if the interface I was using showed me how podcast software might be rendering this feed while I was creating this, then I would be able to produce a better feed, you know, with less work and better end result. That I know it would be awesome. But yeah, that's that's the way things go. You don't I don't always get the ideal case, and you have to live with it.
+
+10
+00:07:29,000 --> 00:08:05,150
+But if you're building software and building UIs, I definitely recommend checking out that sort of preview pattern. And it's something I found really solves a lot of other software related problems, too, that you might have with users, where they might be confused about what something does, if you're showing a real time preview of the results of what the user is doing. It eliminates a lot of that mystery, and in a lot of cases means you don't need to, you should always have documentation, but a lot of people don't read it. 
+
+11
+00:08:05,960 --> 00:08:12,290
+And so this, you know, pre a preview is a good way of sort of self documenting what software does.
+
+12
+00:08:12,650 --> 00:09:09,560
+So I've never seen or heard of the React project itself seeking financial support. And I believe that's because Facebook slash Mehta funds the React project. I mean, that's really no secret, right. But where does Facebook get its money from? Well, very recently, it came out that meta slash Facebook has settled a lawsuit brought against it detailing a litany of privacy violations by Facebook. And in fact, if you use Facebook, you may be eligible for a payout from the class action lawsuit where meta agreed to pay $725 million. Of course, like always, Facebook claims that never actually violated user privacy and admitted to no wrongdoing. And this is just a way to settle the issue and make a go away.
+
+13
+00:09:10,790 --> 00:10:12,320
+But of course, this is preposterous for many, many years now, Facebook has repeatedly violated users privacy. And even beyond that, they clearly make a lot of money. Maybe not directly selling user data, but more or less selling user data or using that user data to sell ads. So the truth is, React is funded by a scummy company that has demonstrated over and over and over again, that profit is more important than people are people's privacy are people's data. Granted, for being honest, that can be said about pretty much any large company at this point. But you Don't just think they are far from alone. But that doesn't change the fact that the funding for React is tainted money. That is just the truth. That is the reality. That's what we have to live with.
+
+14
+00:10:13,760 --> 00:10:30,860
+I definitely rest easier knowing that it is at least an open source project. And we could fork it. If we needed to. I just think it's important that we don't lose sight of the reality that we live within and work within.
+
+15
+00:10:32,000 --> 00:11:31,640
+And switching topics a bit again, a reality check I had recently that I wanted to talk about was getting bit by an April Fool's joke. So it's one of those things where I think generally, I'm fairly good at being able to distinguish between real and fake things like in my head, I'm not thinking I'm perfect. But generally, I feel like I'm pretty good at getting things right. And, honestly, it seems like this is kind of how a lot of people feel like people, I don't think go around thinking, wow, I'm like, so gullible. And I'm just not very smart. And, like, generally, people, in my experience are like, Yeah, I might not be perfect, but like, I'm pretty good, I can figure out what's real and what's not real, right. And so I think I fall into that ballpark, too. You know, that's, that's where I, that's how I feel like I am a lot of times.
+
+16
+00:11:32,960 --> 00:12:14,240
+But I was reminded how this just isn't always true and always need to remain vigilant and independently verify things. So this came about because to relax, sometimes I like to watch Simpson boat CO on YouTube, it's a YouTube channel about a person who is rebuilding an old wooden boat. It's super fascinating to me, I love watching it. I love learning how it all works. And, you know, it's just really calming to see people do something more out of passion than for any kind of monetary gain. Highly recommend checking it out. I'll link it below if you want to watch it.
+
+17
+00:12:15,230 --> 00:13:06,140
+You know, but the story here is, you know, it sort of touches on a lot of things, but they put out a video for April Fool's. But I don't necessarily watch things rays that come out, I just sort of have a list of things to check. And anyways, so I didn't really pay attention to the date on the video. And I hopped into it not thinking it'd be anything different than their other videos. And indeed, it was very similar. And I was really enjoying it like normal. But I do remember thinking like at times, like, huh, I had no idea that was a thing with boats. Like, I just never thought of that. But I'm not a boat expert, right. I don't really do anything with boats. It's like something I might see occasionally, but I don't really pay that much attention to it.
+
+18
+00:13:06,140 --> 00:14:09,620
+Right. And so yeah, but like watching this, and I just remember thinking like, ah, seems a little bit strange, but I guess I'm sure I just missed it. I never, never noticed that about boats, right? Yeah, but I was never like, oh, yeah, that's not real. Or that's a joke. Like, I never in hindsight, it seems so obvious. It's one of those things were like, what How did I not figure that out? But like, that's just the reality. I'll just be honest with you guys. I really didn't. So you can go watch it and, you know, Formula opinion on you know, how dense you think I really am. But yeah, that's, that's the truth. So later, I found out that what they were doing was not really a thing, and definitely a joke. And it just, it kind of hit me like, wow, I watched all of that. I never realized it was not real. Now, luckily, I didn't make a podcast about boats or anything.
+
+19
+00:14:09,620 --> 00:14:58,610
+And, and I do make a really big distinction between what I tell other people and what I think internally. Like when it comes to this show, I am very careful to always verify things before I say them. Or if I can't verify them, I always try to qualify what I'm saying as an opinion or possibly not true. So like, that's, that's one reason why might not cover things. Actually, this isn't something I've really discussed before, but there are a lot of things whether in software technology that I haven't talked about, and part of the reason might just be I don't have enough confidence in my own understanding of it to feel like I could effectively you know, tell tell you guys about it, right.
+
+20
+00:14:58,700 --> 00:15:52,850
+And I like I just take the trust of you the listeners extremely seriously like, like, I will never say I'm not going to make mistakes because I'm sure I will. But I definitely work really hard to verify what I'm saying if I'm saying it to others, or teaching it or anything like that, but I just thought in general this was like a really good this experience I had with Samson boat CO is just really good reminder that I can I can be tricked just like anyone else like, like this can happen. And, and so it was just a really good reminder be like yeah, definitely don't say things until you verify them. Anyways, that was my little little story about that.
+
+21
+00:15:52,850 --> 00:16:03,650
+And But moving on from, from being misled to a more fun exercise, which is using our imagination.
+
+22
+00:16:05,270 --> 00:16:19,910
+Hey, Alex, could you program a new application for me? I'd like to, I'd like a program. I'm thinking like something that can help me figure out the best dates and times for going tide pooling.
+
+23
+00:16:20,210 --> 00:16:31,970
+Yes. Why certainly. Would you like to tell me more about your requirements or similar existing applications? Or should I jump right to creating a prototype for you?
+
+24
+00:16:32,270 --> 00:16:45,290
+Ah, hmm. I guess I'd like it to have some sort of visual display like a calendar or something that will make it easy for me to visualize and plan off of?
+
+25
+00:16:46,010 --> 00:16:49,490
+Yes, I can do that. Is there anything else?
+
+26
+00:16:49,850 --> 00:16:55,700
+Nah, that's that's good. For now. Can you just like go make me a prototype and we can work on it from there?
+
+27
+00:16:56,480 --> 00:17:02,960
+Yes. Give me a few seconds. In the meantime, why did the bicycle take a break?
+
+28
+00:17:06,230 --> 00:17:09,470
+I don't know why. Why did the bicycle take a break?
+
+29
+00:17:09,830 --> 00:17:14,810
+Because it was too tired of the daily grind.
+
+30
+00:17:17,780 --> 00:17:28,550
+Not your best joke, Alex. I do like riding bicycles. You do know that about me. Anyways, how is this tide pooling program coming?
+
+31
+00:17:29,120 --> 00:17:39,110
+Okay. 321 Uh huh. Here you go. Please check your HUD and let me know what you think of it.
+
+32
+00:17:39,590 --> 00:17:53,000
+Okay, thanks. Pulling it up now. So I see. Okay, so I assume that a date colored green means it would be a good day for tide pooling?
+
+33
+00:17:53,570 --> 00:18:01,940
+Yes, exactly. And if you notice, you can switch to a map view to select which location you are viewing the calendar for.
+
+34
+00:18:02,300 --> 00:18:19,850
+Ah, okay. Okay. Yeah. Cool. Um, okay, so I zoomed in on one of the green days, and I can't tell why it is a good day for type polling, like, what criteria did you actually use to determine if it was a good day?
+
+35
+00:18:20,270 --> 00:18:43,160
+Well, I analyzed all of the data available on Inaturalist and other programs to see what conditions were optimal for tide pooling, then I use that model to predict future dates that were likely to be good. Would you like me to explain the variables that the model found significant for evaluating good tide pooling days?
+
+36
+00:18:43,540 --> 00:19:00,340
+Ah, well, how about could you just like extend the user interface to include all of the like, really significant variables in an easy to glance at format? So like, when we're looking at it, we can just sort of make our own judgments based on the data?
+
+37
+00:19:00,730 --> 00:19:08,770
+Yes, one second. Okay. I have updated the UI. What do you think now? Ah, thank you.
+
+38
+00:19:08,800 --> 00:19:45,250
+Yes, yes, that is much better. I see. The significant variables are tied height, weather, wave height, and looks like water conditions. All right. Yeah. Um, okay. One thing I think that this is missing, though, is is comfort. If it's like nearly freezing outside and windy. It isn't a good day for type pulling, because we would get too cold to do it for very long. Or if it's windy or rainy, it just makes it difficult to see into the water. Could you update the program to include these factors as well?
+
+39
+00:19:45,580 --> 00:19:50,440
+Yes, that is now complete. Is there anything else I can do for you?
+
+40
+00:19:50,950 --> 00:20:10,570
+Okay, great. Yeah, I see that now. This is good. Yeah, could you let me see Could you send this to my partner now for I'm to look at and see what they think about it. I think they will be very excited to not have to, like do this manually anymore. I don't. I don't know, I didn't have you make this program for me before?
+
+41
+00:20:11,050 --> 00:20:38,290
+Yes, I would love to do that. But before I can do so, please let me remind you again, that to be able to share programs that I write for you, you must sign up for the professional subscription of app creator 10,000. And you will also need to pay for an all access Google Data subscription to use the model I created since it depends on Google's database.
+
+42
+00:20:38,560 --> 00:20:47,500
+Ugh. Really? Okay, okay, how much does it cost to do the upgrades?
+
+43
+00:20:51,670 --> 00:21:51,340
+Okay, so I don't actually know what the future will be like with AI for programming. But I use my imagination. And this is just one scenario, one possible outcome I could imagine. And so basically, whenever I'm trying to understand or analyze something, I like to explore the extremes and the ideals. And then after doing that, the approach I like to take is using that to compare it to the current state, I find it easier to draw solid conclusions and understanding then when I can make those direct comparisons. For my own understanding, but also because like I mentioned earlier, I've just gotten a lot of feedback over the last couple episodes, with people feeling demoralized or concerned or scared about AI and what it will do to programming jobs. So I would like to analyze that potential future.
+
+44
+00:21:52,660 --> 00:22:21,700
+But first, I think it will benefit us to talk just more generally, about what programming software development and engineering actually are. And so a lot of times programming, software development and software engineering are kind of used interchangeably. And much of the time, that is fine. But for this discussion, I think it's really important that we actually go and distinguish between them and what they actually mean.
+
+45
+00:22:22,600 --> 00:23:18,160
+So software development is a process that we use to create software solutions to problems. Programming is itself just one part of the software development process. Programming is the actual act of inputting instructions into a computer that the computer can run and use to produce desired results in a repeatable fashion. I guess you'd have many definitions of programming, right. But I figured that someone is pretty accurate and fits into this discussion. But like how we go about actually doing the programming is generally dictated by this, this larger software development process. And one approach to software development is to develop software based on engineering principles, which we often call software engineering.
+
+46
+00:23:18,910 --> 00:23:52,810
+Engineering can include programming, but it's generally more concerned with design, architecture, budgets, testing, validation, that kind of thing, right. So when we look at AI and potential applications of it within software development, I think the results and timelines depend a lot on what specifically we are referring to, as AI will certainly be better able to replace some tests sooner and be better at some tasks than others. All right.
+
+47
+00:23:52,810 --> 00:24:51,160
+So now going back to the scenario from earlier, where we had the AI create a tide pooling prediction application for us. Here are just some of my observations about that interaction within the context of what we just discussed, software development, programming and engineering where so when I look at that scenario, one observation I had is I didn't really need to specify any kind of tech stack or concern myself with the architecture or care about the maintainability. I didn't say, Hey, make this in React, make this in whatever. Like, I was just like, hey, like, you figure it out, you find the best thing to make this software and right. And this definitely seems to assume that the AI is good enough to handle all of those things for me, which seems reasonable at some point, right.
+
+48
+00:24:52,270 --> 00:25:41,650
+I also noticed that the AI used a process very similar to how I develop software now which is based on prototyping and user testing. Like in that scenario, it was very much a, let's build a prototype and get feedback and incorporate those changes into the program and do some more prototyping and testing and feedback that that cycle, right? I imagine AI is we'll be capable of other development patterns too. But I think this approach made a lot of sense for that type of application. And the fact that I, as the one asking for it, also understood it and was a user of it. You know, the process is definitely different if you are developing software for somebody else, and you're not a primary user, right.
+
+49
+00:25:41,950 --> 00:26:06,610
+But I think the approach that it took made a lot of sense, given the situation. Another thing I noticed is that the AI did all of the actual programming, I definitely didn't need to do any programming, or even know or care at all about programming. And here, I specifically mean, the act of programming, of inputting these instructions into the computer.
+
+50
+00:26:07,090 --> 00:26:35,080
+And, you know, just a quick reflection, as someone that loves the actual art of programming of, of getting that feeling where you actually told the computer what to do, and it did the thing, and you made something cool, you did it yourself. You know, it made me sad, as an outside observer to realize that in this case, that was no longer a thing, I wasn't going to get that feeling. In fact, I helped to create something, and it was potentially very useful.
+
+51
+00:26:35,080 --> 00:27:39,940
+And it was much, much faster than creating that same thing, you know, by hand coding it. So it really gave me mixed feelings. On the one hand, this is really cool, because there's absolutely tons of software that I would love to create, but I just don't have enough time. On the other hand, we've completely eliminated the art of programming from this scenario and the need for someone to actually do any of the actual programming. As someone that programs that makes me sad. I'm also noticing that assuming, you know, the AI can't directly read my mind, I still needed to essentially do the software development process with the AI, the only real differences that nobody needed to manually do the coding part. And that last point is, in my opinion, by far the most important thing. And it's not new to me, it's not even actually new to this podcast.
+
+52
+00:27:40,240 --> 00:28:56,770
+And that is this, the act of coding itself is just a tool to accomplish a task, the value of the task does not come from the tool, the value comes from, what the program automates what it allows us to do as humans in a faster or cheaper or more repeatable manner, purely from an economic standpoint, a person that codes is a person that is acting as a tool, you are a tool being used to create economic output if you are just coding. So if you are looking at programming, like just programming itself, not the entire software development process, but just programming if you're looking at that, as a job as a career as a way to earn money or earn a living, then I suspect you will be subjected to advancements in the development of that tool, not just suspect that's that's how it is. If that tool can be replaced by automation, then capitalist businesses will replace it with automation eventually.
+
+53
+00:28:57,110 --> 00:29:43,970
+Now this is sad if you like programming for a job or if that's all you're currently skilled or able to do as a job. I don't feel like programming as a career at this point in time is actually under threat yet and and we'll dig into that more in a bit. But on the other hand, this is also instructive. If you want to know how to continue to have a software job even while AI is developing, and potentially gaining the ability to program. The most valuable programmers to accompany are really not programmers at all, not in the strict sense of the task of programming.
+
+54
+00:29:44,240 --> 00:30:57,740
+Yes, as software developers or software engineers, part of the job currently is to do programming, but the programming itself isn't what provides value, a business or at least You're you're providing that function isn't what provides value a business wants to create software solutions that it can use to either reduce its cost or that it can sell to increase its profits, right. So if you view your position in a company as that of being there to facilitate that process, then you will be in good shape to weather, basically, any changes brought about by technological changes. And beyond that, I think you'll be able to create better software and be a better programmer with that viewpoint, a really common example that highlights what I mean here is something I see a lot with more inexperienced software developers on a job, especially ones that went to college for computer science, or even a boot camp. And this actually applies whether you are programming for work or for fun.
+
+55
+00:30:58,250 --> 00:32:18,710
+What I see a lot of times is that inexperienced developers often get really caught up in the act of programming itself, and just kind of lose sight of the task at hand, they become obsessed with specific languages, or technologies are programming methodologies. And all they do is program without ever taking a step back and asking questions like, do I actually need to do this? Or could I use some existing software to accomplish this? Or maybe this is taking longer than expected? Should I explore alternative features? That is a huge one, like when I've been in the position of like mentoring, more junior engineers, that's I have found to be very, a very big trap, a very easy thing for inexperienced developers to fall into is, they will just jump into the program, they'll be like, Okay, I need to solve this by writing some React code, and they will just keep trying to solve it with whatever approach that they decided is the right approach. And, you know, I might come in a week later and be like, Oh, how's that project coming? You know, and they'll be like, Oh, well, I got caught up on this. And I'm having trouble with this. And I needed to go and refactor this. So I could do this, and I'll be kind of gone.
+
+56
+00:32:19,670 --> 00:33:24,380
+Well, when I think about the value that this feature they're working on, provides to the company, um, like, I don't see how a week's worth of software development is worth it. Like, the feature just isn't worth that much, you know, and so I might go higher up in the company and say, Hey, so it turns out this feature that you guys wanted, is probably going to take two or three weeks to implement for reasons, you know, that's just the way it is, should we keep working on it, or I had this idea to maybe reduce the scope of the feature a little bit, but we could get it done in one day instead of three weeks. And in my experience, this is extremely valuable, and something that more experienced software developers often have learned, but less experienced ones don't really realize yet. You know, that taking that step back and being like, Okay, this is not going maybe as I first imagined, how can we is there a way to adjust it to fit in with the goals of the business?
+
+57
+00:33:25,520 --> 00:34:50,840
+And this actually relates as well to something in software interviewing. I've been asked many times in software interviews about specific languages I know. And if I would use them to implement things, you know, most recently, this would be react, people see, oh, wow, you host a React podcast, you wrote a React book and stuff. So I there'll be they'll say comments, like, I assume that you mostly do react programming that you would solve this problem with React. And I have always responded by saying something like, well, maybe I don't know, I look for the best tool for the job. Maybe that maybe that means I don't even write any code. Like, sometimes maybe it is react, I end up using, but it could easily be something else, you know, as much as I like Lisp or, or even react, and I'm not wedded to either of them. And this is why I think it's best to make our goal as software developers to be creating solutions, not specifically programming or even programming solutions. Our goal is to find the best automated solutions to problems in the most efficient manner possible. That is the real skill that we should develop and be good at doing. So like maybe that means programming, but maybe it doesn't. 
+
+58
+00:34:51,230 --> 00:35:14,120
+Programming itself is a tool we can utilize if we need to, but it isn't the end in of itself and creating maintainable, adaptable readable programs for the long term that effectively solve problems is a much bigger software development and engineering task than just the act of programming itself.
+
+59
+00:35:15,350 --> 00:35:48,590
+So now I have I've put all that within the context of work are just trying to, you know, create solutions for problems, even if it is for fun. But at the same time, I also do love the act of programming itself. Beyond the value of programming as a tool, I do love the tool for the TIG for like the sake of the tool itself. I love learning new programming techniques. And sometimes I just write code for fun without even caring what value it provides.
+
+60
+00:35:49,280 --> 00:36:35,090
+One of my favorite things to do is just to take a piece of code and rewrite it over and over and over again, trying to reduce the amount of code to the most minimal I possibly can. It's unlikely this provides any direct value to any specific task I want to accomplish. But I do it because I enjoy it. And in that sense, I think of programming as an art and I'm an artist, my goal isn't to create value for me or my friends or a business, but just to enjoy myself. And maybe I share the code with other programmers, and they enjoy the beauty of it, or they tell me it looks terrible, and they would write it much better. We all know how programmers are right.
+
+61
+00:36:36,680 --> 00:37:40,610
+So my, my employer might replace my programming tasks, and maybe some other software development tasks with new technology like AI, they aren't going to replace programming as a hobby or a craft for me personally. So if you're looking at, say, the potential effects of AI on programming, it depends a lot on your perspective, if you're coming from a career perspective, you could have a big impact at some point when it comes to programming. But when you're programming for fun, the impact will depend a lot more on how much you choose to let it impact you how much you choose to use it or utilize it. And you could choose not to utilize it or you just find it more fun to write things, you know, code things by hand. And, of course, this is nothing new, this this whole idea of like tools as a hobby or a craft, right.
+
+62
+00:37:41,690 --> 00:38:07,220
+So earlier in the show, I mentioned this wooden boat building channel, Samson boat co building wooden boats, often using hand tools is really not the most efficient or practical way to build boats anymore. And most boats aren't built like that anymore. It's it's kind of just not the most efficient way to do things. So it's not the way things are generally done if you're doing it for profit, right.
+
+63
+00:38:08,660 --> 00:38:48,800
+But the people in this show, building the boat, and even me, as a viewer of this boat building, are not doing it because it's the most efficient. It's just something we you know, they enjoy doing and some something I enjoy watching. It's It's the art in the process of doing it. And, you know, at one time, it was the way boats were built, and it employed many more people. But with different technical logical, quote, advancements, wooden boat building went from being, you know, a common career potentially to more of a hobby or something one does for fun.
+
+64
+00:38:49,220 --> 00:39:48,440
+I imagine this is the route that software development and programming will eventually take if AI keeps developing. Alright, now that we've discussed those sort of direct impacts or potential impacts, I think we can actually talk about the current state of AI as it relates to programming and software development. So far, my experience with existing AI tools that can be utilized for programming is that they are very, very far from that scenario that I imagined and presented earlier. So far, in fact, that at this point in time, I think it is honestly really unlikely to have any significant impact on how many software developers are needed, at least for quite a while. And in fact, it might have the opposite effect, it might drive up the demand for developers, I actually wouldn't be surprised if in the short term, that's what it does.
+
+65
+00:39:49,670 --> 00:41:11,510
+Now you can go on YouTube or tick tock and see a whole bunch of demos of chatGPT and other AIS, writing programs with the user not writing any code. code at all. And you might initially come away from that thinking, wow, my job is replaced, and there's no need for coders anymore. But I think if you dig into those examples, more, will see that this is really not true yet. In all of the examples I've seen, at best, the AI is able to write some basic code at the direction of the users. But in all of the cases, the user of the AI is, in my opinion, essentially programming that AI through very long and detailed prompts and an iterative. In my opinion, software development process, I think it's pretty close to programming. Even if the user isn't actually writing the code line by line, the AI seems more like a programmer accelerator than a programmer replacement at this point in time. And if you want to go beyond creating new small projects from scratch, I think you will see that the current API's are even further from replacing programmers directly.
+
+66
+00:41:12,320 --> 00:42:15,710
+For example, in the best cases, chatGPT can take over some part of the actual task of coding. But it really is just not able to carry out the software development process as a whole. And, if prompted, it might tell you what the software development process is and provide steps for carrying it out and its capabilities to connect to other systems is likely going to be expanded and this ability might grow more powerful, but ultimately, it still will absolutely, in my opinion, need direction and validation from humans. And not just any humans, from programmers from people that have the skill to give it direction and provide that validation. And for any program that was more than just a toy, it will need a skilled programmer to be able to analyze the coded outputs and provide feedback on it.
+
+67
+00:42:16,040 --> 00:43:13,820
+It's one thing to create this quick throw a prototype but another thing entirely to create a real living live, growing software product that is of high quality and can withstand the test of time and new features. You know, eventually AI may be able to do that. But from what I've seen so far, they are a long, long ways from completely taking over any aspect of the software development process, including coding, I, again come back to seeing them more as accelerators, almost like how higher level programming languages, or even libraries like React accelerate the development of software overriding say machine code or assembler, I see the current AIS as allowing programmers to accelerate the development of a program.
+
+68
+00:43:14,180 --> 00:44:12,260
+And in every case, I've seen where the actual output of the API is have a really high quality and effectively solves the problem with reasonable code. It required essentially writing an extremely detailed specification for the API as a prompt. So the point where I want to say it seems like the user is programming the AI. We still have in need programming and programmers, but maybe the language that we write our programs in will start to change a bit. And I can't really predict the future, but from what I know about large language, you know, like how these large language model AIS work, I don't see them completely replacing programmers, I suspect that will take further AI developments. And you might not know the history of AI.
+
+69
+00:44:12,920 --> 00:45:26,360
+But I so I actually got into programming. One of the reasons I got into it, originally a very long time ago was AI and that was one of the first things I used. And even at that point, it was like, we'd already gone through a couple of waves of AI and it's really interesting to go back and, and read in look at what people said about AI in like 1980s in sort of the first AI wave where it basically sounds like exactly like what people are saying now. And so this is I don't know the third or fourth maybe major AI wave at this point. And every single time it gets really hyped up and people get really excited, and they're like, oh, yeah, it's gonna just completely change everything. This is what everyone says every single time. And then there's inevitably an AI winter afterwards where everyone's like, Oh, yeah, okay, AI did do some things this new AI we created, but it wasn't as like, good as everyone was saying it was going to be it didn't completely take over the world.
+
+70
+00:45:27,950 --> 00:46:32,780
+And so every time, you know, after one of these AI ways, we have found some uses for the AIS. But they've never fully reached the levels that people have, you know, hyped them up to. And honestly, I don't see anything to indicate that it will be significantly different this time. So Ella lens, large language models are certainly better at some things than AI is of the past AI waves. And they will almost certainly be used to replace jobs or parts of jobs. But it also seems like there's a whole lot of hype right now that makes it feel like they're more capable than they really are. But the entire point of this is not to discount the potential disruptions that this new wave of AI could bring. Because it could have a massive impact, it could cause changes. But the point is just to help us understand how to survive these disruptions, whatever they happen to be in, however severe they happen to be.
+
+71
+00:46:33,110 --> 00:47:51,590
+So we have software development. And from an economic or business perspective, the value of software development is it's building software that can automate tasks, the value of it is in building that software, right? The value is not in programming itself. So from the context of a business, the best place to position yourself is not as a programmer, but as someone that can use software to provide solutions. Maybe someday even AI will take over that role. But that is certainly much further into the future. The point is that if you view yourself as someone that can take a problem and build a software solution, then you will be well positioned to handle and whether technological changes, maybe today, that means you spend part of your time programming, and tomorrow, you use AI to help you do that programming. But in that position, ultimately, you are always looking at software through the lens of building solutions, you are focused on building the best solutions that you can and you use the best tools available to do that.
+
+72
+00:47:52,010 --> 00:48:19,880
+So if you're looking at how to keep your job as AI starts growing, and maybe replacing programming related jobs, one way to keep ahead of that is to be someone that uses tools, not just someone that is a tool, it is to be someone that understands the software development process as a whole and can utilize it to provide good solutions.
+
+73
+00:48:20,120 --> 00:48:48,920
+Okay, so at the same time, while I think it is valuable to understand how to take advantage of the systems that we live within as individuals, it isn't the whole story. From an individual level, we have discussed an approach that can be used to keep or even get a job in the software field, even while AI might be replacing some tasks within software.
+
+74
+00:48:49,460 --> 00:49:24,200
+But from a collective standpoint, we do have other options. You could try to lobby or pressure governments to slow the spread of AI or control its implementation. But I suspect that is basically an impossible task at this point. The reason why that is such a difficult task is that it doesn't do anything to address the power imbalance that exists within workplaces, within societies within nations today.
+
+75
+00:49:25,340 --> 00:50:34,610
+And it ties into a story that came out recently that a lot of rank and file Google employees were very much against Google's barred AI being released to the public because they felt that was not ready yet and potentially dangerous. But management forced the employees to make it public anyways. And the truth is right now there's a land grab going on within companies where the owners and managers of companies are scrambling to try to monopolize the new industry or even And, you know, startups and VC funding, it's all pointed into this AI industry to try to monopolize it to try to be the one that has control over this new potential industry, right. And it's very clear that the people with capital, they just have a lot more power than labor or employees, they are able to force employees to develop and push out AI before it's ready, or at least before we as a society are ready for the changes that it might create.
+
+76
+00:50:35,060 --> 00:51:25,400
+So to me, the optimal solution to problems like this is to address them from a power standpoint, as the labor force as employees or independent contractors, we can only gain an equal amount of power to owners and managers if we band together. One potential solution in to this would be to create a cross sectional Workers Union, where us in the software industry band together with workers from all the other industries to create a Workers Union. I've talked about this on on the podcast before. But yeah, so if my opinion is if we do that, we can counter the power of those running companies, it doesn't mean we have to block the development of AI or new technologies.
+
+77
+00:51:25,730 --> 00:52:34,700
+But it does mean, we could then have the power to push back on the release of AI until we feel it is ready in that society is ready, we can make sure that people have enough time to learn the new skills they might need. And we can use the productivity gains from AI to reduce the amount we need to work or even increase our income. So we can spin it into a positive thing, you know, for ourselves and for society. And again, like I mentioned in the previous podcast episode, the goal is not to create a new set of bosses, you know, union bosses, but to create a union that is run directly by us as workers so that we can directly challenge the power that businesses hold over us. So there are things like we mentioned earlier that we can do as individuals to help strengthen our position within software jobs. But we can also approach it from the collective standpoint and work on creating worker led unions.
+
+78
+00:52:35,690 --> 00:53:06,680
+If you are interested in this approach, if not, that's fine, whatever, you don't do your own thing. But if it is something you're interested in, one recommendation I might have is checking out the IW W or Industrial Workers of the World, which is a long standing organization focused on workers union that is actively working today and has formed unions throughout the world throughout the US. I will link them in the description as well, if you're curious, and you want to check that out.
+
+79
+00:53:06,710 --> 00:53:50,990
+And yeah, I would love to hear from you. You know, how do you feel about the potential changes brought about by AI? Are you does it freak you out? Are you like, I just I don't know what to do. This is horrible, I feel bad. I, the thing I love seems like it might be going away or, or maybe you're just like worried about losing your job. Or maybe you're really excited. Maybe you love AI, you love developing the, you know, playing with the API's and seeing what they can do and, and you're very hopeful for the future they might bring, you know, I would love to hear from you. Or maybe even if you have other ideas on what we can or should do both as individuals or as a group.
+
+80
+00:53:52,130 --> 00:54:17,600
+Yeah, so you can contact me directly on the React's show.com that absolutely love to hear from you. I try to make sure I always reply to everyone. It might take me a few days sometimes but I always do my best. And you know, there's nothing better than hearing from all of you. Honestly, you make the show what it is today. You know, I always try to incorporate any feedback. So yeah, I'd love to hear from you.
+
+81
+00:54:17,600 --> 00:54:25,040
+And I just want to say thank you so much for joining me and I hope you have a great rest of your day. Bye
+
