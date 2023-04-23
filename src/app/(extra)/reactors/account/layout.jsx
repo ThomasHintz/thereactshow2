@@ -23,17 +23,5 @@ export default async function Layout({ children }) {
   if (!userId) {
     redirect('/reactors');
   }
-  return (
-    <>
-      signed in as: {userId}
-      <nav>
-        <ul>
-          <form method="POST" action="/api/sign-out">
-            <button type="submit">Sign Out</button>
-          </form>
-        </ul>
-      </nav>
-      {children}
-    </>
-  );
+  return children;
 };

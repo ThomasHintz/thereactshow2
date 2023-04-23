@@ -2,6 +2,9 @@ import { Fragment, useId } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+
+import UserMenu from '@/components/UserMenu';
+import ReactorsLink from '@/components/ReactorsLink';
 import NavBar from '@/components/NavBar'
 import posterImage from '@/images/poster.png'
 
@@ -19,7 +22,7 @@ function Waveform(props) {
     total: 100,
     width: 2,
     gap: 2,
-    minHeight: 40,
+    minHeight: 60,
     maxHeight: 100,
   }
 
@@ -174,7 +177,8 @@ function Layout({ children }) {
 
   return (
     <>
-      <header className="bg-slate-50 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-112 lg:items-start lg:overflow-y-auto xl:w-120">
+      <NavBar userMenu={(<UserMenu />)} reactorsLink={(<ReactorsLink />)} />
+      <header className="bg-slate-50 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-112 lg:items-start lg:overflow-y-auto xl:w-120 lg:mt-16">
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
           <span className="font-mono text-slate-500">Hosted by</span>
           <span className="mt-6 flex gap-6 font-bold text-slate-900">
@@ -194,7 +198,7 @@ function Layout({ children }) {
           <div className="px-4 sm:px-6 md:px-4 lg:px-8 xl:px-12 mb-10">
             <Link
               href="/"
-              className="relative mx-auto block w-48 overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:w-64 sm:rounded-xl lg:w-auto lg:rounded-2xl"
+              className="relative mx-auto block w-48 overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:w-64 sm:rounded-xl lg:w-auto lg:rounded-2xl mt-16 lg:mt-0"
               aria-label="Homepage"
             >
               <Image
@@ -207,7 +211,6 @@ function Layout({ children }) {
               <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 sm:rounded-xl lg:rounded-2xl" />
             </Link>
           </div>
-          <NavBar />
           <div className="mt-6 text-center lg:mt-12 lg:text-left px-4 sm:px-6 md:px-4 lg:px-8 xl:px-12">
             <p className="text-xl font-bold text-slate-900">
               <Link href="/">The React Show</Link>
@@ -254,8 +257,8 @@ function Layout({ children }) {
         </div>
       </header>
       <main className="border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-120">
-        <Waveform className="absolute left-0 top-0 h-20 w-full" />
-        <div className="relative">{children}</div>
+        <Waveform className="absolute left-0 top-0 h-20 w-full pointer-events-none lg:mt-16 z-30 lg:z-0" />
+        <div className="relative lg:pt-16">{children}</div>
       </main>
       <footer className="border-t border-slate-200 bg-slate-50 py-10 pb-40 sm:py-16 sm:pb-32 lg:hidden">
         <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">

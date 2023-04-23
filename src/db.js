@@ -78,6 +78,11 @@ foreign key (user_id) references users (id)
     key: 9,
     name: 'add audio size column',
     sql: [`alter table episodes add column audio_size integer;`]
+  },
+  {
+    key: 10,
+    name: 'add subscription type column',
+    sql: [`alter table subscriptions add column type text;`]
   }
 ];
 

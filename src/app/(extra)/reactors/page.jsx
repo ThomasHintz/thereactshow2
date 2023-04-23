@@ -5,7 +5,8 @@ import { Container } from '@/components/Container';
 
 
 import { CheckIcon } from '@heroicons/react/20/solid'
-import reactorsBackground from '@/images/reactors2.jpg';
+import reactorsBackground from '@/images/reactors3.jpeg';
+import reactorsBackground2 from '@/images/reactors4.jpeg';
 
 const features = [
     {
@@ -67,8 +68,8 @@ export default async function Page() {
         <div className="relative isolate overflow-hidden pt-14">
             <Image
                 src={reactorsBackground}
-                alt="TODO reactors background"
-                className="absolute inset-0 -z-10 h-full w-full object-cover"
+                alt="artistic rendering of an atom"
+                className="absolute inset-0 -z-10 h-screen w-full object-cover"
             />
             <div
                 className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -84,22 +85,33 @@ export default async function Page() {
             </div>
             <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                    <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-md">
                         Join The Reactors!
                     </h1>
-                    <p className="mt-6 text-lg leading-8 text-gray-300">
+                    <p className="mt-6 text-lg leading-8 text-gray-300 drop-shadow-md">
                         The <strong>BEST</strong> way to support the show and gain access to subscriber-only bonus content!
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <a
                             href="#pricing"
-                            className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                            className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 drop-shadow-md"
                         >
                             Join!
                         </a>
-                        <a href="#learn-more" className="text-sm font-semibold leading-6 text-white">
+                        <a
+                            href="#pricing"
+                            className="rounded-md bg-slate-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 drop-shadow-md"
+                        >
                             Learn more <span aria-hidden="true">→</span>
                         </a>
+                    </div>
+                    <div className="mt-4 flex items-center justify-center gap-x-6">
+                        <Link
+                            href="/reactors/sign-in"
+                            className="text-white p-2 drop-shadow-md underline backdrop-brightness-90"
+                        >
+                            Already have an account? Sign In
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -223,8 +235,8 @@ export default async function Page() {
                         </div>
                         <div className="flex items-start justify-end lg:order-first">
                             <Image
-                                src={reactorsBackground}
-                                alt="Product screenshot"
+                                src={reactorsBackground2}
+                                alt="artistic atom above a hand"
                                 className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
                                 width={2432}
                                 height={1442}

@@ -41,8 +41,8 @@ const createUser = async (email, salt, hashRes) => {
 };
 
 // Create a new subscription for the user
-const createSubscription = async (userId) => {
-  await db.run('insert into subscriptions (uuid, user_id) values (?, ?);', randomUUID(), userId);
+const createSubscription = async (userId, type) => {
+  await db.run('insert into subscriptions (uuid, user_id, type) values (?, ?, ?);', randomUUID(), userId, type);
 };
 
 async function handler(req, res) {
@@ -61,6 +61,7 @@ async function handler(req, res) {
       const session = (csi && await stripe.checkout.sessions.retrieve(csi)) ||
                       (patreon_magic_key === process.env.PATREON_MAGIC_KEY ? { customer_details: { email } } : false);
       const emailFromSession = session && session.customer_details.email;
+      const sessionType = session && session?.metadata?.type;
 
       // Validate session and email
       if (!session || !emailFromSession || email !== emailFromSession) {
@@ -84,22 +85,22 @@ async function handler(req, res) {
       const salt = genSalt();
       const hashRes = await hash(salt, password);
       const userId = await createUser(email, salt, hashRes);
-      await createSubscription(userId);
+      await createSubscription(userId, sessionType);
       console.log('User created successfully');
-      res.redirect('/reactors');
+      res.status(303).redirect('/reactors/account');
     } else {
       // Handle missing or invalid form data
       if (!email || !csi) {
         console.error('Missing email or csi');
-        res.redirect('/reactors/create-account?unexpected_error=true');
+        res.status(303).redirect('/reactors/create-account?unexpected_error=true');
         return;
       }
       if (!password) {
-        res.redirect(makeMsg(csi, email, 'Please enter a password'));
+        res.status(303).redirect(makeMsg(csi, email, 'Please enter a password'));
         return;
       }
       if (password !== passwordagain) {
-        res.redirect(makeMsg(csi, email, 'Passwords did not match. Please try again.'));
+        res.status(303).redirect(makeMsg(csi, email, 'Passwords did not match. Please try again.'));
         return;
       }
     }
