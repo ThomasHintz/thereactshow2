@@ -53,7 +53,7 @@ async function handler(req, res) {
     if (email && password && password === passwordagain && (csi || patreon_magic_key)) {
       // Check for minimum password length
       if (password.length < 12) {
-        res.redirect(makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'));
+        res.status(303).redirect(makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'));
         return;
       }
 
@@ -69,7 +69,7 @@ async function handler(req, res) {
         if (!session) { console.error('unable to get session'); }
         if (!emailFromSession) { console.error('unable to get email from session'); }
         if (!email === emailFromSession) { console.error('session email does not match form email'); }
-        res.redirect('/reactors/create-account?unexpected_error=true');
+        res.status(303).redirect('/reactors/create-account?unexpected_error=true');
         return;
       }
 
@@ -77,7 +77,7 @@ async function handler(req, res) {
       const existingUser = await db.get('select id from users where email=?', email);
       if (existingUser) {
         console.error('User already exists');
-        res.redirect('/reactors/create-account?unexpected_error=true');
+        res.status(303).redirect('/reactors/create-account?unexpected_error=true');
         return;
       }
 
