@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -53,8 +55,7 @@ async function handler(req, res) {
     if (email && password && password === passwordagain && (csi || patreon_magic_key)) {
       // Check for minimum password length
       if (password.length < 12) {
-        res.status(303).redirect(makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'));
-        return;
+        return NextResponse.redirect(makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'), 303);
       }
 
       // Retrieve Stripe session and email or get verify patreon magic key
@@ -69,16 +70,14 @@ async function handler(req, res) {
         if (!session) { console.error('unable to get session'); }
         if (!emailFromSession) { console.error('unable to get email from session'); }
         if (!email === emailFromSession) { console.error('session email does not match form email'); }
-        res.status(303).redirect('/reactors/create-account?unexpected_error=true');
-        return;
+        return NextResponse.redirect('/reactors/create-account?unexpected_error=true', 303);
       }
 
       // Check if user already exists
       const existingUser = await db.get('select id from users where email=?', email);
       if (existingUser) {
         console.error('User already exists');
-        res.status(303).redirect('/reactors/create-account?unexpected_error=true');
-        return;
+        return NextResponse.redirect('/reactors/create-account?unexpected_error=true', 303);
       }
 
       // Create new user and subscription
@@ -87,21 +86,18 @@ async function handler(req, res) {
       const userId = await createUser(email, salt, hashRes);
       await createSubscription(userId, sessionType);
       console.log('User created successfully');
-      res.status(303).redirect('/reactors/account');
+      return NextResponse.redirect('/reactors/account', 303);
     } else {
       // Handle missing or invalid form data
       if (!email || !csi) {
         console.error('Missing email or csi');
-        res.status(303).redirect('/reactors/create-account?unexpected_error=true');
-        return;
+        return NextResponse.redirect('/reactors/create-account?unexpected_error=true', 303);
       }
       if (!password) {
-        res.status(303).redirect(makeMsg(csi, email, 'Please enter a password'));
-        return;
+        return NextResponse.redirect(makeMsg(csi, email, 'Please enter a password'), 303);
       }
       if (password !== passwordagain) {
-        res.status(303).redirect(makeMsg(csi, email, 'Passwords did not match. Please try again.'));
-        return;
+        return NextResponse.redirect(makeMsg(csi, email, 'Passwords did not match. Please try again.'), 303)
       }
     }
   } else {
