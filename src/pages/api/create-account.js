@@ -86,6 +86,12 @@ async function handler(req, res) {
       const userId = await createUser(email, salt, hashRes);
       await createSubscription(userId, sessionType);
       console.log('User created successfully');
+      const sessionId = uuidv4();
+      const maxAge = 60 * 60 * 24 * 365;
+      const today = new Date();
+      const expiresDate = new Date(today.getTime() + (1000 * maxAge));
+      await db.run('insert into sessions (user_id, session_id, expires) values (?, ?, ?);', userId, sessionId, expiresDate.toISOString());
+      setCookie('session', sessionId, { req, res, maxAge, httpOnly: true, sameSite: true, secure: process.env.NODE_ENV === 'production' });
       return res.redirect(303, '/reactors/account');
     } else {
       // Handle missing or invalid form data
