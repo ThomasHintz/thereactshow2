@@ -55,7 +55,7 @@ async function handler(req, res) {
     if (email && password && password === passwordagain && (csi || patreon_magic_key)) {
       // Check for minimum password length
       if (password.length < 12) {
-        return res.redirect(makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'), 303);
+        return res.redirect(303, makeMsg(csi, email, 'Please enter a password that is at least 12 characters long.'));
       }
 
       // Retrieve Stripe session and email or get verify patreon magic key
@@ -70,14 +70,14 @@ async function handler(req, res) {
         if (!session) { console.error('unable to get session'); }
         if (!emailFromSession) { console.error('unable to get email from session'); }
         if (!email === emailFromSession) { console.error('session email does not match form email'); }
-        return res.redirect('/reactors/create-account?unexpected_error=true', 303);
+        return res.redirect(303, '/reactors/create-account?unexpected_error=true');
       }
 
       // Check if user already exists
       const existingUser = await db.get('select id from users where email=?', email);
       if (existingUser) {
         console.error('User already exists');
-        return res.redirect('/reactors/create-account?unexpected_error=true', 303);
+        return res.redirect(303, '/reactors/create-account?unexpected_error=true');
       }
 
       // Create new user and subscription
@@ -86,18 +86,18 @@ async function handler(req, res) {
       const userId = await createUser(email, salt, hashRes);
       await createSubscription(userId, sessionType);
       console.log('User created successfully');
-      return res.redirect('/reactors/account', 303);
+      return res.redirect(303, '/reactors/account');
     } else {
       // Handle missing or invalid form data
       if (!email || !csi) {
         console.error('Missing email or csi');
-        return res.redirect('/reactors/create-account?unexpected_error=true', 303);
+        return res.redirect(303, '/reactors/create-account?unexpected_error=true');
       }
       if (!password) {
-        return res.redirect(makeMsg(csi, email, 'Please enter a password'), 303);
+        return res.redirect(303, makeMsg(csi, email, 'Please enter a password'));
       }
       if (password !== passwordagain) {
-        return res.redirect(makeMsg(csi, email, 'Passwords did not match. Please try again.'), 303)
+        return res.redirect(303, makeMsg(csi, email, 'Passwords did not match. Please try again.'))
       }
     }
   } else {

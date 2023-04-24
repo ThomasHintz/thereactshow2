@@ -46,16 +46,16 @@ async function handler(req, res) {
         const expiresDate = new Date(today.getTime() + (1000 * maxAge));
         await db.run('insert into sessions (user_id, session_id, expires) values (?, ?, ?);', userId, sessionId, expiresDate.toISOString());
         setCookie('session', sessionId, { req, res, maxAge: rememberMe ? maxAge : undefined, httpOnly: true, sameSite: true, secure: process.env.NODE_ENV === 'production' });
-        res.redirect('/reactors/account', 303)
+        res.redirect(303, '/reactors/account')
       } else {
-        res.redirect(makeMsg(email, 'Invalid password or account does not exist.'), 303);
+        res.redirect(303, makeMsg(email, 'Invalid password or account does not exist.'));
       }
     } else {
       if (!email) {
-        res.redirect(makeMsg(email, 'Please enter an email address.'), 303);
+        res.redirect(303, makeMsg(email, 'Please enter an email address.'));
       }
       if (!password) {
-        res.redirect(makeMsg(email, 'Please enter a password.'), 303);
+        res.redirect(303, makeMsg(email, 'Please enter a password.'));
       }
     }
   } else {
