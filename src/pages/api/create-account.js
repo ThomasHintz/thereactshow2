@@ -9,6 +9,9 @@ import { withRateLimiter } from '@/lib/rateLimiter';
 import { scrypt, randomBytes, timingSafeEqual, randomUUID } from 'crypto';
 import { promisify } from 'util';
 
+import { setCookie } from 'cookies-next';
+import { v4 as uuidv4 } from 'uuid';
+
 // Promisify scrypt for better async/await usage
 const scryptPromise = promisify(scrypt);
 
