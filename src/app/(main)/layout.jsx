@@ -3,8 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
-import UserMenu from '@/components/UserMenu';
-import ReactorsLink from '@/components/ReactorsLink';
 import NavBar from '@/components/NavBar'
 import posterImage from '@/images/poster.png'
 
@@ -177,7 +175,7 @@ function Layout({ children }) {
 
   return (
     <>
-      <NavBar userMenu={(<UserMenu />)} reactorsLink={(<ReactorsLink />)} />
+      <NavBar />
       <header className="bg-slate-50 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-112 lg:items-start lg:overflow-y-auto xl:w-120 lg:mt-16">
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
           <span className="font-mono text-slate-500">Hosted by</span>

@@ -1,7 +1,5 @@
 'use client';
 
-import { Suspense } from 'react';
-
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
@@ -22,7 +20,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function NavBar({ userMenu, reactorsLink }) {
+export default function NavBar() {
   const pathname = usePathname();
   return (
     <Disclosure as="nav" className="bg-gray-800 fixed w-full z-20">
@@ -66,20 +64,6 @@ export default function NavBar({ userMenu, reactorsLink }) {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    <Suspense fallback={(
-                        <Link
-                          href="/reactors"
-                                className={classNames(
-                                    '/reactors' === pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                )}
-                                aria-current={'/reactors' === pathname ? 'page' : undefined}
-                          >
-                          Reactors
-                        </Link>
-                    )}>
-                      {reactorsLink}
-                    </Suspense>
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
@@ -97,39 +81,18 @@ export default function NavBar({ userMenu, reactorsLink }) {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <Suspense fallback={(
-                      <UserCircleIcon
-                        className="h-8 w-8 rounded-full text-white animate-spin"
-                      />
-                  )}>
-                    {userMenu}
-                  </Suspense>
-                </Menu>
+                <Link
+                  href="/support"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-md px-3 py-2 text-base font-medium"
+                >
+                  Support
+                </Link>
               </div>
             </div>
           </div>
 
           <Disclosure.Panel className="sm:hidden">
             <div className="flex flex-col space-y-4 px-2 pb-3 pt-2">
-              <Disclosure.Button>
-                <Suspense fallback={(
-                    <Link
-                      href="/reactors"
-                            className={classNames(
-                                '/reactors' === pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'block rounded-md px-3 py-2 text-base font-medium'
-                            )}
-                            aria-current={'/reactors' === pathname ? 'page' : undefined}
-                      >
-                      Reactors
-                    </Link>
-                )}>
-                  {reactorsLink}
-                </Suspense>
-              </Disclosure.Button>
               {navigation.map((item) => (
                 <Disclosure.Button key={item.name}>
                   <Link
