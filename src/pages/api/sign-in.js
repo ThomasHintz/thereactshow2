@@ -1,6 +1,3 @@
-import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 import { setCookie } from 'cookies-next';
 import { v4 as uuidv4 } from 'uuid';
 
