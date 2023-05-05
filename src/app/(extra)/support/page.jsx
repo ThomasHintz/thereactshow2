@@ -5,18 +5,18 @@ const features = [
 
 
   {
-    name: 'Premium Subscription',
-    link: 'https://thereactshow.supercast.com/',
+    name: 'Patreon',
+    link: 'https://patreon.com/user?u=80900303',
     description:
-      'Your own premium podcast feed with: bonus content, early releases, ad-free episodes, AMA. The BEST way to support the show!',
+      'Like the show? This is the best way to support our work and we are super grateful! Thank you!',
     icon: StarIcon,
     highlight: true
   },
   {
-    name: 'Buy My Book!',
+    name: 'My Book',
     link: '/book',
     description:
-      'If you want to learn more in-depth how React work then this is definitely the best way to support the show!',
+      'Foundations of High-Performance React is my take on breaking down how React works internally to help you build better React applications.',
     icon: BookOpenIcon,
   },
   {
