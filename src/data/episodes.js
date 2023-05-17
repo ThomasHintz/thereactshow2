@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-12865769': {
+    slug: 'eric-meier-on-successfully-starting-software-projects',
+    youtube: 'https://www.youtube.com/embed/0lnEpttUlUk'
+  },
   'Buzzsprout-12694669': {
     slug: 'how-to-keep-your-software-job-if-ai-takes-over',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '091-mixed.srt')).toString()),
