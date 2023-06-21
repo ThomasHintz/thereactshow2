@@ -6,32 +6,31 @@ import { BookOpenIcon, BanknotesIcon, StarIcon } from '@heroicons/react/24/outli
 const features = [
 
   {
+    name: 'Discord Server',
+    link: 'https://discord.gg/BneUtTSB',
+    description:
+      'Connect with the community for free on our Discord Server! Ask questions or just hang out!',
+    icon: StarIcon
+  },
+  {
+    name: 'The Reactors Sub-Reddit',
+    link: 'https://www.reddit.com/r/TheReactShow/',
+    description:
+      'Discuss recent episodes, the show itself, or ask React questions on our sub-reddit!',
+    icon: StarIcon
+  },
+  {
     name: 'The Reactors Premium Subscription',
     link: 'https://thereactshow.supercast.com/',
     description:
-      'Your own premium podcast feed with: bonus content, early releases, AMA. The BEST way to support the show!',
-    icon: StarIcon,
-    highlight: true
-  },
-  {
-    name: 'My Book',
-    link: '/book',
-    description:
-      'Foundations of High-Performance React is my take on breaking down how React works internally to help you build better React applications.',
-    icon: BookOpenIcon,
-  },
-  {
-    name: 'Tip!',
-    link: 'https://buy.stripe.com/cN25nl5x2fZO4M0cMN',
-    description:
-      'Another great way to directly support the show is to send us a one-time tip! Thank you so much!',
-    icon: BanknotesIcon,
+      'Your own premium podcast feed with: bonus content, and early releases. The place to go if you want the regular show and behind-the-scenes details!',
+    icon: StarIcon
   }
 ];
 
 export const metadata = {
-  title: 'Support the Show!',
-  description: 'Show your support for the show with these options!'
+  title: 'Join Our Community!',
+  description: 'We would love to have you join us whether you are just getting started or a programming expert!'
 };
 
 export default async function Page() {
@@ -41,9 +40,9 @@ export default async function Page() {
         <div className="bg-white py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
-              <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Support the Show!</h2>
+              <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Join the Community!</h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Like <i>The React Show</i>? These are the best ways to support us!
+                We would love to have you join us whether you are just getting started or a programming expert!
               </p>
             </div>
             <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
