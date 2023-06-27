@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13105870': {
+    slug: 'the-impossible-challenge-of-writing-good-code-in-tech',
+    youtube: 'https://www.youtube.com/embed/2wTI2lh2T0k'
+  },
   'Buzzsprout-13054901': {
     slug: 'What-Actually-Happens-When-You-Call-A-Function-',
     youtube: 'https://www.youtube.com/embed/-RVWS27op_k'
