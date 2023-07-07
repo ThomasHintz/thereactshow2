@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BookOpenIcon, BanknotesIcon, StarIcon } from '@heroicons/react/24/outline'
 
-// discord invite link: https://discord.gg/BneUtTSB
+// discord invite link: https://discord.gg/zXYggKUBC2
 
 const features = [
 

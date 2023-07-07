@@ -7,7 +7,7 @@ const features = [
 
   {
     name: 'Discord Server',
-    link: 'https://discord.gg/BneUtTSB',
+    link: 'https://discord.gg/zXYggKUBC2',
     description:
       'Connect with the community for free on our Discord Server! Ask questions or just hang out!',
     icon: StarIcon
