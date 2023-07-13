@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13214296': {
+    slug: 'how-to-build-secure-react-apps',
+    transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '095-mixed.srt')).toString())
+  },
   'Buzzsprout-13105870': {
     slug: 'the-impossible-challenge-of-writing-good-code-in-tech',
     youtube: 'https://www.youtube.com/embed/2wTI2lh2T0k'

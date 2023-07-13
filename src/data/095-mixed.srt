@@ -1,0 +1,3205 @@
+1
+00:00:02,038 --> 00:00:11,201
+Welcome to the React Show, brought to you from
+occupied Miwok territory by me, your host Thomas,
+
+2
+00:00:12,141 --> 00:00:21,644
+and Broken Assumptions. Is your new web app
+secure? How easily can someone get into it,
+
+3
+00:00:21,984 --> 00:00:29,079
+take over accounts, or even steal user data?
+Can someone- take over the site or even use
+
+4
+00:00:29,119 --> 00:00:37,184
+it to distribute malware? How do you even know?
+Don't worry, today we're going to cover the
+
+5
+00:00:37,204 --> 00:00:43,528
+basics of web application security so you'll
+know where to start, what to focus on, and
+
+6
+00:00:43,548 --> 00:00:52,538
+how to progressively harden your web application.
+Thank you so much for joining us. I'm fresh
+
+7
+00:00:52,638 --> 00:00:59,602
+off a bicycle tour in the San Gabriel and Santa
+Monica mountains down near Los Angeles. And
+
+8
+00:00:59,862 --> 00:01:05,485
+I'm really excited to jump into the basics of
+web application security, maybe more. Maybe
+
+9
+00:01:05,685 --> 00:01:10,108
+I'm too excited. I just, you know, it was a
+great time. I had a great time and I'm just
+
+10
+00:01:10,148 --> 00:01:17,392
+feeling refreshed, you know, so we'll see what
+happens. But I did want to begin with a couple
+
+11
+00:01:17,452 --> 00:01:17,752
+quick
+
+12
+00:01:20,814 --> 00:01:32,003
+super excited to present the general availability
+of the Reactors. It's the silly name I'm giving
+
+13
+00:01:32,043 --> 00:01:40,670
+to my new initiative to expand the community
+around the podcast and programming and React
+
+14
+00:01:40,710 --> 00:01:47,555
+in general and just try to help all of us get
+better at programming and React as well as
+
+15
+00:01:47,675 --> 00:01:55,139
+provide a place to just hang out. First, you
+can sign up for a premium version of the podcast
+
+16
+00:01:55,159 --> 00:02:03,103
+that includes all of the regular episodes ad
+free, as well as bonus episodes. And not only
+
+17
+00:02:03,183 --> 00:02:11,366
+do you get more, but it also really helps to
+support this show. And you can actually sign
+
+18
+00:02:11,426 --> 00:02:19,129
+up for as low as $1 US dollar per year, trying
+to make it as accessible as possible as well.
+
+19
+00:02:20,098 --> 00:02:27,840
+But whatever you're able to do, if you're interested,
+it makes a huge difference in my ability to
+
+20
+00:02:27,900 --> 00:02:34,261
+produce high quality educational podcasts. I
+just super appreciate any support anyone is
+
+21
+00:02:34,321 --> 00:02:43,224
+able to give. Second, you can join for free
+on our new Discord server or channel. I'm still
+
+22
+00:02:43,264 --> 00:02:50,202
+learning Discord, whatever it's called. But
+yeah, you can come hang out with us. ask questions
+
+23
+00:02:50,242 --> 00:02:56,204
+about programming or react or even tell me how
+I was completely wrong about something. I'd
+
+24
+00:02:56,244 --> 00:03:03,406
+love to hear that too. Yeah, so if you want
+a little break from programming too, I also
+
+25
+00:03:03,486 --> 00:03:09,828
+post sea slug pictures or other fun adventure
+things. I want it to be a fun space to hang
+
+26
+00:03:09,988 --> 00:03:15,169
+out so we can learn but we can also just be
+friends and hang out with each other, right?
+
+27
+00:03:16,254 --> 00:03:21,718
+But yeah, no matter what the reason, we'd love
+to have you come join us on Discord. Links
+
+28
+00:03:21,758 --> 00:03:28,183
+for Discord and the premium podcast feed will
+be in the description or summary or whatever,
+
+29
+00:03:28,863 --> 00:03:33,767
+wherever you find this podcast, as well as on
+our website, of course, thereactshow.com.
+
+30
+00:03:37,069 --> 00:03:43,934
+So speaking of Discord, that's actually where
+the idea for this episode started. So I just
+
+31
+00:03:43,974 --> 00:03:51,557
+want to say thanks to this MC Kraken on Discord
+for the initial questions about web application
+
+32
+00:03:51,597 --> 00:03:58,280
+security and feedback on my early outlines of
+this episode. Right before we jump into the
+
+33
+00:03:58,320 --> 00:04:05,983
+main show though, I do want to give a real quick
+disclaimer. You are responsible for security
+
+34
+00:04:06,043 --> 00:04:14,895
+on the things you work on, not me. This episode
+is just meant to be a- primer on web application
+
+35
+00:04:15,035 --> 00:04:21,241
+security and is absolutely not an exhaustive
+resource and is not a replacement for doing
+
+36
+00:04:21,281 --> 00:04:27,866
+your own security analysis on your own projects.
+My goal is to provide a quick overview so you
+
+37
+00:04:27,886 --> 00:04:33,551
+can know where to start and so you can dive
+in deeper on your own projects and also just
+
+38
+00:04:33,611 --> 00:04:40,036
+to outline methods and approaches I take to
+in general keep web applications more secure.
+
+39
+00:04:41,377 --> 00:04:49,510
+And Of course, just like my coverage of this
+topic is not entirely exhaustive, security
+
+40
+00:04:49,911 --> 00:04:59,261
+will also never be exhaustive either. Security
+will never be 100%. Every system that we build
+
+41
+00:04:59,361 --> 00:05:09,359
+or work on will have holes. The goal of security
+is not to make a perfectly secure system that
+
+42
+00:05:09,419 --> 00:05:16,862
+is unreasonable and essentially impossible.
+The goal is to make the cost of attacking a
+
+43
+00:05:16,962 --> 00:05:25,144
+system vastly outweigh the rewards. If someone,
+like for example, if someone breaks into your
+
+44
+00:05:25,204 --> 00:05:31,666
+system to steal user data but finds out you
+don't store any user data, Well, you win there.
+
+45
+00:05:31,987 --> 00:05:37,711
+You've made the reward essentially nothing,
+in that context at least. There might be other
+
+46
+00:05:37,751 --> 00:05:44,477
+reasons they might break in. But yeah, the whole
+point of security, and I think this is something
+
+47
+00:05:44,517 --> 00:05:51,002
+that if you're not super familiar with when
+it comes to security, might be a little bit
+
+48
+00:05:51,062 --> 00:05:58,909
+surprising. But the entire point is not to build
+a perfectly secure system. It's not to come
+
+49
+00:05:58,969 --> 00:06:09,112
+up with perfect security solutions. The point
+is just to make it so it's too costly for people
+
+50
+00:06:09,152 --> 00:06:18,900
+to break in relative to what they'll get if
+they succeed. So that's where my thinking when
+
+51
+00:06:18,940 --> 00:06:26,785
+it comes to security is sort of comes from,
+which is that I call it sort of scaled security.
+
+52
+00:06:27,918 --> 00:06:38,222
+So trust in a system should be proportional
+to the hardening effort. So for example, when
+
+53
+00:06:38,242 --> 00:06:43,324
+you're first launching your web application,
+let's say you're just going to share it with
+
+54
+00:06:43,344 --> 00:06:53,089
+a couple friends and it's not carrying out financial
+transactions on people's behalf. Maybe you're
+
+55
+00:06:53,169 --> 00:06:58,090
+using a service for that, but whatever. The
+point being, you're launching a new application.
+
+56
+00:06:58,210 --> 00:07:04,472
+It doesn't have a ton of users. The users it
+does have are your friends, and they understand
+
+57
+00:07:04,492 --> 00:07:10,614
+this is the first version, and it's gonna have
+bugs, and it's not gonna work well. In that
+
+58
+00:07:10,634 --> 00:07:18,817
+case, it might be perfectly fine to spend very
+little time on security, because the trust
+
+59
+00:07:18,877 --> 00:07:24,495
+that people are going to have in this system
+are gonna be very low. So if people are approaching
+
+60
+00:07:24,515 --> 00:07:31,340
+your system and being like, oh, this thing is
+probably gonna leak all my data and it's not
+
+61
+00:07:31,400 --> 00:07:37,945
+secure at all, I'm not gonna put anything that
+I care about into it. And it's not maybe inherently
+
+62
+00:07:38,005 --> 00:07:43,569
+creating data that you don't want to share or
+something. There's a lot of cases where I think
+
+63
+00:07:43,589 --> 00:07:47,812
+when you're first starting, I wouldn't say all
+cases, there are cases where you need to care
+
+64
+00:07:47,872 --> 00:07:52,627
+right from the beginning. But I think for a
+lot of people, like, Maybe you're creating
+
+65
+00:07:52,687 --> 00:07:58,512
+a site to track some recipes or something and
+you want your friends to try it out a little
+
+66
+00:07:58,532 --> 00:08:06,018
+bit before you make it a larger launch or something.
+It's still good to be aware of security things,
+
+67
+00:08:06,078 --> 00:08:14,345
+but it's not as important to have a super hardened
+system at that point. That's where I think
+
+68
+00:08:14,425 --> 00:08:15,886
+of scaled security.
+
+69
+00:08:20,950 --> 00:08:26,332
+you know, how much trust people have in the
+system. And, you know, a lot of cases people
+
+70
+00:08:26,372 --> 00:08:32,434
+don't know how much to trust a system, but as
+the software engineer, we can better evaluate
+
+71
+00:08:32,454 --> 00:08:38,037
+how much trust they should have in a system
+as well, and also evaluate how much trust people
+
+72
+00:08:38,117 --> 00:08:45,740
+think they have in a system. And so we can scale
+our security based on that. So if we understand
+
+73
+00:08:45,780 --> 00:08:52,611
+that our software is creating valuable data,
+We need to scale our security to match how
+
+74
+00:08:52,691 --> 00:09:01,034
+valuable that data is. So that's kind of my
+preface to all of this is that you're never
+
+75
+00:09:01,074 --> 00:09:09,217
+going to build a completely secure system, but
+the level of security you provide should proportionally
+
+76
+00:09:09,357 --> 00:09:16,640
+match the amount of trust that people have in
+your system or should have in your system if
+
+77
+00:09:16,680 --> 00:09:24,283
+they understood everything it did. and proportional
+to the rewards somebody's going to get for
+
+78
+00:09:24,323 --> 00:09:31,025
+breaking into your system. I mean, if you don't
+have anything valuable, security doesn't matter
+
+79
+00:09:31,045 --> 00:09:37,286
+as much. There's still other aspects to security.
+Maybe somebody can take over your server and
+
+80
+00:09:37,387 --> 00:09:46,509
+use it to infect your users with malware. But
+that's still a reward somebody gets for the
+
+81
+00:09:46,849 --> 00:09:53,929
+security vulnerability. But the entire point
+of this is just that it's going to sound like
+
+82
+00:09:53,949 --> 00:09:58,593
+a lot probably if you're not familiar with this
+topic. A lot of the stuff I'm going to talk
+
+83
+00:09:58,613 --> 00:10:06,258
+about, it might sound kind of overwhelming.
+But my point is just that think of it in terms
+
+84
+00:10:06,318 --> 00:10:15,665
+of a scale. We're not trying to have perfect
+security. Not every application needs the same
+
+85
+00:10:15,765 --> 00:10:22,400
+level of security. We need to develop an ability
+to tell how much security a system should have
+
+86
+00:10:23,020 --> 00:10:28,642
+and engineer solutions for that. That's part
+of being a software engineer is understanding
+
+87
+00:10:28,682 --> 00:10:34,305
+these tradeoffs. I'll try to help guide us along
+that journey throughout the podcast, but I
+
+88
+00:10:34,325 --> 00:10:41,028
+wanted to start with that so that people are
+able to frame all of this information in a
+
+89
+00:10:41,088 --> 00:10:49,803
+more useful manner. One other thing I wanted
+to... talk about before we get into the main
+
+90
+00:10:51,664 --> 00:11:02,008
+meat of this episode is that I'm primarily going
+to be talking about technical security. I'm
+
+91
+00:11:02,028 --> 00:11:09,311
+going to presume you have a React-based web
+application, but I think a lot of this will
+
+92
+00:11:09,351 --> 00:11:15,934
+apply to any web application. I'm specifically
+going to speak to React. What I'm going to
+
+93
+00:11:15,974 --> 00:11:23,920
+talk about applies to everything from a technical
+perspective. But the more important thing in
+
+94
+00:11:24,221 --> 00:11:30,026
+any web application or any system is going to
+be your operational security, not your technical
+
+95
+00:11:30,086 --> 00:11:35,250
+security. Technical security is important. Operational
+security, though, is where you should start.
+
+96
+00:11:37,131 --> 00:11:45,430
+Most hacks into systems are not via breaking
+in, like hacking into the system. using some
+
+97
+00:11:45,470 --> 00:11:53,435
+vulnerability. Most systems are broken via social
+engineering. So our focus in this podcast is
+
+98
+00:11:53,455 --> 00:11:58,858
+going to be more about technical security, like
+how do we secure applications from a technical
+
+99
+00:11:58,898 --> 00:12:04,781
+perspective and vulnerabilities. But I just
+wanted to make it very clear that the place
+
+100
+00:12:04,801 --> 00:12:12,385
+you should always start is operational security.
+And what I mean by that is like phishing attacks
+
+101
+00:12:12,525 --> 00:12:19,133
+or giving people access to an admin account
+that shouldn't have access or that you don't
+
+102
+00:12:19,173 --> 00:12:31,200
+trust or those types of things. The people in
+your systems are always the weak point. Even
+
+103
+00:12:31,420 --> 00:12:38,424
+very insecure technical systems, usually operational
+security is the bigger deal. You need to take
+
+104
+00:12:38,444 --> 00:12:45,368
+care of that first. I just want to mention that
+and I'll make some other references to it because
+
+105
+00:12:45,388 --> 00:12:52,353
+it's so important, but the main point of this
+will be on technical security. All right, so
+
+106
+00:12:52,453 --> 00:13:03,822
+let's get into it. The best way that I think
+to start is that we need to look at where people
+
+107
+00:13:03,882 --> 00:13:08,225
+are coming from when they're trying to crack
+your system, when they're trying to hack your
+
+108
+00:13:08,265 --> 00:13:14,539
+system because We need to understand that before
+we can understand how to make secure systems.
+
+109
+00:13:15,620 --> 00:13:24,043
+And so I call this thinking like a cracker.
+Hackers, they're different than the way they
+
+110
+00:13:24,103 --> 00:13:28,345
+look at your systems is different than the way
+you will look at your system as an engineer.
+
+111
+00:13:28,365 --> 00:13:35,568
+I found this from, I think it was mouser.com,
+like a blog post. And I thought it was really
+
+112
+00:13:35,808 --> 00:13:43,779
+great. So they say follow paths. They will continue
+to follow a path until it fails to progress
+
+113
+00:13:43,819 --> 00:13:51,221
+them forward on their mission. We need to start
+getting our head into thinking in that term,
+
+114
+00:13:52,101 --> 00:14:00,584
+those terms. When you're looking at building
+a system and being that engineer, you're like,
+
+115
+00:14:00,824 --> 00:14:05,925
+okay, I've structured my API this way, my client
+this way, and you're thinking of it in those
+
+116
+00:14:05,965 --> 00:14:12,711
+terms. The way that a hacker thinks of things
+is like, oh, is there a vulnerability in the
+
+117
+00:14:12,771 --> 00:14:17,433
+login system? I'm going to try a whole bunch
+of different things to try to get into this
+
+118
+00:14:17,473 --> 00:14:23,975
+login system. Is there something I can learn
+about the way the sessions are organized or
+
+119
+00:14:24,015 --> 00:14:32,997
+the session tokens, or is there a weakness in
+the SSL certificates? Can I intercept communications?
+
+120
+00:14:34,326 --> 00:14:38,027
+they're going to, you know, the way they think
+of it is, okay, how do I break into the login
+
+121
+00:14:38,047 --> 00:14:41,768
+system? And they might try a bunch of things
+they can't break into the login system. Then
+
+122
+00:14:41,788 --> 00:14:47,149
+they might move on to something else. Oh, can
+I, you know, break into this other part of
+
+123
+00:14:47,169 --> 00:14:52,450
+the system? Can I directly break into the server,
+you know, using some other program that the,
+
+124
+00:14:52,991 --> 00:14:57,012
+you know, is running on the server, not the
+main web application? Is it not firewalled
+
+125
+00:14:57,152 --> 00:15:06,035
+off? I'm going to port scan. And so that's the
+way that hackers... are really looking at your
+
+126
+00:15:06,075 --> 00:15:13,641
+system. And so it's important for us to put
+on our hacker hat, so to speak, and think about
+
+127
+00:15:13,681 --> 00:15:20,087
+systems that way as well. And just a note throughout
+this episode, I'm going to sort of talk like
+
+128
+00:15:20,127 --> 00:15:27,012
+the hacker is a real person sitting at a keyboard,
+typing this stuff in, trying to break into
+
+129
+00:15:27,032 --> 00:15:33,437
+your system. And that could be a thing. Generally
+though, all of this stuff is encoded in bots.
+
+130
+00:15:33,822 --> 00:15:41,344
+that try to do it automatically. It's not, it's
+kind of not relevant because the people that
+
+131
+00:15:41,384 --> 00:15:46,185
+create the bots, you know, create them to do
+the same thing that they would do if they were
+
+132
+00:15:46,645 --> 00:15:53,047
+sitting there in front of, you know, at their
+keyboard, right? I just want to note that.
+
+133
+00:15:54,507 --> 00:16:01,029
+It can matter in terms of like how quickly somebody
+is able to do something. You can make a bot
+
+134
+00:16:01,069 --> 00:16:08,434
+that like tries to break into your system by
+guessing random passwords, right? And if it
+
+135
+00:16:08,454 --> 00:16:16,301
+can submit 10,000 requests per minute or whatever,
+that's going to be, open up vulnerabilities
+
+136
+00:16:16,341 --> 00:16:21,565
+that wouldn't be there if somebody had to manually
+type in a password every time. But that's not
+
+137
+00:16:21,665 --> 00:16:25,508
+so important. Like once you get into this and
+start thinking about it, it doesn't matter
+
+138
+00:16:25,549 --> 00:16:30,092
+as much. So I'm just going to talk like it's
+a real person, but you can imagine it's actually
+
+139
+00:16:30,112 --> 00:16:37,299
+a bot sometimes, right? Anyway, so going back
+to our like, hackers follow paths. Another
+
+140
+00:16:37,319 --> 00:16:45,061
+part of this is that it's really important to
+try to get assumptions out of your head and
+
+141
+00:16:45,081 --> 00:16:50,503
+just assume that all of your assumptions will
+be wrong. In fact, this is generally the place
+
+142
+00:16:50,723 --> 00:16:59,914
+I start. So if somebody says, hey, can you perform
+a security audit of this system? I'll look
+
+143
+00:16:59,954 --> 00:17:06,777
+at the code and be like, okay, what are the
+programmers assuming? One great example of
+
+144
+00:17:06,797 --> 00:17:12,999
+this will be a lot of times on the server side,
+they will assume that the client they're talking
+
+145
+00:17:13,039 --> 00:17:20,722
+to, the web application they're talking to is
+trusted. When you're programming the server
+
+146
+00:17:20,742 --> 00:17:26,045
+side, you're not usually being like, okay, what
+happens if somebody creates a duplicate of
+
+147
+00:17:26,065 --> 00:17:31,456
+this website that's malicious? and connects
+to my server and starts sending me requests.
+
+148
+00:17:32,557 --> 00:17:39,002
+You might, in general, think like, okay, let's
+make a secure API, right? But usually what
+
+149
+00:17:39,062 --> 00:17:46,028
+I find happens is people will be like, oh, okay,
+we'll take these couple security measures to
+
+150
+00:17:46,709 --> 00:17:52,593
+make our API secure. And then from then on,
+assume that the web application they're talking
+
+151
+00:17:52,633 --> 00:17:54,075
+to is the one that they wrote.
+
+152
+00:17:57,778 --> 00:18:04,661
+Okay, they're assuming requests are going to
+come in this order. What happens if I don't
+
+153
+00:18:04,741 --> 00:18:10,064
+send in requests in that order? Can I just jump
+ahead in the login process, for example, and
+
+154
+00:18:10,184 --> 00:18:18,029
+send a request that the server thinks is going
+to come after three other requests? And so,
+
+155
+00:18:18,929 --> 00:18:25,593
+yeah, I think when we're looking at how to think
+like a hacker, this is by far the best place
+
+156
+00:18:25,613 --> 00:18:32,992
+to start. all of your assumptions are wrong.
+And even if your assumptions happen to be right,
+
+157
+00:18:33,052 --> 00:18:38,594
+it's a really great practice. For example, one
+way you could look at a system is be like,
+
+158
+00:18:38,734 --> 00:18:49,359
+let's assume that our HTTPS layer, our TLS layer,
+our security certificate system doesn't work.
+
+159
+00:18:49,419 --> 00:18:53,681
+Let's assume it's broken. Normally you assume
+that works fine, right? And maybe it will work
+
+160
+00:18:53,721 --> 00:18:58,836
+fine. Maybe there's nothing wrong with it. But
+part of this learning process is to be like,
+
+161
+00:18:58,896 --> 00:19:05,322
+okay, let's assume we broke something. Let's
+assume we implemented it wrong or there's a
+
+162
+00:19:05,442 --> 00:19:13,049
+bug in whoever wrote the library that we're
+using to provide that. What happens then? If
+
+163
+00:19:13,089 --> 00:19:19,435
+somebody's able to get past this, what do they
+get? Where can they go next? And so thinking
+
+164
+00:19:19,475 --> 00:19:24,654
+like a hacker, this is the way that I usually
+like to... think about it. It's like, oh, let
+
+165
+00:19:24,674 --> 00:19:29,696
+me look at this system and just start making
+a bunch of assumptions that things aren't the
+
+166
+00:19:29,716 --> 00:19:38,240
+way they seem to be. And so that could be like,
+let's assume we have a bug here. Let's assume
+
+167
+00:19:38,320 --> 00:19:44,042
+somebody can view people's bank account numbers.
+Let's assume somehow there's a vulnerability
+
+168
+00:19:44,062 --> 00:19:48,904
+we didn't know about and people can view this
+data in our database. What happens then? What
+
+169
+00:19:48,924 --> 00:19:56,580
+can they do with this data? That's the way I
+like to frame it. That's the place I like to
+
+170
+00:19:56,640 --> 00:20:03,503
+start when we're getting into all of this. So
+it's like some other examples might be, don't
+
+171
+00:20:03,544 --> 00:20:11,928
+assume that user data will only be used in the
+original code path. And this is another part
+
+172
+00:20:12,128 --> 00:20:19,152
+of security and that is, don't assume that future
+engineers at the company will make the same
+
+173
+00:20:19,192 --> 00:20:23,967
+assumptions that you do and think in the same
+way that you do. going back to this user data,
+
+174
+00:20:24,067 --> 00:20:29,291
+you might be like, oh, I don't need to sanitize
+this data for cross-site scripting because
+
+175
+00:20:29,371 --> 00:20:35,515
+it only ever gets used in this specific way,
+which never gets sent back to the client, well,
+
+176
+00:20:35,795 --> 00:20:41,559
+maybe one year later, a new engineer implements
+a feature that sends the data back to the user,
+
+177
+00:20:41,639 --> 00:20:47,564
+not realizing it wasn't sanitized. They made
+the assumption it was. And so that's where
+
+178
+00:20:48,064 --> 00:20:53,179
+I just try to get in this mindset whenever I'm...
+doing a security audit or writing code like
+
+179
+00:20:53,199 --> 00:21:00,645
+this where I'm like, okay, let's assume this
+fails even though I think it won't. What happens?
+
+180
+00:21:00,665 --> 00:21:05,108
+That will really help you just start learning.
+We don't necessarily need to do anything with
+
+181
+00:21:05,148 --> 00:21:12,594
+that yet, that information, but it's important
+to just spend some time practicing that. One
+
+182
+00:21:12,614 --> 00:21:19,319
+of the best things you can do when you're doing
+this is even spend looking at code, looking
+
+183
+00:21:19,399 --> 00:21:25,084
+at your own sites, and just trying to get in
+that mindset of how can I think like a hacker
+
+184
+00:21:25,104 --> 00:21:31,949
+to hack into my own systems? This will absolutely
+pay off. It will really help start retraining
+
+185
+00:21:31,969 --> 00:21:37,194
+your brain to think and view your code in a
+different way that will help you create more
+
+186
+00:21:37,254 --> 00:21:43,739
+hardened systems. Another aspect to mention
+when it comes to assumptions is that I find
+
+187
+00:21:43,779 --> 00:21:51,803
+a lot of engineers assume for some reason that
+people hacking into a system, they just exploit
+
+188
+00:21:52,043 --> 00:21:58,765
+one thing. That's almost never the case. Many
+attacks involve multiple attack vectors. For
+
+189
+00:21:58,805 --> 00:22:04,726
+example, maybe the hacker's looking at your
+system and they say something like, oh, look
+
+190
+00:22:04,766 --> 00:22:10,608
+at this. It doesn't verify phone, like the phone
+number matches the account. It only verifies
+
+191
+00:22:10,748 --> 00:22:16,649
+the email address. I can use that to change
+my account to someone else's phone number.
+
+192
+00:22:17,746 --> 00:22:24,971
+I don't know what that will let me do yet, but
+I'm going to find out. And so, you know, maybe
+
+193
+00:22:25,332 --> 00:22:29,075
+they make that change, they get somebody else's
+phone number, and then maybe that allows them
+
+194
+00:22:29,155 --> 00:22:37,522
+to bypass the two-factor authentication or something
+like that. So when you were initially programming
+
+195
+00:22:37,562 --> 00:22:43,206
+the, you know, form to update somebody's profile
+and set the phone number, you were just assuming
+
+196
+00:22:43,607 --> 00:22:50,224
+that, you know, somebody setting this number
+an authenticated user for this account, not
+
+197
+00:22:50,264 --> 00:22:55,627
+realizing that your API just lets anyone send
+a request in here and update the phone number,
+
+198
+00:22:55,687 --> 00:23:03,553
+right? And so that's kind of what I'm getting
+at. And usually, it'll be like usually people
+
+199
+00:23:03,633 --> 00:23:08,917
+break into a system using something that seems
+really minor. You're like, I don't need to
+
+200
+00:23:08,957 --> 00:23:12,899
+secure that because it's not that important.
+But they get to that point, which allows them
+
+201
+00:23:12,960 --> 00:23:18,404
+to exploit something else that is more major
+and more major and more major and they can
+
+202
+00:23:18,424 --> 00:23:22,747
+take over more and more of your system. So it's
+important to also when you're thinking about
+
+203
+00:23:22,787 --> 00:23:29,753
+this path-based hacker approach to keep that
+in mind. It's not just one vulnerability. It's
+
+204
+00:23:30,433 --> 00:23:36,278
+multiple. Another example like the session token
+is stored in the cookie. Is there a way I can
+
+205
+00:23:36,318 --> 00:23:43,404
+get access to cookies? Oh, look. I put data.
+I put data into this text field.
+
+206
+00:23:47,006 --> 00:23:52,307
+into a form and it shows up on other people's
+feeds, right? And it isn't escaped. They didn't
+
+207
+00:23:52,487 --> 00:23:58,029
+escape this code in some way. So I could add
+some JavaScript on maybe my profile and then
+
+208
+00:23:58,089 --> 00:24:02,810
+it will show up on everybody else's feed, which
+means it's getting run in everybody else's
+
+209
+00:24:02,870 --> 00:24:10,873
+browser, and that JavaScript will let me read
+their session token cookie. That's an example
+
+210
+00:24:10,933 --> 00:24:15,903
+again of how you can sort of go through this
+path. You have a vulnerability essentially
+
+211
+00:24:15,943 --> 00:24:23,549
+in two different places here. So always remember,
+defense in depth, never rely on one piece being
+
+212
+00:24:23,649 --> 00:24:30,135
+secure. Try to secure all the pieces. Try to
+make the assumption that somebody broke through
+
+213
+00:24:30,155 --> 00:24:35,979
+the earlier layers. Attacks are usually a chain.
+They might start with something that seems
+
+214
+00:24:36,139 --> 00:24:42,064
+hardly worth securing, but once you get past
+that, you get to progressively higher levels
+
+215
+00:24:42,104 --> 00:24:50,215
+of trust within the system. All right, so I
+like to think of things in a sort of methods-based
+
+216
+00:24:50,275 --> 00:24:54,096
+approach, right? If you've listened to this
+podcast, that's the way I like to do it. So
+
+217
+00:24:56,017 --> 00:25:00,858
+that's what I want to talk about next is how
+can you do this in sort of a methodical way?
+
+218
+00:25:01,238 --> 00:25:07,800
+So we've talked about how to think like a hacker,
+but how do we actually apply this? So this
+
+219
+00:25:07,880 --> 00:25:14,102
+is what is called the threat modeling process.
+If you really want to get into this, you can
+
+220
+00:25:14,142 --> 00:25:20,224
+look up way better information. This is just
+an overview. But this is kind of generally
+
+221
+00:25:20,244 --> 00:25:27,546
+the method I would use if I'm trying to do some
+sort of security audit. So to do a threat model,
+
+222
+00:25:27,806 --> 00:25:33,147
+the place that you generally start with, there's
+other sort of ways to do it, but I like to
+
+223
+00:25:33,187 --> 00:25:41,149
+focus on what are called the assets. Identifying
+assets. Assets. So assets are things a cracker.
+
+224
+00:25:41,510 --> 00:25:46,911
+might be interested in. Maybe this is personal
+data, session tokens, bank account numbers,
+
+225
+00:25:47,391 --> 00:25:54,333
+anything that has value to someone else in your
+system. These are your assets. So you can just
+
+226
+00:25:54,593 --> 00:26:00,875
+list them out. That's what I have to do. Just
+write a big list. The next thing you'll want
+
+227
+00:26:00,895 --> 00:26:09,010
+to do is identify and rank threats. So then
+you can go through that list and be like, Okay,
+
+228
+00:26:09,130 --> 00:26:13,273
+what are the actual threats to this data? So
+let's say it's personal data. Somebody could
+
+229
+00:26:13,313 --> 00:26:22,221
+steal that data, disseminate it on the internet
+at large. And part of this is like ranking
+
+230
+00:26:22,862 --> 00:26:28,686
+and sort of writing how big this threat is.
+So let's say you have very minimal personal
+
+231
+00:26:28,726 --> 00:26:35,472
+data, a first and last name for a site that
+is just for storing recipes. Well, if this
+
+232
+00:26:35,512 --> 00:26:41,309
+data gets leaked to the internet, I mean, it's
+not great to leak anything, but what value
+
+233
+00:26:41,329 --> 00:26:48,995
+does that really have? I mean, maybe not a lot
+if that's all it is. But maybe you're Ashley
+
+234
+00:26:49,015 --> 00:26:56,421
+Madison and you run a website for people to
+cheat on their partners. Leaking their first
+
+235
+00:26:56,501 --> 00:27:02,486
+and last name could be absolutely devastating.
+So this data might be worth a ton. You might
+
+236
+00:27:02,506 --> 00:27:07,069
+be like, okay, this is a really, really valuable
+asset. We're going to give this a high rating.
+
+237
+00:27:08,026 --> 00:27:12,708
+So yeah, I usually will go through that list
+of assets and just sort of it doesn't You know
+
+238
+00:27:12,748 --> 00:27:17,991
+depends on how thorough the security audit you're
+doing if you're in a new web application You
+
+239
+00:27:18,011 --> 00:27:21,413
+know it can just be pretty quick like oh, yeah,
+this is really important. This is not as important
+
+240
+00:27:21,473 --> 00:27:27,417
+Whatever so that can be yeah Many different
+things too. It could be like oh, what if somebody
+
+241
+00:27:27,497 --> 00:27:33,800
+can run their own code on our server? What if
+somebody gets admin access? You know definitely
+
+242
+00:27:33,820 --> 00:27:38,827
+if you're gonna do this you can look up like
+lists that people have created that will give
+
+243
+00:27:38,867 --> 00:27:47,492
+you more ideas. But yeah, you can have this
+asset list, you can identify and rank threats.
+
+244
+00:27:47,532 --> 00:27:52,795
+Another example might be a session token could
+be used to impersonate another user on the
+
+245
+00:27:52,835 --> 00:27:58,358
+system. What does that give them? What does
+that let somebody do? How much of a risk is
+
+246
+00:27:58,418 --> 00:28:03,400
+that? Or a stolen bank account number could
+be used to steal someone else's money. I mean
+
+247
+00:28:03,520 --> 00:28:10,008
+that seems like you want to do it in a sort
+of relative way. Maybe there's a bigger risk
+
+248
+00:28:10,048 --> 00:28:14,431
+in your system and that's number three on your
+list. The whole point here is just to sort
+
+249
+00:28:14,471 --> 00:28:20,814
+of give us a way to prioritize our efforts.
+So the next thing is a threat analysis, which
+
+250
+00:28:20,874 --> 00:28:29,419
+is basically the probability that a threat occurs
+times the cost to the organization or the users
+
+251
+00:28:29,479 --> 00:28:37,755
+of your system. So this is, you know, being
+like, okay. We've got our personal data and
+
+252
+00:28:38,316 --> 00:28:47,381
+maybe it's worth a lot. How likely is that to
+actually be disseminated, broken into, stolen?
+
+253
+00:28:47,601 --> 00:28:55,625
+Maybe you encrypt the data and you take all
+sorts of other safeguards against it or something
+
+254
+00:28:55,725 --> 00:29:01,228
+so the probability you feel like is lower that
+it might get stolen. Well, that might move
+
+255
+00:29:01,268 --> 00:29:06,764
+it down on the list of your priorities. Basically
+at this point, this is where we start also
+
+256
+00:29:06,824 --> 00:29:12,408
+exploring attack paths. So we'll look at our
+system and be like, okay, if somebody breaks
+
+257
+00:29:12,488 --> 00:29:19,694
+into the login system, that gives them access
+to this. If they're then able to elevate their,
+
+258
+00:29:20,215 --> 00:29:26,440
+you know, login to an admin account, that gives
+them access to these things. Um, but to get
+
+259
+00:29:26,500 --> 00:29:32,665
+there, they need to break in three systems maybe.
+Um, and so you're like, well, that seems the
+
+260
+00:29:32,705 --> 00:29:39,252
+last likely. So that's basically just this process.
+You can look it up if you really want to know
+
+261
+00:29:39,272 --> 00:29:46,615
+it, but the general idea is just like get an
+idea of the paths somebody would have to take
+
+262
+00:29:46,715 --> 00:29:55,079
+through your system to get to these assets and
+rate how likely that is times the cost of them
+
+263
+00:29:55,219 --> 00:30:00,821
+actually succeeding at it. Another thing I like
+to do at this stage is just to sort of note...
+
+264
+00:30:01,154 --> 00:30:08,418
+how each of these paths is mitigated or not
+mitigated. Maybe part of your system is you
+
+265
+00:30:08,458 --> 00:30:16,104
+tell users, hey, we don't protect against this.
+That might be valid. But yeah, so that's what
+
+266
+00:30:16,124 --> 00:30:23,248
+I would do at this stage. We have our threat
+analysis. And so that's sort of a very abbreviated
+
+267
+00:30:23,289 --> 00:30:27,772
+version of threat modeling. But this is sort
+of where I start. I look at a system. I identify
+
+268
+00:30:27,812 --> 00:30:34,468
+the assets. I rank. the threats against those
+assets, and then I do the threat analysis where
+
+269
+00:30:34,488 --> 00:30:41,393
+we figure out sort of the cost priority and
+the paths a hacker might take through your
+
+270
+00:30:41,433 --> 00:30:47,837
+system. Once we have this data, we can prioritize
+our security efforts. We can look at the top
+
+271
+00:30:47,877 --> 00:30:53,461
+of our list and be like, okay, this is the most
+important thing for us to secure. These are
+
+272
+00:30:53,561 --> 00:31:01,951
+the paths we can imagine somebody taking to
+get to this asset. What can we do to further
+
+273
+00:31:01,991 --> 00:31:07,056
+mitigate this? Maybe we're like, OK, we need
+to do better. You can look at each of those
+
+274
+00:31:07,096 --> 00:31:11,159
+paths and be like, OK, what can we do to stop
+somebody getting through this layer? What can
+
+275
+00:31:11,179 --> 00:31:18,405
+we do to stop somebody getting through this
+layer? So this provides a nice method of doing
+
+276
+00:31:18,745 --> 00:31:24,831
+a security audit and making your system more
+secure in a methodical way. All right, so next
+
+277
+00:31:24,911 --> 00:31:31,816
+I want to talk about basic attack vectors. And
+this is definitely not an exhaustive list,
+
+278
+00:31:31,856 --> 00:31:37,920
+but when you're writing a web application, there
+are very common attack vectors that you should
+
+279
+00:31:38,000 --> 00:31:44,804
+be aware of, at least. And first, I'm going
+to talk about operational security and social
+
+280
+00:31:44,864 --> 00:31:51,209
+engineering. Then we'll get into the technical
+things. So something that I want to note that
+
+281
+00:31:51,229 --> 00:31:57,213
+a lot of people forget is it's super important
+to secure your domain registrar, your host,
+
+282
+00:31:57,353 --> 00:32:03,770
+things like that. If somebody can break into
+whoever you've registered your domain with
+
+283
+00:32:03,830 --> 00:32:10,775
+and take over your domain, boy can they really
+do a lot of harm at that point. And so that's
+
+284
+00:32:10,836 --> 00:32:18,582
+not code you've written, but keeping that secure
+is super, super important. So remember to keep
+
+285
+00:32:18,682 --> 00:32:26,989
+those types of things in mind as well. One thing
+that I highly recommend you do is use a hardware
+
+286
+00:32:27,049 --> 00:32:34,914
+security key. I think, I honestly think most
+engineers should be using them. So a hardware
+
+287
+00:32:34,954 --> 00:32:42,239
+security key is basically a physical device
+that's got cryptographic stuff on it. I'm not
+
+288
+00:32:42,259 --> 00:32:50,284
+going to go into all the details, but it essentially
+means that if you use it for two-factor authentication,
+
+289
+00:32:50,324 --> 00:32:57,265
+things like that. It basically means somebody
+can't get into the system unless they physically
+
+290
+00:32:57,345 --> 00:33:04,031
+have that hardware key. And that eliminates
+a massive host of vulnerabilities when it comes
+
+291
+00:33:04,071 --> 00:33:12,338
+to things like securing your email, your domain
+registrar, things like that. So I really recommend
+
+292
+00:33:13,799 --> 00:33:20,865
+all engineers, software engineers that work
+basically on anything should spend some time
+
+293
+00:33:20,985 --> 00:33:28,009
+understanding how to use a hardware security
+key or at least like a two-factor authentication
+
+294
+00:33:28,109 --> 00:33:34,772
+app on their phone which is also good. The reason
+why I really recommend a hardware security
+
+295
+00:33:34,812 --> 00:33:45,838
+key though is because then you can use WebAuthn,
+Fido, you can look these things up but they
+
+296
+00:33:45,878 --> 00:33:53,026
+essentially provide phishing protection as well
+if you use them correctly. Like when I plug
+
+297
+00:33:53,046 --> 00:34:01,491
+my hardware key into my computer and I log into
+my domain registrar, I do my username and password,
+
+298
+00:34:01,511 --> 00:34:06,934
+then it says, okay, verify with your security
+key. And you can't get into the system unless
+
+299
+00:34:07,174 --> 00:34:13,437
+I enter a code that does cryptographic stuff
+on this hardware security key, and I physically
+
+300
+00:34:13,477 --> 00:34:21,714
+touch it, you know, hit a button on it. And
+using public key cryptography, that process
+
+301
+00:34:21,834 --> 00:34:27,576
+verifies the site the request is going to is
+actually the site I think it is. It's the site
+
+302
+00:34:27,656 --> 00:34:34,218
+I initially set up this hardware security key
+on. And so this is super valuable because it
+
+303
+00:34:34,358 --> 00:34:40,239
+eliminates a lot of the phishing attacks that
+normally take over people's accounts where
+
+304
+00:34:40,259 --> 00:34:45,721
+they think they're on their domain registrar's
+website, they enter their username and password,
+
+305
+00:34:45,821 --> 00:34:52,320
+and then maybe even... They enter in the two-factor
+authentication code from the authenticator
+
+306
+00:34:52,380 --> 00:34:57,144
+app on their phone. But turns out it's a completely
+fake site. And this fake site in the background
+
+307
+00:34:57,524 --> 00:35:03,869
+is entering all these details into the real
+site and giving that hacker access to these
+
+308
+00:35:03,889 --> 00:35:09,853
+things. If you use a security key correctly,
+you eliminate a lot of these things. So I definitely
+
+309
+00:35:09,913 --> 00:35:17,898
+recommend that. It's kind of a pain. It's extra
+work, but in my opinion, very worth it. Anyways,
+
+310
+00:35:17,998 --> 00:35:25,143
+you can do what you want, model your own risk
+and all this, right? I'm not going to tell
+
+311
+00:35:25,163 --> 00:35:30,847
+you what to do, just a recommendation. One other
+thing I want to mention is secure your email
+
+312
+00:35:31,227 --> 00:35:39,033
+and anyone else at the company that has an important
+email account. Don't use SMS for multi-factor
+
+313
+00:35:39,073 --> 00:35:43,756
+authentication, two-factor authentication. It
+sucks. A lot of people though don't remember
+
+314
+00:35:43,796 --> 00:35:51,726
+to secure their email. And I think... even more
+important, secure that this one is, this one
+
+315
+00:35:51,746 --> 00:35:59,593
+is hard. But if you can make sure that people
+with important emails in your company also
+
+316
+00:35:59,633 --> 00:36:08,280
+have them secured like the CEO because a great
+way that people social engineer their way into
+
+317
+00:36:08,320 --> 00:36:15,411
+systems is The CEO is like, I'm not super technical.
+I can't handle all this extra security measures.
+
+318
+00:36:15,511 --> 00:36:21,056
+And so they don't really secure their email
+account. Somebody hacks into their email because
+
+319
+00:36:21,076 --> 00:36:27,042
+it's easy to hack into. And then they send out
+emails to other people at the company telling
+
+320
+00:36:27,062 --> 00:36:34,109
+them to do things, impersonating the CEO or
+CTO or somebody high up in the company. And
+
+321
+00:36:34,634 --> 00:36:38,877
+A lot of people, like engineers, they're probably
+not going to question that. They get this email
+
+322
+00:36:38,897 --> 00:36:43,161
+from the CEO being like, oh, this is really
+important. Can you take care of this by XYZ
+
+323
+00:36:43,221 --> 00:36:50,227
+time and basically let a hacker into the system?
+So just a word of warning, anyone with like
+
+324
+00:36:50,287 --> 00:36:56,052
+authority in a company, they need to secure
+email and chat programs, anything like that.
+
+325
+00:36:56,112 --> 00:37:02,097
+Anyways, all right, done with operational security.
+Let's get into basic technical attack vectors.
+
+326
+00:37:03,250 --> 00:37:07,033
+So these are pretty classic, I'm not going to
+go into anything wild at this point. There's
+
+327
+00:37:07,053 --> 00:37:10,556
+a million ways you can hack into a system, but
+we're going to talk about just a few major
+
+328
+00:37:10,676 --> 00:37:21,345
+ones. So database injection. If you have a database
+of any kind in your system, you run the risk
+
+329
+00:37:21,485 --> 00:37:26,549
+of injection. So what is injection? Basically
+think of it this way. Let's say you have an
+
+330
+00:37:26,750 --> 00:37:36,475
+SQL-based system. And you... put user data into
+the SQL queries. Let's say you just made the
+
+331
+00:37:36,495 --> 00:37:44,739
+queries up with a string, you interpolate or
+append user data into these queries. Well,
+
+332
+00:37:44,799 --> 00:37:56,664
+what if a user of your system puts SQL into
+their data? Then you will be running the attacker's
+
+333
+00:37:56,844 --> 00:38:02,879
+SQL code against your database. That's horrible.
+It can let them... getting access to basically
+
+334
+00:38:02,919 --> 00:38:08,964
+everything. This is super classic. Not gonna
+go into all the details again, but database
+
+335
+00:38:08,984 --> 00:38:16,410
+injection is one of them. How do you avoid that?
+Don't create your SQL just using plain strings.
+
+336
+00:38:16,730 --> 00:38:24,817
+Basically, most libraries today will provide
+a API and it'll be the main API where you pass
+
+337
+00:38:24,897 --> 00:38:32,391
+in user data separate from the query itself.
+It's parameterized is what it's called. Like
+
+338
+00:38:32,411 --> 00:38:38,235
+if you use an ORM, Object Relational Management
+System, that type of thing, generally it provides
+
+339
+00:38:38,295 --> 00:38:43,220
+us for it. But take like five seconds and look
+into your system and look at how to do this
+
+340
+00:38:43,300 --> 00:38:49,144
+right. Don't make the mistakes that people have
+made in the past and do it wrong. This one
+
+341
+00:38:49,225 --> 00:38:53,388
+should be pretty good these days. Just take
+five seconds to understand how your system
+
+342
+00:38:53,428 --> 00:39:01,999
+works. The next one is cross-site scripting.
+And when it comes to React, This is one definitely
+
+343
+00:39:02,019 --> 00:39:11,124
+to be aware of. So cross-site scripting is basically
+an attack vector where an attacker is able
+
+344
+00:39:11,184 --> 00:39:17,367
+to run their code on your website, within your
+web application. This is something I mentioned
+
+345
+00:39:17,427 --> 00:39:24,491
+earlier. So somehow an attacker, maybe they
+put JavaScript into a form field on your site,
+
+346
+00:39:25,171 --> 00:39:33,471
+and this JavaScript gets served up to other
+users in some way. and runs on their system
+
+347
+00:39:33,551 --> 00:39:40,774
+in their browsers. This is very bad. Again,
+this can basically give somebody access to
+
+348
+00:39:40,834 --> 00:39:45,896
+everything in your system eventually or do lots
+of other nefarious things. Very bad. Cross-site
+
+349
+00:39:45,936 --> 00:39:52,359
+scripting. It's a very classic attack vector.
+But specifically, when you're using React,
+
+350
+00:39:52,479 --> 00:40:00,438
+there are a couple things to be aware of. Never
+ever put... data that users have entered into
+
+351
+00:40:00,458 --> 00:40:07,082
+your system inside dangerously set inner HTML,
+I think that's the property name. Unless you
+
+352
+00:40:07,242 --> 00:40:11,704
+really know what you're doing and you really
+actually understand cross site scripting and
+
+353
+00:40:11,724 --> 00:40:17,767
+you know how to sanitize that data, just don't
+do that. And the other thing is don't put user
+
+354
+00:40:17,807 --> 00:40:26,202
+data into attributes of components in React.
+Things that could... be passed through as like
+
+355
+00:40:26,302 --> 00:40:31,664
+a style property or something like that. This
+one's a little bit more nuanced in understanding
+
+356
+00:40:31,704 --> 00:40:38,625
+it, but from a blanket perspective, if you're
+using React, you can put user data in like
+
+357
+00:40:38,745 --> 00:40:45,727
+the body of a HTML tag. Like let's say something
+eventually gets rendered out as a div and in
+
+358
+00:40:45,767 --> 00:40:54,250
+the body of this div, you put some data the
+user has entered, their name. whatever it happens
+
+359
+00:40:54,290 --> 00:41:01,392
+to be, that React will always automatically
+escape for you. So you don't need to worry
+
+360
+00:41:01,412 --> 00:41:07,994
+about cross-site scripting if you put... In
+fact, not only do you not need to worry about
+
+361
+00:41:08,034 --> 00:41:12,615
+it, you just need to be aware that React will
+escape this for you. So you don't need to escape
+
+362
+00:41:12,655 --> 00:41:19,697
+this data when it goes into your system necessarily.
+In fact, I'm going to talk about that a little
+
+363
+00:41:19,717 --> 00:41:24,778
+bit more in a second, but... The thing to be
+aware of is if you just generally use React
+
+364
+00:41:24,938 --> 00:41:33,321
+in a normal way where you just render components
+and include user data in that output, you'll
+
+365
+00:41:33,361 --> 00:41:40,723
+be fine. Just don't put it in attributes. Don't
+be like, style equals dollar sign user data
+
+366
+00:41:40,783 --> 00:41:46,144
+or whatever. Don't put it inside attributes.
+Don't put it inside dangerously set inner HTML
+
+367
+00:41:46,204 --> 00:41:52,730
+and you'll generally be fine. React is great.
+It takes care of this for us. Originally using
+
+368
+00:41:53,390 --> 00:41:58,592
+things before React, this was not always the
+case and boy, it was much easier to have cross-site
+
+369
+00:41:58,612 --> 00:42:03,775
+scripting. But yeah, if you're using React,
+it's pretty straightforward. I have though,
+
+370
+00:42:03,915 --> 00:42:09,457
+definitely run into cases where people have
+put user data into attributes and even one
+
+371
+00:42:09,497 --> 00:42:14,279
+time I had somebody putting it into dangerously
+set innerHTML and they thought somehow that
+
+372
+00:42:14,299 --> 00:42:21,522
+was more secure. No, don't do that. But yeah,
+so that's cross-site scripting. Another one
+
+373
+00:42:21,562 --> 00:42:26,445
+to be aware of is request forgery. So this is
+like,
+
+374
+00:42:29,646 --> 00:42:37,711
+one example would be server side. So don't use
+user data to access local resources. So let's
+
+375
+00:42:37,731 --> 00:42:44,254
+say you had this brilliant idea where you were
+going to take someone's name and use that as
+
+376
+00:42:44,274 --> 00:42:50,882
+the file name on your file system to store some
+data about that user. I mean, I don't know
+
+377
+00:42:50,902 --> 00:42:53,202
+why some of you do this, but just to give you
+an example,
+
+378
+00:42:56,243 --> 00:43:02,285
+what you're going to do then at some point in
+your system is open up that file. Well, if
+
+379
+00:43:02,585 --> 00:43:09,867
+somebody can put any data they want for their
+name into that field, you're basically going
+
+380
+00:43:09,907 --> 00:43:18,650
+to be running a hacker's code locally on your
+system. Again, you can. look into how this
+
+381
+00:43:18,690 --> 00:43:24,271
+works and maybe you can escape it. So, or create
+a whitelist or do this in some way securely,
+
+382
+00:43:24,311 --> 00:43:31,073
+but by default, you need to be careful whenever
+you're opening a network address, a file on
+
+383
+00:43:31,093 --> 00:43:37,395
+your system, a database, credentials, anything
+local to your system or to your infrastructure.
+
+384
+00:43:38,335 --> 00:43:49,159
+Don't put user data into it because then somebody
+can use this to forge, you know, to local I.O.
+
+385
+00:43:49,700 --> 00:43:55,965
+within your system. So that's another one to
+be aware of. This can also be clients forging
+
+386
+00:43:56,005 --> 00:44:02,451
+requests to the server, clients, your client
+forging requests to somebody else's server.
+
+387
+00:44:03,431 --> 00:44:12,639
+Just another vulnerability to be aware of. Alright,
+so those are the main web app based threats
+
+388
+00:44:12,679 --> 00:44:17,904
+that I'm going to cover. There's a million more
+but that's always basically where I start with
+
+389
+00:44:17,944 --> 00:44:22,588
+for historical reasons, those things have been
+exploited more than basically anything else.
+
+390
+00:44:23,528 --> 00:44:29,173
+So definitely make sure you get those things
+right. Luckily, libraries often do a much better
+
+391
+00:44:29,213 --> 00:44:34,177
+job today than they used to in terms of protecting
+us against those things, but at least spend
+
+392
+00:44:34,197 --> 00:44:39,542
+a little bit of time to understand what your
+library does to protect against it and how
+
+393
+00:44:39,562 --> 00:44:44,894
+to use it effectively. Next, I'm gonna mention
+a couple other areas that I... find people
+
+394
+00:44:44,974 --> 00:44:52,158
+often make mistakes on or don't know about when
+they're getting into this. So another one would
+
+395
+00:44:52,178 --> 00:44:59,622
+be log security. What are you putting in your
+logs? This is kind of the same as like don't
+
+396
+00:44:59,662 --> 00:45:01,904
+put user data into logs because,
+
+397
+00:45:05,045 --> 00:45:11,269
+or at least you got to be careful because a
+lot of times logs aren't treated very securely.
+
+398
+00:45:11,449 --> 00:45:17,953
+And so this could be an easy way to leak user
+information or even let hackers run code on
+
+399
+00:45:17,993 --> 00:45:23,196
+your system. A great example of this, which
+it wouldn't be running on your system, but
+
+400
+00:45:23,236 --> 00:45:30,921
+something people don't realize is that in JavaScript,
+console.log and console.error essentially are
+
+401
+00:45:30,961 --> 00:45:37,785
+the same as eval. So anything that, you know,
+if you put user data into a console.log or
+
+402
+00:45:37,805 --> 00:45:43,801
+a console.error, that essentially allows somebody
+to run arbitrary JavaScript on your client.
+
+403
+00:45:44,682 --> 00:45:49,066
+Maybe this doesn't matter, depends on your system,
+but it's just something to be aware of. And
+
+404
+00:45:49,126 --> 00:45:54,831
+same on the server side. Be really careful what
+you put into logs and be careful what you do
+
+405
+00:45:54,871 --> 00:45:59,215
+with logs. I think people forget about this
+a lot. They're just like, Hey, let me log this
+
+406
+00:45:59,235 --> 00:46:04,800
+data. I want all the data. Log it all out. Um,
+that could be a threat. Be careful what you
+
+407
+00:46:04,840 --> 00:46:10,773
+do with logs. Um, And the next thing is a big
+one, I think, for people getting started, which
+
+408
+00:46:10,853 --> 00:46:19,160
+is authentication and authorization. You got
+to make a login for your system, right? Most
+
+409
+00:46:19,200 --> 00:46:26,266
+systems have a login. This is where so many
+mistakes have gotten made. I have found so
+
+410
+00:46:26,306 --> 00:46:33,092
+many vulnerabilities in login systems. A lot
+of times, people get sort of the basics right,
+
+411
+00:46:33,132 --> 00:46:39,551
+like username and password or. They're using
+some library to do this for them. But oftentimes
+
+412
+00:46:39,571 --> 00:46:51,037
+where they go wrong is identity. And identifying
+who a user is or updating data in the login
+
+413
+00:46:51,077 --> 00:46:59,320
+process, there's just a million ways you can
+do this wrong. And so my advice is always keep
+
+414
+00:46:59,360 --> 00:47:05,480
+this as simple as you possibly can. Even if
+you're using some library to handle this stuff
+
+415
+00:47:05,520 --> 00:47:13,347
+for you, just keep the implementation of that
+library, that code, just keep it super simple.
+
+416
+00:47:13,888 --> 00:47:22,295
+Just make it only about one thing, logging in.
+Only one section is authorizing the user to
+
+417
+00:47:22,375 --> 00:47:26,999
+get into the system. The next section might
+be identifying the user and setting up their
+
+418
+00:47:27,039 --> 00:47:34,923
+session token, but just keep it really simple.
+What I have found is these login systems just
+
+419
+00:47:35,023 --> 00:47:42,645
+balloon. It's really bad. I think what happens
+is people build the initial one and then somebody's
+
+420
+00:47:42,665 --> 00:47:51,467
+like, hey, can we add this feature to automatically
+do x, y, z after a person logs in? And so people
+
+421
+00:47:51,487 --> 00:47:57,809
+will start putting other code into the login
+routines. And this is extraordinarily dangerous.
+
+422
+00:47:57,929 --> 00:48:06,484
+Just don't do it. Make that a separate thing,
+completely separate. Don't update data on login
+
+423
+00:48:06,644 --> 00:48:12,049
+automatically unless you're super, super careful.
+I see this all the time too. People will be
+
+424
+00:48:12,069 --> 00:48:18,414
+like, oh, our first set of users didn't have
+this data set. We're going to set it for all
+
+425
+00:48:18,534 --> 00:48:25,440
+users when they log in or update a phone. Maybe
+somebody puts in their email and their phone
+
+426
+00:48:25,460 --> 00:48:32,766
+when they log in and somebody like as a second
+factor or something. And or I've seen like
+
+427
+00:48:33,307 --> 00:48:39,713
+they log in with both, I don't know, multiple
+pieces of data. And people are like, oh, we're
+
+428
+00:48:39,733 --> 00:48:44,797
+gonna save the user a step. We're gonna update
+this data for them when they log in. Don't
+
+429
+00:48:44,817 --> 00:48:50,802
+do that, never do that. It's like the worst
+thing ever. Cause without realizing it, you
+
+430
+00:48:50,942 --> 00:48:56,822
+often open up vulnerabilities where it allows
+a hacker to. inject their own information in
+
+431
+00:48:56,842 --> 00:49:03,625
+those paths and essentially log in as somebody
+else. So just something to keep in mind, make
+
+432
+00:49:03,665 --> 00:49:11,648
+your login systems, your authorizing users and
+identifying users as simple as you can. This
+
+433
+00:49:11,768 --> 00:49:16,470
+one is, I don't think I can stress this enough.
+People, this is by far the place that I've
+
+434
+00:49:16,510 --> 00:49:22,233
+seen the most issues. Like generally at this
+point, those other things like database injection,
+
+435
+00:49:22,273 --> 00:49:27,606
+cross site scripting, that kind of stuff is
+I don't usually see glaring issues here. People
+
+436
+00:49:27,626 --> 00:49:31,888
+are generally aware of it, and libraries do
+an OK job of handling it. But when it comes
+
+437
+00:49:31,928 --> 00:49:37,289
+to actually implementing this stuff, especially
+for authentication or authorization, giving
+
+438
+00:49:37,329 --> 00:49:43,551
+somebody admin access, people overcomplicate
+this. They add features to it. Just don't do
+
+439
+00:49:43,611 --> 00:49:51,833
+it. It is a recipe for disaster. All right,
+so enough of that soapbox. Let's talk about
+
+440
+00:49:51,893 --> 00:49:58,179
+data validation. So I think this is the user
+on Discord, this is initially what they were
+
+441
+00:49:58,279 --> 00:50:07,483
+asking about is how do I validate data or filter
+data or escape data so it's safe to be in my
+
+442
+00:50:07,543 --> 00:50:13,426
+system. And this is where it seems like, I think
+I started here too where I was like, okay,
+
+443
+00:50:13,526 --> 00:50:18,228
+I get user data, I need to escape it right away
+and make sure it can never do anything dangerous.
+
+444
+00:50:19,528 --> 00:50:26,708
+And this can actually be dangerous in and of
+itself. Let me give you an example. Let's say
+
+445
+00:50:26,768 --> 00:50:35,093
+you have a system that stores data using SQL
+or something, right? Then later on, you send
+
+446
+00:50:35,113 --> 00:50:42,779
+this data back to the user, you render it using
+React or something, right? The way that you
+
+447
+00:50:42,959 --> 00:50:50,023
+escape data for putting it in an SQL query is
+different than the way
+
+448
+00:50:53,478 --> 00:51:00,140
+in React on the web. And in this case, maybe
+there's no conflicts, but maybe you have a
+
+449
+00:51:00,220 --> 00:51:08,184
+markdown parser, whatever. There's many different
+systems, right? And the thing is they all need
+
+450
+00:51:08,224 --> 00:51:18,788
+data to be escaped differently. So the approach
+that I think is safest is only escape and like
+
+451
+00:51:18,808 --> 00:51:24,824
+you should escape and then unescape data. when
+it goes in and out of systems. So when you're
+
+452
+00:51:24,864 --> 00:51:33,171
+putting data into your database, at the database
+library level or whatever, that should be automatically
+
+453
+00:51:33,271 --> 00:51:38,475
+escaped for you in the specific way the database
+needs it to be escaped for. And then when you
+
+454
+00:51:38,536 --> 00:51:44,981
+take that data out of the database, you generally
+want to un-escape it back to its original form.
+
+455
+00:51:46,262 --> 00:51:52,534
+So that at every layer, you're working with
+the data in its original form. And the reason
+
+456
+00:51:52,574 --> 00:51:56,395
+why this is important, like initially when I
+got into this, I was like, oh, okay, I just
+
+457
+00:51:56,415 --> 00:52:02,417
+want to escape it once right away when the user
+enters it, right? And then I'll be good forever
+
+458
+00:52:02,437 --> 00:52:08,418
+and I can just rest easy being like, my data
+is validated and it's good. I don't need to
+
+459
+00:52:08,438 --> 00:52:14,320
+worry about it. But what can happen is the way
+it gets escaped for one system could create
+
+460
+00:52:14,440 --> 00:52:21,847
+vulnerabilities in the next system's escaping
+thing, right? So let's say one system escapes,
+
+461
+00:52:22,028 --> 00:52:26,971
+you escape data by adding a double slash in
+front of it or something, or adding a slash
+
+462
+00:52:27,011 --> 00:52:33,616
+in front of slashes. Well maybe the next system
+sees that and thinks, oh, that's how you indicate
+
+463
+00:52:33,776 --> 00:52:40,500
+safe code to run, you know? So you just need
+to be super careful to not end up in those
+
+464
+00:52:40,540 --> 00:52:50,290
+situations. And that's where I tell people escaping
+and invalidation. should occur at the layer
+
+465
+00:52:50,330 --> 00:52:58,353
+that it's relevant for. Don't try to anticipate
+everything at the top layer. Don't be like,
+
+466
+00:52:58,413 --> 00:53:04,035
+okay, I'm going to escape it for SQL here, I'm
+going to also escape it for JavaScript here,
+
+467
+00:53:04,095 --> 00:53:09,956
+and whatever, right? Don't try to do that all
+up front. Do it at each layer and do it automatically.
+
+468
+00:53:10,757 --> 00:53:16,162
+And another reason for this is... You don't
+know how the data is going to be used in the
+
+469
+00:53:16,202 --> 00:53:21,924
+future. Somebody comes in later and might add
+a layer that does something that needs escaping
+
+470
+00:53:22,184 --> 00:53:28,766
+or on escaping, and they might not realize what
+you've already done to the data. Generally
+
+471
+00:53:28,926 --> 00:53:34,428
+things are done right. You shouldn't really
+need to worry about this. But I think we're
+
+472
+00:53:34,488 --> 00:53:39,029
+still at a state where you absolutely do. I
+have absolutely seen this many times over.
+
+473
+00:53:39,069 --> 00:53:45,281
+People are like, okay. the user enter data into
+the form, I'm going to escape it for rendering
+
+474
+00:53:45,381 --> 00:53:53,787
+out in React at this point. That doesn't make
+any sense, don't do it that way. So yeah, that's
+
+475
+00:53:53,847 --> 00:54:01,993
+my spiel on data validation. Now that's in my
+mind separate from, I guess I would call that
+
+476
+00:54:02,033 --> 00:54:09,371
+data sanitization. There's also what I would
+call data validation, like. Maybe when somebody
+
+477
+00:54:09,411 --> 00:54:17,037
+puts in their first name, we don't want it to
+be a bunch of random symbols, or we don't want
+
+478
+00:54:17,078 --> 00:54:24,004
+it to include certain things. In general, just
+because maybe it makes it confusing. Maybe
+
+479
+00:54:24,024 --> 00:54:29,088
+you're like, oh, people should only be able
+to enter their username as ASCII characters,
+
+480
+00:54:29,108 --> 00:54:33,792
+that way they can't use a Unicode character
+that looks like another character to try to
+
+481
+00:54:33,872 --> 00:54:38,819
+spoof names or something. That would be the
+way I would think of data validation. And that's
+
+482
+00:54:38,859 --> 00:54:43,601
+something you can do immediately when the data
+goes into the, you know, when you get it from
+
+483
+00:54:43,641 --> 00:54:48,663
+the form, from the client, you know, whatever.
+The other part is, and I forgot to mention
+
+484
+00:54:48,683 --> 00:54:56,286
+this, should have mentioned this, data validation
+should always happen on code that you control.
+
+485
+00:54:57,026 --> 00:55:04,149
+So validate and sanitize data only like on the
+server if you have a web application infrastructure.
+
+486
+00:55:04,706 --> 00:55:13,234
+Never, ever, ever rely on client-side validation
+or security. You can have client-side validation
+
+487
+00:55:14,095 --> 00:55:20,460
+where on the client you reject things and you
+tell the user, hey, this isn't valid. You need
+
+488
+00:55:20,841 --> 00:55:24,584
+a password that's longer. You need a password
+that includes this or whatever. But you never
+
+489
+00:55:24,624 --> 00:55:29,168
+trust that. You can't trust that because somebody
+could create their own clients, send their
+
+490
+00:55:29,269 --> 00:55:35,741
+own requests, You always have to do those things
+on the server or code that you control. Alright,
+
+491
+00:55:35,761 --> 00:55:44,047
+the next thing is libraries and external services.
+So this is a big one that people often don't
+
+492
+00:55:44,087 --> 00:55:51,492
+treat the same as the rest of their code, but
+if it's involved in your program, I consider
+
+493
+00:55:51,552 --> 00:55:57,416
+it from the security perspective to be the same.
+So keep your libraries up to date from security
+
+494
+00:55:57,456 --> 00:56:04,799
+vulnerabilities, which is a- pain in the JavaScript
+world, but that's how it is. That's an obvious
+
+495
+00:56:04,939 --> 00:56:13,487
+one. Keep things up to date. The next one is
+check security before adding things as dependencies
+
+496
+00:56:13,587 --> 00:56:20,995
+to your project. This one is kind of a pain.
+A lot of engineers I find, especially frontend
+
+497
+00:56:21,035 --> 00:56:26,327
+engineers, don't do this and don't want to do
+it. If you care about security, you should.
+
+498
+00:56:26,447 --> 00:56:32,090
+So you're like, hey, I want this library to
+do this thing for me. Take a few minutes at
+
+499
+00:56:32,110 --> 00:56:38,453
+a minimum and do a quick threat analysis. Look
+at the documentation, et cetera. I'll tell
+
+500
+00:56:38,473 --> 00:56:45,397
+you what I look for. So if I'm going to add
+a library or a service to my project, when
+
+501
+00:56:45,417 --> 00:56:52,481
+it comes to security, I look for a number of
+things. The first is, does this library have
+
+502
+00:56:54,758 --> 00:57:01,399
+documentation on how to implement the library
+securely. Most security vulnerabilities actually
+
+503
+00:57:01,439 --> 00:57:08,962
+come not necessarily from a vulnerability in
+the library itself, but people implementing
+
+504
+00:57:09,002 --> 00:57:14,963
+it wrong. Having really good documentation there
+that says, okay, this is how you do it securely
+
+505
+00:57:15,043 --> 00:57:21,065
+and correctly, don't do these things. I look
+for that in the docs. If it doesn't have that,
+
+506
+00:57:21,125 --> 00:57:28,049
+that makes me a lot more cautious Did the programmers
+think about security at all? How do I do this
+
+507
+00:57:28,089 --> 00:57:32,312
+securely? Are there things I should be aware
+of? If it doesn't say, I mean, that's a big
+
+508
+00:57:32,372 --> 00:57:41,620
+red flag to me. So good documentation will also
+include the types of attacks that the authors
+
+509
+00:57:41,740 --> 00:57:47,344
+are purposefully not addressing. And this is
+always gonna be the case. They might be like,
+
+510
+00:57:47,384 --> 00:57:52,709
+hey, this is something we don't feel it's our
+responsibility. You need to handle this on
+
+511
+00:57:52,749 --> 00:57:58,132
+your end or something. But basically at this
+stage, I'm just looking, does the documentation
+
+512
+00:57:58,232 --> 00:58:04,857
+include this information? If it doesn't, again,
+sort of a red flag where I'm like, do these
+
+513
+00:58:04,877 --> 00:58:10,100
+people know anything about security? Are they
+handling it, right? It's just sort of one of
+
+514
+00:58:10,120 --> 00:58:17,385
+those things that makes me spend longer researching
+it, you know? Let's see, the next one would
+
+515
+00:58:17,425 --> 00:58:24,682
+be, do they have a public policy in place for
+how they handle vulnerabilities? This is another
+
+516
+00:58:24,702 --> 00:58:29,365
+good indicator that they're paying attention
+to security. Kind of the last general thing
+
+517
+00:58:29,405 --> 00:58:35,388
+I look for is do they have good documentation
+on a high level approach they take towards
+
+518
+00:58:35,448 --> 00:58:41,652
+security and does it make sense? So basically
+everything should have this in some form or
+
+519
+00:58:41,672 --> 00:58:49,536
+another, even if it's just, hey, we don't really
+need to do anything for X, Y, Z reasons. It
+
+520
+00:58:49,556 --> 00:58:55,071
+just needs, there needs to be something. And
+like for say a library that has to do with
+
+521
+00:58:55,251 --> 00:59:01,194
+authentication, it should be like, okay, this
+is how we store data. This is how we manipulate
+
+522
+00:59:01,214 --> 00:59:07,958
+data. This is how we defend against these common
+attacks. That type of documentation needs to
+
+523
+00:59:08,018 --> 00:59:14,142
+and should exist in a high quality library or
+service that you might be integrating. As a
+
+524
+00:59:14,282 --> 00:59:20,745
+quick example on Discord, it was asked about
+the auth library and identity service called
+
+525
+00:59:20,905 --> 00:59:29,709
+Clert. like C-L-E-R-K. So I did this analysis
+real quick and my results were there were not
+
+526
+00:59:29,809 --> 00:59:36,572
+good documentation on how to securely implement
+it. It was pretty, almost nothing. And so that's
+
+527
+00:59:36,592 --> 00:59:44,775
+a huge red flag to me. There should be extremely
+explicit data on an authentication library
+
+528
+00:59:45,035 --> 00:59:51,018
+on how to securely implement it. That is like
+the first thing it should have is. To do this
+
+529
+00:59:51,058 --> 00:59:56,902
+securely, do things in this way. Follow these
+things, don't do these things. It did not have
+
+530
+00:59:56,962 --> 01:00:01,745
+good documentation on it, or if it did, I couldn't
+find it, which is just as bad. That needs to
+
+531
+01:00:01,785 --> 01:00:08,549
+be front and center. So I didn't like that.
+I also looked into sort of the high level approach
+
+532
+01:00:08,589 --> 01:00:13,192
+they took towards security, and that gave me
+some sort of, maybe not red flags, but like
+
+533
+01:00:13,332 --> 01:00:18,290
+orange flags, like sort of warnings too, because.
+This is something that you might not know if
+
+534
+01:00:18,310 --> 01:00:24,294
+you're not as familiar with security, but that's
+fine. They use some relaxed security policies
+
+535
+01:00:24,354 --> 01:00:30,537
+around session token storage that require extra
+work from the people implementing the library.
+
+536
+01:00:31,197 --> 01:00:35,960
+That in and of itself might be fine, but I don't
+feel like they highlighted this very well.
+
+537
+01:00:46,298 --> 01:00:52,383
+service and the company themselves. Since they're
+handling everything including session tokens,
+
+538
+01:00:52,483 --> 01:00:59,148
+identification, that type of stuff, but they
+really didn't provide hardly any details on
+
+539
+01:00:59,228 --> 01:01:06,654
+how they internally secure this information
+and manage it. They might do a fantastic job,
+
+540
+01:01:07,075 --> 01:01:12,900
+but I couldn't figure out if they do or don't
+or if they care or don't care. So this was
+
+541
+01:01:12,920 --> 01:01:18,550
+a pretty big red flag to me as well. And My
+overall conclusion was I would be pretty hesitant
+
+542
+01:01:18,570 --> 01:01:26,833
+to use a service like Clark for these reasons.
+I think there are better libraries and systems
+
+543
+01:01:26,873 --> 01:01:33,715
+available within the JavaScript ecosystem. Maybe
+it's fine. Maybe for your system you're like,
+
+544
+01:01:33,755 --> 01:01:39,016
+okay, all those things are fine. I don't really
+care. It's not a big deal. But personally I
+
+545
+01:01:39,036 --> 01:01:45,410
+was like, okay, there's a lot of red flags here.
+Anyway, so that's my approach for. how I look
+
+546
+01:01:45,590 --> 01:01:52,532
+at integrating libraries into my project. And
+I'll briefly touch on what I call external
+
+547
+01:01:52,572 --> 01:01:58,714
+services too. So this might be like Google Analytics
+or something where like they just give you
+
+548
+01:01:58,754 --> 01:02:04,595
+some code to put in your project or a library
+or whatever, but they're sort of like clerk
+
+549
+01:02:04,795 --> 01:02:10,517
+where they are handling everything for you.
+Your app might be the most secure thing in
+
+550
+01:02:10,537 --> 01:02:19,382
+the world, but if you're... giving other services
+access to run code on your system or whatever
+
+551
+01:02:19,402 --> 01:02:25,165
+that might be, they need to be just as secure
+as your thing. So you need to perform a threat
+
+552
+01:02:25,205 --> 01:02:33,050
+analysis with them or in some way keep that
+in mind. Let's say a few other things I'm going
+
+553
+01:02:33,070 --> 01:02:41,130
+to go over real quick are keep backups, but
+also do it securely. If. something goes wrong,
+
+554
+01:02:41,290 --> 01:02:45,912
+it's really nice to be like, oh, okay, maybe
+we don't understand everything yet, but we
+
+555
+01:02:45,932 --> 01:02:54,916
+can restore from a backup. Or you can use the
+backup to see what, maybe some data got changed
+
+556
+01:02:54,936 --> 01:02:59,818
+by a hacker, you can use the backup to look
+at that. So in general, backups are always
+
+557
+01:02:59,858 --> 01:03:07,861
+good to keep, it's also important for security.
+Another thing is keeping logs and intrusion
+
+558
+01:03:07,941 --> 01:03:13,777
+detection. Can you... find out if somebody did
+hack into your system. How do you know? What
+
+559
+01:03:13,797 --> 01:03:18,861
+did they do when they were in your system? So
+this is another aspect of security that often
+
+560
+01:03:18,901 --> 01:03:27,108
+gets overlooked. It's important to have mechanisms
+in place to detect when somebody has done something
+
+561
+01:03:27,188 --> 01:03:32,152
+unusual. Not gonna go into all that, you know,
+right now what that means, you can research
+
+562
+01:03:32,192 --> 01:03:40,554
+it yourself, but something to be aware of. Another
+great tip. piece of advice is don't store data
+
+563
+01:03:40,574 --> 01:03:44,976
+that you can't secure or that you don't want
+to put the effort into securing. This is an
+
+564
+01:03:45,116 --> 01:03:50,659
+easy one that I think a lot of people forget.
+When you get a feature request to capture some
+
+565
+01:03:50,699 --> 01:03:55,761
+new data, be like, hey, is it worth it from
+a security perspective? Maybe this data is
+
+566
+01:03:55,941 --> 01:04:03,624
+super valuable to a hacker. Are we going to
+invest in actually keeping it secure? And then
+
+567
+01:04:04,125 --> 01:04:11,817
+the last thing that I want to talk about is
+my approach to writing secure and safe code.
+
+568
+01:04:13,118 --> 01:04:18,923
+It's hard to keep all of this in mind all the
+time when you're writing code, right? But I
+
+569
+01:04:18,963 --> 01:04:25,228
+think there are a lot of things that we can
+do as engineers to just in general, write better,
+
+570
+01:04:25,308 --> 01:04:34,050
+more secure code. So what I always advocate
+for are systemic solutions. The first thing
+
+571
+01:04:34,090 --> 01:04:40,475
+is don't rely on programmers remembering to
+do things. If there's some part in your application
+
+572
+01:04:40,515 --> 01:04:45,719
+where you're getting data from the user and
+a programmer needs to remember to call some
+
+573
+01:04:45,779 --> 01:04:51,903
+method to sanitize that data, that's horrible.
+Don't do that. Figure out a way to architect
+
+574
+01:04:51,943 --> 01:04:56,907
+your system so it gets handled automatically
+at that layer or whatever it happens to be.
+
+575
+01:04:58,328 --> 01:05:05,774
+A lot of people, again... don't do this and
+it really bugs me because it's just too easy
+
+576
+01:05:05,794 --> 01:05:10,838
+to get it wrong. And, you know, whether it's
+in refactoring or some other engineer that
+
+577
+01:05:10,858 --> 01:05:17,483
+doesn't know about it, or you just forget. Don't
+rely on manual methods. Create systemic solutions.
+
+578
+01:05:20,766 --> 01:05:25,410
+Or create a library that just guarantees it
+always gets sanitized correctly at that level
+
+579
+01:05:25,430 --> 01:05:32,686
+without the programmer having to do anything
+special. That's the... absolutely critical
+
+580
+01:05:32,726 --> 01:05:40,209
+to just in general writing robust secure code.
+Another approach I use when writing code is
+
+581
+01:05:40,269 --> 01:05:47,451
+that things that seem like you can trust them
+but shouldn't be trusted should be explicitly
+
+582
+01:05:47,491 --> 01:05:54,813
+called out in that way. So an example would
+be a user supplied crypto address that money
+
+583
+01:05:54,833 --> 01:06:03,354
+can be sent to. where the expectation is that
+whenever that crypto transaction is executed,
+
+584
+01:06:03,974 --> 01:06:10,538
+the address is verified at that point. It's
+not necessarily, like you might verify it when
+
+585
+01:06:10,578 --> 01:06:15,600
+the user enters it into the system, but the
+security of your system relies on it being
+
+586
+01:06:15,640 --> 01:06:18,862
+verified each time a transaction actually occurs.
+
+587
+01:06:24,702 --> 01:06:31,784
+label that field in the database, like untrusted
+underscore crypto address or something. Just
+
+588
+01:06:31,824 --> 01:06:35,845
+so that, you know, anybody that doesn't really
+know how it works sees that and they're like,
+
+589
+01:06:35,985 --> 01:06:40,866
+oh, untrusted. What does that mean? You know,
+and maybe that you have a code comments and
+
+590
+01:06:40,926 --> 01:06:46,608
+other people on the team that knows what that
+means. But I just take this really defensive
+
+591
+01:06:46,648 --> 01:06:51,229
+approach where anything that seems like you
+can just grab it and use it, but you really
+
+592
+01:06:51,269 --> 01:06:59,944
+can't is explicit. everywhere in the code base.
+This helps a ton. It just makes it so it's
+
+593
+01:07:00,004 --> 01:07:05,426
+a lot harder to make silly mistakes where somebody's
+like, oh yeah, I just plopped the address in
+
+594
+01:07:05,466 --> 01:07:09,487
+here and created the transaction and sent the
+money over. And then somebody else is like,
+
+595
+01:07:10,188 --> 01:07:16,094
+what? You can't do that. You were supposed to
+do this other thing first and whatever. And
+
+596
+01:07:16,134 --> 01:07:20,235
+maybe you created this library to handle it
+for you, but somebody comes in to refactor
+
+597
+01:07:20,275 --> 01:07:24,917
+it and they don't know about that, you know?
+They should, but hey, the CEO wants this done
+
+598
+01:07:24,957 --> 01:07:31,440
+yesterday, right? We all know how it goes. So
+I try to like always do this in cases where
+
+599
+01:07:31,480 --> 01:07:36,662
+it's surprising, where you're like, oh, this
+is sort of unusual or surprising. I try to
+
+600
+01:07:36,702 --> 01:07:44,345
+call that out in any way I can. Another thing
+I do is assume the worst case scenario. So
+
+601
+01:07:44,365 --> 01:07:49,087
+like, I'll When I'm working on some level of
+the code, I'll just assume that all the security
+
+602
+01:07:49,127 --> 01:07:54,908
+before it failed and somebody is able to access
+the data. I look at it and go, what are the
+
+603
+01:07:54,968 --> 01:08:00,510
+consequences? Is there anything we can do to
+store less data or separate some of the data
+
+604
+01:08:00,570 --> 01:08:07,272
+into a different system or encrypt it per user
+account or something like that? So I just try
+
+605
+01:08:07,312 --> 01:08:12,922
+to have this general approach of, oh yeah, are
+other security mechanisms failed? What can
+
+606
+01:08:12,942 --> 01:08:19,786
+we do to make this specific layer more secure?
+And of course, like I mentioned before, complexity
+
+607
+01:08:20,207 --> 01:08:28,552
+is the enemy. Do not make things vastly more
+complex to try to make it more secure. Instead,
+
+608
+01:08:28,873 --> 01:08:35,777
+try to design better code. Complexity just creates
+more paths to secure and more code to understand.
+
+609
+01:08:37,078 --> 01:08:42,581
+And I call this out because the tendency when
+you find a potential vulnerability is to be
+
+610
+01:08:42,661 --> 01:08:49,406
+like, oh, we can plug this by adding this additional
+mechanism. But now you have to secure that
+
+611
+01:08:49,446 --> 01:08:54,309
+additional mechanism, which increases the surface
+area. And it's not like a linear thing either.
+
+612
+01:08:54,349 --> 01:09:00,173
+It's kind of like an exponential increase, the
+more code you add. So in my opinion, I always
+
+613
+01:09:00,213 --> 01:09:06,485
+push for like, you know, taking a deeper look
+at how you can re-architect the code to eliminate
+
+614
+01:09:06,525 --> 01:09:13,790
+the vulnerability altogether or secure against
+the vulnerability in a more systemic fashion.
+
+615
+01:09:15,271 --> 01:09:21,656
+This is really important. A lot of times, you'll
+find a vulnerability, and there'll be pressure
+
+616
+01:09:21,716 --> 01:09:26,759
+to just solve it right away. And the initial
+instinct will be, oh, let's add this extra
+
+617
+01:09:26,799 --> 01:09:33,484
+layer. Let's add this extra stuff. And maybe.
+That's what you do temporarily to just get
+
+618
+01:09:33,524 --> 01:09:41,510
+things moving and sort of more secure. But it's
+a really bad idea long term. Just try to resist
+
+619
+01:09:41,530 --> 01:09:46,353
+that urge. Try to be like, OK, is there some
+way we can do this where we don't need to make
+
+620
+01:09:46,393 --> 01:09:52,698
+it more complex? Complexity around security
+code is always a big red flag to me. If I get
+
+621
+01:09:52,738 --> 01:09:57,161
+into some code and I'm like, wow, they made
+this so complicated trying to make it secure,
+
+622
+01:09:57,181 --> 01:10:03,552
+it's like, I'm really unsure this is going to
+be very secure at all. There's just too much
+
+623
+01:10:03,572 --> 01:10:11,395
+to keep track of. And another just sort of final
+reminder is don't write or implement your own
+
+624
+01:10:11,535 --> 01:10:18,438
+cryptography. Unless you're crypto, I was going
+to say a crypto expert. That means something
+
+625
+01:10:18,498 --> 01:10:25,781
+different these days. Yeah, don't write this
+stuff on your own unless you know what you're
+
+626
+01:10:25,821 --> 01:10:33,332
+doing. Ideally, always use well-tested, well-documented
+libraries that handle security and authentication,
+
+627
+01:10:33,432 --> 01:10:43,777
+login, things like that for you. This is just,
+yeah. I don't find a lot of people end up trying
+
+628
+01:10:43,797 --> 01:10:51,220
+to do this because it seems overwhelming anyways,
+but I have. So yeah, do your best to not write,
+
+629
+01:10:51,641 --> 01:10:56,055
+just don't write your own crypto. Let, let.
+People that are experts at it do it. If you're
+
+630
+01:10:56,075 --> 01:11:02,061
+an expert, you'll know it, I guess, and you're
+fine, but for the rest of us, like just don't
+
+631
+01:11:02,081 --> 01:11:06,625
+do it. Don't be like, oh, this is too slow.
+I need to reimplement it in my language. That's
+
+632
+01:11:06,685 --> 01:11:12,090
+faster, whatever. Just don't do it. It's a bad
+idea. You're only gonna create headaches for
+
+633
+01:11:12,110 --> 01:11:19,197
+yourself. Use stuff that is well-documented,
+well-tested, has a good track record. Don't
+
+634
+01:11:19,217 --> 01:11:25,697
+do it yourself. All right, well that was a massive
+dump of information. Hopefully it's useful
+
+635
+01:11:25,737 --> 01:11:33,642
+to you and it gives you at least a starting
+point. Yeah, if you wanna know more about a
+
+636
+01:11:33,742 --> 01:11:39,165
+specific part of this, feel free to send me
+a message from the reactshow.com or come join
+
+637
+01:11:39,205 --> 01:11:44,348
+the Discord server. I'd love to hear more or
+if something wasn't clear, definitely let me
+
+638
+01:11:44,388 --> 01:11:51,531
+know. Yeah. I just want to thank you all once
+again for joining us. And if you've made it
+
+639
+01:11:51,551 --> 01:11:58,333
+this far and you want, definitely check out
+the premium feed, like I mentioned at the beginning,
+
+640
+01:11:58,893 --> 01:12:05,755
+or joining us on Discord. We'd love to have
+you there. Anything that we can do to support
+
+641
+01:12:05,775 --> 01:12:14,257
+each other, something I'm all for. Anyways,
+thank you so much for making it this far, joining
+
+642
+01:12:14,397 --> 01:12:20,536
+us. And and I hope you have a fantastic rest
+of your day. Bye.
+
