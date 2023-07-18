@@ -164,14 +164,14 @@ function AboutSection(props) {
       <p
         className="mt-2 text-base leading-7 text-slate-700"
       >
-        In this show, Thomas digs deep to understand React and how best to utilize it while discussing real world experiences with: React, programming, and software engineering. Tune in every Friday (usually) to hear the latest in the React community.
+        In this show, <Link href="https://thomashintz.org">Thomas</Link> digs deep to understand React and how best to utilize it while discussing real world experiences with: React, programming, and software engineering. Tune in every Friday (usually) to hear the latest in the React community.
       </p>
     </section>
   )
 }
 
 function Layout({ children }) {
-  let hosts = ['Thomas Hintz']
+  let hosts = [{ name: 'Thomas Hintz', href: 'https://thomashintz.org' }]
 
   return (
     <>
@@ -180,14 +180,14 @@ function Layout({ children }) {
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
           <span className="font-mono text-slate-500">Hosted by</span>
           <span className="mt-6 flex gap-6 font-bold text-slate-900">
-            {hosts.map((host, hostIndex) => (
-              <Fragment key={host}>
+            {hosts.map(({ name, href }, hostIndex) => (
+              <Fragment key={name}>
                 {hostIndex !== 0 && (
                    <span aria-hidden="true" className="text-slate-400">
                      /
                    </span>
                 )}
-                {host}
+              <Link href={href}>{name}</Link>
               </Fragment>
             ))}
           </span>
@@ -266,14 +266,14 @@ function Layout({ children }) {
             <span className="ml-2.5">Hosted by</span>
           </h2>
           <div className="mt-2 flex gap-6 text-sm font-bold leading-7 text-slate-900">
-            {hosts.map((host, hostIndex) => (
-              <Fragment key={host}>
+            {hosts.map(({ name, href }, hostIndex) => (
+              <Fragment key={name}>
                 {hostIndex !== 0 && (
                    <span aria-hidden="true" className="text-slate-400">
                      /
                    </span>
                 )}
-                {host}
+                <Link href={href}>{name}</Link>
               </Fragment>
             ))}
           </div>

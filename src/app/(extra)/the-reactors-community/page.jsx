@@ -12,13 +12,13 @@ const features = [
       'Connect with the community for free on our Discord Server! Ask questions or just hang out!',
     icon: StarIcon
   },
-  {
-    name: 'The Reactors Sub-Reddit',
-    link: 'https://www.reddit.com/r/TheReactShow/',
-    description:
-      'Discuss recent episodes, the show itself, or ask React questions on our sub-reddit!',
-    icon: StarIcon
-  },
+  /* {
+   *   name: 'The Reactors Sub-Reddit',
+   *   link: 'https://www.reddit.com/r/TheReactShow/',
+   *   description:
+   *     'Discuss recent episodes, the show itself, or ask React questions on our sub-reddit!',
+   *   icon: StarIcon
+   * }, */
   {
     name: 'The Reactors Premium Subscription',
     link: 'https://thereactshow.supercast.com/',

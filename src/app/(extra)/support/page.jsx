@@ -21,6 +21,13 @@ const features = [
     icon: BookOpenIcon,
   },
   {
+    name: 'Discord Server',
+    link: 'https://discord.gg/zXYggKUBC2',
+    description:
+      'Connect with the community for free on our Discord Server! Ask questions or just hang out!',
+    icon: StarIcon
+  },
+  {
     name: 'Tip!',
     link: 'https://buy.stripe.com/cN25nl5x2fZO4M0cMN',
     description:
