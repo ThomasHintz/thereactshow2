@@ -8,7 +8,7 @@ export default function BookPurchaseCTA() {
                          href="https://buy.stripe.com/14kcPNaRm28Ydiw7su"
       >
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-          $11.99
+          $11.99 suggested (min $0.50)
         </p>
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
           DRM-free Kindle, ePub, & PDF downloads.
