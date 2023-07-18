@@ -26,6 +26,7 @@
         "i": "^0.3.7",
         "mp3-duration": "^1.1.0",
         "next": "^13.4.10",
+        "next13-progressbar": "^0.1.2",
         "nodemailer": "^6.9.3",
         "podcast": "^2.0.1",
         "postcss-focus-visible": "^6.0.4",
