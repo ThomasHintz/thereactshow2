@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13345885': {
+    slug: 'spark-joy-panda-css-zag-with-chakra-creator-segun-adebayo',
+    youtube: 'https://www.youtube.com/embed/J3j6Gkeg_oI'
+  },
   'Buzzsprout-13214296': {
     slug: 'how-to-build-secure-react-apps',
     transcript: srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', '095-mixed.srt')).toString())
