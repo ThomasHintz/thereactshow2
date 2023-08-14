@@ -248,9 +248,9 @@ Object.entries(episodeExtra).forEach(([id, { slug }]) => {
 })
 
 export async function getEpisodes() {
-  const feedRes = await fetch('https://feeds.buzzsprout.com/1764837.rss', { cache: 'no-store' }); // { next: { revalidate: 60 * 10 } }
+  const feedRes = await fetch('https://feeds.buzzsprout.com/1764837.rss', { next: { revalidate: 60 * 10 } });
 
-  const feedString = await feedRes.text()
+    const feedString = await feedRes.text()
   // const feedString = fs.readFileSync('./feed.rss').toString()
   
   let feed = await extractFromXml(feedString,
