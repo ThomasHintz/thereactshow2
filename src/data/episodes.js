@@ -248,10 +248,11 @@ Object.entries(episodeExtra).forEach(([id, { slug }]) => {
 })
 
 export async function getEpisodes() {
-  const feedRes = await fetch('https://feeds.buzzsprout.com/1764837.rss', { next: { revalidate: 60 * 10 } });
-  const feedString = await feedRes.text()
-  /* const feedString = fs.readFileSync('./feed.rss').toString() */
+  const feedRes = await fetch('https://feeds.buzzsprout.com/1764837.rss', { cache: 'no-store' }); // { next: { revalidate: 60 * 10 } }
 
+  const feedString = await feedRes.text()
+  // const feedString = fs.readFileSync('./feed.rss').toString()
+  
   let feed = await extractFromXml(feedString,
                                   {
                                     getExtraEntryFields: (feedEntry) => {
@@ -270,8 +271,9 @@ export async function getEpisodes() {
                                       }
                                     }
                                   })
-
+  
   const numEpisodes = feed.entries.length;
+  console.log('---------------- numepisodes: ', numEpisodes);
   const feedEntries = feed.entries.map(
     ({ id, title, description, enclosure , published, content, chapters, duration }, i) => ({
       num: numEpisodes - i,
@@ -314,6 +316,7 @@ export async function getEpisodes() {
           ...feedEntries]
        : feedEntries;
 }
+
 
 /* export async function getEpisodesLocal() {
  *   const dbEpisodes = await db.all('select * from episodes order by number desc;');
