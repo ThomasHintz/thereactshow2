@@ -29,7 +29,6 @@
         "nodemailer": "^6.9.3",
         "podcast": "^2.0.1",
         "postcss-focus-visible": "^6.0.4",
-        "ra-input-rich-text": "^4.12.1",
         "react": "18.2.0",
         "react-aria": "^3.26.0",
         "react-dom": "18.2.0",
