@@ -1,10 +1,10 @@
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
-import { setTimeout } from 'timers/promises';
+// import { setTimeout } from 'timers/promises';
 
 import { Suspense } from "react";
 
-import chaptersStatic from './chapters.json' assert { type: 'json' };
+// import chaptersStatic from './chapters.json' assert { type: 'json' };
 
 import { Container } from '@/components/Container'
 import { FormattedDate } from '@/components/FormattedDate'
@@ -60,29 +60,42 @@ function TranscriptNoPlayer({ episode }) {
 }
 
 async function TranscriptWithPlayer({ episode }) {
-  const chaptersRes = episode?.chapters && await fetch(episode.chapters, { cache: 'no-store' });
+  // const chaptersRes = episode?.chapters && await fetch(episode.chapters, { cache: 'no-store' });
   /* await setTimeout(5000); */
   /* const { chapters } = chaptersStatic */
-  const { chapters } = chaptersRes ? await chaptersRes.json() : { chapters: null }
-  let chapterOffsets = [[0, 0]]
-  if (chapters) {
-    chapters.reduce(({ startTime: prevStartTime, title: prevTitle, acc }, { title, startTime }) => {
-      const containsAd = prevTitle.includes('[Ad]')
-      if (containsAd) {
-        chapterOffsets.push([prevStartTime, acc + (startTime - prevStartTime)])
-      }
-      return { startTime, title, acc: containsAd ? acc + (startTime - prevStartTime) : acc }
-    }, { startTime: 0, title: '', acc: 0 })
-  }
-  chapterOffsets = chapterOffsets.reverse()
+  /* const { chapters } = chaptersRes ? await chaptersRes.json() : { chapters: null }
+   * let chapterOffsets = [[0, 0]]
+   * if (chapters) {
+   *   chapters.reduce(({ startTime: prevStartTime, title: prevTitle, acc }, { title, startTime }) => {
+   *     const containsAd = prevTitle.includes('[Ad]')
+   *     if (containsAd) {
+   *       chapterOffsets.push([prevStartTime, acc + (startTime - prevStartTime)])
+   *     }
+   *     return { startTime, title, acc: containsAd ? acc + (startTime - prevStartTime) : acc }
+   *   }, { startTime: 0, title: '', acc: 0 })
+   * }
+   * chapterOffsets = chapterOffsets.reverse() */
+  /* (
+   *   <Transcript>
+   *     {episode.transcript.map(({ id, startTime, endTime, text }) => (
+   *       <p key={id}>
+   *         <Player
+   *           episode={episode}
+   *           startTime={parseTime(startTime) + chapterOffsets.find(([start]) => parseTime(startTime) >= start)[1]}
+   *           endTime={parseTime(endTime) + chapterOffsets.find(([start]) => parseTime(startTime) >= start)[1]} />
+   *         <strong><time>{humanTime(startTime)}</time></strong> {text}
+   *       </p>
+   *     ))}
+   *   </Transcript>
+   * ) */
   return (
     <Transcript>
       {episode.transcript.map(({ id, startTime, endTime, text }) => (
         <p key={id}>
           <Player
             episode={episode}
-            startTime={parseTime(startTime) + chapterOffsets.find(([start]) => parseTime(startTime) >= start)[1]}
-            endTime={parseTime(endTime) + chapterOffsets.find(([start]) => parseTime(startTime) >= start)[1]} />
+            startTime={parseTime(startTime)}
+            endTime={parseTime(endTime)} />
           <strong><time>{humanTime(startTime)}</time></strong> {text}
         </p>
       ))}
