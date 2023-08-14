@@ -2,7 +2,7 @@ import * as srtparsejs from "srtparsejs";
 import fs from 'fs';
 import path from 'path';
 
-import db from '@/db';
+// import db from '@/db';
 
 import { extractFromXml } from '@extractus/feed-extractor'
 
@@ -315,28 +315,28 @@ export async function getEpisodes() {
        : feedEntries;
 }
 
-export async function getEpisodesLocal() {
-  const dbEpisodes = await db.all('select * from episodes order by number desc;');
-  return dbEpisodes.map(({ title, pub_date, summary: description, content, slug, duration, filename, number, episode_type, buzzsprout_id, buzzsprout_url, youtube_url, transcript_filename }) => {
-    const filepath = path.join(process.cwd(), 'public', 'files', 'episodes', filename);
-    return {
-      num: number,
-      id: buzzsprout_id,
-      title,
-      description,
-      content,
-      published: pub_date,
-      chapters: [`https://feeds.buzzsprout.com/1764837/${buzzsprout_id}/chapters.json`],
-      youtube: youtube_url,
-      slug,
-      transcript: transcript_filename ? srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', transcript_filename)).toString()) : undefined,
-      audio: {
-        src: buzzsprout_url,
-        type: 'audio/mpeg'
-      },
-    };
-  });
-}
+/* export async function getEpisodesLocal() {
+ *   const dbEpisodes = await db.all('select * from episodes order by number desc;');
+ *   return dbEpisodes.map(({ title, pub_date, summary: description, content, slug, duration, filename, number, episode_type, buzzsprout_id, buzzsprout_url, youtube_url, transcript_filename }) => {
+ *     const filepath = path.join(process.cwd(), 'public', 'files', 'episodes', filename);
+ *     return {
+ *       num: number,
+ *       id: buzzsprout_id,
+ *       title,
+ *       description,
+ *       content,
+ *       published: pub_date,
+ *       chapters: [`https://feeds.buzzsprout.com/1764837/${buzzsprout_id}/chapters.json`],
+ *       youtube: youtube_url,
+ *       slug,
+ *       transcript: transcript_filename ? srtparsejs.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'data', transcript_filename)).toString()) : undefined,
+ *       audio: {
+ *         src: buzzsprout_url,
+ *         type: 'audio/mpeg'
+ *       },
+ *     };
+ *   });
+ * } */
 
 export async function getEpisode({ episodeSlug }) {
   const episodes = await getEpisodes()
