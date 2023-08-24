@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13457465': {
+    slug: 'dvorak-vs-qwerty-vim-vs-vscode-Rust-and-design-by-contract',
+    youtube: 'https://www.youtube.com/embed/GaVYYO71Y_0?si=vuQAj-X3r_fB2KVl'
+  },
   'Buzzsprout-13345885': {
     slug: 'spark-joy-panda-css-zag-with-chakra-creator-segun-adebayo',
     youtube: 'https://www.youtube.com/embed/J3j6Gkeg_oI'
