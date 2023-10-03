@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13704812': {
+    slug: 'launching-a-bootstrapped-paas-stormkit-with-savas-vedova',
+    youtube: 'https://www.youtube.com/embed/u7eZd6tw_CM?si=9ZoIkx2DJF150aXM'
+  },
   'Buzzsprout-13457465': {
     slug: 'dvorak-vs-qwerty-vim-vs-vscode-Rust-and-design-by-contract',
     youtube: 'https://www.youtube.com/embed/GaVYYO71Y_0?si=vuQAj-X3r_fB2KVl'
