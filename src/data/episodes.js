@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13762534': {
+    slug: 'successfully-earning-over-200k-as-a-freelancer-with-tim-noetzel',
+    youtube: 'https://www.youtube.com/embed/VcyyFBHDN7w?si=dxhG92YmekRR2Fw-'
+  },
   'Buzzsprout-13704812': {
     slug: 'launching-a-bootstrapped-paas-stormkit-with-savas-vedova',
     youtube: 'https://www.youtube.com/embed/u7eZd6tw_CM?si=9ZoIkx2DJF150aXM'
