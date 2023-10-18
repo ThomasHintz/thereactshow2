@@ -9,6 +9,10 @@ import { extractFromXml } from '@extractus/feed-extractor'
 export const PAGE_SIZE = 15;
 
 const episodeExtra = {
+  'Buzzsprout-13794893': {
+    slug: 'my-favorite-new-front-end-developer-tool-mighty-meld-with-steven-schkolne',
+    youtube: 'https://www.youtube.com/embed/f7f5dhiU62c?si=n0FXB10NBfVHnu5z'
+  },
   'Buzzsprout-13762534': {
     slug: 'successfully-earning-over-200k-as-a-freelancer-with-tim-noetzel',
     youtube: 'https://www.youtube.com/embed/VcyyFBHDN7w?si=dxhG92YmekRR2Fw-'
