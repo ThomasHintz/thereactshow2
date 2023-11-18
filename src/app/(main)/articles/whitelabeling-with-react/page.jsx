@@ -24,7 +24,7 @@ export default function Page() {
         With React we actually have a built in mechanism that makes this really easy: React contexts. If we create a context for our labeling then all we have to do is set the label at the top of the component hierarchy and the rest of the application can just utilize the selected label. This is similar to how themeing is often done in React.
       </P>
       <P>
-        To make this even easier I&apos;ve packaged up the context and its providers and consumers into an npm package: <A href="https://code.thintz.com/tjhintz/react-whitelabel/about/">react-whitelabel</A>.
+        To make this even easier I&apos;ve packaged up the context and its providers and consumers into an npm package: <A href="https://code.thintz.com/tjhintz/react-whitelabel">react-whitelabel</A>.
       </P>
       <P>
         So how do we use this package to white-label our React app? Here is a basic example:
