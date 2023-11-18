@@ -24,7 +24,7 @@ export default function Page() {
         With React we actually have a built in mechanism that makes this really easy: React contexts. If we create a context for our labeling then all we have to do is set the label at the top of the component hierarchy and the rest of the application can just utilize the selected label. This is similar to how themeing is often done in React.
       </P>
       <P>
-        To make this even easier I&apos;ve packaged up the context and its providers and consumers into an npm package: <A href="https://code.thintz.com/react-whitelabel/about/">react-whitelabel</A>.
+        To make this even easier I&apos;ve packaged up the context and its providers and consumers into an npm package: <A href="https://code.thintz.com/tjhintz/react-whitelabel/about/">react-whitelabel</A>.
       </P>
       <P>
         So how do we use this package to white-label our React app? Here is a basic example:
@@ -75,7 +75,7 @@ class HeaderComponent extends React.Component {
 // white-label context so we can access the 'label' prop.
 const Header = withWhiteLabelContext(HeaderComponent);`}</code></pre>
       <P>
-        To see a fully working example check out the <A href="https://code.thintz.com/react-whitelabel/about/">docs</A>.
+        To see a fully working example check out the <A href="https://code.thintz.com/tjhintz/react-whitelabel">docs</A>.
       </P>
       <P>
         So how does this example work? First we setup our labels. This is just a Javascript object where each key maps to a label. Each label is also an object made up of referenceable keys. The <code>WhiteLabelProvider</code> then takes the labels and the selected label as input and then provides the selected label&apos;s object to the rest of the app. This object is accessible using a <code>WhiteLabelConsumer</code> or the <code>withWhiteLabelContext</code> wrapper. If we then made the selectedLabel dynamic, say via calling <code>window.location.hostname</code>, then we would have a fully run time dynamic white-label.
@@ -84,7 +84,7 @@ const Header = withWhiteLabelContext(HeaderComponent);`}</code></pre>
         Also note that we are using the selected label&apos;s name as a class name in a top level div. This allows us to use the white-labeling with our CSS assets just by selecting based on the label name like <code>{`.cars a { ... }`}</code>.
       </P>
       <P>
-        While the <A href="https://code.thintz.com/react-whitelabel/about/">react-whitelabel library</A> is not necessary for React run time white-labeling it does make it easier and more maintainable. If you implement it yourself you will likely do the same thing the library already does for you. If your interested learning more about react-whitelabel feel free to checkout the <A href="https://code.thintz.com/react-whitelabel/about/">docs</A> or the <A href="https://www.npmjs.com/package/react-whitelabel">npm page</A>.
+        While the <A href="https://code.thintz.com/tjhintz/react-whitelabel">react-whitelabel library</A> is not necessary for React run time white-labeling it does make it easier and more maintainable. If you implement it yourself you will likely do the same thing the library already does for you. If your interested learning more about react-whitelabel feel free to checkout the <A href="https://code.thintz.com/tjhintz/react-whitelabel">docs</A> or the <A href="https://www.npmjs.com/package/react-whitelabel">npm page</A>.
       </P>
     </Article>
   );
