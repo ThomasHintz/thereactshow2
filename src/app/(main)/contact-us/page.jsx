@@ -9,13 +9,18 @@ import { Container } from '@/components/Container'
 export default async function Page({ searchParams }) {
   const firstName = searchParams['first-name'];
   const lastName = searchParams['last-name'];
+  const hostName = searchParams['host-name'];
   const email = searchParams['email'];
   const message = searchParams['message'];
-  const submitted = firstName || lastName || email || message;
-  const valid = submitted && firstName && lastName && email && message;
+  const submitted = firstName || lastName || email || message || hostName;
+  const valid = submitted && firstName && lastName && email && message && hostName;
+  const validHostName = valid &&
+        (hostName.toLowerCase().replaceAll(' ', '') === 'thomashintz' ||
+         hostName.toLowerCase().replaceAll(' ', '') === 'thomas' ||
+         hostName.toLowerCase().replaceAll(' ', '') === 'hintz');
   let emailSentSuccessfully = false;
 
-  if (valid) {
+  if (valid && validHostName) {
     const transporter = nodemailer.createTransport({
       host: process.env.CONTACT_HOST,
       port: 587,
@@ -39,6 +44,8 @@ export default async function Page({ searchParams }) {
       }),
     });
     redirect('/contact-success')
+  } else if (!validHostName) {
+    redirect('/contact-success')
   }
 
   return (
@@ -47,7 +54,7 @@ export default async function Page({ searchParams }) {
         <h1 className="text-2xl font-bold leading-7 text-slate-900">
           Contact Us
         </h1>
-        {valid && !emailSentSuccessfully && (
+        {valid && validHostName && !emailSentSuccessfully && (
            <div className="divide-y divide-slate-100 sm:mt-4 lg:mt-8 lg:border-t lg:border-slate-100">
              <p>
                Unable to send message. Please go back and reload the page and try again or try again later. Sorry!
@@ -112,6 +119,23 @@ export default async function Page({ searchParams }) {
                            required
                            defaultValue={email}
                            title="Email Address (required)"
+                           className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                         />
+                       </div>
+                     </div>
+
+                     <div className="sm:col-span-3">
+                       <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                         Name of the podcast host: (required because of bots)
+                       </label>
+                       <div className="mt-1">
+                         <input
+                           type="text"
+                           name="host-name"
+                           id="host-name"
+                           defaultValue={hostName}
+                           required
+                           title="Name of the podcast host (required)"
                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                          />
                        </div>
