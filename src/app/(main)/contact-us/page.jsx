@@ -44,7 +44,7 @@ export default async function Page({ searchParams }) {
       }),
     });
     redirect('/contact-success')
-  } else if (!validHostName) {
+  } else if (valid && !validHostName) {
     redirect('/contact-success')
   }
 
