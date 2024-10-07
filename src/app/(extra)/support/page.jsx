@@ -5,14 +5,14 @@ import { BookOpenIcon, BanknotesIcon, StarIcon } from '@heroicons/react/24/outli
 
 const features = [
 
-  {
-    name: 'The Reactors Premium Subscription',
-    link: 'https://thereactshow.supercast.com/',
-    description:
-      'Your own premium podcast feed with: bonus content, early releases, AMA. The BEST way to support the show!',
-    icon: StarIcon,
-    highlight: true
-  },
+  // {
+  //   name: 'The Reactors Premium Subscription',
+  //   link: 'https://thereactshow.supercast.com/',
+  //   description:
+  //     'Your own premium podcast feed with: bonus content, early releases, AMA. The BEST way to support the show!',
+  //   icon: StarIcon,
+  //   highlight: true
+  // },
   {
     name: 'My Book',
     link: '/book',
@@ -20,13 +20,13 @@ const features = [
       'Foundations of High-Performance React is my take on breaking down how React works internally to help you build better React applications.',
     icon: BookOpenIcon,
   },
-  {
-    name: 'Discord Server',
-    link: 'https://discord.gg/zXYggKUBC2',
-    description:
-      'Connect with the community for free on our Discord Server! Ask questions or just hang out!',
-    icon: StarIcon
-  },
+  // {
+  //   name: 'Discord Server',
+  //   link: 'https://discord.gg/zXYggKUBC2',
+  //   description:
+  //     'Connect with the community for free on our Discord Server! Ask questions or just hang out!',
+  //   icon: StarIcon
+  // },
   {
     name: 'Tip!',
     link: 'https://buy.stripe.com/cN25nl5x2fZO4M0cMN',
