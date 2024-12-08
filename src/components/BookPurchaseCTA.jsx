@@ -5,7 +5,7 @@ export default function BookPurchaseCTA() {
     <>
       <CenteredDarkPanel title="Foundations of High-Performance React" buttonText="Download"
                          id="first-cta"
-                         href="https://buy.stripe.com/14kcPNaRm28Ydiw7su"
+                         href="/book-success"
       >
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
           Now Available For Free!
